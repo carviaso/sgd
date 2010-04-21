@@ -6,7 +6,7 @@ class Conexao {
     
     public static function con() {
         if ( !isset( self::$con ) ) {
-	        self::$con = mysqli_connect( 'localhost', 'cppd', 'xlop9cvi', 'docente' );
+	        self::$con = mysqli_connect( 'localhost', 'root', '', 'docente' );
 	    }
 		return self::$con;
     }
