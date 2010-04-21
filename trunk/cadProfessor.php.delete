@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Cadastro de Professores</title>
+        <meta name="keywords" content="professor, cadastro" />
+        <meta name="description" content="Esta é página de cadastro de professores do sistema de gestão de docentes" />
+        <link href="css/default.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    
+    <body>
+        <div id="wrapper">
+        <?php include 'include/header.php'; ?>
+
+            <!-- end div#header -->
+            <div id="page">
+                <div id="content">
+                    <div id="welcome">
+                        <h1>Cadastro de Professores</h1>
+
+                        <!--body-->
+                        <?php
+                        require_once("lib/nusoap.php");
+                        require_once("classes/configuration.php");
+
+                        $config = new Configuration();
+                        $wsdl = $config->get_wsdl();
+                        $client = new soapclientnusoap($wsdl, true);
+                        $err = $client->getError();
+                        if ($err) {
+                            echo '<h2>Erro na construcao do cliente nuSoap: </h2><pre>' . $err . '</pre>';
+                        }
+                        $proxy = $client->getProxy();
+
+                        //Se foi clicado no botão "Gravar"
+                        if (isset($_POST['submit'])) {
+                            if (!$_POST['Nome']) {
+                                echo "Digite um nome";
+                            } else if (!$_POST['Sobrenome']) {
+                                echo "Digite um sobrenome";
+
+                            } else if (!$_POST['Matricula']) {
+                                echo "Digite uma matrícula";
+                            } else if (!ctype_digit($_POST['Matricula'])) {
+                                echo "A matrícula deve ser numérica";
+
+                            } else if (!$_POST['Siape']) {
+                                echo "Digite um siape";
+                            } else if (!ctype_digit($_POST['Siape'])) {
+                                echo "O siape deve ser numérico";
+
+                            } else if ( !ctype_digit($_POST['DiaAdmissao'])) {
+                                echo "O dia da admissão deve ser numérico";
+                            } else if ( !ctype_digit($_POST['MesAdmissao'])) {
+                                echo "O mês da admissão deve ser numérico";
+                            } else if ( !ctype_digit($_POST['AnoAdmissao'])) {
+                                echo "O ano da admissão deve ser numérico";
+
+                            } else if ( !ctype_digit($_POST['DiaAdmissaoUfsc'])) {
+                                echo "O dia da admissão na Ufsc deve ser numérico";
+                            } else if ( !ctype_digit($_POST['MesAdmissaoUfsc'])) {
+                                echo "O mês da admissão na Ufsc deve ser numérico";
+                            } else if ( !ctype_digit($_POST['AnoAdmissaoUfsc'])) {
+                                echo "O ano da admissão na Ufsc deve ser numérico";
+                                
+                            } else {
+                                $nome = $_POST['Nome'];
+                                $sobrenome = $_POST['Sobrenome'];
+                                $matricula = $_POST['Matricula'];
+                                $siape = $_POST['Siape'];
+                                $data_admissao =    $_POST['AnoAdmissao'].'-'.
+                                                    $_POST['MesAdmissao'].'-'.
+                                                    $_POST['DiaAdmissao'];
+                                $data_admissao_ufsc =   $_POST['AnoAdmissaoUfsc'].'-'.
+                                                        $_POST['MesAdmissaoUfsc'].'-'.
+                                                        $_POST['DiaAdmissaoUfsc'];
+
+                                if ( ctype_digit($_POST['AnoAposentadoria']) &&
+                                     ctype_digit($_POST['MesAposentadoria']) &&
+                                     ctype_digit($_POST['DiaAposentadoria']) ) {
+                                    $data_aposentadoria =   $_POST['AnoAposentadoria'].'-'.
+                                                            $_POST['MesAposentadoria'].'-'.
+                                                            $_POST['DiaAposentadoria'];
+                                } else {
+                                    $data_aposentadoria = '';
+                                }
+
+                                if ( ctype_digit($_POST['AnoPrevisaoAposentadoria']) &&
+                                     ctype_digit($_POST['MesPrevisaoAposentadoria']) &&
+                                     ctype_digit($_POST['DiaPrevisaoAposentadoria']) ) {
+                                    $data_previsao_aposentadoria =  $_POST['AnoPrevisaoAposentadoria'].'-'.
+                                                                    $_POST['MesPrevisaoAposentadoria'].'-'.
+                                                                    $_POST['DiaPrevisaoAposentadoria'];
+                                } else {
+                                    $data_previsao_aposentadoria = '';
+                                }
+
+                                if ((empty($data_aposentadoria))) {
+                                    $aposentado = 'False';
+                                } else {
+                                    $aposentado = 'true';
+                                }
+
+                                $id_departamento = $_POST['Id_departamento'];
+                                $id_categoria_funcional_inicial = $_POST['Id_categoria_funcional_inicial'];
+                                $id_categoria_funcional_atual = $_POST['Id_categoria_funcional_atual'];
+                                $id_tipo_titulacao = $_POST['Id_tipo_titulacao'];
+                                $id_categoria_funcional_referencia = $_POST['Id_categoria_funcional_referencia'];
+
+                                $item = array(  'nome' => $nome,
+                                                'sobrenome' => $sobrenome,
+                                                'matricula' => $matricula,
+                                                'siape' => $siape,
+                                                'data_admissao' => $data_admissao,
+                                                'data_admissao_ufsc' => $data_admissao_ufsc,
+                                                'aposentado' => $aposentado,
+                                                'data_aposentadoria' => $data_aposentadoria,
+                                                'data_previsao_aposentadoria' => $data_previsao_aposentadoria,
+                                                'id_departamento' => $id_departamento,
+                                                'id_categoria_funcional_inicial' => $id_categoria_funcional_inicial,
+                                                'id_categoria_funcional_atual' => $id_categoria_funcional_atual,
+                                                'id_tipo_titulacao' => $id_tipo_titulacao,
+                                                'id_categoria_funcional_referencia' => $id_categoria_funcional_referencia);
+                                
+                                $result = $proxy->insert_professor( $item );
+
+                                if (!$result) {
+                                    echo 'Falha';
+                                } else {
+                                    echo 'Sucesso';
+                                }
+                            }
+                        } else {
+                            echo '<form method="post">';
+                            echo '<p>';
+                            echo '<div id="LNome">Nome</div><input class="form_tfield" type="text" maxlength="100" name="Nome" value="" /><br>';
+                            echo '<div id="LSobrenome">Sobrenome</div><input class="form_tfield" type="text" maxlength="100" name="Sobrenome" value="" /><br>';
+                            echo '<div id="LMatricula">Matrícula</div><input class="form_tfield" type="text" maxlength="255" name="Matricula" value="" /><br>';
+                            echo '<div id="LSiape">Siape</div><input class="form_tfield" type="text" maxlength="255" name="Siape" value="" /><br>';
+
+                            echo '<div id="LDataAdmissao">Data da admissão (dd/mm/aaaa)</div>';
+                            echo '<input class="form_tfield" id="DiaAdmissao" name="DiaAdmissao" class="element text" size="2" maxlength="2" value="" type="text"> /';
+                            echo '<input class="form_tfield" id="MesAdmissao" name="MesAdmissao" class="element text" size="2" maxlength="2" value="" type="text"> /';
+                            echo '<input class="form_tfield" id="AnoAdmissao" name="AnoAdmissao" class="element text" size="4" maxlength="4" value="" type="text">';
+
+                            echo '<div id="LDataAdmissaoUfsc">Data da admissão na Ufsc (dd/mm/aaaa)</div>';
+                            echo '<input class="form_tfield" id="DiaAdmissaoUfsc" name="DiaAdmissaoUfsc" class="element text" size="2" maxlength="2" value="" type="text"> /';
+                            echo '<input class="form_tfield" id="MesAdmissaoUfsc" name="MesAdmissaoUfsc" class="element text" size="2" maxlength="2" value="" type="text"> /';
+                            echo '<input class="form_tfield" id="AnoAdmissaoUfsc" name="AnoAdmissaoUfsc" class="element text" size="4" maxlength="4" value="" type="text">';
+
+                            echo '<div id="LDataPrevisaoAposentadoria">Data prevista da aposentadoria (dd/mm/aaaa)</div>';
+                            echo '<input class="form_tfield" id="DiaPrevisaoAposentadoria" name="DiaPrevisaoAposentadoria" class="element text" size="2" maxlength="2" value="" type="text"> /';
+                            echo '<input class="form_tfield" id="MesPrevisaoAposentadoria" name="MesPrevisaoAposentadoria" class="element text" size="2" maxlength="2" value="" type="text"> /';
+                            echo '<input class="form_tfield" id="AnoPrevisaoAposentadoria" name="AnoPrevisaoAposentadoria" class="element text" size="4" maxlength="4" value="" type="text">';
+
+                            echo '<div id="LDataAposentadoria">Data efetiva da aposentadoria (dd/mm/aaaa)</div>';
+                            echo '<input class="form_tfield" id="DiaAposentadoria" name="DiaAposentadoria" class="element text" size="2" maxlength="2" value="" type="text"> /';
+                            echo '<input class="form_tfield" id="MesAposentadoria" name="MesAposentadoria" class="element text" size="2" maxlength="2" value="" type="text"> /';
+                            echo '<input class="form_tfield" id="AnoAposentadoria" name="AnoAposentadoria" class="element text" size="4" maxlength="4" value="" type="text">';
+
+                            echo '<div id="LDepartamento">Departamento</div>';
+                            echo '<select name ="Id_departamento">';
+                            $result = $proxy->get_all_departamento();
+                            for($index=0; $index < count($result); $index++) {
+                                $depData = $result[$index];
+                                echo "<OPTION VALUE=".$depData['id_departamento'].">".$depData['nome'];
+                            }
+                            echo '</select>';
+
+                            echo '<div id="LCategoriaFuncionalInicial">Categoria Funcional Inicial</div>';
+                            echo '<select name ="Id_categoria_funcional_inicial">';
+                            $result = $proxy->get_all_categoria_funcional();
+                            for($index=0; $index < count($result); $index++) {
+                                $depData = $result[$index];
+                                echo "<OPTION VALUE=".$depData['id_categoria_funcional'].">".$depData['descricao'];
+                            }
+                            echo '</select>';
+
+                            echo '<div id="LCategoriaFuncionalAtual">Categoria Funcional Atual</div>';
+                            echo '<select name ="Id_categoria_funcional_atual">';
+                            $result = $proxy->get_all_categoria_funcional();
+                            for($index=0; $index < count($result); $index++) {
+                                $depData = $result[$index];
+                                echo "<OPTION VALUE=".$depData['id_categoria_funcional'].">".$depData['descricao'];
+                            }
+                            echo '</select>';
+
+                            echo '<div id="LTipoTitulacao">Tipo de Titulação</div>';
+                            echo '<select name ="Id_tipo_titulacao">';
+                            $result = $proxy->get_all_tipo_titulacao();
+                            for($index=0; $index < count($result); $index++) {
+                                $depData = $result[$index];
+                                echo "<OPTION VALUE=".$depData['id_tipo_titulacao'].">".$depData['descricao'];
+                            }
+                            echo '</select>';
+
+                            echo '<div id="LCategoriaFuncionalReferencia">Categoria Funcional Referência</div>';
+                            echo '<select name ="Id_categoria_funcional_referencia">';
+                            $result = $proxy->get_all_categoria_funcional();
+                            for($index=0; $index < count($result); $index++) {
+                                $depData = $result[$index];
+                                echo "<OPTION VALUE=".$depData['id_categoria_funcional'].">".$depData['descricao'];
+                            }
+                            echo '</select>';
+
+                            echo '<p></p>';
+
+                            echo '<p>';
+                            echo '<input class="form_submitb" name="submit" type="submit" value="Gravar" >';
+                            echo '<input class="form_submitb" name="reset" type="reset" value="Cancelar" >';
+                            echo '</p>';
+                            echo '</form>';
+                        }
+                        ?>
+                        
+                        <!--body ends-->
+                    </div>
+                    
+                    <!-- end div#welcome -->			
+                    
+                </div>
+                <!-- end div#content -->
+                <div id="sidebar">
+                    <ul>
+                    <?php include 'include/navProfessor.php'; ?>
+                        <!-- end navigation -->
+                    </ul>
+                </div>
+                <!-- end div#sidebar -->
+                <div style="clear: both; height: 1px"></div>
+            </div>
+            <?php include 'include/footer.php'; ?>
+        </div>
+        <!-- end div#wrapper -->
+    </body>
+</html>
+
+
