@@ -13,9 +13,9 @@ class Centro {
 		
 		while ( $row = mysqli_fetch_array( $query ) ) {
 			$centro = array();
-			$centro[] = $row['id_centro'];
-			$centro[] = $row['nome'];
-			$centro[] = $row['sigla'];
+			$centro['id_centro'] = utf8_decode( $row['id_centro'] );
+			$centro['nome'] = $row['nome'];
+			$centro['sigla'] = $row['sigla'];
 			$centros[] = $centro;
 		}
 		return $centros;
