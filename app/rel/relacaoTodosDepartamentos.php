@@ -14,13 +14,13 @@
 	foreach ( $departamentos as $key =>$value ) {
 		echo "<tr>";
 		echo "<td>";
-		echo utf8_encode( $value[1] );
+		echo utf8_encode( $value['nome'] );
 		echo "</td>";
 		echo "<td>";
-		echo $value[2];
+		echo $value['departamento_sigla'];
 		echo "</td>";
 		echo "<td>";
-		echo $value[3];
+		echo $value['centro_sigla'];
 		echo "</td>";
 		echo "</tr>";
 	}

@@ -10,13 +10,14 @@
 <?php
 	$centro = new Centro();
 	$centros = $centro->getCentros();
-	foreach ( $centros as $key =>$value ) {
+	
+	foreach ( $centros as $centro ) {
 		echo "<tr>";
 		echo "<td>";
-		echo utf8_encode( $value[1] );
+		echo utf8_encode( $centro['nome'] );
 		echo "</td>";
 		echo "<td align='center'>";
-		echo $value[2];
+		echo $centro['sigla'];
 		echo "</td>";
 		echo "</tr>";
 	}
