@@ -1,12 +1,12 @@
 <?php
-	include '../class/centro.php';
+	include '../../models/centro.php'; 
 	
 	$centro = new Centro();
 	$centros = $centro->getCentros();
 	
 	foreach ( $centros as $centro ) {
-		$opcoes[] = "<option value='" . $centro['id_centro'] . "'>";
-		$opcoes[] = utf8_encode( $centro['nome'] ) . "</option>";
+		$opcoes[] = "<option value='" . $centro->getIdCentro() . "'>";
+		$opcoes[] = utf8_encode( $centro->getNome() ) . "</option>";
 	}
 ?>
 <h1>Relat&oacute;rio de Departamentos por Centro</h1>
@@ -28,7 +28,7 @@
 <script type="text/javascript">
 
 	$("#selectCentros").change(function() {
-		$.post("../sgd/app/content/diretoresPorCentro.php", { id_centro: $(this).val() },
+		$.post("/sgd/app/views/centros/diretoresPorCentro.php", { id_centro: $(this).val() },
 			function(data){
 				$('#departamentosPorCentro').html(data);
 		});

@@ -1,5 +1,5 @@
 <?php
-	include '../class/centro.php'; 
+	include '../../models/centro.php'; 
 ?>
 <h1>Relat&oacute;rio de Centros</h1>
 <table class="aatable">
@@ -14,10 +14,10 @@
 	foreach ( $centros as $centro ) {
 		echo "<tr>";
 		echo "<td>";
-		echo utf8_encode( $centro['nome'] );
+		echo utf8_encode( $centro->getNome() );
 		echo "</td>";
 		echo "<td align='center'>";
-		echo $centro['sigla'];
+		echo $centro->getSigla();
 		echo "</td>";
 		echo "</tr>";
 	}

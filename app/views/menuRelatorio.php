@@ -18,18 +18,18 @@
 </li>
 <script type="text/javascript">
 	$("#relacaoCentros").click(function() {
-		$('#content').load('app/rel/relacaoCentros.php');
+		$('#content').load('app/views/centros/relacaoCentros.php');
 	});
 	$("#relacaoTodosDepartamentos").click(function() {
-		$('#content').load('app/rel/relacaoTodosDepartamentos.php');
+		$('#content').load('app/views/departamentos/relacaoTodosDepartamentos.php');
 	});	
 	$("#relacaoTodosDiretoresCentros").click(function() {
-		$('#content').load('app/rel/relacaoTodosDiretoresCentros.php');
+		$('#content').load('app/views/centros/relacaoTodosDiretoresCentros.php');
 	});
 	$("#professoresPorDepartamento").click(function() {
-		$('#content').load('app/rel/professoresPorDepartamento.php');
+		$('#content').load('app/views/departamentos/relacaoProfessoresPorDepartamento.php');
 	});
 	$("#departamentosPorCentro").click(function() {
-		$('#content').load('app/rel/departamentosPorCentro.php');
+		$('#content').load('app/views/departamentos/departamentosPorCentro.php');
 	});
 </script>

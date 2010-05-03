@@ -10,19 +10,19 @@
 		},
 		loadNavCadastro: function() {
 			$(".navCadastro").click(function() {
-				$('#sidebar').load('app/nav/cadastro.php');
+				$('#sidebar').load('app/views/menuCadastro.php');
 				$('#content').load('app/content/cadastro.php');
 			});
 		},
 		loadNavProfessor: function() {
 			$(".navProfessor").click(function() {
-				$('#sidebar').load('app/nav/professor.php');
+				$('#sidebar').load('app/views/menuProfessor.php');
 				$('#content').load('app/content/professor.php');
 			});
 		},
 		loadNavRelatorio: function() {
 			$(".navRelatorio").click(function() {
-				$('#sidebar').load('app/nav/relatorio.php');
+				$('#sidebar').load('app/views/menuRelatorio.php');
 				$('#content').load('app/content/relatorio.php');
 			});
 		}

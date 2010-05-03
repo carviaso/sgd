@@ -1,5 +1,5 @@
 <?php
-	include '../class/departamento.php'; 
+	include '../../models/departamento.php'; 
 ?>
 <h1>Relat&oacute;rio de Departamentos</h1>
 <table class="aatable">
@@ -10,7 +10,7 @@
 	</tr>
 <?php
 	$departamento = new Departamento();
-	$departamentos = $departamento->getDepartamentos();
+	$departamentos = $departamento-> getDepartamentos();
 	foreach ( $departamentos as $key =>$value ) {
 		echo "<tr>";
 		echo "<td>";

@@ -1,152 +1,192 @@
 <?php
 
+include '../../include/conexao.php';
+
 class Professor {
 	
-	var $idProfessor = '';
-	var $situacaoIdSituacao = 0;
-	var $departamentoIdDepartamento = 0;
-	var $tipoTitulacaoIdTipoTitulacao = 0;
-	var $categoriaFuncionalIdCategoriaFuncional = 0;
-	var $cargoIdCargo = 0;
-	var $nome = '';
-	var $sobrenome = '';
-	var $matricula = '';
-	var $siape = '';
-	var $dataAdmissao = '';
-	var $dataAdmissaoUfsc = '';
-	var $dataNascimento = '';
-	var $aposentado = '';
-	var $dataPrevisaoAposentadoria = '';
-	var $dataAposentadoria = '';
+	private $idProfessor = '';
+	private $situacaoIdSituacao = 0;
+	private $departamentoIdDepartamento = 0;
+	private $tipoTitulacaoIdTipoTitulacao = 0;
+	private $categoriaFuncionalIdCategoriaFuncional = 0;
+	private $cargoIdCargo = 0;
+	private $nome = '';
+	private $sobrenome = '';
+	private $matricula = '';
+	private $siape = '';
+	private $dataAdmissao = '';
+	private $dataAdmissaoUfsc = '';
+	private $dataNascimento = '';
+	private $aposentado = '';
+	private $dataPrevisaoAposentadoria = '';
+	private $dataAposentadoria = '';
 	
 	public function Professor() {}
 	
-	private function setIdProfessor( $idProfessor ) {
+	public function setIdProfessor( $idProfessor ) {
 		$this->idProfessor = $idProfessor;
 	}
 	
-	private function getIdProfessor() {
+	public function getIdProfessor() {
 		return $this->idProfessor;
 	}
 	
-	private function setSituacaoIdSituacao( $situacaoIdSituacao ) {
+	public function setSituacaoIdSituacao( $situacaoIdSituacao ) {
 		$this->situacaoIdSituacao = $situacaoIdSituacao;
 	}
 	
-	private function getSituacaoIdSituacao() {
+	public function getSituacaoIdSituacao() {
 		return $this->situacaoIdSituacao;
 	}
 	
-	private function setDepartamentoIdDepartamento( $departamentoIdDepartamento ) {
+	public function setDepartamentoIdDepartamento( $departamentoIdDepartamento ) {
 		$this->departamentoIdDepartamento = $departamentoIdDepartamento;
 	}
 	
-	private function getDepartamentoIdDepartamento() {
+	public function getDepartamentoIdDepartamento() {
 		return $this->departamentoIdDepartamento;
 	}
 	
-	private function setTipoTitulacaoIdTipoTitulacao( $tipoTitulacaoIdTipoTitulacao ) {
+	public function setTipoTitulacaoIdTipoTitulacao( $tipoTitulacaoIdTipoTitulacao ) {
 		$this->tipoTitulacaoIdTipoTitulacao = $tipoTitulacaoIdTipoTitulacao;
 	}
 	
-	private function getTipoTitulacaoIdTipoTitulacao() {
+	public function getTipoTitulacaoIdTipoTitulacao() {
 		return $this->tipoTitulacaoIdTipoTitulacao;
 	}
 	
-	private function setCategoriaFuncionalIdCategoriaFuncional( $categoriaFuncionalIdCategoriaFuncional ) {
+	public function setCategoriaFuncionalIdCategoriaFuncional( $categoriaFuncionalIdCategoriaFuncional ) {
 		$this->categoriaFuncionalIdCategoriaFuncional = $categoriaFuncionalIdCategoriaFuncional;
 	}
 	
-	private function getCategoriaFuncionalIdCategoriaFuncional() {
+	public function getCategoriaFuncionalIdCategoriaFuncional() {
 		return $this->categoriaFuncionalIdCategoriaFuncional;
 	}
 	
-	private function setCargoIdCargo( $cargoIdCargo ) {
+	public function setCargoIdCargo( $cargoIdCargo ) {
 		$this->cargoIdCargo = $cargoIdCargo;
 	}
 	
-	private function getCargoIdCargo() {
+	public function getCargoIdCargo() {
 		return $this->cargoIdCargo;
 	}
 	
-	private function setNome( $nome ) {
+	public function setNome( $nome ) {
 		$this->nome = $nome;
 	}
 	
-	private function getNome() {
+	public function getNome() {
 		return $this->nome;
 	}
 	
-	private function setSobrenome( $sobrenome ) {
+	public function setSobrenome( $sobrenome ) {
 		$this->sobrenome = $sobrenome;
 	}
 	
-	private function getSobrenome() {
+	public function getSobrenome() {
 		return $this->sobrenome;
 	}
 	
-	private function setMatricula( $matricula ) {
+	public function setMatricula( $matricula ) {
 		$this->matricula = $matricula;
 	}
 	
-	private function getMatricula() {
+	public function getMatricula() {
 		return $this->matricula;
 	}
 	
-	private function setSiape( $siape ) {
+	public function setSiape( $siape ) {
 		$this->siape = $siape;
 	}
 	
-	private function getSiape() {
+	public function getSiape() {
 		return $this->siape;
 	}
 	
-	private function setDataAdmissao( $dataAdmissao ) {
+	public function setDataAdmissao( $dataAdmissao ) {
 		$this->dataAdmissao = $dataAdmissao;
 	}
 	
-	private function getDataAdmissao() {
+	public function getDataAdmissao() {
 		return $this->dataAdmissao;
 	}
 	
-	private function setDataAdmissaoUfsc( $dataAdmissaoUfsc ) {
+	public function setDataAdmissaoUfsc( $dataAdmissaoUfsc ) {
 		$this->dataAdmissaoUfsc = $dataAdmissaoUfsc;
 	}
 	
-	private function getDataAdmissaoUfsc() {
+	public function getDataAdmissaoUfsc() {
 		return $this->dataAdmissaoUfsc;
 	}
 	
-	private function setDataNascimento( $dataNascimento ) {
+	public function setDataNascimento( $dataNascimento ) {
 		$this->dataNascimento = $dataNascimento;
 	}
 	
-	private function getDataNascimento() {
+	public function getDataNascimento() {
 		return $this->dataNascimento;
 	}
 	
-	private function setAposentado( $aposentado ) {
+	public function setAposentado( $aposentado ) {
 		$this->aposentado = $aposentado;
 	}
 	
-	private function getAposentado() {
+	public function getAposentado() {
 		return $this->aposentado;
 	}
 	
-	private function setDataPrevisaoAposentadoria( $dataPrevisaoAposentadoria ) {
+	public function setDataPrevisaoAposentadoria( $dataPrevisaoAposentadoria ) {
 		$this->dataPrevisaoAposentadoria = $dataPrevisaoAposentadoria;
 	}
 	
-	private function getDataPrevisaoAposentadoria() {
+	public function getDataPrevisaoAposentadoria() {
 		return $this->dataPrevisaoAposentadoria;
 	}
 	
-	private function setDataAposentadoria( $dataAposentadoria ) {
+	public function setDataAposentadoria( $dataAposentadoria ) {
 		$this->dataAposentadoria = $dataAposentadoria;
 	}
 	
-	private function getDataAposentadoria() {
+	public function getDataAposentadoria() {
 		return $this->dataAposentadoria;
+	}
+	
+	function getProfessores() {
+		
+		$professores = array();
+		$conexao = Conexao::con();
+		
+		$sql[] = "SELECT * FROM professor p ORDER by p.nome";
+		$query = mysqli_query( $conexao, join( '', $sql ) );
+		
+		while ( $row = mysqli_fetch_array( $query ) ) {
+			$professor = new Professor();
+			$professor->setNome( $row['nome'] );
+			$professor->setAposentado( $row['nome'] );			
+			$professor->setSobrenome( $row['sobrenome'] );
+			$professores[] = $professor;
+		}
+		return $professores;
+	}
+	
+	function getProfessoresPorDepartamento( $idDepartamento ) {
+		
+		$professores = array();
+		$conexao = Conexao::con();
+		
+		$sql[] = "SELECT p.nome, p.sobrenome FROM professor AS p ";
+		$sql[] = "LEFT JOIN departamento AS d ON p.id_departamento = d.id_departamento ";
+		$sql[] = "WHERE d.id_departamento ='{$idDepartamento}' ORDER by p.nome";
+		
+		$query = mysqli_query( $conexao, join( '', $sql ) );
+		
+		while ( $row = mysqli_fetch_array( $query ) ) {
+			$professor = new Professor();
+			$professor->setNome( $row['nome'] );
+			$professor->setSobrenome( $row['sobrenome'] );
+			$professores[] = $professor;
+		}
+		return $professores;
 	}
 
 }
