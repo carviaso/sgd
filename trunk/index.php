@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -6,10 +7,10 @@
         <title>SGD - Sistema de Gest&atilde;o de Docentes</title>
         <meta name="keywords" content="docente, list" />
         <meta name="description" content="Esta &eacute; p&aacute;gina principal do sistema de gest&atilde;o de docentes" />
-        <link href="css/default.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-        <script type="text/javascript" src="js/jquery.maskedinput-1.2.2.min.js"></script>
-        <script type="text/javascript" src="js/loader.js"></script>
+        <link type="text/css" href="public/css/default.css" rel="stylesheet"  />
+        <script type="text/javascript" src="public/js/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="public/js/jquery.maskedinput-1.2.2.min.js"></script>
+        <script type="text/javascript" src="public/js/loader.js"></script>
     </head>
 
     <body>

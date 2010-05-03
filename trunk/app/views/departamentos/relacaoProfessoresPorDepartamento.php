@@ -1,5 +1,5 @@
 <?php
-	include '../class/departamento.php';
+	include '../../models/departamento.php'; 
 	
 	$departamento = new Departamento();
 	$departamentos = $departamento->getDepartamentos();
@@ -28,7 +28,7 @@
 <script type="text/javascript">
 
 	$("#selectDepartamentos").change(function() {
-		$.post("../sgd/app/content/professoresPorDepartamento.php", { id_departamento: $(this).val() },
+		$.post("/sgd/app/views/departamentos/professoresPorDepartamento.php", { idDepartamento: $(this).val() },
 			function(data){
 				$('#professoresPorDepartamento').html(data);
 		});

@@ -1,5 +1,5 @@
 <?php
-	include '../class/departamento.php'; 
+	include '../../models/departamento.php'; 
 ?>
 <table class="aatable">
 	<tr>
@@ -21,6 +21,5 @@
 		echo "</td>";
 		echo "</tr>";
 	}
-	
 ?>
 </table>
