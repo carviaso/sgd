@@ -1,13 +1,15 @@
 <?php
-	include '../../models/centro.php'; 
-	
-	$centro = new Centro();
-	$centros = $centro->getCentros();
-	
-	foreach ( $centros as $centro ) {
-		$opcoes[] = "<option value='" . $centro->getIdCentro() . "'>";
-		$opcoes[] = utf8_encode( $centro->getNome() ) . "</option>";
-	}
+
+include '../../controllers/centroController.php'; 
+
+$centro = new Centro();
+$centros = $centro->getCentros();
+
+foreach ( $centros as $centro ) {
+	$opcoes[] = "<option value='" . $centro->getIdCentro() . "'>";
+	$opcoes[] = utf8_encode( $centro->getNome() ) . "</option>";
+}
+
 ?>
 <h1>Relat&oacute;rio de Departamentos por Centro</h1>
 <span>Escolha aqui o centro</span>

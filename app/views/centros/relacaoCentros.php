@@ -1,5 +1,7 @@
 <?php
-	include '../../models/centro.php'; 
+
+include '../../controllers/centroController.php';
+ 
 ?>
 <h1>Relat&oacute;rio de Centros</h1>
 <table class="aatable">
@@ -8,7 +10,7 @@
 		<th>Sigla</th>
 	</tr>
 <?php
-	$centro = new Centro();
+	$centro = new CentroController();
 	$centros = $centro->getCentros();
 	
 	foreach ( $centros as $centro ) {
@@ -20,8 +22,7 @@
 		echo $centro->getSigla();
 		echo "</td>";
 		echo "</tr>";
-	}
-	
+	}	
 ?>
 </table>
 <div id="note">
