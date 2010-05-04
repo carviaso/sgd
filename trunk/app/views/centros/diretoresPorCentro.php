@@ -1,5 +1,7 @@
 <?php
-	include '../../models/departamento.php'; 
+
+include '../../controllers/departamentoController.php';
+ 
 ?>
 <table class="aatable">
 	<tr>
@@ -8,8 +10,8 @@
 	</tr>
 <?php
 	
-	$departamento = new Departamento();
-	$departamentos = $departamento->getDepartamentosPorCentro( $_POST['id_centro'] );
+	$departamentoC = new DepartamentoController();
+	$departamentos = $departamentoC->getDepartamentosPorCentro( $_POST['id_centro'] );
 		
 	foreach ( $departamentos as $departamento ) {
 		echo "<tr>";

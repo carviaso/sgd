@@ -1,13 +1,15 @@
 <?php
-	include '../../models/departamento.php'; 
-	
-	$departamento = new Departamento();
-	$departamentos = $departamento->getDepartamentos();
-	
-	foreach ( $departamentos as $departamento ) {
-		$opcoes[] = "<option value='" . $departamento['id_departamento'] . "'>";
-		$opcoes[] = utf8_encode( $departamento['nome'] ) . "</option>";
-	}
+
+include '../../controllers/departamentoController.php'; 
+
+$departamentoC = new Departamento();
+$departamentos = $departamentoC->getDepartamentos();
+
+foreach ( $departamentos as $departamento ) {
+	$opcoes[] = "<option value='" . $departamento['id_departamento'] . "'>";
+	$opcoes[] = utf8_encode( $departamento['nome'] ) . "</option>";
+}
+
 ?>
 <h1>Relat&oacute;rio de Professores por Departamentos</h1>
 <span>Escolha aqui o centro</span>
