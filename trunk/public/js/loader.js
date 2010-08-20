@@ -30,3 +30,7 @@ principal = {
 		});
 	}
 };
+principal.loadNavHome();
+principal.loadNavCadastro();
+principal.loadNavProfessor();
+principal.loadNavRelatorio();

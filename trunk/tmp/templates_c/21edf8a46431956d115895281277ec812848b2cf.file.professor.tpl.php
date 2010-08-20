@@ -1,47 +1,63 @@
-<?php /* Smarty version 3.0rc1, created on 2010-08-13 00:49:06
+<?php /* Smarty version 3.0rc1, created on 2010-08-20 00:07:20
          compiled from "views/professor/templates/professor.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:57994c64c0b22d30d6-92811747%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:240514c6df168dbd1f6-87429617%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '21edf8a46431956d115895281277ec812848b2cf' => 
     array (
       0 => 'views/professor/templates/professor.tpl',
-      1 => 1281671343,
+      1 => 1282273631,
     ),
   ),
-  'nocache_hash' => '57994c64c0b22d30d6-92811747',
+  'nocache_hash' => '240514c6df168dbd1f6-87429617',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
 )); /*/%%SmartyHeaderCode%%*/?>
 <h1>Cadastro de Professor</h1>
-	<label for="nome">Nome</label>
-	<input type="text" id="nome" name="nome" value=""  maxlength="100" class="form_tfield" />
-	<label for="sobrenome">Sobrenome</label>
-	<input type="text" id="sobrenome" name="sobrenome" value=""  maxlength="100" class="form_tfield" />
 
-	<div>Matr&iacute;cula</div>
-	<input class="form_tfield" type="text" maxlength="255" name="Matricula" value="" />
-	<div>Siape</div>
-	<input class="form_tfield" type="text" maxlength="255" name="Siape" value="" />
-	
-	<div>Data da admiss&atilde;o (dd/mm/aaaa)</div>
-	<input type="text" id="dataAdmissao" class="form_tfield" >
-	
-	<div>Data da admiss&atilde;o na Ufsc (dd/mm/aaaa)</div>
-	<input type="text" id="dataAdmissaoUfsc" class="form_tfield" >
-	
-	<div>Data prevista da aposentadoria (dd/mm/aaaa)</div>
-	<input type="text" id="dataAposentadoria" class="form_tfield" >
-	
-	<div>Data efetiva da aposentadoria (dd/mm/aaaa)</div>
-	<input type="text" id="dataEfetivaAposentadoria" class="form_tfield" >
-	
-	<div>Departamento</div>
-	<select name ="idDepartamento">
-		<?php unset($_smarty_tpl->tpl_vars['smarty']->value['section']['departamentos']);
+<table class="aatable">
+	<tr>
+		<th colspan="2">Cadastro de novo professor</th>
+	</tr>
+	<tr>
+		<td>Nome</td>
+		<td><input type="text" id="nome" name="nome" value="" maxlength="100" class="form_tfield width100" /></td>
+	</tr>
+	<tr>
+		<td>Sobrenome</td>
+		<td><input type="text" id="sobrenome" name="sobrenome" value="" maxlength="100" class="form_tfield width100" /></td>
+	</tr>
+	<tr>
+		<td>Matr&iacute;cula</td>
+		<td><input class="form_tfield width100" type="text" maxlength="255" name="Matricula" value="" /></td>
+	</tr>
+	<tr>
+		<td>Siape</td>
+		<td><input class="form_tfield width100" type="text" maxlength="255" name="Siape" value="" /></td>
+	</tr>
+	<tr>
+		<td>Data da admiss&atilde;o</td>
+		<td><input type="text" id="dataAdmissao" class="form_tfield width100" ></td>
+	</tr>
+	<tr>
+		<td>Data da admiss&atilde;o na Ufsc</td>
+		<td><input type="text" id="dataAdmissaoUfsc" class="form_tfield width100" ></td>
+	</tr>
+	<tr>
+		<td>Data prevista da aposentadoria</td>
+		<td><input type="text" id="dataAposentadoria" class="form_tfield width100" ></td>
+	</tr>
+	<tr>
+		<td>Data efetiva da aposentadoria</td>
+		<td><input type="text" id="dataEfetivaAposentadoria" class="form_tfield width100" ></td>
+	</tr>
+	<tr>
+		<td>Departamento</td>
+		<td><select name ="idDepartamento" class="width100">
+			<?php unset($_smarty_tpl->tpl_vars['smarty']->value['section']['departamentos']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['departamentos']['name'] = 'departamentos';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['departamentos']['loop'] = is_array($_loop=$_smarty_tpl->getVariable('departamentos')->value) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['departamentos']['show'] = true;
@@ -65,14 +81,15 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['departamentos']['index_next'
 $_smarty_tpl->tpl_vars['smarty']->value['section']['departamentos']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['departamentos']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['departamentos']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['departamentos']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['departamentos']['total']);
 ?>
-			<option><?php echo $_smarty_tpl->getVariable('departamentos')->value[$_smarty_tpl->getVariable('smarty')->value['section']['departamentos']['index']]->nome;?>
+				<option><?php echo $_smarty_tpl->getVariable('departamentos')->value[$_smarty_tpl->getVariable('smarty')->value['section']['departamentos']['index']]->nome;?>
 </option>
-		<?php endfor; endif; ?>
-	</select>
-	
-	<div>Categoria Funcional Inicial</div>
-	<select name ="idCategoriaFuncionalInicial">
-		<?php unset($_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']);
+			<?php endfor; endif; ?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Categoria Funcional Inicial</td>
+		<td><select name ="idCategoriaFuncionalInicial" class="width100">
+			<?php unset($_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['name'] = 'categoriasFuncionais';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['loop'] = is_array($_loop=$_smarty_tpl->getVariable('categoriasFuncionais')->value) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['show'] = true;
@@ -96,14 +113,15 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['inde
 $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['total']);
 ?>
-			<option><?php echo $_smarty_tpl->getVariable('categoriasFuncionais')->value[$_smarty_tpl->getVariable('smarty')->value['section']['categoriasFuncionais']['index']]->descricao;?>
+				<option><?php echo $_smarty_tpl->getVariable('categoriasFuncionais')->value[$_smarty_tpl->getVariable('smarty')->value['section']['categoriasFuncionais']['index']]->descricao;?>
 </option>
-		<?php endfor; endif; ?>
-	</select>
-	
-	<div>Categoria Funcional Atual</div>
-	<select name ="idCategoriaFuncionalAtual">
-		<?php unset($_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']);
+			<?php endfor; endif; ?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Categoria Funcional Atual</td>
+		<td><select name ="idCategoriaFuncionalAtual" class="width100">
+			<?php unset($_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['name'] = 'categoriasFuncionais';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['loop'] = is_array($_loop=$_smarty_tpl->getVariable('categoriasFuncionais')->value) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['show'] = true;
@@ -127,14 +145,15 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['inde
 $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['total']);
 ?>
-			<option><?php echo $_smarty_tpl->getVariable('categoriasFuncionais')->value[$_smarty_tpl->getVariable('smarty')->value['section']['categoriasFuncionais']['index']]->descricao;?>
+				<option><?php echo $_smarty_tpl->getVariable('categoriasFuncionais')->value[$_smarty_tpl->getVariable('smarty')->value['section']['categoriasFuncionais']['index']]->descricao;?>
 </option>
-		<?php endfor; endif; ?>
-	</select>
-	
-	<div>Tipo de Titula&ccedil;&atilde;o</div>
-	<select name ="idTitulacao">
-		<?php unset($_smarty_tpl->tpl_vars['smarty']->value['section']['titulacoes']);
+			<?php endfor; endif; ?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Tipo de Titula&ccedil;&atilde;o</td>
+		<td><select name ="idTitulacao" class="width100">
+			<?php unset($_smarty_tpl->tpl_vars['smarty']->value['section']['titulacoes']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['titulacoes']['name'] = 'titulacoes';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['titulacoes']['loop'] = is_array($_loop=$_smarty_tpl->getVariable('titulacoes')->value) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['titulacoes']['show'] = true;
@@ -158,14 +177,15 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['titulacoes']['index_next'] =
 $_smarty_tpl->tpl_vars['smarty']->value['section']['titulacoes']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['titulacoes']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['titulacoes']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['titulacoes']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['titulacoes']['total']);
 ?>
-			<option><?php echo $_smarty_tpl->getVariable('titulacoes')->value[$_smarty_tpl->getVariable('smarty')->value['section']['titulacoes']['index']]->descricao;?>
+				<option><?php echo $_smarty_tpl->getVariable('titulacoes')->value[$_smarty_tpl->getVariable('smarty')->value['section']['titulacoes']['index']]->descricao;?>
 </option>
-		<?php endfor; endif; ?>
-	</select>
-	
-	<div>Categoria Funcional Referência</div>
-	<select name ="idCategoriaFuncionalReferencia">
-		<?php unset($_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']);
+			<?php endfor; endif; ?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Categoria Funcional Refer&ecirc;ncia</td>
+		<td><select name ="idCategoriaFuncionalReferencia" class="width100">
+			<?php unset($_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['name'] = 'categoriasFuncionais';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['loop'] = is_array($_loop=$_smarty_tpl->getVariable('categoriasFuncionais')->value) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['show'] = true;
@@ -189,9 +209,13 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['inde
 $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['categoriasFuncionais']['total']);
 ?>
-			<option><?php echo $_smarty_tpl->getVariable('categoriasFuncionais')->value[$_smarty_tpl->getVariable('smarty')->value['section']['categoriasFuncionais']['index']]->descricao;?>
+				<option><?php echo $_smarty_tpl->getVariable('categoriasFuncionais')->value[$_smarty_tpl->getVariable('smarty')->value['section']['categoriasFuncionais']['index']]->descricao;?>
 </option>
-		<?php endfor; endif; ?>
-	</select>
-	<p>&nbsp;</p>
-	<p><input class="form_submitb" name="submit" type="submit" value="Gravar" ></p>
+			<?php endfor; endif; ?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><button id="cadastrarProfessor">Cadastrar</button></td>
+	</tr>
+</table>
