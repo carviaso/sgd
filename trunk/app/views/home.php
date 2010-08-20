@@ -8,7 +8,7 @@
     </ul>
 </li>
 <script type="text/javascript">
-	//principal.loadNavCadastro();
-	//principal.loadNavProfessor();
-	//principal.loadNavRelatorio();
+//	principal.loadNavCadastro();
+//	principal.loadNavProfessor();
+//	principal.loadNavRelatorio();
 </script>
