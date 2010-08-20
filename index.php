@@ -7,13 +7,8 @@
         <title>SGD - Sistema de Gest&atilde;o de Docentes</title>
         <meta name="keywords" content="docente, list" />
         <meta name="description" content="Esta &eacute; p&aacute;gina principal do sistema de gest&atilde;o de docentes" />
+        <link type="text/css" href="public/css/base/jquery.ui.all.css" rel="stylesheet"  />
         <link type="text/css" href="public/css/default.css" rel="stylesheet"  />
-        <script type="text/javascript" src="public/js/jquery-1.4.2.min.js"></script>
-        <script type="text/javascript" src="public/js/jquery.maskedinput-1.2.2.min.js"></script>
-        <script type="text/javascript" src="public/js/loader.js"></script>
-        <script type="text/javascript" src="public/js/cadastros.js"></script>
-        <script type="text/javascript" src="public/js/professores.js"></script>
-        <script type="text/javascript" src="public/js/relatorios.js"></script>
     </head>
 
     <body>
@@ -39,11 +34,13 @@
             <?php include 'app/include/footer.php'; ?>
         </div>
         <!-- end div#wrapper -->
+        <script type="text/javascript" src="public/js/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="public/js/jquery-ui-1.8.4.custom.min.js"></script>
+        <script type="text/javascript" src="public/js/locate/jquery.ui.datepicker-pt-BR.js"></script>
+        <script type="text/javascript" src="public/js/jquery.maskedinput-1.2.2.min.js"></script>
+        <script type="text/javascript" src="public/js/loader.js"></script>
+        <script type="text/javascript" src="public/js/cadastros.js"></script>
+        <script type="text/javascript" src="public/js/professores.js"></script>
+        <script type="text/javascript" src="public/js/relatorios.js"></script>
     </body>
 </html>
-<script type="text/javascript">
-	principal.loadNavHome();
-	principal.loadNavCadastro();
-	principal.loadNavProfessor();
-	principal.loadNavRelatorio();
-</script>
