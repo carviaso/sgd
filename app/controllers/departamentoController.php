@@ -1,11 +1,9 @@
 <?php
-	
-include '../../models/departamento.php';
 
 class DepartamentoController {
 	
 	/**
-	 * Contrutor
+	 * Construtor
 	 *
 	 * @return void
 	 */
@@ -20,12 +18,27 @@ class DepartamentoController {
 		$departamentoDAO = new Departamento();
 		return $departamentoDAO->getDepartamentos();
 	}
-	
+
+	/**
+	 * Retorna todos os departamentos por centro
+	 *
+	 * @param int $idCentro
+	 * @return array
+	 */
 	public function getDepartamentosPorCentro( $idCentro ) {
 		$departamentoDAO = new Departamento();
 		return $departamentoDAO->getDepartamentosPorCentro( $idCentro );
 	}
-    
+	
+	/**
+	 * Retorna todos os professores por departamento
+	 *
+	 * @param int $idCentro
+	 * @return array
+	 */
+	public function getProfessoresPorDepartamento( $idDepartamento ) {
+		$departamentoDAO = new Departamento();
+		return $departamentoDAO->getProfessoresPorDepartamento( $idDepartamento );
+	}
 }
 ?>
-

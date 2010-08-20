@@ -1,6 +1,4 @@
 <?php
-	
-include '../../models/centro.php';
 
 class CentroController {
 	
@@ -20,7 +18,10 @@ class CentroController {
 		$centroDAO = new Centro();
 		return $centroDAO->getCentros();
 	}
-
+	
+	public function viewDiretoresPorCentros( $idCentro ) {
+		$centroDAO = new Centro();
+		return $centroDAO->viewDiretoresPorCentros( $idCentro );
+	}
 }
 ?>
-
