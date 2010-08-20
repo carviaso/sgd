@@ -11,6 +11,9 @@
         <script type="text/javascript" src="public/js/jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="public/js/jquery.maskedinput-1.2.2.min.js"></script>
         <script type="text/javascript" src="public/js/loader.js"></script>
+        <script type="text/javascript" src="public/js/cadastros.js"></script>
+        <script type="text/javascript" src="public/js/professores.js"></script>
+        <script type="text/javascript" src="public/js/relatorios.js"></script>
     </head>
 
     <body>
@@ -26,7 +29,7 @@
                 <!-- end div#content -->
                 <div id="sidebar">
                     <ul>
-                    <?php //include 'app/nav/home.php'; ?>
+                    <?php include 'app/views/menuRelatorio.php'; ?>
                         <!-- end navigation -->
                     </ul>
                 </div>
