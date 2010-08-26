@@ -24,7 +24,7 @@
                 <!-- end div#content -->
                 <div id="sidebar">
                     <ul>
-                    <?php include 'app/views/menuRelatorio.php'; ?>
+                    <?php include 'app/views/home.php'; ?>
                         <!-- end navigation -->
                     </ul>
                 </div>

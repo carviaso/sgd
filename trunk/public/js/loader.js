@@ -1,8 +1,8 @@
 principal = {
 	loadNavHome: function() {
 		$(".navHome").click(function() {
-			$('#sidebar').load('app/views/home.php');
 			$('#content').load('app/content/home.php');
+			$('#sidebar').load('app/views/home.php');
 		});
 	},
 	loadNavCadastro: function() {
