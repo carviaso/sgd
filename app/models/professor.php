@@ -1,7 +1,5 @@
 <?php
 
-include '../../include/conexao.php';
-
 class Professor {
 	
 	/**
@@ -52,6 +50,57 @@ class Professor {
 		}
 		return $professores;
 	}
+	
+	/**
+	 * Realiza o cadastro de um novo professor
+	 *
+	 * @return json
+	 */
+	public function cadastrarProfessor( $nome, $sobrenome,$dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao ) {
+		$professores = array();
+		$conexao = Conexao::con();
+		$return = new stdClass();
+		
+		$dataNascimento = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataNascimento ) ) );
+		$dataAdmissao = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataAdmissao ) ) );
+		$dataAdmissaoUfsc = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataAdmissaoUfsc ) ) );
+		$dataPrevistaAposentadoria = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataPrevistaAposentadoria ) ) );
+		$dataEfetivaAposentadoria = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataEfetivaAposentadoria ) ) );
+		
+		$sql[] = "INSERT INTO professor( nome, sobrenome, matricula, siape, ";
+		$sql[] = "data_admissao, data_admissao_ufsc, data_nascimento, aposentado, ";
+		$sql[] = "data_previsao_aposentadoria, data_aposentadoria, id_departamento, ";
+		$sql[] = "id_categoria_funcional_inicial, id_categoria_funcional_atual, ";
+		$sql[] = "id_tipo_titulacao, id_categoria_funcional_referencia, id_cargo, id_situacao )";
+		$sql[] = "VALUES (";
+		$sql[] = "'$nome', '$sobrenome', '$matricula', '$siape', ";
+		$sql[] = "'$dataAdmissao', '$dataAdmissaoUfsc', '$dataNascimento', '$aposentado', ";
+		$sql[] = "'$dataPrevistaAposentadoria', '$dataEfetivaAposentadoria', '$idDepartamento', ";
+		$sql[] = "'$idCategoriaFuncionalInicial', '$idCategoriaFuncionalAtual', ";
+		$sql[] = "'$idTipoTitulacao', '$idCategoriaFuncionalReferencia', '$idCargo', '$idSituacao' )";
+		
+		//$query = mysqli_query( $conexao, join( '', $sql ) );
+		
+		if ( mysqli_query( $conexao, join( '', $sql ) ) ) {
+			$return->result = 1;
+		} else {
+			$return->result = 0;
+		}
+		return $return;
+		
+//		while ( $row = mysqli_fetch_array( $query ) ) {
+//			$professor = new stdClass();
+//			$professor->setNome( $row['nome'] );
+//			$professor->setSobrenome( $row['sobrenome'] );
+//			$professores[] = $professor;
+//		}
+//		return $professores;
+	}
+	
+	//INSERT INTO professor ( id_professor , nome , sobrenome , matricula , siape , data_admissao , data_admissao_ufsc , data_nascimento , aposentado , data_previsao_aposentadoria  , data_aposentadoria , id_departamento , id_categoria_funcional_inicial  , id_categoria_funcional_atual  , id_tipo_titulacao , id_categoria_funcional_referencia  , id_cargo , id_situacao )
+	//VALUES (
+	//'446', 'Professor teste', 'teste', '', '', '2010-08-24', '2010-08-25', '2010-08-26', NULL , '2010-08-27', '2010-08-28', '', '', '', '', '', '', ''
+	//);
 
 }
 
