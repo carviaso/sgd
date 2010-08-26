@@ -1,22 +1,22 @@
 <?php
 
-class CargoController {
+class SituacaoController {
 	
 	/**
 	 * Construtor
 	 *
 	 * @return void
 	 */
-	public function CargoController() {}
+	public function SituacaoController() {}
 	
 	/**
-	 * Retorna um array com todos os objetos Cargo
+	 * Retorna um array com todos os objetos Situacao
 	 *
 	 * @return array
 	 */
-	public function getCargos() {
-		$cargoDAO = new Cargo();
-		return $cargoDAO->getCargos();
+	public function getSituacoes() {
+		$situacaoDAO = new Situacao();
+		return $situacaoDAO->getSituacoes();
 	}
 
 }

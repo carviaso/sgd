@@ -1,7 +1,5 @@
 <?php
 	
-include '../../models/professor.php';
-
 class ProfessorController {
 	
 	/**
@@ -21,6 +19,15 @@ class ProfessorController {
 		return $professorDAO->getProfessoresPorDepartamento( $idDepartamento );
 	}
     
+	/**
+	 * Realiza o cadastro de um novo professor
+	 *
+	 * @return json
+	 */
+	public function cadastrarProfessor() {
+		$professorDAO = new Professor();
+		return $professorDAO->cadastrarProfessor();
+	}
 }
 ?>
 
