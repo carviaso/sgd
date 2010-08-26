@@ -1,27 +1,23 @@
 <?php
 
-class CentroController {
+class CargoController {
 	
 	/**
 	 * Construtor
 	 *
 	 * @return void
 	 */
-	public function CentroController() {}
+	public function CargoController() {}
 	
 	/**
-	 * Retorna um array com todos os objetos Centro
+	 * Retorna um array com todos os objetos Cargo
 	 *
 	 * @return array
 	 */
-	public function getCentros() {
-		$centroDAO = new Centro();
-		return $centroDAO->getCentros();
+	public function getCargos() {
+		$cargoDAO = new Cargo();
+		return $cargoDAO->getCargos();
 	}
-	
-	public function viewDiretoresPorCentros( $idCentro ) {
-		$centroDAO = new Centro();
-		return $centroDAO->viewDiretoresPorCentros( $idCentro );
-	}
+
 }
 ?>
