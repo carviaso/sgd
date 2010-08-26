@@ -2,13 +2,8 @@
 <li id="submenu">
     <h2>Homeeeeeeeeeee</h2>
     <ul>
-        <li><a href="javascript:void(0);" class="navCadastro" >Cadastros</a></li>
-        <li><a href="javascript:void(0);" class="navProfessor">Professor</a></li>
-        <li><a href="javascript:void(0);" class="navRelatorio">Relat&oacute;rios</a></li>
+        <li><a href="javascript:void(0);" class="navCadastro2" >Cadastros</a></li>
+        <li><a href="javascript:void(0);" class="navProfessor2">Professor</a></li>
+        <li><a href="javascript:void(0);" class="navRelatorio2">Relat&oacute;rios</a></li>
     </ul>
 </li>
-<script type="text/javascript">
-//	principal.loadNavCadastro();
-//	principal.loadNavProfessor();
-//	principal.loadNavRelatorio();
-</script>
