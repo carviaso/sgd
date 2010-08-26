@@ -5,6 +5,9 @@ include '../app/controllers/centroController.php';
 include '../app/controllers/departamentoController.php';
 include '../app/controllers/categoriaFuncionalController.php';
 include '../app/controllers/titulacaoController.php';
+include '../app/controllers/professorController.php';
+include '../app/controllers/cargoController.php';
+include '../app/controllers/situacaoController.php';
 include '../app/views/centro/centroV.php';
 include '../app/views/departamento/departamentoV.php';
 include '../app/views/professor/professorV.php';
@@ -12,6 +15,9 @@ include '../app/models/centro.php';
 include '../app/models/departamento.php';
 include '../app/models/categoriaFuncional.php';
 include '../app/models/titulacao.php';
+include '../app/models/professor.php';
+include '../app/models/cargo.php';
+include '../app/models/situacao.php';
 include '../app/include/conexao.php';
 
 $action = $_POST['action'];
@@ -60,18 +66,23 @@ switch ($action) {
 		return $departamentoV->listDepartamentos( $departamentos );
 	break;
 	case 'printFormCadProfessor':
-//		$professorC = new ProfessorController();
-//		$departamentos = $departamentoC->getDepartamentos();
-
 		$departamentoC = new DepartamentoController();
 		$departamentos = $departamentoC->getDepartamentos();
 		$categoriaFuncionalC = new CategoriaFuncionalController();
 		$categoriasFuncionais = $categoriaFuncionalC->getCategoriaFuncional();
 		$titulacaoC = new TitulacaoController();
 		$titulacoes = $titulacaoC->getTitulacao();
+		$cargoC = new CargoController();
+		$cargos = $cargoC->getCargos();
+		$situacaoC = new SituacaoController();
+		$situacoes = $situacaoC->getSituacoes();
 		$professorV = new ProfessorV();
-		$professorV->printFormCadProfessor( $departamentos, $categoriasFuncionais, $titulacoes );
-		//return $departamentoV->listDepartamentos( $departamentos );
+		$professorV->printFormCadProfessor( $departamentos, $categoriasFuncionais, $titulacoes, $cargos, $situacoes );
+	break;
+	case 'cadProfessor':
+		$professorC = new ProfessorController();
+		extract( $_POST );
+		$professorC->cadastrarProfessor( $nome, $sobrenome,$dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao );
 	break;
 }
 

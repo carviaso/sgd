@@ -16,7 +16,7 @@ class Titulacao {
 		
 		while ( $row = mysqli_fetch_array( $query ) ) {
 			$titulacao = new stdClass;
-			$titulacao->id_tipo_titulacao = utf8_encode( $row['id_tipo_titulacao'] );
+			$titulacao->idTipoTitulacao = utf8_encode( $row['id_tipo_titulacao'] );
 			$titulacao->descricao = utf8_encode( $row['descricao'] );
 			$titulacoes[] = $titulacao;
 		}
