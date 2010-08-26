@@ -54,7 +54,7 @@ class Professor {
 	/**
 	 * Realiza o cadastro de um novo professor
 	 *
-	 * @return json
+	 * @return stdClass
 	 */
 	public function cadastrarProfessor( $nome, $sobrenome,$dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao ) {
 		$professores = array();
@@ -79,28 +79,13 @@ class Professor {
 		$sql[] = "'$idCategoriaFuncionalInicial', '$idCategoriaFuncionalAtual', ";
 		$sql[] = "'$idTipoTitulacao', '$idCategoriaFuncionalReferencia', '$idCargo', '$idSituacao' )";
 		
-		//$query = mysqli_query( $conexao, join( '', $sql ) );
-		
 		if ( mysqli_query( $conexao, join( '', $sql ) ) ) {
 			$return->result = 1;
 		} else {
 			$return->result = 0;
 		}
 		return $return;
-		
-//		while ( $row = mysqli_fetch_array( $query ) ) {
-//			$professor = new stdClass();
-//			$professor->setNome( $row['nome'] );
-//			$professor->setSobrenome( $row['sobrenome'] );
-//			$professores[] = $professor;
-//		}
-//		return $professores;
 	}
-	
-	//INSERT INTO professor ( id_professor , nome , sobrenome , matricula , siape , data_admissao , data_admissao_ufsc , data_nascimento , aposentado , data_previsao_aposentadoria  , data_aposentadoria , id_departamento , id_categoria_funcional_inicial  , id_categoria_funcional_atual  , id_tipo_titulacao , id_categoria_funcional_referencia  , id_cargo , id_situacao )
-	//VALUES (
-	//'446', 'Professor teste', 'teste', '', '', '2010-08-24', '2010-08-25', '2010-08-26', NULL , '2010-08-27', '2010-08-28', '', '', '', '', '', '', ''
-	//);
 
 }
 
