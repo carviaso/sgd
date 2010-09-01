@@ -8,6 +8,7 @@ include '../app/controllers/titulacaoController.php';
 include '../app/controllers/professorController.php';
 include '../app/controllers/cargoController.php';
 include '../app/controllers/situacaoController.php';
+include '../app/controllers/regimeTrabalhoController.php';
 include '../app/views/centro/centroV.php';
 include '../app/views/departamento/departamentoV.php';
 include '../app/views/professor/professorV.php';
@@ -18,6 +19,7 @@ include '../app/models/titulacao.php';
 include '../app/models/professor.php';
 include '../app/models/cargo.php';
 include '../app/models/situacao.php';
+include '../app/models/regimeTrabalho.php';
 include '../app/include/conexao.php';
 
 $action = $_POST['action'];
@@ -83,6 +85,19 @@ switch ($action) {
 		$professorC = new ProfessorController();
 		extract( $_POST );
 		$professorC->cadastrarProfessor( $nome, $sobrenome,$dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao );
+	break;
+	case 'printFormCadRegTrabProfessor':
+		$professorC = new ProfessorController();
+		$professores = $professorC->getAllProfessores();
+		$regimeTrabalhoC = new RegimeTrabalhoController();
+		$regimesTrabalho = $regimeTrabalhoC->getAllRegimesTrabalho();
+		$professorV = new ProfessorV();
+		$professorV->printFormCadRegTrabProfessor( $professores, $regimesTrabalho );
+	break;
+	case 'cadRegimeTrabalhoProfessor':
+		$professorC = new ProfessorController();
+		extract( $_POST );
+		$professorC->cadastrarRegimeTrabalhoProfessor( $idProfessor, $idRegimeTrabalho, $processo, $deliberacao, $portaria, $dataInicio );
 	break;
 }
 
