@@ -50,5 +50,17 @@ class ProfessorController {
 		$return = $professorDAO->cadastrarRegimeTrabalhoProfessor( $idProfessor, $idRegimeTrabalho, $processo, $deliberacao, $portaria, $dataInicio );
 		echo json_encode( $return );
 	}
+
+	/**
+	 * Lista todos os professores
+	 *
+	 * @return json
+	 */
+	public function listarProfessores( $professores ) {
+		$professorV = new ProfessorV();
+		return $professorV->listarProfessores( $professores );
+	}
+
+
 }
 ?>

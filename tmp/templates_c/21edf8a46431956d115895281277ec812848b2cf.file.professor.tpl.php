@@ -1,6 +1,6 @@
-<?php /* Smarty version 3.0rc1, created on 2010-09-01 00:27:42
+<?php /* Smarty version 3.0rc1, created on 2010-09-01 03:27:30
          compiled from "views/professor/templates/professor.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:58324c7d9dfec7c1c8-98600767%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:213454c7dc8226806a6-44072885%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -10,7 +10,7 @@ $_smarty_tpl->decodeProperties(array (
       1 => 1283300851,
     ),
   ),
-  'nocache_hash' => '58324c7d9dfec7c1c8-98600767',
+  'nocache_hash' => '213454c7dc8226806a6-44072885',
   'function' => 
   array (
   ),

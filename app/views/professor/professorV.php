@@ -26,11 +26,18 @@ class ProfessorV {
 		$smarty->config_dir   = 'views/configs/';
 		$smarty->assign( "professores", $professores );
 		$smarty->assign( "regimesTrabalho", $regimesTrabalho );
-//		$smarty->assign( "categoriasFuncionais", $categoriasFuncionais );
-//		$smarty->assign( "titulacoes", $titulacoes );
-//		$smarty->assign( "cargos", $cargos );
-//		$smarty->assign( "situacoes", $situacoes );
 		$smarty->display('regTrabProfessor.tpl');
+	}
+
+	function listarProfessores( $professores ) {
+		$smarty = new Smarty();
+		$smarty->template_dir = 'views/professor/templates/';
+		$smarty->compile_dir  = '../tmp/templates_c/';
+		$smarty->cache_dir    = '../tmp/cache/';
+		$smarty->config_dir   = 'views/configs/';
+		$smarty->assign( "professores", $professores );
+		$smarty->assign( "emissao", date('d/m/Y H:i:s P') );
+		$smarty->display('listarProfessores.tpl');
 	}
 }
 
