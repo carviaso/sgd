@@ -19,7 +19,7 @@ class Professor {
 			$professor = new stdClass();
 			$professor->id_professor = $row['id_professor'];
 			$professor->nome = utf8_encode( $row['nome'] );
-			$professor->sobrenome = $row['sobrenome'];
+			$professor->sobrenome = utf8_encode( $row['sobrenome'] );
 			$professor->matricula = $row['matricula'];
 			$professor->siape = $row['siape'];
 			$professor->dataAdmissao = $row['data_admissao'];
@@ -97,6 +97,7 @@ class Professor {
 			$return->result = 1;
 		} else {
 			$return->result = 0;
+			$return->error = mysqli_error( $conexao );
 		}
 		return $return;
 	}
@@ -117,12 +118,11 @@ class Professor {
 		$sql[] = "VALUES (";
 		$sql[] = "'$idProfessor', '$idRegimeTrabalho', '$processo', '$deliberacao', '$portaria', '$dataInicio')";
 
-		echo join( ' ', $sql );
-
 		if ( mysqli_query( $conexao, join( ' ', $sql ) ) ) {
 			$return->result = 1;
 		} else {
 			$return->result = 0;
+			$return->error = mysqli_error( $conexao );
 		}
 		return $return;
 	}

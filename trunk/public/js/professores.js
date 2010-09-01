@@ -2,7 +2,7 @@ professores = {
 	loadMenu: function() {
 		$("#cadProfessor").click(function() {
 			var params = { "action":"printFormCadProfessor" };
-			$('#content').load("app/dispatch.php", params, function() {
+			$('#content').load("app/frontController.php", params, function() {
 				$("#dataNascimento, #dataAdmissao, #dataAdmissaoUfsc, #dataPrevistaAposentadoria, #dataEfetivaAposentadoria")
 					.mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
 				$("#cadastrarProfessor").button().click(function() {
@@ -14,7 +14,7 @@ professores = {
 		});
 		$("#cadRegimeTrabalhoProfessor").click(function() {
 			var params = { "action":"printFormCadRegTrabProfessor" };
-			$('#content').load("app/dispatch.php", params, function() {
+			$('#content').load("app/frontController.php", params, function() {
 				$("#dataInicio").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
 				$("#cadastrarRegimeTrabalho").button().click(function() {
 					professores.cadastrarRegimeTrabalho();
@@ -27,6 +27,13 @@ professores = {
 		});
 		$("#cadProgressaoFuncionalProfessor").click(function() {
 			$('#content').load('app/cad/progressaoFuncionalProfessor.php');
+		});
+		$("#listarProfessores").click(function() {
+			
+			var params = { "action":"listarProfessores" };
+			$('#content').load("app/frontController.php", params, function() {
+				alert('listagem completa');
+			} );
 		});
 	},
 	cadastrar: function() {
@@ -68,10 +75,10 @@ professores = {
 						'idSituacao':idSituacao
 					};
 		
-		$.post("app/dispatch.php", params, function( response ) {
+		$.post("app/frontController.php", params, function( response ) {
 			if ( response.result == 1 ) {
-				var msg = 'Cadastro realizado com sucesso.';
 				$("#cadProfessor").click();
+				var msg = 'Cadastro realizado com sucesso.';
 			} else {
 				var msg = 'Erro ao cadastrar professor.';
 			}
@@ -105,11 +112,12 @@ professores = {
 						'dataInicio':dataInicio
 					};
 		
-		$.post("app/dispatch.php", params, function( response ) {
+		$.post("app/frontController.php", params, function( response ) {
 			if ( response.result == 1 ) {
+				$("#cadRegimeTrabalhoProfessor").click();
 				var msg = 'Cadastro realizado com sucesso.';
 			} else {
-				var msg = 'Erro ao cadastrar regime de trabalho do professor.';
+				var msg = 'Erro ao cadastrar regime de trabalho do professor. Erro: ' + response.error;
 			}
 			$("<div class='cadastrarRegimeTrabalhoProfessor'>" + msg + "</div>").dialog({
 				title: 'Cadastro de Regime de Trabalho do Professor',
