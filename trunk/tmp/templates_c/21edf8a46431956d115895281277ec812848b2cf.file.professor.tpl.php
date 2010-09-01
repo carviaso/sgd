@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.0rc1, created on 2010-08-26 01:33:13
+<?php /* Smarty version 3.0rc1, created on 2010-09-01 00:27:42
          compiled from "views/professor/templates/professor.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:266944c75ee891fdd33-80406277%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:58324c7d9dfec7c1c8-98600767%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '21edf8a46431956d115895281277ec812848b2cf' => 
     array (
       0 => 'views/professor/templates/professor.tpl',
-      1 => 1282797185,
+      1 => 1283300851,
     ),
   ),
-  'nocache_hash' => '266944c75ee891fdd33-80406277',
+  'nocache_hash' => '58324c7d9dfec7c1c8-98600767',
   'function' => 
   array (
   ),
