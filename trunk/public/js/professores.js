@@ -9,7 +9,7 @@ professores = {
 					professores.valida();
 				});
 				$("#radio").buttonset();
-				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+//				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 			} );
 		});
 		$("#cadRegimeTrabalhoProfessor").click(function() {
@@ -17,9 +17,9 @@ professores = {
 			$('#content').load("app/frontController.php", params, function() {
 				$("#dataInicio").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
 				$("#cadastrarRegimeTrabalho").button().click(function() {
-					professores.cadastrarRegimeTrabalho();
+					professores.regimeTrabalho.valida();
 				});
-				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+//				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 			} );
 		});
 		$("#cadAfastamentoProfessor").click(function() {
@@ -87,7 +87,22 @@ professores = {
 							'idCargo':idCargo,
 							'idSituacao':idSituacao
 						};
-			professores.cadastrar( params );
+			$("<div class='dialogConfirm'>Deseja realmente realizar o cadastro?</div>").dialog({
+				height:140,
+				modal: true,
+				buttons: {
+					'Sim': function() {
+						professores.cadastrar( params );
+						$(this).dialog('close');
+					},
+					'N\u00E3o': function() {
+						$(this).dialog('close');
+					}
+				},
+				close: function() {
+					$('.dialogConfirm').remove();
+				}
+			});
 		} else {
 			var msg = [];
 			msg.push( 'Verifique os seguintes campos:<br /><br />' );
@@ -100,47 +115,71 @@ professores = {
 			if ( response.result == 1 ) {
 				$("#cadProfessor").click();
 				var msg = 'Cadastro realizado com sucesso.';
+				gb.message( msg, 'Cadastro de Professor' );
 			} else {
-				var msg = 'Erro ao cadastrar professor. Erro: ' + response.error;
+				var msg = 'Erro ao cadastrar professor.<br /><br />' + response.error;
+				gb.errorMessage( msg, 'Erro' );
 			}
-			gb.errorMessage( msg, 'Erro' );
 		}, "json" );
 	},
-	cadastrarRegimeTrabalho: function() {
-		var idProfessor = $('#idProfessor option:selected').val();
-		var idRegimeTrabalho = $('#idRegimeTrabalho option:selected').val();
-		var processo = $('#processo').val();
-		var deliberacao = $('#deliberacao').val();
-		var portaria = $('#portaria').val();
-		var dataInicio = $('#dataInicio').val();
-		var params = {	'action':'cadRegimeTrabalhoProfessor',
-				 		'idProfessor':idProfessor,
-						'idRegimeTrabalho':idRegimeTrabalho,
-						'processo':processo,
-						'deliberacao':deliberacao,
-						'portaria':portaria,
-						'dataInicio':dataInicio
-					};
+	regimeTrabalho: {
+		valida: function() {
+			var erro = [];
+			var idProfessor = $('#idProfessor option:selected').val();
+			var idRegimeTrabalho = $('#idRegimeTrabalho option:selected').val();
+			var processo = $('#processo').val();
+			var deliberacao = $('#deliberacao').val();
+			var portaria = $('#portaria').val();
+			var dataInicio = $('#dataInicio').val();
+			
+			if ( !processo ) erro.push( 'Processo' );
+			if ( !deliberacao ) erro.push( 'Deliberacao' );
+			if ( !portaria ) erro.push( 'Portaria' );
+			if ( !dataInicio ) erro.push( 'Data de Inicio' );
 		
-		$.post("app/frontController.php", params, function( response ) {
-			if ( response.result == 1 ) {
-				$("#cadRegimeTrabalhoProfessor").click();
-				var msg = 'Cadastro realizado com sucesso.';
-			} else {
-				var msg = 'Erro ao cadastrar regime de trabalho do professor. Erro: ' + response.error;
-			}
-			$("<div class='cadastrarRegimeTrabalhoProfessor'>" + msg + "</div>").dialog({
-				title: 'Cadastro de Regime de Trabalho do Professor',
-				modal: true,
-				buttons: {
-					Ok: function() {
-						$(this).dialog('close');
+			if ( erro.length == 0 ) {
+				var params = {	'action':'cadRegimeTrabalhoProfessor',
+						 		'idProfessor':idProfessor,
+								'idRegimeTrabalho':idRegimeTrabalho,
+								'processo':processo,
+								'deliberacao':deliberacao,
+								'portaria':portaria,
+								'dataInicio':dataInicio
+							};
+				$("<div class='dialog-confirm'>Deseja realmente cadastrar o regime de trabalho?</div>").dialog({
+					height:140,
+					modal: true,
+					buttons: {
+						'Sim': function() {
+							professores.regimeTrabalho.cadastrar( params );
+							$(this).dialog('close');
+						},
+						'N\u00E3o': function() {
+							$(this).dialog('close');
+						}
+					},
+					close: function() {
+						$('.gbMessage').remove();
 					}
-				},
-				close: function() {
-					$('.cadastrarRegimeTrabalhoProfessor').remove();
+				});
+			} else {
+				var msg = [];
+				msg.push( 'Verifique os seguintes campos:<br /><br />' );
+				msg.push( erro.join( '<br />' ) );
+				gb.highlightMessage( msg.join(''), 'Erro' );
+			}
+		},	
+		cadastrar: function( params ) {
+			$.post("app/frontController.php", params, function( response ) {
+				if ( response.result == 1 ) {
+					$("#cadRegimeTrabalhoProfessor").click();
+					var msg = 'Cadastro realizado com sucesso.';
+					gb.message( msg, 'Cadastro de Regime de Trabalho do Professor' );
+				} else {
+					var msg = 'Erro ao cadastrar regime de trabalho do professor.<br /><br />' + response.error;
+					gb.errorMessage( msg, 'Cadastro de Regime de Trabalho do Professor' );
 				}
-			});
-		}, "json" );
-	}
+			}, "json" );
+		}
+	}	
 };
