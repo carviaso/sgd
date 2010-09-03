@@ -6,7 +6,7 @@ professores = {
 				$("#dataNascimento, #dataAdmissao, #dataAdmissaoUfsc, #dataPrevistaAposentadoria, #dataEfetivaAposentadoria")
 					.mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
 				$("#cadastrarProfessor").button().click(function() {
-					professores.cadastrar();
+					professores.valida();
 				});
 				$("#radio").buttonset();
 				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
@@ -36,7 +36,8 @@ professores = {
 			} );
 		});
 	},
-	cadastrar: function() {
+	valida: function() {
+		var erro = [];
 		var nome = $('#nome').val();
 		var sobrenome = $('#sobrenome').val();
 		var dataNascimento = $('#dataNascimento').val();
@@ -54,46 +55,55 @@ professores = {
 		var idCategoriaFuncionalReferencia = $('#categoriaFuncionalReferencia option:selected').val();
 		var idCargo = $('#cargo option:selected').val();
 		var idSituacao = $('#situacao option:selected').val();
-
-		var params = {	'action':'cadProfessor',
-						'nome':nome,
-						'sobrenome':sobrenome,
-						'dataNascimento':dataNascimento,
-						'matricula':matricula,
-						'siape':siape,
-						'dataAdmissao':dataAdmissao,
-						'dataAdmissaoUfsc':dataAdmissaoUfsc,
-						'aposentado':aposentado,
-						'dataPrevistaAposentadoria':dataPrevistaAposentadoria,
-						'dataEfetivaAposentadoria':dataEfetivaAposentadoria,
-						'idDepartamento':idDepartamento,
-						'idCategoriaFuncionalInicial':idCategoriaFuncionalInicial,
-						'idCategoriaFuncionalAtual':idCategoriaFuncionalAtual,
-						'idTipoTitulacao':idTipoTitulacao,
-						'idCategoriaFuncionalReferencia':idCategoriaFuncionalReferencia,
-						'idCargo':idCargo,
-						'idSituacao':idSituacao
-					};
 		
+		if ( !nome ) erro.push( 'Nome' );
+		if ( !sobrenome ) erro.push( 'Sobrenome' );
+		if ( !dataNascimento ) erro.push( 'Data de nascimento' );
+		if ( !matricula ) erro.push( 'Matricula' );
+		if ( !siape ) erro.push( 'Siape' );
+		if ( !dataAdmissao ) erro.push( 'Data de admissao' );
+		if ( !dataAdmissaoUfsc ) erro.push( 'Data de admissao na UFSC' );
+		if ( !aposentado ) erro.push( 'Aposentado' );
+		if ( !dataPrevistaAposentadoria ) erro.push( 'Data prevista aposentadoria' );
+		if ( !dataEfetivaAposentadoria ) erro.push( 'Data efetiva aposentadoria' );
+		
+		if ( erro.length == 0 ) {
+			var params = {	'action':'cadProfessor',
+							'nome':nome,
+							'sobrenome':sobrenome,
+							'dataNascimento':dataNascimento,
+							'matricula':matricula,
+							'siape':siape,
+							'dataAdmissao':dataAdmissao,
+							'dataAdmissaoUfsc':dataAdmissaoUfsc,
+							'aposentado':aposentado,
+							'dataPrevistaAposentadoria':dataPrevistaAposentadoria,
+							'dataEfetivaAposentadoria':dataEfetivaAposentadoria,
+							'idDepartamento':idDepartamento,
+							'idCategoriaFuncionalInicial':idCategoriaFuncionalInicial,
+							'idCategoriaFuncionalAtual':idCategoriaFuncionalAtual,
+							'idTipoTitulacao':idTipoTitulacao,
+							'idCategoriaFuncionalReferencia':idCategoriaFuncionalReferencia,
+							'idCargo':idCargo,
+							'idSituacao':idSituacao
+						};
+			professores.cadastrar( params );
+		} else {
+			var msg = [];
+			msg.push( 'Verifique os seguintes campos:<br /><br />' );
+			msg.push( erro.join( '<br />' ) );
+			gb.highlightMessage( msg.join(''), 'Erro' );
+		}
+	},
+	cadastrar: function( params ) {
 		$.post("app/frontController.php", params, function( response ) {
 			if ( response.result == 1 ) {
 				$("#cadProfessor").click();
 				var msg = 'Cadastro realizado com sucesso.';
 			} else {
-				var msg = 'Erro ao cadastrar professor.';
+				var msg = 'Erro ao cadastrar professor. Erro: ' + response.error;
 			}
-			$("<div class='cadastrarProfessor'>" + msg + "</div>").dialog({
-				title: 'Cadastro de Professor',
-				modal: true,
-				buttons: {
-					Ok: function() {
-						$(this).dialog('close');
-					}
-				},
-				close: function() {
-					$('.cadastrarProfessor').remove();
-				}
-			});
+			gb.errorMessage( msg, 'Erro' );
 		}, "json" );
 	},
 	cadastrarRegimeTrabalho: function() {
@@ -103,7 +113,7 @@ professores = {
 		var deliberacao = $('#deliberacao').val();
 		var portaria = $('#portaria').val();
 		var dataInicio = $('#dataInicio').val();
-		var params = {	'action':'cadRegimeTrabalhoProfessor',				
+		var params = {	'action':'cadRegimeTrabalhoProfessor',
 				 		'idProfessor':idProfessor,
 						'idRegimeTrabalho':idRegimeTrabalho,
 						'processo':processo,

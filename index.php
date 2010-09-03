@@ -42,6 +42,7 @@
         <script type="text/javascript" src="public/js/locate/jquery.ui.datepicker-pt-BR.js"></script>
         <script type="text/javascript" src="public/js/jquery.maskedinput-1.2.2.min.js"></script>
         <script type="text/javascript" src="public/js/ui.selectmenu.js"></script>
+        <script type="text/javascript" src="public/js/globals.js"></script>
         <script type="text/javascript" src="public/js/loader.js"></script>
         <script type="text/javascript" src="public/js/cadastros.js"></script>
         <script type="text/javascript" src="public/js/professores.js"></script>

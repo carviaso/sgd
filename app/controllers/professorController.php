@@ -34,9 +34,26 @@ class ProfessorController {
 	 *
 	 * @return json
 	 */
-	public function cadastrarProfessor( $nome, $sobrenome,$dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao ) {
+	public function cadastrarProfessor( $nome, $sobrenome,$dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial,	$idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao ) {
 		$professorDAO = new Professor();
-		$return = $professorDAO->cadastrarProfessor( $nome, $sobrenome,$dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao );
+		$erro = array();
+		if ( empty( $nome) ) $erro[] = 'Nome';
+		if ( empty( $sobrenome) ) $erro[] = 'Sobrenome';
+		if ( empty( $dataNascimento) ) $erro[] = 'Data nascimento';
+		if ( empty( $matricula) ) $erro[] = 'Matricula';
+		if ( empty( $siape) ) $erro[] = 'Siape';
+		if ( empty( $dataAdmissao) ) $erro[] = 'Data admissao';
+		if ( empty( $dataAdmissaoUfsc) ) $erro[] = 'Data admissao UFSC';
+		if ( empty( $aposentado) ) $erro[] = 'Aposentado';
+		if ( empty( $dataPrevistaAposentadoria) ) $erro[] = 'Data prevista aposentadoria';
+		if ( empty( $dataEfetivaAposentadoria) ) $erro[] = 'Data efetiva aposentadoria';
+
+		if ( count( $erro ) == 0 ) {
+			$return = $professorDAO->cadastrarProfessor( $nome, $sobrenome,$dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao );
+		} else {
+			$return->result = 0;
+			$return->error = join( '<br />', $erro );
+		}
 		echo json_encode( $return );
 	}
 
