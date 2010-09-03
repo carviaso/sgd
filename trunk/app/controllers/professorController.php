@@ -44,7 +44,7 @@ class ProfessorController {
 		if ( empty( $siape) ) $erro[] = 'Siape';
 		if ( empty( $dataAdmissao) ) $erro[] = 'Data admissao';
 		if ( empty( $dataAdmissaoUfsc) ) $erro[] = 'Data admissao UFSC';
-		if ( empty( $aposentado) ) $erro[] = 'Aposentado';
+		if ( $aposentado == '' ) $erro[] = 'Aposentado';
 		if ( empty( $dataPrevistaAposentadoria) ) $erro[] = 'Data prevista aposentadoria';
 		if ( empty( $dataEfetivaAposentadoria) ) $erro[] = 'Data efetiva aposentadoria';
 
@@ -64,7 +64,19 @@ class ProfessorController {
 	 */
 	public function cadastrarRegimeTrabalhoProfessor( $idProfessor, $idRegimeTrabalho, $processo, $deliberacao, $portaria, $dataInicio ) {
 		$professorDAO = new Professor();
-		$return = $professorDAO->cadastrarRegimeTrabalhoProfessor( $idProfessor, $idRegimeTrabalho, $processo, $deliberacao, $portaria, $dataInicio );
+
+		$erro = array();
+		if ( empty( $processo) ) $erro[] = 'Processo';
+		if ( empty( $deliberacao) ) $erro[] = 'Deliberacao';
+		if ( empty( $portaria) ) $erro[] = 'Portaria';
+		if ( empty( $dataInicio) ) $erro[] = 'Data de Inicio';
+
+		if ( count( $erro ) == 0 ) {
+			$return = $professorDAO->cadastrarRegimeTrabalhoProfessor( $idProfessor, $idRegimeTrabalho, $processo, $deliberacao, $portaria, $dataInicio );
+		} else {
+			$return->result = 0;
+			$return->error = join( '<br />', $erro );
+		}
 		echo json_encode( $return );
 	}
 
