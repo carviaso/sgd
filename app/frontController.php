@@ -9,7 +9,9 @@ include '../app/controllers/professorController.php';
 include '../app/controllers/cargoController.php';
 include '../app/controllers/situacaoController.php';
 include '../app/controllers/regimeTrabalhoController.php';
+include '../app/controllers/paisController.php';
 include '../app/views/centro/centroV.php';
+include '../app/views/pais/paisV.php';
 include '../app/views/departamento/departamentoV.php';
 include '../app/views/professor/professorV.php';
 include '../app/models/centro.php';
@@ -20,6 +22,7 @@ include '../app/models/professor.php';
 include '../app/models/cargo.php';
 include '../app/models/situacao.php';
 include '../app/models/regimeTrabalho.php';
+include '../app/models/pais.php';
 include '../app/include/conexao.php';
 
 $action = $_POST['action'];
@@ -84,7 +87,7 @@ switch ($action) {
 	case 'cadProfessor':
 		$professorC = new ProfessorController();
 		extract( $_POST );
-		$professorC->cadastrarProfessor( $nome, $sobrenome,$dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao );
+		$professorC->cadastrarProfessor( $nome, $sobrenome, $dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao );
 	break;
 	case 'printFormCadRegTrabProfessor':
 		$professorC = new ProfessorController();
@@ -103,6 +106,15 @@ switch ($action) {
 		$professorC = new ProfessorController();
 		$professores = $professorC->getAllProfessores();
 		$professorC->listarProfessores( $professores );
+	break;
+	case 'printFormCadPais':
+		$paisV = new PaisV();
+		$paisV->printFormCadPais();
+	break;
+	case 'cadPais':
+		$paisC = new PaisController();
+		extract( $_POST );
+		$paisC->cadastrarPais( $nome, $sigla );
 	break;
 }
 
