@@ -12,6 +12,7 @@ class PaisV {
 		$smarty->config_dir   = 'views/configs/';
 		$smarty->assign( "emissao", date('d/m/Y H:i:s P') );
 		$smarty->display('pais.tpl');
+
 	}
 }
 
