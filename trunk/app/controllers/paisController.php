@@ -10,6 +10,16 @@ class PaisController {
 	public function PaisController() {}
 
 	/**
+	 * Retorna todos os paises
+	 *
+	 * @return array
+	 */
+	public function getAll() {
+		$paisDAO = new Pais();
+		return $paisDAO->getAll();
+	}
+
+	/**
 	 * Realiza o cadastro de um novo pais
 	 *
 	 * @return json

@@ -20,12 +20,12 @@ class Professor {
 			$professor->id_professor = $row['id_professor'];
 			$professor->nome = utf8_encode( $row['nome'] );
 			$professor->sobrenome = utf8_encode( $row['sobrenome'] );
-			$professor->matricula = $row['matricula'];
-			$professor->siape = $row['siape'];
+			$professor->matricula = utf8_encode( $row['matricula'] );
+			$professor->siape = utf8_encode( $row['siape'] );
 			$professor->dataAdmissao = $row['data_admissao'];
 			$professor->dataAdmissaoUfsc = $row['data_admissao_ufsc'];
 			$professor->dataNascimento = $row['data_nascimento'];
-			$professor->aposentado = $row['aposentado'];
+			$professor->aposentado = utf8_encode( $row['aposentado'] );
 			$professor->dataPrevistaAposentadoria = $row['data_previsao_aposentadoria'];
 			$professor->dataEfetivaAposentadoria = $row['data_aposentadoria'];
 			$professor->idDepartamento = $row['id_departamento'];
@@ -54,13 +54,12 @@ class Professor {
 		$sql[] = "SELECT p.nome, p.sobrenome FROM professor AS p ";
 		$sql[] = "LEFT JOIN departamento AS d ON p.id_departamento = d.id_departamento ";
 		$sql[] = "WHERE d.id_departamento ='{$idDepartamento}' ORDER by p.nome";
-
 		$query = mysqli_query( $conexao, join( '', $sql ) );
 
 		while ( $row = mysqli_fetch_array( $query ) ) {
 			$professor = new stdClass();
-			$professor->setNome = $row['nome'];
-			$professor->setSobrenome = $row['sobrenome'];
+			$professor->setNome = utf8_encode( $row['nome'] );
+			$professor->setSobrenome = utf8_encode( $row['sobrenome'] );
 			$professores[] = $professor;
 		}
 		return $professores;
@@ -80,6 +79,12 @@ class Professor {
 		$dataAdmissaoUfsc = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataAdmissaoUfsc ) ) );
 		$dataPrevistaAposentadoria = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataPrevistaAposentadoria ) ) );
 		$dataEfetivaAposentadoria = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataEfetivaAposentadoria ) ) );
+
+		$nome = utf8_decode( $nome );
+		$sobrenome = utf8_decode( $sobrenome );
+		$matricula = utf8_decode( $matricula );
+		$siape = utf8_decode( $siape );
+		$aposentado = utf8_decode( $aposentado );
 
 		$sql[] = "INSERT INTO professor( nome, sobrenome, matricula, siape,";
 		$sql[] = "data_admissao, data_admissao_ufsc, data_nascimento, aposentado,";
@@ -112,6 +117,10 @@ class Professor {
 		$return = new stdClass();
 
 		$dataInicio = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataInicio ) ) );
+
+		$processo = utf8_decode( $processo );
+		$deliberacao = utf8_decode( $deliberacao );
+		$portaria = utf8_decode( $portaria );
 
 		$sql[] = "INSERT INTO regime_trabalho_professor (";
 		$sql[] = "id_professor, id_regime_trabalho, processo, deliberacao, portaria, data_inicio )";
