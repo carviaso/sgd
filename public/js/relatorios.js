@@ -1,4 +1,4 @@
-relatorios = {
+var relatorios = {
 	loadMenu: function() {
 		$("#relacaoCentros").click(function() {
 			var params = { "action":"getCentros" };

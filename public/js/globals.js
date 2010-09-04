@@ -1,4 +1,15 @@
-gb = {
+var gb = {
+	processing: function() {
+		$("<div class='processingMessage' style='text-align:center;'>Carregando...</div>").dialog({
+			title: 'Carregando',
+			modal: true,			
+			closeOnEscape: false,
+			open: function(event, ui) { $(".ui-dialog-titlebar-close").hide(); }
+		});
+	},
+	processingClose: function() {
+		$('.processingMessage').remove();
+	},
 	message: function( msgTxt, title ) {
 		$("<div class='gbMessage'>" + msgTxt + "</div>").dialog({
 			title: title,

@@ -1,4 +1,4 @@
-principal = {
+var principal = {
 	loadNavHome: function() {
 		$(".navHome").click(function() {
 			$('#content').load('app/content/home.php');
