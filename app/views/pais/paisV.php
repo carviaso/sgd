@@ -2,7 +2,7 @@
 
 class PaisV {
 
-	function ProfessorV() {}
+	function PaisV() {}
 
 	function printFormCadPais() {
 		$smarty = new Smarty();
