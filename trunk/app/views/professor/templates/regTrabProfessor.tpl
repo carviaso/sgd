@@ -12,12 +12,12 @@
 	{/foreach}
 </select>
 <div>Processo</div>
-<input type="text" id="processo" name="processo" value="" maxlength="45" class="form_tfield " />
+<input type="text" id="processo" name="processo" value="" maxlength="45" class="ui-state-default ui-corner-all width100" />
 <div>Delibera&ccedil;&atilde;o</div>
-<input type="text" id="deliberacao" name="deliberacao" value="" maxlength="45" class="form_tfield " />
+<input type="text" id="deliberacao" name="deliberacao" value="" maxlength="45" class="ui-state-default ui-corner-all width100" />
 <div>Portaria</div>
-<input type="text" id="portaria" name="portaria" value="" maxlength="45" class="form_tfield " />
+<input type="text" id="portaria" name="portaria" value="" maxlength="45" class="ui-state-default ui-corner-all width100" />
 <div>Data de in&iacute;cio</div>
-<input type="text" id="dataInicio" class="form_tfield" />
+<input type="text" id="dataInicio" class="ui-state-default ui-corner-all width100" />
 <p></p>
 <button id="cadastrarRegimeTrabalho">Cadastrar</button>
