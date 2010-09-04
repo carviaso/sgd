@@ -16,6 +16,7 @@ class ProfessorV {
 		$smarty->assign( "cargos", $cargos );
 		$smarty->assign( "situacoes", $situacoes );
 		$smarty->display('professor.tpl');
+
 	}
 
 	function printFormCadRegTrabProfessor( $professores, $regimesTrabalho ) {
