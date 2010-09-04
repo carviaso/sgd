@@ -11,7 +11,7 @@ include_once '../app/controllers/situacaoController.php';
 include_once '../app/controllers/regimeTrabalhoController.php';
 include_once '../app/controllers/paisController.php';
 include_once '../app/views/centro/centroV.php';
-include_once '../app/views/jjj/paisV.php';
+include_once '../app/views/pais/paisV.php';
 include_once '../app/views/departamento/departamentoV.php';
 include_once '../app/views/professor/professorV.php';
 include_once '../app/models/centro.php';
