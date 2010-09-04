@@ -1,16 +1,26 @@
-cadastros = {
+var cadastros = {
 	loadMenu: function() {
 		$("#cadPais").click(function() {
+			gb.processing();
 			var params = { "action":"printFormCadPais" };
 			$('#content').load("app/frontController.php", params, function() {
 				$("#sigla").mask("aaa");
 				$("#cadastrarPais").button().click(function() {
 					cadastros.pais.valida();
 				});
-			} );
+				gb.processingClose();
+			});
 		});
 		$("#cadUf").click(function() {
-			$('#content').load('app/cad/uf.php');
+			gb.processing();
+			var params = { "action":"printFormCadUF" };
+			$('#content').load("app/frontController.php", params, function() {
+				$("#sigla").mask("aaa");
+				$("#cadastrarPais").button().click(function() {
+					cadastros.pais.valida();
+				});
+				gb.processingClose();
+			});
 		});	
 		$("#cadMunicipio").click(function() {
 			$('#content').load('app/cad/municipio.php');

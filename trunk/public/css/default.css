@@ -54,7 +54,15 @@ a.data {
 a:hover {
     text-decoration: none;
 }
-/* Header */
+.right { float: right; }
+.left { float: left; }
+/* 
+input {
+	line-height: 1.4em;
+	padding: 0.3em 1em;
+}
+Header 
+*/
 #header {
     width: 710px;
     height: 96px;

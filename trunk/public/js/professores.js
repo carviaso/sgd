@@ -1,6 +1,7 @@
-professores = {
+var professores = {
 	loadMenu: function() {
 		$("#cadProfessor").click(function() {
+			gb.processing();
 			var params = { "action":"printFormCadProfessor" };
 			$('#content').load("app/frontController.php", params, function() {
 				$("#dataNascimento, #dataAdmissao, #dataAdmissaoUfsc, #dataPrevistaAposentadoria, #dataEfetivaAposentadoria")
@@ -9,17 +10,20 @@ professores = {
 					professores.valida();
 				});
 				$("#radio").buttonset();
-//				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				gb.processingClose();
 			} );
 		});
 		$("#cadRegimeTrabalhoProfessor").click(function() {
+			gb.processing();
 			var params = { "action":"printFormCadRegTrabProfessor" };
 			$('#content').load("app/frontController.php", params, function() {
 				$("#dataInicio").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
 				$("#cadastrarRegimeTrabalho").button().click(function() {
 					professores.regimeTrabalho.valida();
 				});
-//				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				gb.processingClose();
 			} );
 		});
 		$("#cadAfastamentoProfessor").click(function() {
