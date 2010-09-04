@@ -15,10 +15,10 @@ var cadastros = {
 			gb.processing();
 			var params = { "action":"printFormCadUF" };
 			$('#content').load("app/frontController.php", params, function() {
-				$("#sigla").mask("aaa");
-				$("#cadastrarPais").button().click(function() {
-					cadastros.pais.valida();
+				$("#cadastrarUf").button().click(function() {
+					cadastros.uf.valida();
 				});
+				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
 			});
 		});	
@@ -93,6 +93,59 @@ var cadastros = {
 					gb.message( msg, 'Cadastro de Pais' );
 				} else {
 					var msg = 'Erro ao cadastrar pais.<br /><br />' + response.error;
+					gb.errorMessage( msg, 'Erro' );
+				}
+			}, "json" );
+		}
+	},
+	uf: {
+		valida: function() {
+			var erro = [];
+			var nome = $('#nome').val();
+			var sigla = $('#sigla').val();
+			var idPais = $('#idPais').val();
+			
+			if ( !nome ) erro.push( 'Nome' );
+			if ( !sigla ) erro.push( 'Sigla' );
+			if ( !idPais ) erro.push( 'Pais' );
+			
+			if ( erro.length == 0 ) {
+				var params =	{	'action':'cadUF',
+									'nome':nome,
+									'sigla':sigla,
+									'idPais':idPais
+								};
+				$("<div class='dialogConfirm'>Deseja realmente realizar o cadastro?</div>").dialog({
+					height:140,
+					modal: true,
+					buttons: {
+						'Sim': function() {
+							cadastros.uf.cadastra( params );
+							$(this).dialog('close');
+						},
+						'N\u00E3o': function() {
+							$(this).dialog('close');
+						}
+					},
+					close: function() {
+						$('.dialogConfirm').remove();
+					}
+				});
+			} else {
+				var msg = [];
+				msg.push( 'Verifique os seguintes campos:<br /><br />' );
+				msg.push( erro.join( '<br />' ) );
+				gb.highlightMessage( msg.join(''), 'Erro' );
+			}
+		},
+		cadastra: function( params ) {
+			$.post("app/frontController.php", params, function( response ) {
+				if ( response.result == 1 ) {
+					$("#cadUf").click();
+					var msg = 'Cadastro realizado com sucesso.';
+					gb.message( msg, 'Cadastro de UF' );
+				} else {
+					var msg = 'Erro ao cadastrar UF.<br /><br />' + response.error;
 					gb.errorMessage( msg, 'Erro' );
 				}
 			}, "json" );
