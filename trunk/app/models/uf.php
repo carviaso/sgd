@@ -11,6 +11,9 @@ class Uf {
 		$conexao = Conexao::con();
 		$return = new stdClass();
 
+		$nome = utf8_decode( $nome );
+		$sigla = utf8_decode( $sigla );
+
 		$sql[] = "INSERT INTO uf ( id_pais, nome, sigla )";
 		$sql[] = "VALUES (";
 		$sql[] = "'{$idPais}', '{$nome}', '{$sigla}'";
