@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.0rc1, created on 2010-09-01 03:09:47
+<?php /* Smarty version 3.0rc1, created on 2010-09-04 07:57:01
          compiled from "views/professor/templates/regTrabProfessor.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:151174c7dc3fb4dac32-97055694%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:317584c81fbcd03e268-16020094%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9ac6da322a83d6e159506eb669f0bd919d15942b' => 
     array (
       0 => 'views/professor/templates/regTrabProfessor.tpl',
-      1 => 1283300600,
+      1 => 1283587012,
     ),
   ),
-  'nocache_hash' => '151174c7dc3fb4dac32-97055694',
+  'nocache_hash' => '317584c81fbcd03e268-16020094',
   'function' => 
   array (
   ),
@@ -42,12 +42,12 @@ if (count($_from) > 0){
 	<?php }} ?>
 </select>
 <div>Processo</div>
-<input type="text" id="processo" name="processo" value="" maxlength="45" class="form_tfield " />
+<input type="text" id="processo" name="processo" value="" maxlength="45" class="ui-state-default ui-corner-all width100" />
 <div>Delibera&ccedil;&atilde;o</div>
-<input type="text" id="deliberacao" name="deliberacao" value="" maxlength="45" class="form_tfield " />
+<input type="text" id="deliberacao" name="deliberacao" value="" maxlength="45" class="ui-state-default ui-corner-all width100" />
 <div>Portaria</div>
-<input type="text" id="portaria" name="portaria" value="" maxlength="45" class="form_tfield " />
+<input type="text" id="portaria" name="portaria" value="" maxlength="45" class="ui-state-default ui-corner-all width100" />
 <div>Data de in&iacute;cio</div>
-<input type="text" id="dataInicio" class="form_tfield" />
+<input type="text" id="dataInicio" class="ui-state-default ui-corner-all width100" />
 <p></p>
 <button id="cadastrarRegimeTrabalho">Cadastrar</button>
