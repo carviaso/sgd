@@ -9,5 +9,6 @@
 	<option value="{$pais->idPais}">{$pais->nome}</option>
 {/foreach}
 </select>
-<p></p>
+<p></p>  
+
 <p><button id="cadastrarUf">Cadastrar</button></p>
