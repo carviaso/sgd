@@ -7,38 +7,27 @@
         <title>SGD - Sistema de Gest&atilde;o de Docentes</title>
         <meta name="keywords" content="docente, list" />
         <meta name="description" content="Esta &eacute; p&aacute;gina principal do sistema de gest&atilde;o de docentes" />
-        <!--
-         -->
         <link type="text/css" href="public/css/default.css" rel="stylesheet"  />
         <link type="text/css" href="public/css/base/jquery.ui.all.css" rel="stylesheet"  />
         <link type="text/css" href="public/css/custom-theme/jquery-ui-1.8.4.custom.css" rel="stylesheet"  />
         <link type="text/css" href="public/css/ui.selectmenu.css" rel="stylesheet"  />
-
     </head>
-
     <body>
         <div id="wrapper">
 			<?php include 'app/include/header.php'; ?>
-            <!-- end div#header -->
             <div id="page">
                 <div id="content">
-
 					<?php include 'app/content/home.php'; ?>
-
                 </div>
-                <!-- end div#content -->
                 <div id="sidebar">
                     <ul>
                     <?php include 'app/views/home.php'; ?>
-                        <!-- end navigation -->
                     </ul>
                 </div>
-                <!-- end div#sidebar -->
                 <div style="clear: both; height: 1px"></div>
             </div>
             <?php include 'app/include/footer.php'; ?>
         </div>
-        <!-- end div#wrapper -->
         <script type="text/javascript" src="public/js/jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="public/js/jquery-ui-1.8.4.custom.min.js"></script>
         <script type="text/javascript" src="public/js/locate/jquery.ui.datepicker-pt-BR.js"></script>
