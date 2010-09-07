@@ -1,4 +1,4 @@
-<?php /* Smarty version 3.0rc1, created on 2010-09-04 07:57:07
+<?php /* Smarty version 3.0rc1, created on 2010-09-07 02:29:40
          compiled from "views/professor/templates/professor.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:179674c81fbd3f417c1-70442211%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     '21edf8a46431956d115895281277ec812848b2cf' => 
     array (
       0 => 'views/professor/templates/professor.tpl',
-      1 => 1283586994,
+      1 => 1283817611,
     ),
   ),
   'nocache_hash' => '179674c81fbd3f417c1-70442211',
