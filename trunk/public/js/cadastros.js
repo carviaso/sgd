@@ -283,17 +283,17 @@ var cadastros = {
 			var erro = [];
 			var nome = $('#nome').val();
 			var sigla = $('#sigla').val();
-			var idMunicipio = $('#idMunicipio').val();
+			var idInstituicao = $('#idInstituicao').val();
 			
 			if ( !nome ) erro.push( 'Nome' );
-			if ( !sigla ) erro.push( 'sigla' );
-			if ( !idMunicipio ) erro.push( 'Id Municipio' );
+			if ( !sigla ) erro.push( 'Sigla' );
+			if ( !idInstituicao ) erro.push( 'Id da Instituicao' );
 			
 			if ( erro.length == 0 ) {
 				var params =	{	'action':'cadCentro',
 									'nome':nome,
 									'sigla':sigla,
-									'idMunicipio':idMunicipio
+									'idInstituicao':idInstituicao
 								};
 				$("<div class='dialogConfirm'>Deseja realmente realizar o cadastro?</div>").dialog({
 					height:140,
