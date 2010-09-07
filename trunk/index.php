@@ -17,12 +17,10 @@
 			<?php include 'app/include/header.php'; ?>
             <div id="page">
                 <div id="content">
-					<?php include 'app/content/cadastro.php'; ?>
+					<?php include 'app/content/sobre.php'; ?>
                 </div>
                 <div id="sidebar">
-                    <ul>
-                    <?php include 'app/views/menuCadastro.php'; ?>
-                    </ul>
+                    <?php //include 'app/views/menuCadastro.php'; ?>
                 </div>
                 <div style="clear: both; height: 1px"></div>
             </div>
