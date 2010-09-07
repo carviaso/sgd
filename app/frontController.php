@@ -63,9 +63,9 @@ switch ($action) {
 		$departamentoV->printFormCadDepartamento( $centros );
 	break;
 	case 'cadDepartamento':
-//		$centroC = new CentroController();
-//		extract( $_POST );
-//		$centroC->cadastrar( $nome, $sigla, $idInstituicao );
+		$departamentoC = new DepartamentoController();
+		extract( $_POST );
+		$departamentoC->cadastrar( $nome, $sigla, $idCentro );
 	break;
 	case 'printFormCadCentro':
 		$centroV = new CentroV();

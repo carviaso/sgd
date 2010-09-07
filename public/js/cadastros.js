@@ -60,8 +60,7 @@ var cadastros = {
 			var params = { "action":"printFormCadDepartamento" };
 			$('#content').load("app/frontController.php", params, function() {
 				$("#cadastrarDepartamento").button().click(function() {
-//					cadastros.departamento.valida();
-					alert('Departamento');
+					cadastros.departamento.valida();
 				});
 				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
@@ -309,7 +308,7 @@ var cadastros = {
 					modal: true,
 					buttons: {
 						'Sim': function() {
-							cadastros.instituicao.cadastra( params );
+							cadastros.centro.cadastra( params );
 							$(this).dialog('close');
 						},
 						'N\u00E3o': function() {
@@ -335,6 +334,59 @@ var cadastros = {
 					gb.message( msg, 'Cadastro de Centro' );
 				} else {
 					var msg = 'Erro ao cadastrar Centro.<br /><br />' + response.error;
+					gb.errorMessage( msg, 'Erro' );
+				}
+			}, "json" );
+		}
+	},
+	departamento: {
+		valida: function() {
+			var erro = [];
+			var nome = $('#nome').val();
+			var sigla = $('#sigla').val();
+			var idCentro = $('#idCentro').val();
+			
+			if ( !nome ) erro.push( 'Nome' );
+			if ( !sigla ) erro.push( 'Sigla' );
+			if ( !idCentro ) erro.push( 'Id do Centro' );
+			
+			if ( erro.length == 0 ) {
+				var params =	{	'action':'cadDepartamento',
+									'nome':nome,
+									'sigla':sigla,
+									'idCentro':idCentro
+								};
+				$("<div class='dialogConfirm'>Deseja realmente realizar o cadastro?</div>").dialog({
+					height:140,
+					modal: true,
+					buttons: {
+						'Sim': function() {
+							cadastros.departamento.cadastra( params );
+							$(this).dialog('close');
+						},
+						'N\u00E3o': function() {
+							$(this).dialog('close');
+						}
+					},
+					close: function() {
+						$('.dialogConfirm').remove();
+					}
+				});
+			} else {
+				var msg = [];
+				msg.push( 'Verifique os seguintes campos:<br /><br />' );
+				msg.push( erro.join( '<br />' ) );
+				gb.highlightMessage( msg.join(''), 'Erro' );
+			}
+		},
+		cadastra: function( params ) {
+			$.post("app/frontController.php", params, function( response ) {
+				if ( response.result == 1 ) {
+					$("#cadDepartamento").click();
+					var msg = 'Cadastro realizado com sucesso.';
+					gb.message( msg, 'Cadastro de Departamento' );
+				} else {
+					var msg = 'Erro ao cadastrar Departamento.<br /><br />' + response.error;
 					gb.errorMessage( msg, 'Erro' );
 				}
 			}, "json" );

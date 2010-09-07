@@ -10,4 +10,4 @@
 {/foreach}
 </select>
 <p></p>
-<p><button id="cadastrarCentro">Cadastrar</button></p>
+<p><button id="cadastrarDepartamento">Cadastrar</button></p>
