@@ -67,7 +67,14 @@ var cadastros = {
 			});
 		});
 		$("#cadTipoAfastamento").click(function() {
-			$('#content').load('app/cad/tipoAfastamento.php');
+			gb.processing();
+			var params = { "action":"printFormCadTipoAfastamento" };
+			$('#content').load("app/frontController.php", params, function() {
+				$("#cadastrarTipoAfastamento").button().click(function() {
+					cadastros.tipoAfastamento.valida();
+				});
+				gb.processingClose();
+			});
 		});
 		$("#cadTipoTitulacao").click(function() {
 			$('#content').load('app/cad/tipoTitulacao.php');
@@ -383,6 +390,53 @@ var cadastros = {
 			$.post("app/frontController.php", params, function( response ) {
 				if ( response.result == 1 ) {
 					$("#cadDepartamento").click();
+					var msg = 'Cadastro realizado com sucesso.';
+					gb.message( msg, 'Cadastro de Departamento' );
+				} else {
+					var msg = 'Erro ao cadastrar Departamento.<br /><br />' + response.error;
+					gb.errorMessage( msg, 'Erro' );
+				}
+			}, "json" );
+		}
+	},
+	tipoAfastamento: {
+		valida: function() {
+			var erro = [];
+			var descricao = $('#descricao').val();
+			
+			if ( !descricao ) erro.push( 'Descricao' );
+			
+			if ( erro.length == 0 ) {
+				var params =	{	'action':'cadTipoAfastamento',
+									'descricao':descricao
+								};
+				$("<div class='dialogConfirm'>Deseja realmente realizar o cadastro?</div>").dialog({
+					height:140,
+					modal: true,
+					buttons: {
+						'Sim': function() {
+							cadastros.tipoAfastamento.cadastra( params );
+							$(this).dialog('close');
+						},
+						'N\u00E3o': function() {
+							$(this).dialog('close');
+						}
+					},
+					close: function() {
+						$('.dialogConfirm').remove();
+					}
+				});
+			} else {
+				var msg = [];
+				msg.push( 'Verifique os seguintes campos:<br /><br />' );
+				msg.push( erro.join( '<br />' ) );
+				gb.highlightMessage( msg.join(''), 'Erro' );
+			}
+		},
+		cadastra: function( params ) {
+			$.post("app/frontController.php", params, function( response ) {
+				if ( response.result == 1 ) {
+					$("#cadTipoAfastamento").click();
 					var msg = 'Cadastro realizado com sucesso.';
 					gb.message( msg, 'Cadastro de Departamento' );
 				} else {
