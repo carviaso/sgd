@@ -20,7 +20,7 @@
 					<?php include 'app/content/sobre.php'; ?>
                 </div>
                 <div id="sidebar">
-                    <?php //include 'app/views/menuCadastro.php'; ?>
+                    <?php include 'app/views/menuCadastro.php'; ?>
                 </div>
                 <div style="clear: both; height: 1px"></div>
             </div>

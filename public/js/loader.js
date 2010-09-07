@@ -5,7 +5,7 @@ var principal = {
 			$('#sidebar').load('app/views/menuCadastro.php', function() {
 				cadastros.loadMenu();
 			});
-		});
+		}).click();
 	},
 	loadNavProfessor: function() {
 		$(".navProfessor").click(function() {
