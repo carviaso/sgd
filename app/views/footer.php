@@ -1,4 +1,3 @@
-<!-- Common footer for our site -->
 <div id="footer">
     <p id="legal">
         Copyright &copy; <?=date('Y'); ?> - UFSC - Universidade Federal de Santa Catarina.
