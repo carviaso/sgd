@@ -1,13 +1,23 @@
 <?php
 
-class ufController {
+class UfController {
 
 	/**
 	 * Construtor
 	 *
 	 * @return void
 	 */
-	public function ufController() {}
+	public function UfController() {}
+
+	/**
+	 * Retorna todos os ufs
+	 *
+	 * @return array
+	 */
+	public function getAll() {
+		$ufDAO = new Uf();
+		return $ufDAO->getAll();
+	}
 
 	/**
 	 * Realiza o cadastro de um novo uf
