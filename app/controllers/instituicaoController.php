@@ -1,31 +1,31 @@
 <?php
 
-class CentroController {
+class InstituicaoController {
 
 	/**
 	 * Construtor
 	 *
 	 * @return void
 	 */
-	public function CentroController() {}
+	public function InstituicaoController() {}
 
 	/**
-	 * Retorna um array com todos os objetos Centro
+	 * Retorna todos as instituicoes
 	 *
 	 * @return array
 	 */
-	public function getCentros() {
-		$centroDAO = new Centro();
-		return $centroDAO->getCentros();
+	public function getAll() {
+		$instituicaoDAO = new instituicao();
+		return $instituicaoDAO->getAll();
 	}
 
 	/**
-	 * Realiza o cadastro de um novo centro
+	 * Realiza o cadastro de uma nova instituicao
 	 *
 	 * @return json
 	 */
 	public function cadastrar( $nome, $sigla, $idMunicipio ) {
-		$centroDAO = new Centro();
+		$instituicaoDAO = new Instituicao();
 
 		$erro = array();
 		if ( empty( $nome) ) $erro[] = 'Nome';
@@ -33,7 +33,7 @@ class CentroController {
 		if ( empty( $idMunicipio) ) $erro[] = 'Id Municipio';
 
 		if ( count( $erro ) == 0 ) {
-			$return = $centroDAO->cadastrar( $nome, $sigla, $idMunicipio );
+			$return = $instituicaoDAO->cadastrar( $nome, $sigla, $idMunicipio );
 		} else {
 			$return->result = 0;
 			$return->error = join( '<br />', $erro );
@@ -41,9 +41,5 @@ class CentroController {
 		echo json_encode( $return );
 	}
 
-	public function viewDiretoresPorCentros( $idCentro ) {
-		$centroDAO = new Centro();
-		return $centroDAO->viewDiretoresPorCentros( $idCentro );
-	}
 }
 ?>
