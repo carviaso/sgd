@@ -65,7 +65,7 @@ switch ($action) {
 	case 'cadCentro':
 		$centroC = new CentroController();
 		extract( $_POST );
-		$centroC->cadastrar( $nome, $sigla, $idMunicipio );
+		$centroC->cadastrar( $nome, $sigla, $idInstituicao );
 	break;
 	case 'printCentros':
 		$centroC = new CentroController();
