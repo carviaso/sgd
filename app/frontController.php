@@ -172,7 +172,7 @@ switch ($action) {
 	case 'cadTipoTitulacao':
 		$tipoTitulacaoC = new TipoTitulacaoController();
 		extract( $_POST );
-		$tipoTitulacaoC->cadastrar( $descricao );
+		$tipoTitulacaoC-> cadastrar( $descricao );
 	break;
 }
 
