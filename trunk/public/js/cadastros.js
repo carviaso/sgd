@@ -77,7 +77,14 @@ var cadastros = {
 			});
 		});
 		$("#cadTipoTitulacao").click(function() {
-			$('#content').load('app/cad/tipoTitulacao.php');
+			gb.processing();
+			var params = { "action":"printFormCadTipoTitulacao" };
+			$('#content').load("app/frontController.php", params, function() {
+				$("#cadastrarTipoTitulacao").button().click(function() {
+					cadastros.tipoTitulacao.valida();
+				});
+				gb.processingClose();
+			});
 		});
 		$("#cadCategoriaFuncional").click(function() {
 			$('#content').load('app/cad/categoriaFuncional.php');
@@ -441,6 +448,53 @@ var cadastros = {
 					gb.message( msg, 'Cadastro de Departamento' );
 				} else {
 					var msg = 'Erro ao cadastrar Departamento.<br /><br />' + response.error;
+					gb.errorMessage( msg, 'Erro' );
+				}
+			}, "json" );
+		}
+	},
+	tipoTitulacao: {
+		valida: function() {
+			var erro = [];
+			var descricao = $('#descricao').val();
+			
+			if ( !descricao ) erro.push( 'Descricao' );
+			
+			if ( erro.length == 0 ) {
+				var params =	{	'action':'cadTipoTitulacao',
+									'descricao':descricao
+								};
+				$("<div class='dialogConfirm'>Deseja realmente realizar o cadastro?</div>").dialog({
+					height:140,
+					modal: true,
+					buttons: {
+						'Sim': function() {
+							cadastros.tipoTitulacao.cadastra( params );
+							$(this).dialog('close');
+						},
+						'N\u00E3o': function() {
+							$(this).dialog('close');
+						}
+					},
+					close: function() {
+						$('.dialogConfirm').remove();
+					}
+				});
+			} else {
+				var msg = [];
+				msg.push( 'Verifique os seguintes campos:<br /><br />' );
+				msg.push( erro.join( '<br />' ) );
+				gb.highlightMessage( msg.join(''), 'Erro' );
+			}
+		},
+		cadastra: function( params ) {
+			$.post("app/frontController.php", params, function( response ) {
+				if ( response.result == 1 ) {
+					$("#cadTipoTitulacao").click();
+					var msg = 'Cadastro realizado com sucesso.';
+					gb.message( msg, 'Cadastro de Titulacao' );
+				} else {
+					var msg = 'Erro ao cadastrar Titulacao.<br /><br />' + response.error;
 					gb.errorMessage( msg, 'Erro' );
 				}
 			}, "json" );
