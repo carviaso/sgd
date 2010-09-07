@@ -4,6 +4,16 @@ class DepartamentoV {
 
 	function DepartamentoV() {}
 
+	function printFormCadDepartamento( $centros ) {
+		$smarty = new Smarty();
+		$smarty->template_dir = 'views/departamento/templates/';
+		$smarty->compile_dir  = '../tmp/templates_c/';
+		$smarty->cache_dir    = '../tmp/cache/';
+		$smarty->config_dir   = 'views/configs/';
+		$smarty->assign( "centros", $centros );
+		$smarty->display('formDepartamento.tpl');
+	}
+
 	function viewDepartamento( $departamentos ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/departamento/templates/';
