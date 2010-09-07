@@ -14,7 +14,7 @@
     </head>
     <body>
         <div id="wrapper">
-			<?php include 'app/include/header.php'; ?>
+			<?php include 'app/views/header.php'; ?>
             <div id="page">
                 <div id="content">
 					<?php include 'app/content/sobre.php'; ?>
@@ -24,7 +24,7 @@
                 </div>
                 <div style="clear: both; height: 1px"></div>
             </div>
-            <?php include 'app/include/footer.php'; ?>
+            <?php include 'app/views/footer.php'; ?>
         </div>
         <script type="text/javascript" src="public/js/jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="public/js/jquery-ui-1.8.4.custom.min.js"></script>

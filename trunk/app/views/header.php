@@ -1,4 +1,3 @@
-<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
 <div id="header">
     <div id="logo">
         <h1><a href="index.php">SGD</a></h1>
