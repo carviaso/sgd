@@ -1,10 +1,4 @@
 var principal = {
-	loadNavHome: function() {
-		$(".navHome").click(function() {
-			$('#content').load('app/content/home.php');
-			$('#sidebar').load('app/views/home.php');
-		});
-	},
 	loadNavCadastro: function() {
 		$(".navCadastro").click(function() {
 			$('#content').load('app/content/cadastro.php');
@@ -28,9 +22,14 @@ var principal = {
 				relatorios.loadMenu();
 			});
 		});
+	},
+	loadNavSobre: function() {
+		$(".navSobre").click(function() {
+			$('#content').load('app/content/sobre.php');
+		});
 	}
 };
-principal.loadNavHome();
 principal.loadNavCadastro();
 principal.loadNavProfessor();
 principal.loadNavRelatorio();
+principal.loadNavSobre();
