@@ -24,16 +24,16 @@ class CentroController {
 	 *
 	 * @return json
 	 */
-	public function cadastrar( $nome, $sigla, $idMunicipio ) {
+	public function cadastrar( $nome, $sigla, $idInstituicao ) {
 		$centroDAO = new Centro();
 
 		$erro = array();
 		if ( empty( $nome) ) $erro[] = 'Nome';
 		if ( empty( $sigla) ) $erro[] = 'Sigla';
-		if ( empty( $idMunicipio) ) $erro[] = 'Id Municipio';
+		if ( empty( $idInstituicao) ) $erro[] = 'Id da Instituicao';
 
 		if ( count( $erro ) == 0 ) {
-			$return = $centroDAO->cadastrar( $nome, $sigla, $idMunicipio );
+			$return = $centroDAO->cadastrar( $nome, $sigla, $idInstituicao );
 		} else {
 			$return->result = 0;
 			$return->error = join( '<br />', $erro );
