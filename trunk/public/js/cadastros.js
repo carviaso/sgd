@@ -56,7 +56,16 @@ var cadastros = {
 			});
 		});
 		$("#cadDepartamento").click(function() {
-			$('#content').load('app/cad/departamento.php');
+			gb.processing();
+			var params = { "action":"printFormCadDepartamento" };
+			$('#content').load("app/frontController.php", params, function() {
+				$("#cadastrarDepartamento").button().click(function() {
+//					cadastros.departamento.valida();
+					alert('Departamento');
+				});
+				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				gb.processingClose();
+			});
 		});
 		$("#cadTipoAfastamento").click(function() {
 			$('#content').load('app/cad/tipoAfastamento.php');
