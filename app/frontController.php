@@ -11,9 +11,13 @@ include_once '../app/controllers/situacaoController.php';
 include_once '../app/controllers/regimeTrabalhoController.php';
 include_once '../app/controllers/paisController.php';
 include_once '../app/controllers/ufController.php';
+include_once '../app/controllers/municipioController.php';
+include_once '../app/controllers/instituicaoController.php';
 include_once '../app/views/centro/centroV.php';
 include_once '../app/views/pais/paisV.php';
 include_once '../app/views/uf/ufV.php';
+include_once '../app/views/municipio/municipioV.php';
+include_once '../app/views/instituicao/instituicaoV.php';
 include_once '../app/views/departamento/departamentoV.php';
 include_once '../app/views/professor/professorV.php';
 include_once '../app/models/centro.php';
@@ -26,6 +30,8 @@ include_once '../app/models/situacao.php';
 include_once '../app/models/regimeTrabalho.php';
 include_once '../app/models/pais.php';
 include_once '../app/models/uf.php';
+include_once '../app/models/municipio.php';
+include_once '../app/models/instituicao.php';
 include_once '../app/include/conexao.php';
 
 // http://jqueryui.com/themeroller/#ffDefault=Verdana%2CArial%2Csans-serif&fwDefault=normal&fsDefault=0.8em&cornerRadius=4px&bgColorHeader=cfb75a&bgTextureHeader=03_highlight_soft.png&bgImgOpacityHeader=75&borderColorHeader=aa2808&fcHeader=222222&iconColorHeader=222222&bgColorContent=ffffff&bgTextureContent=01_flat.png&bgImgOpacityContent=75&borderColorContent=aa2808&fcContent=222222&iconColorContent=222222&bgColorDefault=cfb75a&bgTextureDefault=02_glass.png&bgImgOpacityDefault=75&borderColorDefault=aa2808&fcDefault=494646&iconColorDefault=888888&bgColorHover=cfa80c&bgTextureHover=02_glass.png&bgImgOpacityHover=75&borderColorHover=aa2808&fcHover=aa2808&iconColorHover=494646&bgColorActive=ffffff&bgTextureActive=02_glass.png&bgImgOpacityActive=65&borderColorActive=aa2808&fcActive=212121&iconColorActive=aa2808&bgColorHighlight=fbf9ee&bgTextureHighlight=02_glass.png&bgImgOpacityHighlight=55&borderColorHighlight=fcefa1&fcHighlight=363636&iconColorHighlight=2e83ff&bgColorError=fef1ec&bgTextureError=02_glass.png&bgImgOpacityError=95&borderColorError=cd0a0a&fcError=cd0a0a&iconColorError=cd0a0a&bgColorOverlay=494646&bgTextureOverlay=01_flat.png&bgImgOpacityOverlay=0&opacityOverlay=30&bgColorShadow=494646&bgTextureShadow=01_flat.png&bgImgOpacityShadow=0&opacityShadow=30&thicknessShadow=8px&offsetTopShadow=-8px&offsetLeftShadow=-8px&cornerRadiusShadow=8px
@@ -49,6 +55,17 @@ switch ($action) {
 		$departamentos = $departamentoC->getDepartamentosPorCentro( $_POST['idCentro'] );
 		$departamentoV = new DepartamentoV();
 		return $departamentoV->viewDepartamento( $departamentos );
+	break;
+	case 'printFormCadCentro':
+		$centroV = new CentroV();
+		$instituicaoC = new InstituicaoController();
+		$instituicoes = $instituicaoC->getAll();
+		$centroV->printFormCadCentro( $instituicoes );
+	break;
+	case 'cadCentro':
+		$centroC = new CentroController();
+		extract( $_POST );
+		$centroC->cadastrar( $nome, $sigla, $idMunicipio );
 	break;
 	case 'printCentros':
 		$centroC = new CentroController();
@@ -127,9 +144,31 @@ switch ($action) {
 		$ufV->printFormCadUf( $paises );
 	break;
 	case 'cadUF':
-		$ufC = new ufController();
+		$ufC = new UfController();
 		extract( $_POST );
 		$ufC->cadastrarUf( $idPais, $nome, $sigla );
+	break;
+	case 'printFormCadMunicipio':
+		$municipioV = new MunicipioV();
+		$ufC = new UfController();
+		$ufs = $ufC->getAll();
+		$municipioV->printFormCadMunicipio( $ufs );
+	break;
+	case 'cadMunicipio':
+		$municioC = new municipioController();
+		extract( $_POST );
+		$municioC->cadastrar( $nome, $idUf  );
+	break;
+	case 'printFormCadInstituicao':
+		$instituicaoV = new InstituicaoV();
+		$municioC = new municipioController();
+		$municipios = $municioC->getAll();
+		$instituicaoV->printFormCadInstituicao( $municipios );
+	break;
+	case 'cadInstituicao':
+		$instituicaoC = new InstituicaoController();
+		extract( $_POST );
+		$instituicaoC->cadastrar( $nome, $sigla, $idMunicipio );
 	break;
 }
 
