@@ -1,46 +1,43 @@
 <?php
 
-class Uf {
+class Municipio {
 
 	/**
-	 * Retorna todos os ufs
+	 * Retorna todos os municipios
 	 *
 	 * @return array
 	 */
 	function getAll() {
-
-		$ufs = array();
+		$municipios = array();
 		$conexao = Conexao::con();
 
-		$sql[] = "SELECT * FROM uf u ORDER by u.nome";
+		$sql[] = "SELECT * FROM municipio m ORDER by m.nome";
 		$query = mysqli_query( $conexao, join( '', $sql ) );
 
 		while ( $row = mysqli_fetch_array( $query ) ) {
-			$uf = new stdClass();
-			$uf->idUf = $row['id_uf'];
-			$uf->idPais = $row['id_pais'];
-			$uf->nome = utf8_encode( $row['nome'] );
-			$uf->sigla = utf8_encode( $row['sigla'] );
-			$ufs[] = $uf;
+			$municipio = new stdClass();
+			$municipio->idMunicipio = $row['id_municipio'];
+			$municipio->idUf = $row['id_uf'];
+			$municipio->nome = utf8_encode( $row['nome'] );
+			$municipios[] = $municipio;
 		}
-		return $ufs;
+		return $municipios;
 	}
 
 	/**
-	 * Realiza o cadastro de uma nova Uf
+	 * Realiza o cadastro de um novo municipio
 	 *
 	 * @return stdClass
 	 */
-	public function cadastrarUf( $idPais, $nome, $sigla ) {
+	public function cadastrarMunicipio( $nome, $idUf ) {
 		$conexao = Conexao::con();
 		$return = new stdClass();
 
 		$nome = utf8_decode( $nome );
-		$sigla = utf8_decode( $sigla );
 
-		$sql[] = "INSERT INTO uf ( id_pais, nome, sigla )";
+		$sql[] = "INSERT INTO municipio ( id_uf, nome )";
 		$sql[] = "VALUES (";
-		$sql[] = "'{$idPais}', '{$nome}', '{$sigla}'";
+		$sql[] = "'{$idUf}', '{$nome}'";
 		$sql[] = ")";
 
 		if ( mysqli_query( $conexao, join( ' ', $sql ) ) ) {

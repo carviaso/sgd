@@ -23,13 +23,37 @@ var cadastros = {
 			});
 		});	
 		$("#cadMunicipio").click(function() {
-			$('#content').load('app/cad/municipio.php');
+			gb.processing();
+			var params = { "action":"printFormCadMunicipio" };
+			$('#content').load("app/frontController.php", params, function() {
+				$("#cadastrarMunicipio").button().click(function() {
+					cadastros.municipio.valida();
+				});
+				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				gb.processingClose();
+			});
 		});
 		$("#cadInstituicao").click(function() {
-			$('#content').load('app/cad/instituicao.php');
+			gb.processing();
+			var params = { "action":"printFormCadInstituicao" };
+			$('#content').load("app/frontController.php", params, function() {
+				$("#cadastrarInstituicao").button().click(function() {
+					cadastros.instituicao.valida();
+				});
+				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				gb.processingClose();
+			});
 		});
 		$("#cadCentro").click(function() {
-			$('#content').load('app/cad/centro.php');
+			gb.processing();
+			var params = { "action":"printFormCadCentro" };
+			$('#content').load("app/frontController.php", params, function() {
+				$("#cadastrarCentro").button().click(function() {
+					cadastros.centro.valida();
+				});
+				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				gb.processingClose();
+			});
 		});
 		$("#cadDepartamento").click(function() {
 			$('#content').load('app/cad/departamento.php');
@@ -146,6 +170,162 @@ var cadastros = {
 					gb.message( msg, 'Cadastro de UF' );
 				} else {
 					var msg = 'Erro ao cadastrar UF.<br /><br />' + response.error;
+					gb.errorMessage( msg, 'Erro' );
+				}
+			}, "json" );
+		}
+	},
+	municipio: {
+		valida: function() {
+			var erro = [];
+			var nome = $('#nome').val();
+			var idUf = $('#idUf').val();
+			
+			if ( !nome ) erro.push( 'Nome' );
+			if ( !idUf ) erro.push( 'UF' );
+			
+			if ( erro.length == 0 ) {
+				var params =	{	'action':'cadMunicipio',
+									'nome':nome,
+									'idUf':idUf
+								};
+				$("<div class='dialogConfirm'>Deseja realmente realizar o cadastro?</div>").dialog({
+					height:140,
+					modal: true,
+					buttons: {
+						'Sim': function() {
+							cadastros.municipio.cadastra( params );
+							$(this).dialog('close');
+						},
+						'N\u00E3o': function() {
+							$(this).dialog('close');
+						}
+					},
+					close: function() {
+						$('.dialogConfirm').remove();
+					}
+				});
+			} else {
+				var msg = [];
+				msg.push( 'Verifique os seguintes campos:<br /><br />' );
+				msg.push( erro.join( '<br />' ) );
+				gb.highlightMessage( msg.join(''), 'Erro' );
+			}
+		},
+		cadastra: function( params ) {
+			$.post("app/frontController.php", params, function( response ) {
+				if ( response.result == 1 ) {
+					$("#cadMunicipio").click();
+					var msg = 'Cadastro realizado com sucesso.';
+					gb.message( msg, 'Cadastro de Municipio' );
+				} else {
+					var msg = 'Erro ao cadastrar Municipio.<br /><br />' + response.error;
+					gb.errorMessage( msg, 'Erro' );
+				}
+			}, "json" );
+		}
+	},
+	instituicao: {
+		valida: function() {
+			var erro = [];
+			var nome = $('#nome').val();
+			var sigla = $('#sigla').val();
+			var idMunicipio = $('#idMunicipio').val();
+			
+			if ( !nome ) erro.push( 'Nome' );
+			if ( !sigla ) erro.push( 'sigla' );
+			if ( !idMunicipio ) erro.push( 'Id Municipio' );
+			
+			if ( erro.length == 0 ) {
+				var params =	{	'action':'cadInstituicao',
+									'nome':nome,
+									'sigla':sigla,
+									'idMunicipio':idMunicipio
+								};
+				$("<div class='dialogConfirm'>Deseja realmente realizar o cadastro?</div>").dialog({
+					height:140,
+					modal: true,
+					buttons: {
+						'Sim': function() {
+							cadastros.instituicao.cadastra( params );
+							$(this).dialog('close');
+						},
+						'N\u00E3o': function() {
+							$(this).dialog('close');
+						}
+					},
+					close: function() {
+						$('.dialogConfirm').remove();
+					}
+				});
+			} else {
+				var msg = [];
+				msg.push( 'Verifique os seguintes campos:<br /><br />' );
+				msg.push( erro.join( '<br />' ) );
+				gb.highlightMessage( msg.join(''), 'Erro' );
+			}
+		},
+		cadastra: function( params ) {
+			$.post("app/frontController.php", params, function( response ) {
+				if ( response.result == 1 ) {
+					$("#cadInstituicao").click();
+					var msg = 'Cadastro realizado com sucesso.';
+					gb.message( msg, 'Cadastro de Instituicao' );
+				} else {
+					var msg = 'Erro ao cadastrar Instituicao.<br /><br />' + response.error;
+					gb.errorMessage( msg, 'Erro' );
+				}
+			}, "json" );
+		}
+	},
+	centro: {
+		valida: function() {
+			var erro = [];
+			var nome = $('#nome').val();
+			var sigla = $('#sigla').val();
+			var idMunicipio = $('#idMunicipio').val();
+			
+			if ( !nome ) erro.push( 'Nome' );
+			if ( !sigla ) erro.push( 'sigla' );
+			if ( !idMunicipio ) erro.push( 'Id Municipio' );
+			
+			if ( erro.length == 0 ) {
+				var params =	{	'action':'cadCentro',
+									'nome':nome,
+									'sigla':sigla,
+									'idMunicipio':idMunicipio
+								};
+				$("<div class='dialogConfirm'>Deseja realmente realizar o cadastro?</div>").dialog({
+					height:140,
+					modal: true,
+					buttons: {
+						'Sim': function() {
+							cadastros.instituicao.cadastra( params );
+							$(this).dialog('close');
+						},
+						'N\u00E3o': function() {
+							$(this).dialog('close');
+						}
+					},
+					close: function() {
+						$('.dialogConfirm').remove();
+					}
+				});
+			} else {
+				var msg = [];
+				msg.push( 'Verifique os seguintes campos:<br /><br />' );
+				msg.push( erro.join( '<br />' ) );
+				gb.highlightMessage( msg.join(''), 'Erro' );
+			}
+		},
+		cadastra: function( params ) {
+			$.post("app/frontController.php", params, function( response ) {
+				if ( response.result == 1 ) {
+					$("#cadCentro").click();
+					var msg = 'Cadastro realizado com sucesso.';
+					gb.message( msg, 'Cadastro de Centro' );
+				} else {
+					var msg = 'Erro ao cadastrar Centro.<br /><br />' + response.error;
 					gb.errorMessage( msg, 'Erro' );
 				}
 			}, "json" );
