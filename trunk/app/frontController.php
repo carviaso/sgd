@@ -109,6 +109,20 @@ switch ($action) {
 		extract( $_POST );
 		$professorC->cadastrarRegimeTrabalhoProfessor( $idProfessor, $idRegimeTrabalho, $processo, $deliberacao, $portaria, $dataInicio );
 	break;
+
+	case 'printFormCadAfastamentoProfessor':
+		$professorC = new ProfessorController();
+		$professores = $professorC->getAllProfessores();
+		$professorV = new ProfessorV();
+		$professorV->printFormCadAfastamentoProfessor( $professores );
+	break;
+	case 'cadAfastamentoProfessor':
+//		$professorC = new ProfessorController();
+//		extract( $_POST );
+//		$professorC->cadastrarRegimeTrabalhoProfessor( $idProfessor, $idRegimeTrabalho, $processo, $deliberacao, $portaria, $dataInicio );
+	break;
+
+
 	case 'listarProfessores':
 		$professorC = new ProfessorController();
 		$professores = $professorC->getAllProfessores();
