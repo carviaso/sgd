@@ -113,16 +113,20 @@ switch ($action) {
 	case 'printFormCadAfastamentoProfessor':
 		$professorC = new ProfessorController();
 		$professores = $professorC->getAllProfessores();
+		$instituicaoC = new InstituicaoController();
+		$instituicoes = $instituicaoC->getAll();
+		$tipoAfastamentoC = new TipoAfastamentoController();
+		$tiposAfastamento = $tipoAfastamentoC->getAll();
+		$tipoTitulacaoC = new TipoTitulacaoController();
+		$tiposTitulacao = $tipoTitulacaoC->getAll();
 		$professorV = new ProfessorV();
-		$professorV->printFormCadAfastamentoProfessor( $professores );
+		$professorV->printFormCadAfastamentoProfessor( $professores, $instituicoes, $tiposAfastamento, $tiposTitulacao );
 	break;
 	case 'cadAfastamentoProfessor':
-//		$professorC = new ProfessorController();
-//		extract( $_POST );
-//		$professorC->cadastrarRegimeTrabalhoProfessor( $idProfessor, $idRegimeTrabalho, $processo, $deliberacao, $portaria, $dataInicio );
+		$professorC = new ProfessorController();
+		extract( $_POST );
+		$professorC->cadastrarAfastamentoProfessor( $idProfessor, $idInstituicao, $idTipoAfastamento, $idTipoTitulacao, $dataInicio, $dataPrevisaoTermino, $processo, $prorrogacao, $observacao );
 	break;
-
-
 	case 'listarProfessores':
 		$professorC = new ProfessorController();
 		$professores = $professorC->getAllProfessores();
