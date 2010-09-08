@@ -82,14 +82,14 @@ switch ($action) {
 		$departamentos = $departamentoC->getDepartamentos();
 		$categoriaFuncionalC = new CategoriaFuncionalController();
 		$categoriasFuncionais = $categoriaFuncionalC->getCategoriaFuncional();
-		$titulacaoC = new TitulacaoController();
-		$titulacoes = $titulacaoC->getTitulacao();
+		$tipoTitulacaoC = new TipoTitulacaoController();
+		$tipoTitulacoes = $tipoTitulacaoC->getAll();
 		$cargoC = new CargoController();
 		$cargos = $cargoC->getCargos();
 		$situacaoC = new SituacaoController();
 		$situacoes = $situacaoC->getSituacoes();
 		$professorV = new ProfessorV();
-		$professorV->printFormCadProfessor( $departamentos, $categoriasFuncionais, $titulacoes, $cargos, $situacoes );
+		$professorV->printFormCadProfessor( $departamentos, $categoriasFuncionais, $tipoTitulacoes, $cargos, $situacoes );
 	break;
 	case 'cadProfessor':
 		$professorC = new ProfessorController();
@@ -182,6 +182,15 @@ switch ($action) {
 		$categoriaFuncionalC = new CategoriaFuncionalController();
 		extract( $_POST );
 		$categoriaFuncionalC->cadastrar( $descricao );
+	break;
+	case 'printFormCadRegimeTrabalho':
+		$regimeTrabalhoV = new RegimeTrabalhoV();
+		$regimeTrabalhoV->printFormCadRegimeTrabalho();
+	break;
+	case 'cadRegimeTrabalho':
+		$regimeTrabalhoC = new RegimeTrabalhoController();
+		extract( $_POST );
+		$regimeTrabalhoC->cadastrar( $descricao, $quantidadeHoras, $dedicacaoExclusiva );
 	break;
 }
 
