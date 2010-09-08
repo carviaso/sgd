@@ -96,7 +96,7 @@ class ProfessorController {
 		if ( empty( $dataInicio ) ) $erro[] = 'Data de Inicio';
 		if ( empty( $dataPrevisaoTermino ) ) $erro[] = 'Data de Previsao de Termino';
 		if ( empty( $processo ) ) $erro[] = 'Processo';
-		if ( empty( $prorrogacao ) ) $erro[] = 'Prorrogacao';
+		if ( $prorrogacao == '' ) $erro[] = 'Prorrogacao';
 
 		if ( count( $erro ) == 0 ) {
 			$return = $professorDAO->cadastrarAfastamentoProfessor( $idProfessor, $idInstituicao, $idTipoAfastamento, $idTipoTitulacao, $dataInicio, $dataPrevisaoTermino, $processo, $prorrogacao, $observacao );

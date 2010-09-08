@@ -155,14 +155,13 @@ class Professor {
 		$sql[] = "INSERT INTO afastamento (";
 		$sql[] = "id_professor, id_instituicao, id_tipo_afastamento,";
 		$sql[] = "id_tipo_titulacao, data_inicio, data_previsao_termino,";
-		$sql[] = "meses_duracao, processo, flag_prorrogacao, observacao )";
+		$sql[] = "meses_duracao,";
+		$sql[] = "processo, flag_prorrogacao, observacao )";
 		$sql[] = "VALUES (";
 		$sql[] = "'$idProfessor', '$idInstituicao', '$idTipoAfastamento',";
 		$sql[] = "'$idTipoTitulacao', '$dataInicio', '$dataPrevisaoTermino',";
-		$sql[] = "'5', '$processo', '$prorrogacao', '$observacao')";
-
-		echo join( ' ', $sql );
-		die;
+		$sql[] = "period_diff(date_format('$dataPrevisaoTermino', '%Y%m'), date_format('$dataInicio', '%Y%m')),";
+		$sql[] = "'$processo', '$prorrogacao', '$observacao')";
 
 		if ( mysqli_query( $conexao, join( ' ', $sql ) ) ) {
 			$return->result = 1;
@@ -172,10 +171,6 @@ class Professor {
 		}
 		return $return;
 	}
-	/**
-	 * Afastamento de professr
-	 * select period_diff(date_format('2009-11-30', '%Y%m'), date_format('2008-11-29', '%Y%m')) as months from dual;
-	 */
 
 }
 
