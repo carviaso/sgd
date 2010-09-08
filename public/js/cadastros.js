@@ -567,7 +567,7 @@ var cadastros = {
 		valida: function() {
 			var erro = [];
 			var descricao = $('#descricao').val();
-			var quantidadeHoras = parseInt( $('#quantidadeHoras').val() );
+			var quantidadeHoras = parseInt( $('#quantidadeHoras').val(), 10 ); // 10 base
 			var dedicacaoExclusiva = $('input[name=dedicacaoExclusiva]:checked').val() || 0;
 			
 			if ( !descricao ) erro.push( 'Descricao' );
