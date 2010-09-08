@@ -33,6 +33,9 @@ var professores = {
 				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				$("#radio").buttonset();
 				$("#dataInicio, #dataPrevisaoTermino").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
+				$('#dataPrevisaoTermino').blur(function() {
+					$('.mesesDuracao').html('Realizar o calculo de meses');
+				});
 				$("#cadastrarAfastamentoProfessor").button().click(function() {
 					professores.afastamentoProfessor.valida();
 				});
