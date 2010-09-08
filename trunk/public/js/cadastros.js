@@ -97,7 +97,16 @@ var cadastros = {
 			});
 		});
 		$("#cadRegimeTrabalho").click(function() {
-			$('#content').load('app/cad/regimeTrabalho.php');
+			gb.processing();
+			var params = { "action":"printFormCadRegimeTrabalho" };
+			$('#content').load("app/frontController.php", params, function() {
+				$("#cadastrarRegimeTrabalho").button().click(function() {
+					cadastros.regimeTrabalho.valida();
+				});
+				$('#quantidadeHoras').mask('99h');
+				$("#radio").buttonset();
+				gb.processingClose();
+			});
 		});
 	},
 	pais: {
@@ -545,6 +554,59 @@ var cadastros = {
 			$.post("app/frontController.php", params, function( response ) {
 				if ( response.result == 1 ) {
 					$("#cadCategoriaFuncional").click();
+					var msg = 'Cadastro realizado com sucesso.';
+					gb.message( msg, 'Cadastro de Categoria Funcional' );
+				} else {
+					var msg = 'Erro ao cadastrar Categoria Funcional.<br /><br />' + response.error;
+					gb.errorMessage( msg, 'Erro' );
+				}
+			}, "json" );
+		}
+	},
+	regimeTrabalho: {
+		valida: function() {
+			var erro = [];
+			var descricao = $('#descricao').val();
+			var quantidadeHoras = parseInt( $('#quantidadeHoras').val() );
+			var dedicacaoExclusiva = $('input[name=dedicacaoExclusiva]:checked').val() || 0;
+			
+			if ( !descricao ) erro.push( 'Descricao' );
+			if ( !quantidadeHoras ) erro.push( 'Quantidade de Horas' );
+			if ( !dedicacaoExclusiva ) erro.push( 'Dedicacao Exclusiva' );
+			
+			if ( erro.length == 0 ) {
+				var params =	{	'action':'cadRegimeTrabalho',
+									'descricao':descricao,
+									'quantidadeHoras':quantidadeHoras,
+									'dedicacaoExclusiva':dedicacaoExclusiva
+								};
+				$("<div class='dialogConfirm'>Deseja realmente realizar o cadastro?</div>").dialog({
+					height:140,
+					modal: true,
+					buttons: {
+						'Sim': function() {
+							cadastros.regimeTrabalho.cadastra( params );
+							$(this).dialog('close');
+						},
+						'N\u00E3o': function() {
+							$(this).dialog('close');
+						}
+					},
+					close: function() {
+						$('.dialogConfirm').remove();
+					}
+				});
+			} else {
+				var msg = [];
+				msg.push( 'Verifique os seguintes campos:<br /><br />' );
+				msg.push( erro.join( '<br />' ) );
+				gb.highlightMessage( msg.join(''), 'Erro' );
+			}
+		},
+		cadastra: function( params ) {
+			$.post("app/frontController.php", params, function( response ) {
+				if ( response.result == 1 ) {
+					$("#cadRegimeTrabalho").click();
 					var msg = 'Cadastro realizado com sucesso.';
 					gb.message( msg, 'Cadastro de Categoria Funcional' );
 				} else {

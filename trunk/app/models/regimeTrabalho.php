@@ -3,6 +3,31 @@
 class RegimeTrabalho {
 
 	/**
+	 * Realiza o cadastro de um novo Regime de Trabalho
+	 *
+	 * @return stdClass
+	 */
+	public function cadastrar( $descricao, $quantidadeHoras, $dedicacaoExclusiva ) {
+		$conexao = Conexao::con();
+		$return = new stdClass();
+
+		$descricao = utf8_decode( $descricao );
+
+		$sql[] = "INSERT INTO regime_trabalho ( descricao, quantidade_horas, dedicacao_exclusiva )";
+		$sql[] = "VALUES (";
+		$sql[] = "'{$descricao}', '{$quantidadeHoras}', '{$dedicacaoExclusiva}'";
+		$sql[] = ")";
+
+		if ( mysqli_query( $conexao, join( ' ', $sql ) ) ) {
+			$return->result = 1;
+		} else {
+			$return->result = 0;
+			$return->error = mysqli_error( $conexao );
+		}
+		return $return;
+	}
+
+	/**
 	 * Retorna um array com todos os objetos regimes de trabalho
 	 *
 	 * @return array

@@ -44,8 +44,8 @@
 </select>
 <div>Tipo de Titula&ccedil;&atilde;o<div>
 <select id="titulacao" class="width100">
-	{foreach from=$titulacoes item=titulacao}
-		<option value="{$titulacao->idTipoTitulacao}">{$titulacao->descricao}</option>
+	{foreach from=$tipoTitulacoes item=tipoTitulacao}
+		<option value="{$tipoTitulacao->idTipoTitulacao}">{$tipoTitulacao->descricao}</option>
 	{/foreach}
 </select>
 <div>Categoria Funcional Refer&ecirc;ncia<div>
