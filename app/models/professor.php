@@ -136,6 +136,47 @@ class Professor {
 		return $return;
 	}
 
+	/**
+	 * Realiza o cadastro de um afastamento de professor
+	 *
+	 * @return stdClass
+	 */
+	public function cadastrarAfastamentoProfessor( $idProfessor, $idInstituicao, $idTipoAfastamento, $idTipoTitulacao, $dataInicio, $dataPrevisaoTermino, $processo, $prorrogacao, $observacao ) {
+		$conexao = Conexao::con();
+		$return = new stdClass();
+
+		$dataInicio = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataInicio ) ) );
+		$dataPrevisaoTermino = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataPrevisaoTermino ) ) );
+
+		$processo = utf8_decode( $processo );
+		$prorrogacao = utf8_decode( $prorrogacao );
+		$observacao = utf8_decode( $observacao );
+
+		$sql[] = "INSERT INTO afastamento (";
+		$sql[] = "id_professor, id_instituicao, id_tipo_afastamento,";
+		$sql[] = "id_tipo_titulacao, data_inicio, data_previsao_termino,";
+		$sql[] = "meses_duracao, processo, flag_prorrogacao, observacao )";
+		$sql[] = "VALUES (";
+		$sql[] = "'$idProfessor', '$idInstituicao', '$idTipoAfastamento',";
+		$sql[] = "'$idTipoTitulacao', '$dataInicio', '$dataPrevisaoTermino',";
+		$sql[] = "'5', '$processo', '$prorrogacao', '$observacao')";
+
+		echo join( ' ', $sql );
+		die;
+
+		if ( mysqli_query( $conexao, join( ' ', $sql ) ) ) {
+			$return->result = 1;
+		} else {
+			$return->result = 0;
+			$return->error = mysqli_error( $conexao );
+		}
+		return $return;
+	}
+	/**
+	 * Afastamento de professr
+	 * select period_diff(date_format('2009-11-30', '%Y%m'), date_format('2008-11-29', '%Y%m')) as months from dual;
+	 */
+
 }
 
 ?>

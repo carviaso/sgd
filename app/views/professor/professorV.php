@@ -16,7 +16,6 @@ class ProfessorV {
 		$smarty->assign( "cargos", $cargos );
 		$smarty->assign( "situacoes", $situacoes );
 		$smarty->display('professor.tpl');
-
 	}
 
 	function printFormCadRegTrabProfessor( $professores, $regimesTrabalho ) {
@@ -28,6 +27,19 @@ class ProfessorV {
 		$smarty->assign( "professores", $professores );
 		$smarty->assign( "regimesTrabalho", $regimesTrabalho );
 		$smarty->display('regTrabProfessor.tpl');
+	}
+
+	function printFormCadAfastamentoProfessor( $professores, $instituicoes, $tiposAfastamento, $tiposTitulacao ) {
+		$smarty = new Smarty();
+		$smarty->template_dir = 'views/professor/templates/';
+		$smarty->compile_dir  = '../tmp/templates_c/';
+		$smarty->cache_dir    = '../tmp/cache/';
+		$smarty->config_dir   = 'views/configs/';
+		$smarty->assign( "professores", $professores );
+		$smarty->assign( "instituicoes", $instituicoes );
+		$smarty->assign( "tiposAfastamento", $tiposAfastamento );
+		$smarty->assign( "tiposTitulacao", $tiposTitulacao );
+		$smarty->display('formAfastamentoProfessor.tpl');
 	}
 
 	function listarProfessores( $professores ) {

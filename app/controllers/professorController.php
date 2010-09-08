@@ -81,6 +81,33 @@ class ProfessorController {
 	}
 
 	/**
+	 * Realiza o cadastro de afastamento de um professor
+	 *
+	 * @return json
+	 */
+	public function cadastrarAfastamentoProfessor( $idProfessor, $idInstituicao, $idTipoAfastamento, $idTipoTitulacao, $dataInicio, $dataPrevisaoTermino, $processo, $prorrogacao, $observacao ) {
+		$professorDAO = new Professor();
+
+		$erro = array();
+		if ( empty( $idProfessor ) ) $erro[] = 'Professor';
+		if ( empty( $idInstituicao ) ) $erro[] = 'Instituicao';
+		if ( empty( $idTipoAfastamento ) ) $erro[] = 'Tipo de Afastamento';
+		if ( empty( $idTipoTitulacao ) ) $erro[] = 'Titulacao';
+		if ( empty( $dataInicio ) ) $erro[] = 'Data de Inicio';
+		if ( empty( $dataPrevisaoTermino ) ) $erro[] = 'Data de Previsao de Termino';
+		if ( empty( $processo ) ) $erro[] = 'Processo';
+		if ( empty( $prorrogacao ) ) $erro[] = 'Prorrogacao';
+
+		if ( count( $erro ) == 0 ) {
+			$return = $professorDAO->cadastrarAfastamentoProfessor( $idProfessor, $idInstituicao, $idTipoAfastamento, $idTipoTitulacao, $dataInicio, $dataPrevisaoTermino, $processo, $prorrogacao, $observacao );
+		} else {
+			$return->result = 0;
+			$return->error = join( '<br />', $erro );
+		}
+		echo json_encode( $return );
+	}
+
+	/**
 	 * Lista todos os professores
 	 *
 	 * @return json
