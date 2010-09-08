@@ -27,7 +27,16 @@ var professores = {
 			} );
 		});
 		$("#cadAfastamentoProfessor").click(function() {
-			$('#content').load('app/cad/afastamentoProfessor.php');
+			gb.processing();
+			var params = { "action":"printFormCadAfastamentoProfessor" };
+			$('#content').load("app/frontController.php", params, function() {
+//				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+//				$("#dataInicio").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
+//				$("#cadastrarRegimeTrabalho").button().click(function() {
+//					professores.regimeTrabalho.valida();
+//				});
+				gb.processingClose();
+			} );
 		});
 		$("#cadProgressaoFuncionalProfessor").click(function() {
 			$('#content').load('app/cad/progressaoFuncionalProfessor.php');
