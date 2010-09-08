@@ -172,7 +172,16 @@ switch ($action) {
 	case 'cadTipoTitulacao':
 		$tipoTitulacaoC = new TipoTitulacaoController();
 		extract( $_POST );
-		$tipoTitulacaoC-> cadastrar( $descricao );
+		$tipoTitulacaoC->cadastrar( $descricao );
+	break;
+	case 'printFormCadCategoriaFuncional':
+		$categoriaFuncionaV = new categoriaFuncionalV();
+		$categoriaFuncionaV->printFormCadCategoriaFuncional();
+	break;
+	case 'cadCategoriaFuncional':
+		$categoriaFuncionalC = new CategoriaFuncionalController();
+		extract( $_POST );
+		$categoriaFuncionalC->cadastrar( $descricao );
 	break;
 }
 

@@ -87,7 +87,14 @@ var cadastros = {
 			});
 		});
 		$("#cadCategoriaFuncional").click(function() {
-			$('#content').load('app/cad/categoriaFuncional.php');
+			gb.processing();
+			var params = { "action":"printFormCadCategoriaFuncional" };
+			$('#content').load("app/frontController.php", params, function() {
+				$("#cadastrarCategoriaFuncional").button().click(function() {
+					cadastros.categoriaFuncional.valida();
+				});
+				gb.processingClose();
+			});
 		});
 		$("#cadRegimeTrabalho").click(function() {
 			$('#content').load('app/cad/regimeTrabalho.php');
@@ -495,6 +502,53 @@ var cadastros = {
 					gb.message( msg, 'Cadastro de Titulacao' );
 				} else {
 					var msg = 'Erro ao cadastrar Titulacao.<br /><br />' + response.error;
+					gb.errorMessage( msg, 'Erro' );
+				}
+			}, "json" );
+		}
+	},
+	categoriaFuncional: {
+		valida: function() {
+			var erro = [];
+			var descricao = $('#descricao').val();
+			
+			if ( !descricao ) erro.push( 'Descricao' );
+			
+			if ( erro.length == 0 ) {
+				var params =	{	'action':'cadCategoriaFuncional',
+									'descricao':descricao
+								};
+				$("<div class='dialogConfirm'>Deseja realmente realizar o cadastro?</div>").dialog({
+					height:140,
+					modal: true,
+					buttons: {
+						'Sim': function() {
+							cadastros.categoriaFuncional.cadastra( params );
+							$(this).dialog('close');
+						},
+						'N\u00E3o': function() {
+							$(this).dialog('close');
+						}
+					},
+					close: function() {
+						$('.dialogConfirm').remove();
+					}
+				});
+			} else {
+				var msg = [];
+				msg.push( 'Verifique os seguintes campos:<br /><br />' );
+				msg.push( erro.join( '<br />' ) );
+				gb.highlightMessage( msg.join(''), 'Erro' );
+			}
+		},
+		cadastra: function( params ) {
+			$.post("app/frontController.php", params, function( response ) {
+				if ( response.result == 1 ) {
+					$("#cadCategoriaFuncional").click();
+					var msg = 'Cadastro realizado com sucesso.';
+					gb.message( msg, 'Cadastro de Categoria Funcional' );
+				} else {
+					var msg = 'Erro ao cadastrar Categoria Funcional.<br /><br />' + response.error;
 					gb.errorMessage( msg, 'Erro' );
 				}
 			}, "json" );
