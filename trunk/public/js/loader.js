@@ -5,7 +5,7 @@ var principal = {
 			$('#sidebar').load('app/views/menuCadastro.php', function() {
 				cadastros.loadMenu();
 			});
-		}).click();
+		});
 	},
 	loadNavProfessor: function() {
 		$(".navProfessor").click(function() {
@@ -13,7 +13,7 @@ var principal = {
 			$('#sidebar').load('app/views/menuProfessor.php', function() {
 				professores.loadMenu();
 			});
-		});
+		}).click();
 	},
 	loadNavRelatorio: function() {
 		$(".navRelatorio").click(function() {

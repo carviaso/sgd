@@ -30,11 +30,12 @@ var professores = {
 			gb.processing();
 			var params = { "action":"printFormCadAfastamentoProfessor" };
 			$('#content').load("app/frontController.php", params, function() {
-//				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
-//				$("#dataInicio").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
-//				$("#cadastrarRegimeTrabalho").button().click(function() {
-//					professores.regimeTrabalho.valida();
-//				});
+				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				$("#radio").buttonset();
+				$("#dataInicio, #dataPrevisaoTermino").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
+				$("#cadastrarAfastamentoProfessor").button().click(function() {
+					professores.afastamentoProfessor.valida();
+				});
 				gb.processingClose();
 			} );
 		});
@@ -194,5 +195,75 @@ var professores = {
 				}
 			}, "json" );
 		}
-	}	
+	},
+	afastamentoProfessor: {
+		valida: function() {
+			var erro = [];
+			var idProfessor = $('#idProfessor option:selected').val();
+			var idInstituicao = $('#idInstituicao option:selected').val();
+			var idTipoAfastamento = $('#idTipoAfastamento option:selected').val();
+			var idTipoTitulacao = $('#idTipoTitulacao').val();
+			var dataInicio = $('#dataInicio').val();
+			var dataPrevisaoTermino = $('#dataPrevisaoTermino').val();
+			var processo = $('#processo').val();
+			var prorrogacao = $('input[name=prorrogacao]:checked').val() || 0;
+			var observacao = $('#observacao').val();
+			
+			if ( !idProfessor ) erro.push( 'Professor' );
+			if ( !idInstituicao ) erro.push( 'Instituicao' );
+			if ( !idTipoAfastamento ) erro.push( 'Tipo de Afastamento' );
+			if ( !idTipoTitulacao ) erro.push( 'Titulacao' );
+			if ( !dataInicio ) erro.push( 'Data de Inicio' );
+			if ( !dataPrevisaoTermino ) erro.push( 'Data de Previsao de Termino' );
+			if ( !processo ) erro.push( 'Processo' );
+			if ( !prorrogacao ) erro.push( 'Prorrogacao' );
+		
+			if ( erro.length == 0 ) {
+				var params = {	'action':'cadAfastamentoProfessor',
+						 		'idProfessor':idProfessor,
+						 		'idInstituicao':idInstituicao,
+						 		'idTipoAfastamento':idTipoAfastamento,
+								'idTipoTitulacao':idTipoTitulacao,
+								'dataInicio':dataInicio,
+								'dataPrevisaoTermino':dataPrevisaoTermino,
+								'processo':processo,
+								'prorrogacao':prorrogacao,
+								'observacao':observacao
+							};
+				$("<div class='dialog-confirm'>Deseja realmente cadastrar o regime de trabalho?</div>").dialog({
+					height:140,
+					modal: true,
+					buttons: {
+						'Sim': function() {
+							professores.afastamentoProfessor.cadastrar( params );
+							$(this).dialog('close');
+						},
+						'N\u00E3o': function() {
+							$(this).dialog('close');
+						}
+					},
+					close: function() {
+						$('.gbMessage').remove();
+					}
+				});
+			} else {
+				var msg = [];
+				msg.push( 'Verifique os seguintes campos:<br /><br />' );
+				msg.push( erro.join( '<br />' ) );
+				gb.highlightMessage( msg.join(''), 'Erro' );
+			}
+		},	
+		cadastrar: function( params ) {
+			$.post("app/frontController.php", params, function( response ) {
+				if ( response.result == 1 ) {
+					$("#cadAfastamentoProfessor").click();
+					var msg = 'Cadastro realizado com sucesso.';
+					gb.message( msg, 'Cadastro de Afastamento de Professor' );
+				} else {
+					var msg = 'Erro ao cadastrar Afastamento de Professor.<br /><br />' + response.error;
+					gb.errorMessage( msg, 'Cadastro de Afastamento de Professor' );
+				}
+			}, "json" );
+		}
+	}
 };

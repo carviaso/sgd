@@ -56,6 +56,11 @@ a:hover {
 }
 .right { float: right; }
 .left { float: left; }
+.mesesDuracao {
+	text-align: center;
+	color: #AA2808;
+	font-weight: bolder;
+}
 /* 
 input {
 	line-height: 1.4em;
