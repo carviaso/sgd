@@ -1,0 +1,2 @@
+#labels padrao,banco,dados
+Padrao na nomeclatura das variaveis sendo os mesmos nomes dos campos no banco de dados
