@@ -1,0 +1,4 @@
+#labels utf-8
+UTF_8
+
+Pesquisar tipos de codificacao
