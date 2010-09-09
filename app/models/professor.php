@@ -172,6 +172,39 @@ class Professor {
 		return $return;
 	}
 
+	/**
+	 * Realiza o cadastro de um afastamento de professor
+	 *
+	 * @return stdClass
+	 */
+	public function cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $dataInicio, $portaria ) {
+		$conexao = Conexao::con();
+		$return = new stdClass();
+
+		$dataAvaliacao = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataAvaliacao ) ) );
+		$dataInicio = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataInicio ) ) );
+
+		$processo = utf8_decode( $processo );
+		$portaria = utf8_decode( $portaria );
+
+		$sql[] = "INSERT INTO progressao_funcional (";
+		$sql[] = "id_professor, id_categoria_funcional,";
+		$sql[] = "processo, data_avaliacao, nota_avaliacao,";
+		$sql[] = "data_inicio, portaria )";
+		$sql[] = "VALUES (";
+		$sql[] = "'$idProfessor', '$idCategoriaFuncional',";
+		$sql[] = "'$processo', '$dataAvaliacao', '$notaAvaliacao',";
+		$sql[] = "'$dataInicio', '$portaria')";
+
+		if ( mysqli_query( $conexao, join( ' ', $sql ) ) ) {
+			$return->result = 1;
+		} else {
+			$return->result = 0;
+			$return->error = mysqli_error( $conexao );
+		}
+		return $return;
+	}
+
 }
 
 ?>
