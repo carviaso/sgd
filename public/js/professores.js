@@ -53,13 +53,20 @@ var professores = {
 			});
 		});
 		$("#cadProgressaoFuncionalProfessor").click(function() {
-			$('#content').load('app/cad/progressaoFuncionalProfessor.php');
+			gb.processing();
+			var params = { "action":"printFormCadProgFuncProfessor" };
+			$('#content').load("app/frontController.php", params, function() {
+				$("#dataInicio, #dataAvaliacao").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
+				$("#cadastrarProgressaoFuncionalProfessor").button().click(function() {
+					professores.progressaoFuncionalProfessor.valida();
+				});
+				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				gb.processingClose();
+			});
 		});
 		$("#listarProfessores").click(function() {
-			
 			var params = { "action":"listarProfessores" };
 			$('#content').load("app/frontController.php", params, function() {
-				alert('listagem completa');
 			} );
 		});
 	},
@@ -275,6 +282,71 @@ var professores = {
 				} else {
 					var msg = 'Erro ao cadastrar Afastamento de Professor.<br /><br />' + response.error;
 					gb.errorMessage( msg, 'Cadastro de Afastamento de Professor' );
+				}
+			}, "json" );
+		}
+	},
+	progressaoFuncionalProfessor: {
+		valida: function() {
+			var erro = [];
+			var idProfessor = $('#idProfessor option:selected').val();
+			var idCategoriaFuncional = $('#idCategoriaFuncional option:selected').val();
+			var processo = $('#processo').val();
+			var dataAvaliacao = $('#dataAvaliacao').val();
+			var notaAvaliacao = $('#notaAvaliacao').val();
+			var dataInicio = $('#dataInicio').val();
+			var portaria = $('#portaria').val();
+			
+			if ( !idProfessor ) erro.push( 'Professor' );
+			if ( !idCategoriaFuncional ) erro.push( 'Categoria Funcional' );
+			if ( !processo ) erro.push( 'Processo' );
+			if ( !dataAvaliacao ) erro.push( 'Data de Avaliacao' );
+			if ( !notaAvaliacao ) erro.push( 'Nota Avaliacao' );
+			if ( !dataInicio ) erro.push( 'Data de Inicio' );
+			if ( !portaria ) erro.push( 'Portaria' );
+		
+			if ( erro.length == 0 ) {
+				var params = {	'action':'cadProgFuncProfessor',
+								'idProfessor':idProfessor,
+								'idCategoriaFuncional':idCategoriaFuncional,
+								'processo':processo,
+								'dataAvaliacao':dataAvaliacao,
+								'notaAvaliacao':notaAvaliacao,
+								'dataInicio':dataInicio,
+								'portaria':portaria
+							};
+				$("<div class='dialog-confirm'>Deseja realmente cadastrar a progressao Funcional?</div>").dialog({
+					height:140,
+					modal: true,
+					buttons: {
+						'Sim': function() {
+							professores.progressaoFuncionalProfessor.cadastrar( params );
+							$(this).dialog('close');
+						},
+						'N\u00E3o': function() {
+							$(this).dialog('close');
+						}
+					},
+					close: function() {
+						$('.gbMessage').remove();
+					}
+				});
+			} else {
+				var msg = [];
+				msg.push( 'Verifique os seguintes campos:<br /><br />' );
+				msg.push( erro.join( '<br />' ) );
+				gb.highlightMessage( msg.join(''), 'Erro' );
+			}
+		},
+		cadastrar: function( params ) {
+			$.post("app/frontController.php", params, function( response ) {
+				if ( response.result == 1 ) {
+					$("#cadProgressaoFuncionalProfessor").click();
+					var msg = 'Cadastro realizado com sucesso.';
+					gb.message( msg, 'Cadastro de Progressao Funcional de Professor' );
+				} else {
+					var msg = 'Erro ao cadastrar Afastamento de Professor.<br /><br />' + response.error;
+					gb.errorMessage( msg, 'Cadastro de Progressao Funcional de Professor' );
 				}
 			}, "json" );
 		}

@@ -42,6 +42,17 @@ class ProfessorV {
 		$smarty->display('formAfastamentoProfessor.tpl');
 	}
 
+	function printFormCadProgFuncProfessor( $professores, $categoriasFuncionais ) {
+		$smarty = new Smarty();
+		$smarty->template_dir = 'views/professor/templates/';
+		$smarty->compile_dir  = '../tmp/templates_c/';
+		$smarty->cache_dir    = '../tmp/cache/';
+		$smarty->config_dir   = 'views/configs/';
+		$smarty->assign( "professores", $professores );
+		$smarty->assign( "categoriasFuncionais", $categoriasFuncionais );
+		$smarty->display('formProgressaoFuncionalProfessor.tpl');
+	}
+
 	function listarProfessores( $professores ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/professor/templates/';

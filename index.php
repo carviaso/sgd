@@ -9,7 +9,9 @@
         <meta name="description" content="Esta &eacute; p&aacute;gina principal do sistema de gest&atilde;o de docentes" />
         <link type="text/css" href="public/css/default.css" rel="stylesheet"  />
         <link type="text/css" href="public/css/base/jquery.ui.all.css" rel="stylesheet"  />
+        <!--
         <link type="text/css" href="public/css/custom-theme/jquery-ui-1.8.4.custom.css" rel="stylesheet"  />
+         -->
         <link type="text/css" href="public/css/ui.selectmenu.css" rel="stylesheet"  />
     </head>
     <body>
