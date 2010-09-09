@@ -12,7 +12,7 @@ var professores = {
 				$("#radio").buttonset();
 				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
-			} );
+			});
 		});
 		$("#cadRegimeTrabalhoProfessor").click(function() {
 			gb.processing();
@@ -24,7 +24,7 @@ var professores = {
 				});
 				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
-			} );
+			});
 		});
 		$("#cadAfastamentoProfessor").click(function() {
 			gb.processing();
@@ -37,8 +37,6 @@ var professores = {
 					var dataInicio = $('#dataInicio').val();
 					var dataPrevisaoTermino = $('#dataPrevisaoTermino').val();
 					if ( dataInicio && dataPrevisaoTermino ) {
-//						$('.mesesDuracao').html('Realizar o calculo de meses');
-						
 						var params = {	'action':'dataDiff',
 								 		'dataInicio':dataInicio,
 								 		'dataPrevisaoTermino':dataPrevisaoTermino
@@ -52,7 +50,7 @@ var professores = {
 					professores.afastamentoProfessor.valida();
 				});
 				gb.processingClose();
-			} );
+			});
 		});
 		$("#cadProgressaoFuncionalProfessor").click(function() {
 			$('#content').load('app/cad/progressaoFuncionalProfessor.php');
