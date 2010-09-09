@@ -1,7 +1,7 @@
 <?php
 
 include_once 'library/Smarty-3.0rc1/libs/Smarty.class.php';
-$dirs = array( 'controllers', 'models', 'views/*', 'include' );
+$dirs = array( 'controllers', 'models', 'views/*', 'include', 'helper' );
 
 foreach ( $dirs as $dir ) {
 	foreach ( glob( "../app/{$dir}/*.php" ) as $filename ) {
@@ -209,6 +209,14 @@ switch ($action) {
 		$regimeTrabalhoC = new RegimeTrabalhoController();
 		extract( $_POST );
 		$regimeTrabalhoC->cadastrar( $descricao, $quantidadeHoras, $dedicacaoExclusiva );
+	break;
+	case 'dataDiff':
+		$dataHelper = new DataHelper();
+		extract( $_POST );
+		$dataInicio = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataInicio ) ) );
+		$dataPrevisaoTermino = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataPrevisaoTermino ) ) );
+		$mesesDiff = $dataHelper->dataDiff( $dataInicio, $dataPrevisaoTermino );
+		echo json_encode( $mesesDiff );
 	break;
 }
 
