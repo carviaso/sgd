@@ -108,6 +108,32 @@ class ProfessorController {
 	}
 
 	/**
+	 * Realiza o cadastro de afastamento de um professor
+	 *
+	 * @return json
+	 */
+	public function cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $dataInicio, $portaria ) {
+		$professorDAO = new Professor();
+
+		$erro = array();
+		if ( empty( $idProfessor ) ) $erro[] = 'Professor';
+		if ( empty( $idCategoriaFuncional ) ) $erro[] = 'Categoria Funcional';
+		if ( empty( $processo ) ) $erro[] = 'Processo';
+		if ( empty( $dataAvaliacao ) ) $erro[] = 'Data Avaliacao';
+		if ( empty( $notaAvaliacao ) ) $erro[] = 'Nota Avaliacao';
+		if ( empty( $dataInicio ) ) $erro[] = 'Data Inicio';
+		if ( empty( $portaria ) ) $erro[] = 'Portaria';
+
+		if ( count( $erro ) == 0 ) {
+			$return = $professorDAO->cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $dataInicio, $portaria );
+		} else {
+			$return->result = 0;
+			$return->error = join( '<br />', $erro );
+		}
+		echo json_encode( $return );
+	}
+
+	/**
 	 * Lista todos os professores
 	 *
 	 * @return json
