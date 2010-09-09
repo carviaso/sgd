@@ -33,8 +33,20 @@ var professores = {
 				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				$("#radio").buttonset();
 				$("#dataInicio, #dataPrevisaoTermino").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
-				$('#dataPrevisaoTermino').blur(function() {
-					$('.mesesDuracao').html('Realizar o calculo de meses');
+				$('#dataInicio, #dataPrevisaoTermino').change(function() {
+					var dataInicio = $('#dataInicio').val();
+					var dataPrevisaoTermino = $('#dataPrevisaoTermino').val();
+					if ( dataInicio && dataPrevisaoTermino ) {
+//						$('.mesesDuracao').html('Realizar o calculo de meses');
+						
+						var params = {	'action':'dataDiff',
+								 		'dataInicio':dataInicio,
+								 		'dataPrevisaoTermino':dataPrevisaoTermino
+									};
+						$.post("app/frontController.php", params, function( response ) {
+							$('.mesesDuracao').html( 'Afastamento com duracao de ' + response.meses + ' mes(es)' );
+						}, "json" );
+					}
 				});
 				$("#cadastrarAfastamentoProfessor").button().click(function() {
 					professores.afastamentoProfessor.valida();
