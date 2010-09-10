@@ -4,7 +4,7 @@ class DataHelper {
 
 	/**
 	 * Retorna a diferenca entre duas datas
-	 *
+	 * @todo Melhorar funcao, fazer retorno por tipo
 	 * @return int
 	 */
 	function dataDiff( $date1, $date2, $type = '' ) {

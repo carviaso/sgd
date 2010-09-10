@@ -32,23 +32,24 @@
 	<div id="professoresPorDepartamento" ></div>
 {/if}
 {if $option eq relProfessoresPorDepartamento}
-	{if $professores|count gt 0}
-		<table class="aatable">
+	<table class="aatable">
+		<tr>
+			<th>Nome</th>
+			<th>Matr&iacute;cula</th>
+		</tr>
+		{foreach from=$professores item=professor}
 			<tr>
-				<th>Nome</th>
-				<th>Matr&iacute;cula</th>
-			</tr>
-			{foreach from=$professores item=professor}
-				<tr>
-					<td>{$professor->nome} {$professor->sobrenome}</td>
-					<td>{$professor->matricula}</td>
-			    </tr>
-			{/foreach}
-		</table>
-		<div id="note">
-			<p>Emitido em: {$emissao}</p>
-		</div>
-	{else}
-		<h2>Nenhum registro encontrado.</h2>
-	{/if}
+				<td>{$professor->nome} {$professor->sobrenome}</td>
+				<td>{$professor->matricula}</td>
+		    </tr>
+		{foreachelse}
+			<tr>
+		    	<td colspan="2">Nenhum professor cadastrado para o centro selecionado</td>
+		    </tr>
+		{/foreach}
+		
+	</table>
+	<div id="note">
+		<p>Emitido em: {$emissao}</p>
+	</div>
 {/if}

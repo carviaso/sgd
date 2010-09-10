@@ -25,7 +25,7 @@ var relatorios = {
 					var idDepartamento = $(this).val();
 					var params = { "action":"relProfessoresPorDepartamento", 'idDepartamento': idDepartamento };
 					$('#professoresPorDepartamento').load("app/frontController.php", params);
-				});
+				}).selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 			});
 		});
 		$("#relDepartamentoCentro").click(function() {
@@ -35,8 +35,13 @@ var relatorios = {
 					var idCentro = $(this).val();
 					var params = { "action":"relDepartamentoPorCentro", 'idCentro': idCentro };
 					$('#departamentosPorCentro').load("app/frontController.php", params);
-				});
+				}).selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 			});
+		});
+		$("#listarProfessores").click(function() {
+			var params = { "action":"listarProfessores" };
+			$('#content').load("app/frontController.php", params, function() {
+			} );
 		});
 	}
 };
