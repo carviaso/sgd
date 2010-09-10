@@ -15,7 +15,7 @@ var relatorios = {
 					var idCentro = $(this).val();
 					var params = { "action":"getDiretorPorCentro", 'idCentro': idCentro };
 					$('#departamentosPorCentro').load("app/frontController.php", params);
-				});
+				}).selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 			});
 		});
 		$("#professoresPorDepartamento").click(function() {
