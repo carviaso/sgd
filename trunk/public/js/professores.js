@@ -64,11 +64,6 @@ var professores = {
 				gb.processingClose();
 			});
 		});
-		$("#listarProfessores").click(function() {
-			var params = { "action":"listarProfessores" };
-			$('#content').load("app/frontController.php", params, function() {
-			} );
-		});
 	},
 	valida: function() {
 		var erro = [];
