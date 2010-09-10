@@ -5,8 +5,6 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>SGD - Sistema de Gest&atilde;o de Docentes</title>
-        <meta name="keywords" content="docente, list" />
-        <meta name="description" content="Esta &eacute; p&aacute;gina principal do sistema de gest&atilde;o de docentes" />
         <link type="text/css" href="public/css/default.css" rel="stylesheet"  />
         <link type="text/css" href="public/css/base/jquery.ui.all.css" rel="stylesheet"  />
         <!--
