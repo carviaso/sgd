@@ -1,14 +1,14 @@
 var relatorios = {
 	loadMenu: function() {
-		$("#relacaoCentros").click(function() {
-			var params = { "action":"getCentros" };
+		$("#relCentros").click(function() {
+			var params = { "action":"relCentros" };
 			$('#content').load("app/frontController.php", params );
 		});
-		$("#relacaoTodosDepartamentos").click(function() {
-			var params = { "action":"getDepartamentos" };
+		$("#relDepartamentos").click(function() {
+			var params = { "action":"relDepartamentos" };
 			$('#content').load("app/frontController.php", params );
 		});
-		$("#diretoresPorCentros").click(function() {
+		$("#relacaoDiretoresCentros").click(function() {
 			var params = { "action":"printCentros" };
 			$('#content').load("app/frontController.php", params, function() {
 				$("#selectCentros").change(function() {
@@ -18,6 +18,12 @@ var relatorios = {
 				}).selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 			});
 		});
+//		
+//		relacaoCentros
+//		relacaoDepartamentos
+//		relacaoDiretoresCentros
+		
+		
 		$("#professoresPorDepartamento").click(function() {
 			var params = { "action":"printDepartamentos" };
 			$('#content').load("app/frontController.php", params, function() {

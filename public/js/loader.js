@@ -13,7 +13,7 @@ var principal = {
 			$('#sidebar').load('app/views/menuProfessor.php', function() {
 				professores.loadMenu();
 			});
-		}).click();
+		});
 	},
 	loadNavRelatorio: function() {
 		$(".navRelatorio").click(function() {
@@ -21,7 +21,7 @@ var principal = {
 			$('#sidebar').load('app/views/menuRelatorio.php', function() {
 				relatorios.loadMenu();
 			});
-		});
+		}).click();
 	},
 	loadNavSobre: function() {
 		$(".navSobre").click(function() {

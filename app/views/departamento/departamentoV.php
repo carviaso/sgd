@@ -14,7 +14,7 @@ class DepartamentoV {
 		$smarty->display('formDepartamento.tpl');
 	}
 
-	function viewDepartamento( $departamentos ) {
+	function relDepartamentos( $departamentos ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/departamento/templates/';
 		$smarty->compile_dir  = '../tmp/templates_c/';
@@ -23,7 +23,7 @@ class DepartamentoV {
 		$smarty->assign( "departamentos", $departamentos );
 		$smarty->assign( "option", 'viewDepartamento' );
 		$smarty->assign( "emissao", date('d/m/Y H:i:s P') );
-		$smarty->display('departamento.tpl');
+		$smarty->display('relDepartamentos.tpl');
 	}
 
 	function listDepartamentos( $departamentos ) {

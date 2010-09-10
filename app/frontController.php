@@ -12,17 +12,17 @@ foreach ( $dirs as $dir ) {
 $action = $_POST['action'];
 
 switch ($action) {
-	case 'getCentros':
+	case 'relCentros':
 		$centroC = new CentroController();
 		$centros = $centroC->getCentros();
 		$centroV = new CentroV();
-		return $centroV->viewCentro( $centros );
+		return $centroV->relCentros( $centros );
 	break;
-	case 'getDepartamentos':
+	case 'relDepartamentos':
 		$departamentoC = new DepartamentoController();
 		$departamentos = $departamentoC->getDepartamentos();
 		$departamentoV = new DepartamentoV();
-		return $departamentoV->viewDepartamento( $departamentos );
+		return $departamentoV->relDepartamentos( $departamentos );
 	break;
 	case 'getDepartamentosPorCentro':
 		$departamentoC = new DepartamentoController();
@@ -52,12 +52,12 @@ switch ($action) {
 		extract( $_POST );
 		$centroC->cadastrar( $nome, $sigla, $idInstituicao );
 	break;
-	case 'printCentros':
-		$centroC = new CentroController();
-		$centros = $centroC->getCentros();
-		$centroV = new CentroV();
-		return $centroV->listCentros( $centros );
-	break;
+//	case 'printCentros':
+//		$centroC = new CentroController();
+//		$centros = $centroC->getCentros();
+//		$centroV = new CentroV();
+//		return $centroV->listCentros( $centros );
+//	break;
 	case 'getDiretorPorCentro':
 		$centroC = new CentroController();
 		$diretores = $centroC->viewDiretoresPorCentros( $_POST['idCentro'] );
