@@ -26,7 +26,7 @@ class DepartamentoV {
 		$smarty->display('relDepartamentos.tpl');
 	}
 
-	function listDepartamentos( $departamentos ) {
+	function relProfessoresDepartamento( $departamentos ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/departamento/templates/';
 		$smarty->compile_dir  = '../tmp/templates_c/';
@@ -34,19 +34,19 @@ class DepartamentoV {
 		$smarty->config_dir   = 'views/configs/';
 		$smarty->assign( "departamentos", $departamentos );
 		$smarty->assign( "option", 'listDepartamento' );
-		$smarty->display('departamento.tpl');
+		$smarty->display('relDepartamentos.tpl');
 	}
 
-	function viewProfessoresPorDepartamento( $professores ) {
+	function relProfessoresPorDepartamento( $professores ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/departamento/templates/';
 		$smarty->compile_dir  = '../tmp/templates_c/';
 		$smarty->cache_dir    = '../tmp/cache/';
 		$smarty->config_dir   = 'views/configs/';
 		$smarty->assign( "professores", $professores );
-		$smarty->assign( "option", 'viewProfessoresPorDepartamento' );
+		$smarty->assign( "option", 'relProfessoresPorDepartamento' );
 		$smarty->assign( "emissao", date('d/m/Y H:i:s P') );
-		$smarty->display('departamento.tpl');
+		$smarty->display('relDepartamentos.tpl');
 	}
 }
 

@@ -41,9 +41,9 @@ class CentroController {
 		echo json_encode( $return );
 	}
 
-	public function viewDiretoresPorCentros( $idCentro ) {
+	public function relDiretorPorCentro( $idCentro ) {
 		$centroDAO = new Centro();
-		return $centroDAO->viewDiretoresPorCentros( $idCentro );
+		return $centroDAO->relDiretorPorCentro( $idCentro );
 	}
 }
 ?>

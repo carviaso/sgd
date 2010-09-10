@@ -8,28 +8,23 @@ var relatorios = {
 			var params = { "action":"relDepartamentos" };
 			$('#content').load("app/frontController.php", params );
 		});
-		$("#relacaoDiretoresCentros").click(function() {
-			var params = { "action":"printCentros" };
+		$("#relDiretoresCentros").click(function() {
+			var params = { "action":"relDiretoresCentros" };
 			$('#content').load("app/frontController.php", params, function() {
 				$("#selectCentros").change(function() {
 					var idCentro = $(this).val();
-					var params = { "action":"getDiretorPorCentro", 'idCentro': idCentro };
+					var params = { "action":"relDiretorPorCentro", 'idCentro': idCentro };
 					$('#departamentosPorCentro').load("app/frontController.php", params);
 				}).selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 			});
 		});
-//		
-//		relacaoCentros
-//		relacaoDepartamentos
-//		relacaoDiretoresCentros
 		
-		
-		$("#professoresPorDepartamento").click(function() {
-			var params = { "action":"printDepartamentos" };
+		$("#relProfessoresDepartamento").click(function() {
+			var params = { "action":"relProfessoresDepartamento" };
 			$('#content').load("app/frontController.php", params, function() {
 				$("#selectDepartamentos").change(function() {
 					var idDepartamento = $(this).val();
-					var params = { "action":"getProfessoresPorDepartamento", 'idDepartamento': idDepartamento };
+					var params = { "action":"relProfessoresPorDepartamento", 'idDepartamento': idDepartamento };
 					$('#professoresPorDepartamento').load("app/frontController.php", params);
 				});
 			});

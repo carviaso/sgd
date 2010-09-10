@@ -31,7 +31,7 @@
 	<br />
 	<div id="professoresPorDepartamento" ></div>
 {/if}
-{if $option eq viewProfessoresPorDepartamento}
+{if $option eq relProfessoresPorDepartamento}
 	{if $professores|count gt 0}
 		<table class="aatable">
 			<tr>
