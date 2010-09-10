@@ -1,1 +1,13 @@
-Tag Branch Merge
+No SVN o controle é feito usando o padrão de trunk, tag e branch.
+
+Trunk
+A pasta trunk contém as versões mais recentes dos arquivos trabalhados e todas as novas funcionalidades devem ser iniciadas nele.
+
+Branches
+A pasta branches é aquela que contém alterações em funcionalidades existentes, como correções de bugs, alterações de nomenclaturas. Um branch sempre é criado a partir ou do trunk ou de uma tag e sempre dará origem a uma tag. Isso inclui também os números referentes a versão criada/corrigida. Uma vez fechado o pacote do brunk e criado uma tag este não pode mais ser modificado/atualizado.
+
+Tags
+Quando o desenvolvimento na versão do branch está considerado estável cria-se uma uma nova cópia desta para tags, formando assim um release. Dessa forma, uma tag é considerada uma versão liberada.
+Essa será a versão que irá para o ambiente de produção. Caso haja necessidade de alguma alteração na tag criada, um novo branch deve ser criado que resultará posteriormente em uma nova tag.
+
+http://phpbrasil.com/artigo/Df60FgL-4K_x/criando-um-projeto-com-controle-de-versao-pdt-eclipse-galileo-svn (10/09/2010)
