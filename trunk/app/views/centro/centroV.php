@@ -4,7 +4,7 @@ class CentroV {
 
 	function CentroV() {}
 
-	function viewCentro( $centros ) {
+	function relCentros( $centros ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/centro/templates/';
 		$smarty->compile_dir  = '../tmp/templates_c/';
@@ -12,7 +12,7 @@ class CentroV {
 		$smarty->config_dir   = 'views/configs/';
 		$smarty->assign( "centros", $centros );
 		$smarty->assign( "emissao", date('d/m/Y H:i:s P') );
-		$smarty->display('centro.tpl');
+		$smarty->display('relCentros.tpl');
 	}
 
 	function listCentros( $centros ) {
