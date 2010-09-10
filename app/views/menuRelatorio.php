@@ -9,7 +9,7 @@
 		<br />
 		<h2>Relat&oacute;rios do Professor</h2>
 		<ul>
-			<li><a href="javascript:void(0);" id="professoresPorDepartamento">Professores por Departamento</a></li>
+			<li><a href="javascript:void(0);" id="relProfessoresDepartamento">Professores por Departamento</a></li>
 		</ul>
 		<br />
 		<h2>Relat&oacute;rios Espec&iacute;ficos</h2>

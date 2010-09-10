@@ -15,7 +15,7 @@ class CentroV {
 		$smarty->display('relCentros.tpl');
 	}
 
-	function listCentros( $centros ) {
+	function relDiretoresCentros( $centros ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/centro/templates/';
 		$smarty->compile_dir  = '../tmp/templates_c/';
@@ -23,10 +23,10 @@ class CentroV {
 		$smarty->config_dir   = 'views/configs/';
 		$smarty->assign( "centros", $centros );
 		$smarty->assign( "option", 'listCentros' );
-		$smarty->display('diretoresPorCentro.tpl');
+		$smarty->display('relDiretoresCentros.tpl');
 	}
 
-	function viewDiretoresPorCentros( $diretores ) {
+	function relDiretorPorCentro( $diretores ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/centro/templates/';
 		$smarty->compile_dir  = '../tmp/templates_c/';
@@ -35,7 +35,7 @@ class CentroV {
 		$smarty->assign( "diretores", $diretores );
 		$smarty->assign( "option", 'diretoresPorCentro' );
 		$smarty->assign( "emissao", date('d/m/Y H:i:s P') );
-		$smarty->display('diretoresPorCentro.tpl');
+		$smarty->display('relDiretoresCentros.tpl');
 	}
 
 	function printFormCadCentro( $instituicoes ) {

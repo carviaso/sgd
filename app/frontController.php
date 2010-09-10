@@ -52,29 +52,29 @@ switch ($action) {
 		extract( $_POST );
 		$centroC->cadastrar( $nome, $sigla, $idInstituicao );
 	break;
-//	case 'printCentros':
-//		$centroC = new CentroController();
-//		$centros = $centroC->getCentros();
-//		$centroV = new CentroV();
-//		return $centroV->listCentros( $centros );
-//	break;
-	case 'getDiretorPorCentro':
+	case 'relDiretoresCentros':
 		$centroC = new CentroController();
-		$diretores = $centroC->viewDiretoresPorCentros( $_POST['idCentro'] );
+		$centros = $centroC->getCentros();
 		$centroV = new CentroV();
-		return $centroV->viewDiretoresPorCentros( $diretores );
+		return $centroV->relDiretoresCentros( $centros );
 	break;
-	case 'getProfessoresPorDepartamento':
+	case 'relDiretorPorCentro':
+		$centroC = new CentroController();
+		$diretores = $centroC->relDiretorPorCentro( $_POST['idCentro'] );
+		$centroV = new CentroV();
+		return $centroV->relDiretorPorCentro( $diretores );
+	break;
+	case 'relProfessoresPorDepartamento':
 		$departamentoC = new DepartamentoController();
 		$professores = $departamentoC->getProfessoresPorDepartamento( $_POST['idDepartamento'] );
 		$departamentoV = new DepartamentoV();
-		return $departamentoV->viewProfessoresPorDepartamento( $professores );
+		return $departamentoV->relProfessoresPorDepartamento( $professores );
 	break;
-	case 'printDepartamentos':
+	case 'relProfessoresDepartamento':
 		$departamentoC = new DepartamentoController();
 		$departamentos = $departamentoC->getDepartamentos();
 		$departamentoV = new DepartamentoV();
-		return $departamentoV->listDepartamentos( $departamentos );
+		return $departamentoV->relProfessoresDepartamento( $departamentos );
 	break;
 	case 'printFormCadProfessor':
 		$departamentoC = new DepartamentoController();
