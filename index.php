@@ -19,7 +19,7 @@
 			<?php include 'app/views/header.php'; ?>
             <div id="page">
                 <div id="content">
-					<?php include 'app/content/sobre.php'; ?>
+					<?php include 'app/views/sobre.php'; ?>
                 </div>
                 <div id="sidebar">
                     <?php include 'app/views/menuCadastro.php'; ?>
