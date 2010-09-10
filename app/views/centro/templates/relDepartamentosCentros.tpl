@@ -10,18 +10,20 @@
 	<br />
 	<div id="departamentosPorCentro" ></div>
 {/if}
-{if $option eq diretoresPorCentro}
+{if $option eq departamentosPorCentro}
 	<table class="aatable">
 		<tr>
 			<th>Nome</th>
+			<th>Sigla</th>
 		</tr>
-		{foreach from=$diretores item=diretor}
+		{foreach from=$departamentos item=departamento}
 			<tr>
-		    	<td>{$diretor->nome} {$diretor->sobrenome}</td>
+		    	<td>{$departamento->nome}</td>
+		    	<td>{$departamento->sigla}</td>
 		    </tr>	    
 		{foreachelse}
 			<tr>
-		    	<td>Nenhum diretor cadastrado para o centro selecionado</td>
+		    	<td colspan="2">Nenhum departamento cadastrado para o centro selecionado</td>
 		    </tr>
 		{/foreach}
 	</table>	

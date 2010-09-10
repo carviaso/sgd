@@ -45,5 +45,10 @@ class CentroController {
 		$centroDAO = new Centro();
 		return $centroDAO->relDiretorPorCentro( $idCentro );
 	}
+
+	public function relDepartamentoPorCentro( $idCentro ) {
+		$centroDAO = new Centro();
+		return $centroDAO->relDepartamentoPorCentro( $idCentro );
+	}
 }
 ?>
