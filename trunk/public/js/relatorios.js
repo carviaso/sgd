@@ -18,7 +18,6 @@ var relatorios = {
 				}).selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 			});
 		});
-		
 		$("#relProfessoresDepartamento").click(function() {
 			var params = { "action":"relProfessoresDepartamento" };
 			$('#content').load("app/frontController.php", params, function() {
@@ -29,12 +28,12 @@ var relatorios = {
 				});
 			});
 		});
-		$("#departamentosPorCentro").click(function() {
-			var params = { "action":"printCentros" };
+		$("#relDepartamentoCentro").click(function() {
+			var params = { "action":"relDepartamentoCentro" };
 			$('#content').load("app/frontController.php", params, function() {
 				$("#selectCentros").change(function() {
 					var idCentro = $(this).val();
-					var params = { "action":"getDepartamentosPorCentro", 'idCentro': idCentro };
+					var params = { "action":"relDepartamentoPorCentro", 'idCentro': idCentro };
 					$('#departamentosPorCentro').load("app/frontController.php", params);
 				});
 			});

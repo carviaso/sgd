@@ -72,6 +72,25 @@ class Centro {
 		}
 		return $diretores;
 	}
+
+	function relDepartamentoPorCentro( $idCentro ) {
+		$conexao = Conexao::con();
+		$departamentos = array();
+
+		$sql[] = "select * from departamento where id_centro = {$idCentro}";
+
+		$query = mysqli_query( $conexao, join( ' ', $sql ) );
+
+		while ( $row = mysqli_fetch_array( $query ) ) {
+			$departamento = new stdClass;
+			$departamento->idDepartamento = $row['id_departamento'];
+			$departamento->idCentro = $row['id_centro'];
+			$departamento->nome = utf8_encode( $row['nome'] );
+			$departamento->sigla = utf8_encode( $row['sigla'] );
+			$departamentos[] = $departamento;
+		}
+		return $departamentos;
+	}
 }
 
 ?>

@@ -14,7 +14,7 @@
 		<br />
 		<h2>Relat&oacute;rios Espec&iacute;ficos</h2>
 		<ul>
-			<li><a href="javascript:void(0);" id="departamentosPorCentro">Departamentos por Centro</a></li>
+			<li><a href="javascript:void(0);" id="relDepartamentoCentro">Departamentos por Centro</a></li>
 		</ul>
 	</li>
 </ul>

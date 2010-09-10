@@ -64,6 +64,18 @@ switch ($action) {
 		$centroV = new CentroV();
 		return $centroV->relDiretorPorCentro( $diretores );
 	break;
+	case 'relDepartamentoCentro':
+		$centroC = new CentroController();
+		$centros = $centroC->getCentros();
+		$centroV = new CentroV();
+		return $centroV->relDepartamentoCentro( $centros );
+	break;
+	case 'relDepartamentoPorCentro':
+		$centroC = new CentroController();
+		$departamentos = $centroC->relDepartamentoPorCentro( $_POST['idCentro'] );
+		$centroV = new CentroV();
+		return $centroV->relDepartamentoPorCentro( $departamentos );
+	break;
 	case 'relProfessoresPorDepartamento':
 		$departamentoC = new DepartamentoController();
 		$professores = $departamentoC->getProfessoresPorDepartamento( $_POST['idDepartamento'] );
