@@ -11,4 +11,4 @@
 	<input type="radio" id="dedicacaoExclusivaNao" name="dedicacaoExclusiva" value="0" />
 </div>
 <p></p>
-<p><button id="cadastrarRegimeTrabalho">Cadastrar</button></p>
+<p><button id="cadastrarRegimeTrabalho" class="right">Cadastrar</button></p>

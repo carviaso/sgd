@@ -20,4 +20,4 @@
 <div>Data de in&iacute;cio</div>
 <input type="text" id="dataInicio" class="ui-state-default ui-corner-all width100" />
 <p></p>
-<button id="cadastrarRegimeTrabalho">Cadastrar</button>
+<button id="cadastrarRegimeTrabalho" class="right">Cadastrar</button>

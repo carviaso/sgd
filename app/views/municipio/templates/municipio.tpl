@@ -9,5 +9,5 @@
 </select>
 <p></p>
 <p>
-	<button id="cadastrarMunicipio">Cadastrar</button>
+	<button id="cadastrarMunicipio" class="right">Cadastrar</button>
 </p>
