@@ -7,5 +7,5 @@
 </p>
 <p></p>
 <p>
-	<button id="cadastrarPais">Cadastrar</button>
+	<button id="cadastrarPais" class="right">Cadastrar</button>
 </p>

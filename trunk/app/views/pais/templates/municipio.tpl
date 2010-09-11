@@ -11,4 +11,4 @@
 </select>
 <p></p>  
 
-<p><button id="cadastrarUf">Cadastrar</button></p>
+<p><button id="cadastrarUf" class="right">Cadastrar</button></p>
