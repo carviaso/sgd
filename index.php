@@ -35,6 +35,7 @@
         <script type="text/javascript" src="public/js/loader.js"></script>
         <script type="text/javascript" src="public/js/cadastros.js"></script>
         <script type="text/javascript" src="public/js/professores.js"></script>
+        <script type="text/javascript" src="public/js/formularios.js"></script>
         <script type="text/javascript" src="public/js/relatorios.js"></script>
     </body>
 </html>
