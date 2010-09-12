@@ -72,7 +72,7 @@ input {
 Header 
 */
 #header {
-    width: 710px;
+    width: 960px;
     height: 96px;
     margin: 0 auto;
     background: url(images/img05.gif) no-repeat left bottom;
@@ -134,14 +134,14 @@ Header
 }
 /* Page */
 #page {
-    width: 710px;
+    width: 960px;
     margin: 0 auto;
     background: #D4C792 url(images/img04.gif) repeat-y;
 }
 /* Content */
 #content {
     float: left;
-    width: 388px;
+    width: 550px;
     padding: 30px 0 0 35px;
 }
 #content h1, #content h2, #content h3 {
@@ -216,7 +216,7 @@ Header
 }
 /* Footer */
 #footer {
-    width: 710px;
+    width: 960px;
     height: 50px;
     margin: 0 auto;
     padding: 40px 0 0 0;
