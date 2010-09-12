@@ -1,8 +1,8 @@
 var formularios = {
 	loadMenu: function() {
-		$("#relCentros").click(function() {
+		$("#avaliacaoDesempenho").click(function() {
 			gb.processing();
-			var params = { "action":"relCentros" };
+			var params = { "action":"avaliacaoDesempenho" };
 			$('#content').load("app/frontController.php", params, function(){
 				gb.processingClose();
 			});
