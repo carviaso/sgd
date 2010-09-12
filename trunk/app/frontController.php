@@ -241,6 +241,14 @@ switch ($action) {
 		$mesesDiff = $dataHelper->dataDiff( $dataInicio, $dataPrevisaoTermino );
 		echo json_encode( $mesesDiff );
 	break;
+	case 'printFormCadAvaliacaoDesempenho':
+//		$avaliacaoDesempenhoC = new AvaliacaoDesempenhoController();
+		$avaliacaoDesempenhoV = new AvaliacaoDesempenhoV();
+		//$regimeTrabalhoC = new RegimeTrabalhoController();
+		//extract( $_POST );
+		$avaliacaoDesempenhoV->printFormCadAvaliacaoDesempenho();
+	break;
+
 }
 
 ?>
