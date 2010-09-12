@@ -29,6 +29,16 @@ var principal = {
 			});
 		});
 	},
+	loadNavFormulario: function() {
+		$(".navFormulario").click(function() {
+			gb.processing();
+			$('#content').load('app/views/formulario.php');
+			$('#sidebar').load('app/views/menuFormulario.php', function() {
+				formularios.loadMenu();
+				gb.processingClose();
+			});
+		});
+	},
 	loadNavSobre: function() {
 		$(".navSobre").click(function() {
 			gb.processing();
@@ -41,4 +51,5 @@ var principal = {
 principal.loadNavCadastro();
 principal.loadNavProfessor();
 principal.loadNavRelatorio();
+principal.loadNavFormulario();
 principal.loadNavSobre();
