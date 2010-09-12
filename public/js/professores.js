@@ -3,34 +3,34 @@ var professores = {
 		$("#cadProfessor").click(function() {
 			gb.processing();
 			var params = { "action":"printFormCadProfessor" };
-			$('#content').load("app/frontController.php", params, function() {
+			$('#content').html('').load("app/frontController.php", params, function() {
 				$("#dataNascimento, #dataAdmissao, #dataAdmissaoUfsc, #dataPrevistaAposentadoria, #dataEfetivaAposentadoria")
 					.mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
 				$("#cadastrarProfessor").button().click(function() {
 					professores.valida();
 				});
 				$("#radio").buttonset();
-				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				$('#content select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
 			});
 		});
 		$("#cadRegimeTrabalhoProfessor").click(function() {
 			gb.processing();
 			var params = { "action":"printFormCadRegTrabProfessor" };
-			$('#content').load("app/frontController.php", params, function() {
+			$('#content').html('').load("app/frontController.php", params, function() {
 				$("#dataInicio").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
 				$("#cadastrarRegimeTrabalho").button().click(function() {
 					professores.regimeTrabalho.valida();
 				});
-				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				$('#content select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
 			});
 		});
 		$("#cadAfastamentoProfessor").click(function() {
 			gb.processing();
 			var params = { "action":"printFormCadAfastamentoProfessor" };
-			$('#content').load("app/frontController.php", params, function() {
-				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+			$('#content').html('').load("app/frontController.php", params, function() {
+				$('#content select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				$("#radio").buttonset();
 				$("#dataInicio, #dataPrevisaoTermino").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
 				$('#dataInicio, #dataPrevisaoTermino').change(function() {
@@ -55,12 +55,12 @@ var professores = {
 		$("#cadProgressaoFuncionalProfessor").click(function() {
 			gb.processing();
 			var params = { "action":"printFormCadProgFuncProfessor" };
-			$('#content').load("app/frontController.php", params, function() {
+			$('#content').html('').load("app/frontController.php", params, function() {
 				$("#dataInicio, #dataAvaliacao").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
 				$("#cadastrarProgressaoFuncionalProfessor").button().click(function() {
 					professores.progressaoFuncionalProfessor.valida();
 				});
-				$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				$('#content.select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
 			});
 		});

@@ -34,7 +34,8 @@ http://jqueryui.com/themeroller/#ffDefault=Verdana%2CArial%2Csans-serif&fwDefaul
 .width25 { width: 25%; }
 .width10 { width: 10%; }
 body {
-    background: #D4C792 url(images/img01.gif);
+    /*background: #D4C792 url(images/img01.gif);*/
+    background: #CFB75A;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
     color: #333333;
@@ -72,10 +73,10 @@ input {
 Header 
 */
 #header {
-    width: 710px;
+    width: 960px;
     height: 96px;
     margin: 0 auto;
-    background: url(images/img05.gif) no-repeat left bottom;
+    background-color: #808080;
 }
 /* Logo */
 #logo {
@@ -121,7 +122,7 @@ Header
     height: 20px;
     margin: 0;
     padding: 10px 0 0 0;
-    background: url(images/img02.gif);
+    /*background: url(images/img02.gif);*/
     text-align: center;
     text-transform: uppercase;
     font-size: 11px;
@@ -129,19 +130,19 @@ Header
     color: #FFFFFF;
 }
 #menu a:hover, #menu .active a {
-    background-image: url(images/img03.gif);
-    color: #AA2808;
+    /*background-image: url(images/img03.gif);*/
+    color: #CFA500;
 }
 /* Page */
 #page {
-    width: 710px;
+    width: 960px;
     margin: 0 auto;
-    background: #D4C792 url(images/img04.gif) repeat-y;
+    background: #CFCFCF;
 }
 /* Content */
 #content {
     float: left;
-    width: 388px;
+    width: 600px;
     padding: 30px 0 0 35px;
 }
 #content h1, #content h2, #content h3 {
@@ -189,21 +190,21 @@ Header
     padding: 5px 20px;	
     border-bottom: 1px dotted #FFFFFF;
     font-size: 100%;
-    color: #D4C792;
+    color: #CFA500;
 }
 #sidebar h3 {
     font-size: 77%;
-    color: #D4C792;
+    color: #CFA500;
 }
 #sidebar p {
     margin: 0;
     line-height: normal;
-    color: #D4C792;
+    color: #CFA500;
 }
 #sidebar a {
     border: none;
     text-decoration: none;
-    color: #FFFFFF;
+    color: #333333;
 }
 #sidebar a:hover {
     text-decoration: underline;
@@ -216,11 +217,11 @@ Header
 }
 /* Footer */
 #footer {
-    width: 710px;
+    width: 960px;
     height: 50px;
     margin: 0 auto;
     padding: 40px 0 0 0;
-    background: url(images/img06.gif) no-repeat;
+    background-color: #808080;
     color: #FFFFFF;
 }
 #footer p {
