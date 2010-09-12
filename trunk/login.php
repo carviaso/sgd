@@ -17,24 +17,28 @@
 			<?php include 'app/views/header.php'; ?>
             <div id="page">
                 <div id="content">
-					<?php //include 'app/views/sobre.php'; ?>
+					<?php include 'app/views/sobre.php'; ?>
                 </div>
                 <div id="sidebar">
-                    <?php //include 'app/views/menuCadastro.php'; ?>
+                    <?php include 'app/views/menuCadastro.php'; ?>
                 </div>
                 <div style="clear: both; height: 1px"></div>
             </div>
             <?php include 'app/views/footer.php'; ?>
         </div>
         <script type="text/javascript" src="public/js/jquery-1.4.2.min.js"></script>
+        <!--
         <script type="text/javascript" src="public/js/jquery-ui-1.8.4.custom.min.js"></script>
         <script type="text/javascript" src="public/js/locate/jquery.ui.datepicker-pt-BR.js"></script>
         <script type="text/javascript" src="public/js/jquery.maskedinput-1.2.2.min.js"></script>
         <script type="text/javascript" src="public/js/ui.selectmenu.js"></script>
+         -->
         <script type="text/javascript" src="public/js/globals.js"></script>
+        <!--
         <script type="text/javascript" src="public/js/loader.js"></script>
         <script type="text/javascript" src="public/js/cadastros.js"></script>
         <script type="text/javascript" src="public/js/professores.js"></script>
         <script type="text/javascript" src="public/js/relatorios.js"></script>
+         -->
     </body>
 </html>
