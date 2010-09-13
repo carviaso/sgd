@@ -37,7 +37,7 @@ var principal = {
 				formularios.loadMenu();
 				gb.processingClose();
 			});
-		});
+		}).click();
 	},
 	loadNavSobre: function() {
 		$(".navSobre").click(function() {

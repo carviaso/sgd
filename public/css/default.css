@@ -260,10 +260,30 @@ table.aatable tr td {
     border-width:1px;
 }
 table.avaliacaoDesempenho {
-	border: 1px solid #000000;
+	border: 1px solid #FFFFFF;
+	border-collapse: collapse;
 }
 table.avaliacaoDesempenho tr td {
-	border: 1px solid #000000;
+	border: 1px solid #FFFFFF;
+	background-color: #6F6F6F;
+	color: white;
+	padding: 3px;
+}
+table.avaliacaoDesempenho tr th {
+	border: 1px solid #FFFFFF;
+	background-color: #333333;
+	color: white;
+	padding: 3px;
+}
+table.avaliacaoDesempenho tr td input {
+	width: 98%;
+	border: 1px solid #333333;
+	text-align: center;
+}
+table.avaliacaoDesempenho tr td input.nota {
+	width: 25px;
+	border: 1px solid #333333;
+	text-align: center;
 }
 #note {  
     font-size:7pt;    
