@@ -259,6 +259,12 @@ table.aatable tr td {
     border-style:solid;
     border-width:1px;
 }
+table.avaliacaoDesempenho {
+	border: 1px solid #000000;
+}
+table.avaliacaoDesempenho tr td {
+	border: 1px solid #000000;
+}
 #note {  
     font-size:7pt;    
     color:black;     
