@@ -5,6 +5,10 @@ A provável origem do termo é a semelhança do contorno de expressões CamelCas
 
 Há controvérsias quanto ao conceito e utilização do camelCase. Algumas referências quanto ao uso do camelCase para codificação de programas de computadores ditam que o camelCase segue a regra que a primeira letra da primeira palavra deve ser escrita em minúscula enquanto que a primeira letra das palavras subsequentes concatenadas devem ser escritas em maiúsculas.
 
+WikiWordLink
+[http://domain/page label]
+http://domain/page
+
 Já as iniciais de cada palavras sendo escritas em maiúsculas corresponde as regras do ProperCase ou como descrito por alguns como PascalCase.
 
 http://pt.wikipedia.org/wiki/CamelCase
