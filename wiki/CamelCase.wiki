@@ -1,0 +1,11 @@
+#labels Phase-Implementation
+CamelCase é a denominação em inglês para a prática de escrever palavras compostas ou frases, onde cada palavra é iniciada com Maiúsculas e unidas sem espaços. É um padrão largamente utilizado em diversas linguagens de programação, como Java, Ruby, PHP  e Python, principalmente nas definições de Classes e Objetos. Pela sua associação com tecnologia, o marketing se apropriou dessa maneira de escrever, injetando certo ar de "tecnologia" nos produtos assim nomeados: iPod, GameCube, OpenOffice.org, StarCraft, dentre outros.
+
+A provável origem do termo é a semelhança do contorno de expressões CamelCase, onde as letras em maiúsculo "saltam" no meio das minúsculas como corcovas de um camelo.
+
+Há controvérsias quanto ao conceito e utilização do camelCase. Algumas referências quanto ao uso do camelCase para codificação de programas de computadores ditam que o camelCase segue a regra que a primeira letra da primeira palavra deve ser escrita em minúscula enquanto que a primeira letra das palavras subsequentes concatenadas devem ser escritas em maiúsculas.
+
+Já as iniciais de cada palavras sendo escritas em maiúsculas corresponde as regras do ProperCase ou como descrito por alguns como PascalCase.
+
+http://pt.wikipedia.org/wiki/CamelCase
+Acessado em (12/09/2010)
