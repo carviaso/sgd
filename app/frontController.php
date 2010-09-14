@@ -155,6 +155,20 @@ switch ($action) {
 		$professores = $professorC->getAllProfessores();
 		$professorC->listarProfessores( $professores );
 	break;
+	case 'getAllProfessoresJson':
+		$professorC = new ProfessorController();
+		extract( $_POST );
+		$page = $page;
+		// get the requested page
+		$limit = $rows;
+		// get how many rows we want to have into the grid
+		$sidx = $sidx;
+		// get index row - i.e. user click to sort
+		$sord = $sord;
+
+		$professores = $professorC->getAllProfessoresJson( $page, $limit, $sidx, $sord );
+		//$professorC->listarProfessores( $professores );
+	break;
 	case 'printFormCadPais':
 		$paisV = new PaisV();
 		$paisV->printFormCadPais();

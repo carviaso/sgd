@@ -269,6 +269,9 @@ table.avaliacaoDesempenho tr td {
 	color: white;
 	padding: 3px;
 }
+table.avaliacaoDesempenho tr td:last-child {
+	text-align: center;
+}
 table.avaliacaoDesempenho tr th {
 	border: 1px solid #FFFFFF;
 	background-color: #333333;
@@ -285,6 +288,7 @@ table.avaliacaoDesempenho tr td input.nota {
 	border: 1px solid #333333;
 	text-align: center;
 }
+#totalPontoPag1 { color: white; font-weight: bold; text-decoration: none; }
 #note {  
     font-size:7pt;    
     color:black;     

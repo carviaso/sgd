@@ -41,6 +41,21 @@ class Professor {
 	}
 
 	/**
+	 * Total de professores
+	 *
+	 * @return array
+	 */
+	function countTotalProfessores() {
+		$conexao = Conexao::con();
+
+		$sql[] = "SELECT COUNT(*) AS count FROM professor";
+		$query = mysqli_query( $conexao, join( '', $sql ) );
+
+		$count = mysqli_fetch_array( $query, MYSQL_ASSOC );
+		return $count['count'];
+	}
+
+	/**
 	 * Retorna todos os professores por departamento
 	 *
 	 * @param int $idDepartamento
