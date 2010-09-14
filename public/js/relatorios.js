@@ -56,13 +56,16 @@ var relatorios = {
 			$('#content').load("app/frontController.php", params, function() {
 
 				$("#listaProfessores").jqGrid({url:'app/frontController.php',
-									mtype: 'POST',
-									datatype: "json",
-									colNames:['Id', 'Nome',],
-									colModel:[	{name:'id_professor',index:'id_professor', width:300},
-									          	{name:'nome',index:'nome', width:300} ],
+								    mtype: 'POST',
+								    datatype: "json",
+									colNames:['Id', 'Nome', 'Matricula', 'Siape', 'Acao'],
+									colModel:[	{name:'id_professor',index:'id_professor', width:35},
+									          	{name:'nome',index:'nome', width:275},
+									          	{name:'matricula',index:'matricula', width:90},
+									          	{name:'siape',index:'siape', width:100},
+									          	{name:'acao',index:'acao', width:100}	],
 									rowNum:50, rowList:[50,100,200],
-									pager: '#pager2',
+									pager: '#pagerListaProfessores',
 									sortname: 'id_professor',
 									viewrecords: true,
 									sortorder: "asc",
@@ -71,8 +74,11 @@ var relatorios = {
 									postData: {'action':"getAllProfessoresJson"},
 									loadComplete: function() {
 										gb.processingClose();
-										$('#rrr').click(function() {
-											alert('okoko');
+										$('.detalhes').click(function() {
+											alert('detalhes');
+										});
+										$('.progressaoFuncional').click(function() {
+											alert('Progressao Funcional');
 										});
 									}
 				});
