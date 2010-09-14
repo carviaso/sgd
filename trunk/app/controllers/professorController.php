@@ -20,6 +20,44 @@ class ProfessorController {
 	}
 
 	/**
+	 * Retorna um array com todos os professores no formato json para preenchimento de datatable
+	 *
+	 * @return json
+	 */
+	public function getAllProfessoresJson( $page, $limit, $sidx, $sord ) {
+		$professorDAO = new Professor();
+		$count = $professorDAO->countTotalProfessores();
+
+		if( $count > 0 ) {
+			$total_pages = ceil( $count / $limit );
+		} else {
+			$total_pages = 0;
+		}
+		if ( $page > $total_pages ) {
+			$page = $total_pages;
+		}
+		$start = $limit * $page - $limit;
+
+		// Obtem a direcao
+		if(!$sidx) $sidx =1;
+
+		$conexao = Conexao::con();
+		$sql = "SELECT id_professor, nome FROM professor ORDER BY $sidx $sord LIMIT $start, $limit";
+		$query = mysqli_query( $conexao, $sql );
+		$responce->page = $page;
+		$responce->total = $total_pages;
+		$responce->records = $count;
+		$i=0;
+		while ( $row = mysqli_fetch_array( $query ) ) {
+			$responce->rows[$i]['id']=$row['id_professor'];
+			$responce->rows[$i]['cell'] = array($row['id_professor'],$row['nome'] );
+			$i++;
+		}
+
+		echo json_encode($responce);
+	}
+
+	/**
 	 * Retorna um array com todos os objetos Professores por centro
 	 *
 	 * @return array

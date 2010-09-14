@@ -27,7 +27,7 @@ var principal = {
 				relatorios.loadMenu();
 				gb.processingClose();
 			});
-		});
+		}).click();
 	},
 	loadNavFormulario: function() {
 		$(".navFormulario").click(function() {
@@ -37,7 +37,7 @@ var principal = {
 				formularios.loadMenu();
 				gb.processingClose();
 			});
-		}).click();
+		});
 	},
 	loadNavSobre: function() {
 		$(".navSobre").click(function() {

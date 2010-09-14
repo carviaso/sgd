@@ -54,7 +54,29 @@ var relatorios = {
 			gb.processing();
 			var params = { "action":"listarProfessores" };
 			$('#content').load("app/frontController.php", params, function() {
-				gb.processingClose();
+
+				$("#listaProfessores").jqGrid({url:'app/frontController.php',
+									mtype: 'POST',
+									datatype: "json",
+									colNames:['Id', 'Nome',],
+									colModel:[	{name:'id_professor',index:'id_professor', width:300},
+									          	{name:'nome',index:'nome', width:300} ],
+									rowNum:50, rowList:[50,100,200],
+									pager: '#pager2',
+									sortname: 'id_professor',
+									viewrecords: true,
+									sortorder: "asc",
+									height:'350',
+									caption:"Professores",
+									postData: {'action':"getAllProfessoresJson"},
+									loadComplete: function() {
+										gb.processingClose();
+										$('#rrr').click(function() {
+											alert('okoko');
+										});
+									}
+				});
+				$("#listaProfessores").jqGrid('navGrid','#pagerListaProfessores',{edit:false,add:false,del:false});
 			} );
 		});
 	}
