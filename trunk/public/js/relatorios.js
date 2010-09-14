@@ -70,7 +70,7 @@ var relatorios = {
 									viewrecords: true,
 									sortorder: "asc",
 									height:'350',
-									caption:"Professores",
+									caption:"Relatorio de Professores",
 									postData: {'action':"getAllProfessoresJson"},
 									loadComplete: function() {
 										gb.processingClose();

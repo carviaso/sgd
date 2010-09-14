@@ -76,7 +76,7 @@ class Professor {
 
 			$return->rows[$i]['cell'] = array(
 												$row['id_professor'],
-												( utf8_decode( $row['nome'] . ' ' . $row['sobrenome'] ) ),
+												( utf8_encode( $row['nome'] . ' ' . $row['sobrenome'] ) ),
 												$row['matricula'],
 												$row['siape'],
 												"<div class='detalhes'>Detalhes</div><div class='progressaoFuncional'>Progressao Funcional</div>"
