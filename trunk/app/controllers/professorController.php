@@ -37,24 +37,9 @@ class ProfessorController {
 			$page = $total_pages;
 		}
 		$start = $limit * $page - $limit;
+		if( !$sidx ) $sidx = 1;
 
-		// Obtem a direcao
-		if(!$sidx) $sidx =1;
-
-		$conexao = Conexao::con();
-		$sql = "SELECT id_professor, nome FROM professor ORDER BY $sidx $sord LIMIT $start, $limit";
-		$query = mysqli_query( $conexao, $sql );
-		$responce->page = $page;
-		$responce->total = $total_pages;
-		$responce->records = $count;
-		$i=0;
-		while ( $row = mysqli_fetch_array( $query ) ) {
-			$responce->rows[$i]['id']=$row['id_professor'];
-			$responce->rows[$i]['cell'] = array($row['id_professor'],$row['nome'] );
-			$i++;
-		}
-
-		echo json_encode($responce);
+		echo json_encode( $professorDAO->getAllProfessoresJson( $start, $limit, $sidx, $sord, $count, $total_pages, $page ) );
 	}
 
 	/**

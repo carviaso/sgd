@@ -56,6 +56,37 @@ class Professor {
 	}
 
 	/**
+	 * Retorna um array com todos os professores no formato json para preenchimento de datatable
+	 *
+	 * @return json
+	 */
+	function getAllProfessoresJson( $start, $limit, $sidx, $sord, $count, $total_pages, $page ) {
+
+		$professores = array();
+		$conexao = Conexao::con();
+
+		$sql[] = "SELECT * FROM professor ORDER BY $sidx $sord LIMIT $start, $limit";
+		$query = mysqli_query( $conexao, join( '', $sql ) );
+		$return->page = $page;
+		$return->total = $total_pages;
+		$return->records = $count;
+		$i = 0;
+		while ( $row = mysqli_fetch_array( $query ) ) {
+			$return->rows[$i]['id'] = $row['id_professor'];
+
+			$return->rows[$i]['cell'] = array(
+												$row['id_professor'],
+												( utf8_decode( $row['nome'] . ' ' . $row['sobrenome'] ) ),
+												$row['matricula'],
+												$row['siape'],
+												"<div class='detalhes'>Detalhes</div><div class='progressaoFuncional'>Progressao Funcional</div>"
+											);
+			$i++;
+		}
+		return $return;
+	}
+
+	/**
 	 * Retorna todos os professores por departamento
 	 *
 	 * @param int $idDepartamento
