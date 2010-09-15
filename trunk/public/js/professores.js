@@ -344,6 +344,22 @@ var professores = {
 					gb.errorMessage( msg, 'Cadastro de Progressao Funcional de Professor' );
 				}
 			}, "json" );
+		},
+		mostraDetalhesProfessor: function( idProfessor ) {
+			var params = {	'action':'mostraDetalhesProfessor',
+							'idProfessor':idProfessor
+						};
+			$('#auxiliarOculta').html('').hide().load("app/frontController.php", params, function() {
+				gb.message( $('#auxiliarOculta').html() );
+			});
+		},
+		mostraProgressaoFuncional: function( idProfessor ) {
+			var params = {	'action':'mostraProgressaoFuncional',
+							'idProfessor':idProfessor
+						};
+			$('#auxiliarOculta').html('').hide().load("app/frontController.php", params, function() {
+				gb.message( $('#auxiliarOculta').html() );
+			});
 		}
 	}
 };

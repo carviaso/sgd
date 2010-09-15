@@ -166,6 +166,31 @@ class ProfessorController {
 		return $professorV->listarProfessores( $professores );
 	}
 
+	/**
+	 * Mostra os detalhes do professor desejado
+	 *
+	 * @return -----
+	 */
+	public function mostraDetalhesProfessor( $idProfessor ) {
+		//@todo buscar os dados do professor do banco de dados
+		//$professorC = new ProfessorController();
+		//$professor = $professorC->getProfessorPorId( $idProfessores );
+		$professorV = new ProfessorV();
+		$professorV->mostraDetalhesProfessor( $idProfessor );
+	}
+
+	/**
+	 * Mostra os detalhes do professor desejado
+	 *
+	 * @return -----
+	 */
+	public function mostraProgressaoFuncional( $idProfessor ) {
+		//@todo buscar os dados da progressao do professor no banco de dados
+		//$professorC = new ProfessorController();
+		//$professor = $professorC->getProfessorPorId( $idProfessores );
+		$professorV = new ProfessorV();
+		$professorV->mostraProgressaoFuncional( $idProfessor );
+	}
 
 }
 ?>
