@@ -7,10 +7,17 @@
         <title>SGD - Sistema de Gest&atilde;o de Docentes</title>
         <link type="text/css" href="public/css/default.css" rel="stylesheet"  />
         <link type="text/css" href="public/css/base/jquery.ui.all.css" rel="stylesheet"  />
+
         <!--
         <link type="text/css" href="public/css/custom-theme/jquery-ui-1.8.4.custom.css" rel="stylesheet"  />
          -->
+
         <link type="text/css" href="public/css/ui.jqgrid.css" rel="stylesheet"  />
+
+        <!--
+        <link type="text/css" href="public/css/jquery.searchFilter.css" rel="stylesheet"  />
+         -->
+
         <link type="text/css" href="public/css/ui.selectmenu.css" rel="stylesheet"  />
     </head>
     <body>
@@ -33,6 +40,9 @@
         <script type="text/javascript" src="public/js/locate/jquery.ui.datepicker-pt-BR.js"></script>
         <script type="text/javascript" src="public/js/locate/grid.locale-pt-br.js"></script>
         <script type="text/javascript" src="public/js/jquery.jqGrid.min.js"></script>
+        <script type="text/javascript" src="public/js/jquery.searchFilter.js"></script>
+        <script type="text/javascript" src="public/js/grid.formedit.js"></script>
+        <script type="text/javascript" src="public/js/grid.common.js"></script>
         <script type="text/javascript" src="public/js/ui.selectmenu.js"></script>
         <script type="text/javascript" src="public/js/globals.js"></script>
         <script type="text/javascript" src="public/js/loader.js"></script>
