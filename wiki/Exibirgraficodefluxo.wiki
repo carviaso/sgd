@@ -1,0 +1,1 @@
+Exibir grafico de fluxo de funcionamento do sistema sgd
