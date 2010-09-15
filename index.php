@@ -32,6 +32,7 @@
                 </div>
                 <div style="clear: both; height: 1px"></div>
             </div>
+			<div id="auxiliarOculta"></div>
             <?php include 'app/views/footer.php'; ?>
         </div>
         <script type="text/javascript" src="public/js/jquery-1.4.2.min.js"></script>

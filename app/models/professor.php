@@ -74,10 +74,13 @@ class Professor {
 		while ( $row = mysqli_fetch_array( $query ) ) {
 			$return->rows[$i]['id'] = $row['id_professor'];
 
+			$idProfessor = $row['id_professor'];
+			$nomeCompleto = utf8_encode( $row['nome'] . ' ' . $row['sobrenome'] );
+
 			$return->rows[$i]['cell'] = array(
-												"<div class='detalhes'>Detalhes</div><div class='progressaoFuncional'>Progressao Funcional</div>",
-												$row['id_professor'],
-												( utf8_encode( $row['nome'] . ' ' . $row['sobrenome'] ) ),
+												"<div class='detalhesProfessor' title='Detalhes' id='{$idProfessor}'>&nbsp;</div><div class='detalhesProgressaoFuncional' title='Progressao Funcional' id='{$idProfessor}'>&nbsp;</div>",
+												$idProfessor,
+												$nomeCompleto,
 												$row['matricula'],
 												$row['siape']
 											);

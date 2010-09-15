@@ -63,6 +63,26 @@ class ProfessorV {
 		$smarty->assign( "emissao", date('d/m/Y H:i:s P') );
 		$smarty->display('listarProfessores.tpl');
 	}
+
+	function mostraDetalhesProfessor( $idProfessor ) {
+		$smarty = new Smarty();
+		$smarty->template_dir = 'views/professor/templates/';
+		$smarty->compile_dir  = '../tmp/templates_c/';
+		$smarty->cache_dir    = '../tmp/cache/';
+		$smarty->config_dir   = 'views/configs/';
+		$smarty->assign( "idProfessor", $idProfessor );
+		$smarty->display('mostraDetalhesProfessor.tpl');
+	}
+
+	function mostraProgressaoFuncional( $idProfessor ) {
+		$smarty = new Smarty();
+		$smarty->template_dir = 'views/professor/templates/';
+		$smarty->compile_dir  = '../tmp/templates_c/';
+		$smarty->cache_dir    = '../tmp/cache/';
+		$smarty->config_dir   = 'views/configs/';
+		$smarty->assign( "idProfessor", $idProfessor );
+		$smarty->display('mostraProgressaoFuncional.tpl');
+	}
 }
 
 ?>

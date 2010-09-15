@@ -54,13 +54,12 @@ var relatorios = {
 			gb.processing();
 			var params = { "action":"listarProfessores" };
 			$('#content').load("app/frontController.php", params, function() {
-
 				$("#listaProfessores").jqGrid({url:'app/frontController.php',
 									postData: {'action':"getAllProfessoresJson"},
-								    mtype: 'POST',
-								    datatype: "json",
+									mtype: 'POST',
+									datatype: "json",
 									colNames:['Acao', 'Id', 'Nome', 'Matricula', 'Siape' ],
-									colModel:[	{name:'acao',index:'acao', width:100, search:false },
+									colModel:[	{name:'acao',index:'acao', width:50, search:false },
 												{name:'id_professor',index:'id_professor', width:35, searchoptions: { sopt: ['eq', 'ne', 'cn']}},
 									          	{name:'nome',index:'nome', width:275, searchoptions: { sopt: ['eq', 'ne', 'cn']}},
 									          	{name:'matricula',index:'matricula', width:90, searchoptions: { sopt: ['eq', 'ne', 'cn']}},
@@ -75,12 +74,11 @@ var relatorios = {
 									height:'350',
 									caption:"Relatorio de Professores",
 									loadComplete: function() {
-									
-										$('.detalhes').click(function() {
-											alert('detalhes');
+										$('.detalhesProfessor').click(function() {
+											professores.progressaoFuncionalProfessor.mostraDetalhesProfessor( $(this).attr('id') );
 										});
-										$('.progressaoFuncional').click(function() {
-											alert('Progressao Funcional');
+										$('.detalhesProgressaoFuncional').click(function() {
+											professores.progressaoFuncionalProfessor.mostraProgressaoFuncional( $(this).attr('id') );
 										});
 										gb.processingClose();
 									}
