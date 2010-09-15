@@ -56,33 +56,39 @@ var relatorios = {
 			$('#content').load("app/frontController.php", params, function() {
 
 				$("#listaProfessores").jqGrid({url:'app/frontController.php',
+									postData: {'action':"getAllProfessoresJson"},
 								    mtype: 'POST',
 								    datatype: "json",
-									colNames:['Id', 'Nome', 'Matricula', 'Siape', 'Acao'],
-									colModel:[	{name:'id_professor',index:'id_professor', width:35},
-									          	{name:'nome',index:'nome', width:275},
-									          	{name:'matricula',index:'matricula', width:90},
-									          	{name:'siape',index:'siape', width:100},
-									          	{name:'acao',index:'acao', width:100}	],
+									colNames:['Acao', 'Id', 'Nome', 'Matricula', 'Siape' ],
+									colModel:[	{name:'acao',index:'acao', width:100, search:false },
+												{name:'id_professor',index:'id_professor', width:35, searchoptions: { sopt: ['eq', 'ne', 'cn']}},
+									          	{name:'nome',index:'nome', width:275, searchoptions: { sopt: ['eq', 'ne', 'cn']}},
+									          	{name:'matricula',index:'matricula', width:90, searchoptions: { sopt: ['eq', 'ne', 'cn']}},
+									          	{name:'siape',index:'siape', width:100, searchoptions: { sopt: ['eq', 'ne', 'cn']}}
+									          ],
 									rowNum:50, rowList:[50,100,200],
 									pager: '#pagerListaProfessores',
 									sortname: 'id_professor',
 									viewrecords: true,
 									sortorder: "asc",
+									width:'600',
 									height:'350',
 									caption:"Relatorio de Professores",
-									postData: {'action':"getAllProfessoresJson"},
 									loadComplete: function() {
-										gb.processingClose();
+									
 										$('.detalhes').click(function() {
 											alert('detalhes');
 										});
 										$('.progressaoFuncional').click(function() {
 											alert('Progressao Funcional');
 										});
+										gb.processingClose();
 									}
-				});
-				$("#listaProfessores").jqGrid('navGrid','#pagerListaProfessores',{edit:false,add:false,del:false});
+				}).navGrid("#pagerListaProfessores", {	refresh: true, 
+														edit: false,
+														add: false,
+														del: false,
+														search: true }, {},{},{}, {url:"app/frontController.php"});
 			} );
 		});
 	}
