@@ -1,0 +1,1 @@
+Analise da melhor disposicao dos elementos. Ex: Detalhes do professor.
