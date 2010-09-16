@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * http://www.tiagocardoso.com.br/conteudo/usando-jqgrid-com-busca-%E2%80%93-parte-iii/#more-185
+ */
+
 //Construtor de critérios
 function constructWhere($s){
     $qwery = "";
