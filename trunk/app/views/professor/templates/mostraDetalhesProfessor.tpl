@@ -1,23 +1,56 @@
 <table>
   <tr>
-    <th>Nome: {$professor->nome}</th>
+    <d>Nome: {$professor->nome}</td>
   </tr>
   <tr>
-    <td>Nome: {$professor->nome}</td>
+    <d>matricula: {$professor->matricula}</td>
   </tr>
   <tr>
-    <th>Nome: {$professor->nome}</th>
+    <d>siape: {$professor->siape}</td>
   </tr>
   <tr>
-    <th>Nome: {$professor->nome}</th>
+    <d>dataAdmissao: {$professor->dataAdmissao}</td>
   </tr>
   <tr>
-    <th>Nome: {$professor->nome}</th>
+    <d>dataAdmissaoUfsc: {$professor->dataAdmissaoUfsc}</td>
   </tr>
   <tr>
-    <th>Nome: {$professor->nome}</th>
+    <d>dataNascimento: {$professor->dataNascimento}</td>
   </tr>
   <tr>
-    <th>Nome: {$professor->nome}</th>
+    <d>aposentado: {$professor->aposentado}</td>
+  </tr>
+  <tr>
+    <d>dataPrevistaAposentadoria: {$professor->dataPrevistaAposentadoria}</td>
+  </tr>
+  <tr>
+    <d>dataEfetivaAposentadoria: {$professor->dataEfetivaAposentadoria}</td>
+  </tr>
+  <tr>
+    <d>Departamento: {$professor->nomeDepartamento} - ({$professor->siglaDepartamento})</td>
+  </tr>
+  <tr>
+    <d>Centro: {$professor->nomeCentro} - ({$professor->siglaCentro})</td>
+  </tr>
+  <tr>
+    <d>Instituicao: {$professor->nomeInstituicao} - ({$professor->siglaInstituicao})</td>
+  </tr>
+  <tr>
+    <d>CategoriaFuncionalInicial: {$professor->descCategoriaFuncionalInicial}</td>
+  </tr>
+  <tr>
+    <d>CategoriaFuncionalAtual: {$professor->descCategoriaFuncionalAtual}</td>
+  </tr>
+  <tr>
+    <d>TipoTitulacao: {$professor->descTipoTitulacao}</td>
+  </tr>
+  <tr>
+    <d>CategoriaFuncionalReferencia: {$professor->descCategoriaFuncionalReferencia}</td>
+  </tr>
+  <tr>
+    <d>Cargo: {$professor->descricaoCargo}</td>
+  </tr>
+  <tr>
+    <d>Situacao: {$professor->descricaoSituacao}</td>
   </tr>
 </table>
