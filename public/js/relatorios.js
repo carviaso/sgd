@@ -68,8 +68,8 @@ var relatorios = {
 									rowNum:50, rowList:[50,100,200],
 									pager: '#pagerListaProfessores',
 									sortname: 'id_professor',
-									viewrecords: true,
 									sortorder: "asc",
+									viewrecords: true,
 									shrinkToFit: false, // Exibir barra rolagem horizontal
 									width:'600',
 									height:'350',
