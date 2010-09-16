@@ -150,39 +150,36 @@ class Professor {
 			$professor->idCargo = $row['id_cargo'];
 			$professor->idSituacao = $row['id_situacao'];
 
-			$professor->nomeDepartamento = $row['nomeDepartamento'];
-			$professor->siglaDepartamento = $row['siglaDepartamento'];
+			$professor->nomeDepartamento = utf8_encode( $row['nomeDepartamento'] );
+			$professor->siglaDepartamento = utf8_encode( $row['siglaDepartamento'] );
 
 			$professor->idCentro = $row['id_centro'];
-			$professor->nomeCentro = $row['nomeCentro'];
-			$professor->siglaCentro = $row['siglaCentro'];
+			$professor->nomeCentro = utf8_encode( $row['nomeCentro'] );
+			$professor->siglaCentro = utf8_encode( $row['siglaCentro'] );
 
 			$professor->idInstituicao = $row['id_instituicao'];
 			$professor->idMunicipio = $row['id_municipio'];
-			$professor->nomeInstituicao = $row['nomeInstituicao'];
-			$professor->siglaInstituicao = $row['siglaInstituicao'];
+			$professor->nomeInstituicao = utf8_encode( $row['nomeInstituicao'] );
+			$professor->siglaInstituicao = utf8_encode( $row['siglaInstituicao'] );
 
 			$professor->idCategoriaFuncionalInicial = $row['idCategoriaFuncionalInicial'];
-			$professor->descCategoriaFuncionalInicial = $row['descCategoriaFuncionalInicial'];
+			$professor->descCategoriaFuncionalInicial = utf8_encode( $row['descCategoriaFuncionalInicial'] );
 
 			$professor->idCategoriaFuncionalAtual = $row['idCategoriaFuncionalAtual'];
-			$professor->descCategoriaFuncionalAtual = $row['descCategoriaFuncionalAtual'];
+			$professor->descCategoriaFuncionalAtual = utf8_encode( $row['descCategoriaFuncionalAtual'] );
 
 			$professor->idTipoTitulacao = $row['idTipoTitulacao'];
-			$professor->descTipoTitulacao = $row['descTipoTitulacao'];
+			$professor->descTipoTitulacao = utf8_encode( $row['descTipoTitulacao'] );
 
 			$professor->idCategoriaFuncionalReferencia = $row['idCategoriaFuncionalReferencia'];
-			$professor->descCategoriaFuncionalReferencia = $row['descCategoriaFuncionalReferencia'];
+			$professor->descCategoriaFuncionalReferencia = utf8_encode( $row['descCategoriaFuncionalReferencia'] );
 
 			$professor->idCargo = $row['idCargo'];
-			$professor->descricaoCargo = $row['descricaoCargo'];
+			$professor->descricaoCargo = utf8_encode( $row['descricaoCargo'] );
 
 			$professor->idSituacao = $row['idSituacao'];
-			$professor->descricaoSituacao = $row['descricaoSituacao'];
+			$professor->descricaoSituacao = utf8_encode( $row['descricaoSituacao'] );
 		}
-		echo "<pre>";
-		print_r($professor);
-		die;
 		return $professor;
 	}
 
