@@ -36,7 +36,8 @@ class ProfessorController {
 		if ( $page > $total_pages ) {
 			$page = $total_pages;
 		}
-		$start = abs( $limit * $page - $limit );
+		$start = $limit * $page - $limit;
+		if( $start < 0 ) $start = 0;
 		if( !$sidx ) $sidx = 1;
 
 		echo json_encode( $professorDAO->getAllProfessoresJson( $start, $limit, $sidx, $sord, $count, $total_pages, $page, $wh ) );
