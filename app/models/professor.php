@@ -19,7 +19,7 @@ class Professor {
 		$professores = array();
 		$conexao = Conexao::con();
 
-		$sql[] = "SELECT * FROM professor p ORDER by p.nome";
+		$sql[] = "SELECT * FROM professor p ORDER BY p.nome";
 		$query = mysqli_query( $conexao, join( '', $sql ) );
 
 		while ( $row = mysqli_fetch_array( $query ) ) {
@@ -45,6 +45,145 @@ class Professor {
 			$professores[] = $professor;
 		}
 		return $professores;
+	}
+
+	/**
+	 * Retorna o professor pelo id
+	 *
+	 * @return stdClass
+	 */
+	function getProfessorPorId( $idProfessores ) {
+
+		$conexao = Conexao::con();
+
+		$sql[] = "SELECT
+					p.id_professor,
+					CONCAT(p.nome , ' ', p.sobrenome) as nome,
+					p.sobrenome,
+					p.matricula,
+					p.siape,
+					p.data_admissao,
+					p.data_admissao_ufsc,
+					p.data_nascimento,
+					p.aposentado,
+					p.data_previsao_aposentadoria,
+					p.data_aposentadoria,
+					p.id_departamento,
+					p.id_categoria_funcional_inicial,
+					p.id_categoria_funcional_atual,
+					p.id_tipo_titulacao,
+					p.id_categoria_funcional_referencia,
+					p.id_cargo,
+					p.id_situacao,
+
+					d.id_centro,
+					d.nome as nomeDepartamento,
+					d.sigla as siglaDepartamento,
+
+					cen.nome as nomeCentro,
+					cen.sigla as siglaCentro,
+
+					i.id_instituicao,
+					i.id_municipio,
+					i.nome as nomeInstituicao,
+					i.sigla as siglaInstituicao,
+
+					cfi.id_categoria_funcional as idCategoriaFuncionalInicial,
+					cfi.descricao as descCategoriaFuncionalInicial,
+
+					cfa.id_categoria_funcional as idCategoriaFuncionalAtual,
+					cfa.descricao as descCategoriaFuncionalAtual,
+
+					cfr.id_categoria_funcional as idCategoriaFuncionalReferencia,
+					cfr.descricao as descCategoriaFuncionalReferencia,
+
+					tt.id_tipo_titulacao as idTipoTitulacao,
+					tt.descricao as descTipoTitulacao,
+
+					c.id_cargo as idCargo,
+					c.descricao_cargo as descricaoCargo,
+
+					s.id_situacao as idSituacao,
+					s.descricao_situacao as descricaoSituacao
+
+		FROM professor p";
+		$sql[] = "left join departamento d";
+		$sql[] = "on p.id_departamento = d.id_departamento";
+		$sql[] = "left join centro cen";
+		$sql[] = "on d.id_centro = cen.id_centro";
+		$sql[] = "left join instituicao i";
+		$sql[] = "on cen.id_instituicao = i.id_instituicao";
+		$sql[] = "left join categoria_funcional cfi";
+		$sql[] = "on p.id_categoria_funcional_inicial = cfi.id_categoria_funcional";
+		$sql[] = "left join categoria_funcional cfa";
+		$sql[] = "on p.id_categoria_funcional_atual = cfa.id_categoria_funcional";
+		$sql[] = "left join categoria_funcional cfr";
+		$sql[] = "on p.id_categoria_funcional_referencia = cfr.id_categoria_funcional";
+		$sql[] = "left join tipo_titulacao tt";
+		$sql[] = "on p.id_tipo_titulacao = tt.id_tipo_titulacao";
+		$sql[] = "left join cargo c";
+		$sql[] = "on p.id_cargo = c.id_cargo";
+		$sql[] = "left join situacao s";
+		$sql[] = "on p.id_situacao = s.id_situacao";
+
+		$sql[] = "WHERE id_professor = {$idProfessores} ORDER BY p.nome";
+
+		$query = mysqli_query( $conexao, join( ' ', $sql ) );
+
+		$professor = new stdClass();
+		while ( $row = mysqli_fetch_array( $query ) ) {
+			$professor->id_professor = $row['id_professor'];
+			$professor->nome = utf8_encode( $row['nome'] );
+			$professor->matricula = utf8_encode( $row['matricula'] );
+			$professor->siape = utf8_encode( $row['siape'] );
+			$professor->dataAdmissao = $row['data_admissao'];
+			$professor->dataAdmissaoUfsc = $row['data_admissao_ufsc'];
+			$professor->dataNascimento = $row['data_nascimento'];
+			$professor->aposentado = utf8_encode( $row['aposentado'] );
+			$professor->dataPrevistaAposentadoria = $row['data_previsao_aposentadoria'];
+			$professor->dataEfetivaAposentadoria = $row['data_aposentadoria'];
+			$professor->idDepartamento = $row['id_departamento'];
+			$professor->idCategoriaFuncionalInicial = $row['id_categoria_funcional_inicial'];
+			$professor->idCategoriaFuncionalAtual = $row['id_categoria_funcional_atual'];
+			$professor->idTipoTitulacao = $row['id_tipo_titulacao'];
+			$professor->idCategoriaFuncionalReferencia = $row['id_categoria_funcional_referencia'];
+			$professor->idCargo = $row['id_cargo'];
+			$professor->idSituacao = $row['id_situacao'];
+
+			$professor->nomeDepartamento = $row['nomeDepartamento'];
+			$professor->siglaDepartamento = $row['siglaDepartamento'];
+
+			$professor->idCentro = $row['id_centro'];
+			$professor->nomeCentro = $row['nomeCentro'];
+			$professor->siglaCentro = $row['siglaCentro'];
+
+			$professor->idInstituicao = $row['id_instituicao'];
+			$professor->idMunicipio = $row['id_municipio'];
+			$professor->nomeInstituicao = $row['nomeInstituicao'];
+			$professor->siglaInstituicao = $row['siglaInstituicao'];
+
+			$professor->idCategoriaFuncionalInicial = $row['idCategoriaFuncionalInicial'];
+			$professor->descCategoriaFuncionalInicial = $row['descCategoriaFuncionalInicial'];
+
+			$professor->idCategoriaFuncionalAtual = $row['idCategoriaFuncionalAtual'];
+			$professor->descCategoriaFuncionalAtual = $row['descCategoriaFuncionalAtual'];
+
+			$professor->idTipoTitulacao = $row['idTipoTitulacao'];
+			$professor->descTipoTitulacao = $row['descTipoTitulacao'];
+
+			$professor->idCategoriaFuncionalReferencia = $row['idCategoriaFuncionalReferencia'];
+			$professor->descCategoriaFuncionalReferencia = $row['descCategoriaFuncionalReferencia'];
+
+			$professor->idCargo = $row['idCargo'];
+			$professor->descricaoCargo = $row['descricaoCargo'];
+
+			$professor->idSituacao = $row['idSituacao'];
+			$professor->descricaoSituacao = $row['descricaoSituacao'];
+		}
+		echo "<pre>";
+		print_r($professor);
+		die;
+		return $professor;
 	}
 
 	/**

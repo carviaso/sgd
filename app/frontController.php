@@ -175,7 +175,6 @@ switch ($action) {
 	break;
 	case 'mostraDetalhesProfessor':
 		$professorC= new ProfessorController();
-		//extract( $_POST );
 		$professorC->mostraDetalhesProfessor( $idProfessor );
 	break;
 	case 'printFormCadPais':
