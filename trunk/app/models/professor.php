@@ -73,6 +73,7 @@ class Professor {
 		$conexao = Conexao::con();
 
 		$sql[] = "SELECT * FROM professor {$wh} ORDER BY $sidx $sord LIMIT $start, $limit";
+		//echo join( '', $sql );
 		$query = mysqli_query( $conexao, join( '', $sql ) );
 		$return->page = $page;
 		$return->total = $total_pages;
