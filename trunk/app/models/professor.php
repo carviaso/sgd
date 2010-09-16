@@ -3,6 +3,13 @@
 class Professor {
 
 	/**
+	 * Construtor
+	 *
+	 * @return void
+	 */
+	public function Professor() {}
+
+	/**
 	 * Retorna todos os professores
 	 *
 	 * @return array
@@ -45,10 +52,10 @@ class Professor {
 	 *
 	 * @return array
 	 */
-	function countTotalProfessores() {
+	function countTotalProfessores( $wh ) {
 		$conexao = Conexao::con();
 
-		$sql[] = "SELECT COUNT(*) AS count FROM professor";
+		$sql[] = "SELECT COUNT(*) AS count FROM professor {$wh}";
 		$query = mysqli_query( $conexao, join( '', $sql ) );
 
 		$count = mysqli_fetch_array( $query, MYSQL_ASSOC );
@@ -60,12 +67,12 @@ class Professor {
 	 *
 	 * @return json
 	 */
-	function getAllProfessoresJson( $start, $limit, $sidx, $sord, $count, $total_pages, $page ) {
+	function getAllProfessoresJson( $start, $limit, $sidx, $sord, $count, $total_pages, $page, $wh ) {
 
 		$professores = array();
 		$conexao = Conexao::con();
 
-		$sql[] = "SELECT * FROM professor ORDER BY $sidx $sord LIMIT $start, $limit";
+		$sql[] = "SELECT * FROM professor {$wh} ORDER BY $sidx $sord LIMIT $start, $limit";
 		$query = mysqli_query( $conexao, join( '', $sql ) );
 		$return->page = $page;
 		$return->total = $total_pages;
