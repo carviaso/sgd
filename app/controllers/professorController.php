@@ -24,9 +24,9 @@ class ProfessorController {
 	 *
 	 * @return json
 	 */
-	public function getAllProfessoresJson( $page, $limit, $sidx, $sord ) {
+	public function getAllProfessoresJson( $page, $limit, $sidx, $sord, $wh ) {
 		$professorDAO = new Professor();
-		$count = $professorDAO->countTotalProfessores();
+		$count = $professorDAO->countTotalProfessores( $wh );
 
 		if( $count > 0 ) {
 			$total_pages = ceil( $count / $limit );
@@ -39,7 +39,7 @@ class ProfessorController {
 		$start = $limit * $page - $limit;
 		if( !$sidx ) $sidx = 1;
 
-		echo json_encode( $professorDAO->getAllProfessoresJson( $start, $limit, $sidx, $sord, $count, $total_pages, $page ) );
+		echo json_encode( $professorDAO->getAllProfessoresJson( $start, $limit, $sidx, $sord, $count, $total_pages, $page, $wh ) );
 	}
 
 	/**
@@ -191,6 +191,29 @@ class ProfessorController {
 		$professorV = new ProfessorV();
 		$professorV->mostraProgressaoFuncional( $idProfessor );
 	}
+
+	/**
+	 * Monta um filtro de busca tipo WHERE
+	 *
+	 * @return string
+	 */
+	//public function montaFiltro( $searchField, $searchOper, $searchString ) {
+
+//		switch ( $searchOper ) {
+//			case value:
+//			;
+//			break;
+//
+//			default:
+//				;
+//			break;
+//		}
+//
+//
+//		$filtro = "WHERE {$searchField} LIKE '%FERNANDO%'";
+//
+//		$filtro
+	//}
 
 }
 ?>

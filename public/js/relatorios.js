@@ -60,16 +60,17 @@ var relatorios = {
 									datatype: "json",
 									colNames:['Acao', 'Id', 'Nome', 'Matricula', 'Siape' ],
 									colModel:[	{name:'acao',index:'acao', width:50, search:false },
-												{name:'id_professor',index:'id_professor', width:35, searchoptions: { sopt: ['eq', 'ne', 'cn']}},
-									          	{name:'nome',index:'nome', width:275, searchoptions: { sopt: ['eq', 'ne', 'cn']}},
-									          	{name:'matricula',index:'matricula', width:90, searchoptions: { sopt: ['eq', 'ne', 'cn']}},
-									          	{name:'siape',index:'siape', width:100, searchoptions: { sopt: ['eq', 'ne', 'cn']}}
+												{name:'id_professor',index:'id_professor', width:35 },
+									          	{name:'nome',index:'nome', width:275 },
+									          	{name:'matricula',index:'matricula', width:90 },
+									          	{name:'siape',index:'siape', width:100 }
 									          ],
 									rowNum:50, rowList:[50,100,200],
 									pager: '#pagerListaProfessores',
 									sortname: 'id_professor',
 									viewrecords: true,
 									sortorder: "asc",
+									shrinkToFit: false, // Exibir barra rolagem horizontal
 									width:'600',
 									height:'350',
 									caption:"Relatorio de Professores",
@@ -86,7 +87,10 @@ var relatorios = {
 														edit: false,
 														add: false,
 														del: false,
-														search: true }, {},{},{}, {url:"app/frontController.php"});
+														search: true }, {},{},{}, 
+														{	multipleSearch: true,
+															odata : ['igual', 'diferente', 'menor', 'menor ou igual','maior','maior ou igual', 'come\u00E7a com','n\u00E3o come\u00E7a com','est\u00E1 contido','n\u00E3o est\u00E1 contido','termina com','n\u00E3o termina com','cont\u00E9m','n\u00E3o cont\u00E9m'],
+															groupOps: [ { op: 'AND', text: 'todos' },   { op: 'OR',  text: 'ou' }] });
 			} );
 		});
 	}

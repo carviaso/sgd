@@ -39,7 +39,7 @@
         <script type="text/javascript" src="public/js/jquery-ui-1.8.4.custom.min.js"></script>
         <script type="text/javascript" src="public/js/jquery.maskedinput-1.2.2.min.js"></script>
         <script type="text/javascript" src="public/js/locate/jquery.ui.datepicker-pt-BR.js"></script>
-        <script type="text/javascript" src="public/js/locate/grid.locale-pt-br.js"></script>
+        <script type="text/javascript" src="public/js/locate/grid.locale-pt-br-min.js"></script>
         <script type="text/javascript" src="public/js/jquery.jqGrid.min.js"></script>
         <script type="text/javascript" src="public/js/jquery.searchFilter.js"></script>
         <script type="text/javascript" src="public/js/grid.formedit.js"></script>

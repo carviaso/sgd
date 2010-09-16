@@ -9,7 +9,8 @@ foreach ( $dirs as $dir ) {
 	}
 }
 
-$action = $_POST['action'];
+extract( $_POST );
+//$action = $_POST['action'];
 
 switch ($action) {
 	case 'relCentros':
@@ -38,7 +39,7 @@ switch ($action) {
 	break;
 	case 'cadDepartamento':
 		$departamentoC = new DepartamentoController();
-		extract( $_POST );
+		//extract( $_POST );
 		$departamentoC->cadastrar( $nome, $sigla, $idCentro );
 	break;
 	case 'printFormCadCentro':
@@ -49,7 +50,7 @@ switch ($action) {
 	break;
 	case 'cadCentro':
 		$centroC = new CentroController();
-		extract( $_POST );
+		//extract( $_POST );
 		$centroC->cadastrar( $nome, $sigla, $idInstituicao );
 	break;
 	case 'relDiretoresCentros':
@@ -104,7 +105,7 @@ switch ($action) {
 	break;
 	case 'cadProfessor':
 		$professorC = new ProfessorController();
-		extract( $_POST );
+//		extract( $_POST );
 		$professorC->cadastrarProfessor( $nome, $sobrenome, $dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao );
 	break;
 	case 'printFormCadRegTrabProfessor':
@@ -117,7 +118,7 @@ switch ($action) {
 	break;
 	case 'cadRegimeTrabalhoProfessor':
 		$professorC = new ProfessorController();
-		extract( $_POST );
+		//extract( $_POST );
 		$professorC->cadastrarRegimeTrabalhoProfessor( $idProfessor, $idRegimeTrabalho, $processo, $deliberacao, $portaria, $dataInicio );
 	break;
 	case 'printFormCadAfastamentoProfessor':
@@ -134,7 +135,7 @@ switch ($action) {
 	break;
 	case 'cadAfastamentoProfessor':
 		$professorC = new ProfessorController();
-		extract( $_POST );
+		//extract( $_POST );
 		$professorC->cadastrarAfastamentoProfessor( $idProfessor, $idInstituicao, $idTipoAfastamento, $idTipoTitulacao, $dataInicio, $dataPrevisaoTermino, $processo, $prorrogacao, $observacao );
 	break;
 	case 'printFormCadProgFuncProfessor':
@@ -147,12 +148,12 @@ switch ($action) {
 	break;
 	case 'cadProgFuncProfessor':
 		$professorC = new ProfessorController();
-		extract( $_POST );
+		//extract( $_POST );
 		$professorC->cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $dataInicio, $portaria );
 	break;
 	case 'mostraProgressaoFuncional':
 		$professorC = new ProfessorController();
-		extract( $_POST );
+		//extract( $_POST );
 		$professorC->mostraProgressaoFuncional( $idProfessor );
 	break;
 	case 'listarProfessores':
@@ -162,16 +163,19 @@ switch ($action) {
 	break;
 	case 'getAllProfessoresJson':
 		$professorC = new ProfessorController();
-		extract( $_POST );
-		$page = $page;
 		$limit = $rows;
-		$sidx = $sidx;
-		$sord = $sord;
-		$professores = $professorC->getAllProfessoresJson( $page, $limit, $sidx, $sord );
+	    $wh = "";
+	    $searchOn = Strip( $_POST['_search'] );
+	    if( $searchOn == 'true' ) {
+	        $wh = " WHERE ";
+	        $searchstr = Strip( $_POST['filters'] );
+	        $wh .= constructWhere( $searchstr );
+	    }
+		$professores = $professorC->getAllProfessoresJson( $page, $limit, $sidx, $sord, $wh );
 	break;
 	case 'mostraDetalhesProfessor':
 		$professorC= new ProfessorController();
-		extract( $_POST );
+		//extract( $_POST );
 		$professorC->mostraDetalhesProfessor( $idProfessor );
 	break;
 	case 'printFormCadPais':
@@ -180,7 +184,7 @@ switch ($action) {
 	break;
 	case 'cadPais':
 		$paisC = new PaisController();
-		extract( $_POST );
+		//extract( $_POST );
 		$paisC->cadastrarPais( $nome, $sigla );
 	break;
 	case 'printFormCadUF':
@@ -191,7 +195,7 @@ switch ($action) {
 	break;
 	case 'cadUF':
 		$ufC = new UfController();
-		extract( $_POST );
+		//extract( $_POST );
 		$ufC->cadastrarUf( $idPais, $nome, $sigla );
 	break;
 	case 'printFormCadMunicipio':
@@ -202,7 +206,7 @@ switch ($action) {
 	break;
 	case 'cadMunicipio':
 		$municioC = new municipioController();
-		extract( $_POST );
+		//extract( $_POST );
 		$municioC->cadastrar( $nome, $idUf  );
 	break;
 	case 'printFormCadInstituicao':
@@ -213,7 +217,7 @@ switch ($action) {
 	break;
 	case 'cadInstituicao':
 		$instituicaoC = new InstituicaoController();
-		extract( $_POST );
+		//extract( $_POST );
 		$instituicaoC->cadastrar( $nome, $sigla, $idMunicipio );
 	break;
 	case 'printFormCadTipoAfastamento':
@@ -222,7 +226,7 @@ switch ($action) {
 	break;
 	case 'cadTipoAfastamento':
 		$tipoAfastamentoC = new TipoAfastamentoController();
-		extract( $_POST );
+		//extract( $_POST );
 		$tipoAfastamentoC->cadastrar( $descricao );
 	break;
 	case 'printFormCadTipoTitulacao':
@@ -231,7 +235,7 @@ switch ($action) {
 	break;
 	case 'cadTipoTitulacao':
 		$tipoTitulacaoC = new TipoTitulacaoController();
-		extract( $_POST );
+		//extract( $_POST );
 		$tipoTitulacaoC->cadastrar( $descricao );
 	break;
 	case 'printFormCadCategoriaFuncional':
@@ -240,7 +244,7 @@ switch ($action) {
 	break;
 	case 'cadCategoriaFuncional':
 		$categoriaFuncionalC = new CategoriaFuncionalController();
-		extract( $_POST );
+		//extract( $_POST );
 		$categoriaFuncionalC->cadastrar( $descricao );
 	break;
 	case 'printFormCadRegimeTrabalho':
@@ -249,12 +253,12 @@ switch ($action) {
 	break;
 	case 'cadRegimeTrabalho':
 		$regimeTrabalhoC = new RegimeTrabalhoController();
-		extract( $_POST );
+		//extract( $_POST );
 		$regimeTrabalhoC->cadastrar( $descricao, $quantidadeHoras, $dedicacaoExclusiva );
 	break;
 	case 'dataDiff':
 		$dataHelper = new DataHelper();
-		extract( $_POST );
+		//extract( $_POST );
 		$dataInicio = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataInicio ) ) );
 		$dataPrevisaoTermino = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataPrevisaoTermino ) ) );
 		$mesesDiff = $dataHelper->dataDiff( $dataInicio, $dataPrevisaoTermino );
