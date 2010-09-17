@@ -349,7 +349,7 @@ var professores = {
 			var params = {	'action':'mostraDetalhesProfessor',
 							'idProfessor':idProfessor
 						};
-			$('#auxiliarOculta').html('').hide().load("app/frontController.php", params, function() {
+			$('#auxiliarOculta').hide().load("app/frontController.php", params, function() {
 				gb.message( $('#auxiliarOculta').html(), 'Detalhes do Professor', {"width":600, "position": 'center'} );
 			});
 		},
@@ -357,8 +357,8 @@ var professores = {
 			var params = {	'action':'mostraProgressaoFuncional',
 							'idProfessor':idProfessor
 						};
-			$('#auxiliarOculta').html('').hide().load("app/frontController.php", params, function() {
-				gb.message( $('#auxiliarOculta').html(), 'Detalhes do Professor', {"width":900, "height":400, "position": 'center'} );
+			$('#auxiliarOculta').hide().load("app/frontController.php", params, function() {
+				gb.message( $('#auxiliarOculta').html(), 'Detalhes do Professor', {"width":600, "height":400, "position": 'center'} );
 			});
 		}
 	}
