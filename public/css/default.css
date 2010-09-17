@@ -60,6 +60,21 @@ a {
 	cursor: pointer;
 	margin: 3px;
 }
+
+#viewDetalhesProfessor { display: block; overflow: visible; }
+#viewDetalhesProfessor fieldset { padding: 5px; margin-bottom: 10px; }
+#viewDetalhesProfessor fieldset legend { font-weight: bold; }
+#viewDetalhesProfessor fieldset div {
+	float: left;
+	width: 48%;
+	white-space: nowrap;
+	overflow: visible;
+	border-bottom: 1px dotted gray;
+	padding: 1px;
+	height: 1em;
+}
+#viewDetalhesProfessor fieldset div:nth-child( 2n ) { font-weight: bold; }
+
 .detalhesProgressaoFuncional {
 	background-image:url('images/icons/chart_line_add.png');
 	background-repeat: no-repeat;

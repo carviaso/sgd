@@ -1,56 +1,118 @@
-<table>
-  <tr>
-    <d>Nome: {$professor->nome}</td>
-  </tr>
-  <tr>
-    <d>matricula: {$professor->matricula}</td>
-  </tr>
-  <tr>
-    <d>siape: {$professor->siape}</td>
-  </tr>
-  <tr>
-    <d>dataAdmissao: {$professor->dataAdmissao}</td>
-  </tr>
-  <tr>
-    <d>dataAdmissaoUfsc: {$professor->dataAdmissaoUfsc}</td>
-  </tr>
-  <tr>
-    <d>dataNascimento: {$professor->dataNascimento}</td>
-  </tr>
-  <tr>
-    <d>aposentado: {$professor->aposentado}</td>
-  </tr>
-  <tr>
-    <d>dataPrevistaAposentadoria: {$professor->dataPrevistaAposentadoria}</td>
-  </tr>
-  <tr>
-    <d>dataEfetivaAposentadoria: {$professor->dataEfetivaAposentadoria}</td>
-  </tr>
-  <tr>
-    <d>Departamento: {$professor->nomeDepartamento} - ({$professor->siglaDepartamento})</td>
-  </tr>
-  <tr>
-    <d>Centro: {$professor->nomeCentro} - ({$professor->siglaCentro})</td>
-  </tr>
-  <tr>
-    <d>Instituicao: {$professor->nomeInstituicao} - ({$professor->siglaInstituicao})</td>
-  </tr>
-  <tr>
-    <d>CategoriaFuncionalInicial: {$professor->descCategoriaFuncionalInicial}</td>
-  </tr>
-  <tr>
-    <d>CategoriaFuncionalAtual: {$professor->descCategoriaFuncionalAtual}</td>
-  </tr>
-  <tr>
-    <d>TipoTitulacao: {$professor->descTipoTitulacao}</td>
-  </tr>
-  <tr>
-    <d>CategoriaFuncionalReferencia: {$professor->descCategoriaFuncionalReferencia}</td>
-  </tr>
-  <tr>
-    <d>Cargo: {$professor->descricaoCargo}</td>
-  </tr>
-  <tr>
-    <d>Situacao: {$professor->descricaoSituacao}</td>
-  </tr>
-</table>
+<div id="viewDetalhesProfessor">
+	<fieldset><legend>Dados do Professor</legend>
+		<div>
+			Nome
+		</div>
+		<div>
+			{$professor->nome}
+		</div>
+		<div>
+			Matr&iacute;cula
+		</div>
+		<div>
+			{$professor->matricula}
+		</div>
+		<div>
+			SIAPE
+		</div>
+		<div>
+			{$professor->siape}
+		</div>
+		<div>
+			Data Nascimento
+		</div>
+		<div>
+			{$professor->dataNascimento}
+		</div>
+		<div>
+			Aposentado
+		</div>
+		<div>
+			{$professor->aposentado}
+		</div>
+	</fieldset>
+	<fieldset><legend>Datas</legend>
+		<div>
+			Data Admiss&atilde;o
+		</div>
+		<div>
+			{$professor->dataAdmissao}
+		</div>
+		<div>
+			Data Admiss&atilde;o UFSC
+		</div>
+		<div>
+			{$professor->dataAdmissaoUfsc}
+		</div>
+		<div>
+			Data Prevista Aposentadoria
+		</div>
+		<div>
+			{$professor->dataPrevistaAposentadoria}
+		</div>
+		<div>
+			Data Efetiva Aposentadoria
+		</div>
+		<div>
+			{$professor->dataEfetivaAposentadoria}
+		</div>
+	</fieldset>
+	<fieldset><legend>Dados da Lota&ccedil;&atilde;o</legend>
+		<div>
+			Departamento
+		</div>
+		<div>
+			{$professor->nomeDepartamento} - ({$professor->siglaDepartamento})
+		</div>
+		<div>
+			Centro
+		</div>
+		<div>
+			{$professor->nomeCentro} - ({$professor->siglaCentro})
+		</div>
+		<div>
+			Institui&ccedil;&atilde;o
+		</div>
+		<div>
+			{$professor->nomeInstituicao} - ({$professor->siglaInstituicao})
+		</div>
+	</fieldset>
+	<fieldset><legend>Dados da Categoria</legend>	
+		<div>
+			Categoria Funcional Inicial
+		</div>
+		<div>
+			{$professor->descCategoriaFuncionalInicial}
+		</div>
+		<div>
+			Categoria Funcional Atual
+		</div>
+		<div>
+			{$professor->descCategoriaFuncionalAtual}
+		</div>
+		<div>
+			Tipo Titula&ccedil;&atilde;o
+		</div>
+		<div>
+			{$professor->descTipoTitulacao}
+		</div>
+		<div>
+			Categoria Funcional Refer&ecirc;ncia
+		</div>
+		<div>
+			{$professor->descCategoriaFuncionalReferencia}
+		</div>
+		<div>
+			Cargo
+		</div>
+		<div>
+			{$professor->descricaoCargo}
+		</div>
+		<div>
+			Situa&ccedil;&atilde;o
+		</div>
+		<div>
+			{$professor->descricaoSituacao}
+		</div>
+	</fieldset>
+</div>
