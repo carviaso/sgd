@@ -1,13 +1,13 @@
 <?php
 
-class Professor {
+class ProfessorM {
 
 	/**
 	 * Construtor
 	 *
 	 * @return void
 	 */
-	public function Professor() {}
+	public function ProfessorM() {}
 
 	/**
 	 * Retorna todos os professores
