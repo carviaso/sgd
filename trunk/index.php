@@ -46,10 +46,10 @@
         <script type="text/javascript" src="public/js/grid.common.js"></script>
         <script type="text/javascript" src="public/js/ui.selectmenu.js"></script>
         <script type="text/javascript" src="public/js/globals.js"></script>
-        <script type="text/javascript" src="public/js/loader.js"></script>
         <script type="text/javascript" src="public/js/cadastros.js"></script>
         <script type="text/javascript" src="public/js/professores.js"></script>
         <script type="text/javascript" src="public/js/relatorios.js"></script>
         <script type="text/javascript" src="public/js/formularios.js"></script>
+        <script type="text/javascript" src="public/js/loader.js"></script>
     </body>
 </html>
