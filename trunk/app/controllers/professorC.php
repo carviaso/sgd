@@ -1,18 +1,18 @@
 <?php
 
-class ProfessorController {
+class ProfessorC {
 
-	private $professorDAO;
-	private $professorV;
+	private $model;
+	private $view;
 
 	/**
 	 * Contrutor
 	 *
 	 * @return void
 	 */
-	public function ProfessorController() {
-		$this->professorDAO = new Professor();
-		$this->professorV = new ProfessorV();
+	public function ProfessorC() {
+		$this->model = new ProfessorM();
+		$this->view = new ProfessorV();
 	}
 
 	/**
@@ -21,7 +21,7 @@ class ProfessorController {
 	 * @return array
 	 */
 	public function getAllProfessores() {
-		return $this->professorDAO->getAllProfessores();
+		return $this->model->getAllProfessores();
 	}
 
 	/**
@@ -30,7 +30,7 @@ class ProfessorController {
 	 * @return json
 	 */
 	public function getAllProfessoresJson( $page, $limit, $sidx, $sord, $wh ) {
-		$count = $this->professorDAO->countTotalProfessores( $wh );
+		$count = $this->model->countTotalProfessores( $wh );
 
 		if( $count > 0 ) {
 			$total_pages = ceil( $count / $limit );
@@ -44,7 +44,7 @@ class ProfessorController {
 		if( $start < 0 ) $start = 0;
 		if( !$sidx ) $sidx = 1;
 
-		echo json_encode( $this->professorDAO->getAllProfessoresJson( $start, $limit, $sidx, $sord, $count, $total_pages, $page, $wh ) );
+		echo json_encode( $this->model->getAllProfessoresJson( $start, $limit, $sidx, $sord, $count, $total_pages, $page, $wh ) );
 	}
 
 	/**
@@ -53,7 +53,7 @@ class ProfessorController {
 	 * @return array
 	 */
 	public function getProfessoresPorDepartamento( $idDepartamento ) {
-		return $this->professorDAO->getProfessoresPorDepartamento( $idDepartamento );
+		return $this->model->getProfessoresPorDepartamento( $idDepartamento );
 	}
 
 	/**
@@ -75,7 +75,7 @@ class ProfessorController {
 		if ( empty( $dataEfetivaAposentadoria) ) $erro[] = 'Data efetiva aposentadoria';
 
 		if ( count( $erro ) == 0 ) {
-			$return = $this->professorDAO->cadastrarProfessor( $nome, $sobrenome,$dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao );
+			$return = $this->model->cadastrarProfessor( $nome, $sobrenome,$dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao );
 		} else {
 			$return->result = 0;
 			$return->error = join( '<br />', $erro );
@@ -96,7 +96,7 @@ class ProfessorController {
 		if ( empty( $dataInicio) ) $erro[] = 'Data de Inicio';
 
 		if ( count( $erro ) == 0 ) {
-			$return = $this->professorDAO->cadastrarRegimeTrabalhoProfessor( $idProfessor, $idRegimeTrabalho, $processo, $deliberacao, $portaria, $dataInicio );
+			$return = $this->model->cadastrarRegimeTrabalhoProfessor( $idProfessor, $idRegimeTrabalho, $processo, $deliberacao, $portaria, $dataInicio );
 		} else {
 			$return->result = 0;
 			$return->error = join( '<br />', $erro );
@@ -121,7 +121,7 @@ class ProfessorController {
 		if ( $prorrogacao == '' ) $erro[] = 'Prorrogacao';
 
 		if ( count( $erro ) == 0 ) {
-			$return = $this->professorDAO->cadastrarAfastamentoProfessor( $idProfessor, $idInstituicao, $idTipoAfastamento, $idTipoTitulacao, $dataInicio, $dataPrevisaoTermino, $processo, $prorrogacao, $observacao );
+			$return = $this->model->cadastrarAfastamentoProfessor( $idProfessor, $idInstituicao, $idTipoAfastamento, $idTipoTitulacao, $dataInicio, $dataPrevisaoTermino, $processo, $prorrogacao, $observacao );
 		} else {
 			$return->result = 0;
 			$return->error = join( '<br />', $erro );
@@ -145,7 +145,7 @@ class ProfessorController {
 		if ( empty( $portaria ) ) $erro[] = 'Portaria';
 
 		if ( count( $erro ) == 0 ) {
-			$return = $this->professorDAO->cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $dataInicio, $portaria );
+			$return = $this->model->cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $dataInicio, $portaria );
 		} else {
 			$return->result = 0;
 			$return->error = join( '<br />', $erro );
@@ -159,7 +159,7 @@ class ProfessorController {
 	 * @return json
 	 */
 	public function listarProfessores( $professores ) {
-		return $this->professorV->listarProfessores( $professores );
+		return $this->view->listarProfessores( $professores );
 	}
 
 	/**
@@ -168,18 +168,18 @@ class ProfessorController {
 	 * @return void
 	 */
 	public function mostraDetalhesProfessor( $idProfessor ) {
-		$professor = $this->professorDAO->getProfessorPorId( $idProfessor );
-		$this->professorV->mostraDetalhesProfessor( $professor );
+		$professor = $this->model->getProfessorPorId( $idProfessor );
+		$this->view->mostraDetalhesProfessor( $professor );
 	}
 
 	/**
-	 * Mostra os detalhes do professor desejado
+	 * Mostra os detalhes da progressao funcional do professor
 	 *
 	 * @return void
 	 */
 	public function mostraProgressaoFuncional( $idProfessor ) {
-		$progressaoFuncional = $this->professorDAO->getAllProgressaoFuncionalProfessor( $idProfessor );
-		$this->professorV->mostraProgressaoFuncional( $progressaoFuncional );
+		$progressaoFuncional = $this->model->getAllProgressaoFuncionalProfessor( $idProfessor );
+		$this->view->mostraProgressaoFuncional( $progressaoFuncional );
 	}
 }
 ?>
