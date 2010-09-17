@@ -85,14 +85,39 @@ a {
 	cursor: pointer;
 	margin: 3px;
 }
-.auxiliarOculta { display: none; }
 
+#viewProgressaoFuncional {
+	float: left;
+	width: 100%;
+}
+.viewProgressaoFuncionalItem {
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	float: left;
+	margin: 10px;
+	border: 1px solid gray;
+	width: 100%;
+}
+#viewProgressaoFuncional .viewProgressaoFuncionalItem div {
+	height: 1em;
+	width: 23%;
+	float: left;
+	padding: 5px;
+	border-bottom: 1px dotted gray;
+	overflow: visible;
+}
+#viewProgressaoFuncional .viewProgressaoFuncionalItem > div:nth-child( 2n + 1 ) {
+	font-weight: bold;
+}
+
+
+.auxiliarOculta { display: none; }
 a.data {
-    text-decoration: underline;
-    color: yellow;
+	text-decoration: underline;
+	color: yellow;
 }
 a:hover {
-    text-decoration: none;
+	text-decoration: none;
 }
 .right { float: right; }
 .left { float: left; }

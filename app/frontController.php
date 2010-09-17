@@ -153,7 +153,6 @@ switch ($action) {
 	break;
 	case 'mostraProgressaoFuncional':
 		$professorC = new ProfessorController();
-		//extract( $_POST );
 		$professorC->mostraProgressaoFuncional( $idProfessor );
 	break;
 	case 'listarProfessores':

@@ -209,7 +209,6 @@ class Professor {
 		$conexao = Conexao::con();
 
 		$sql[] = "SELECT * FROM professor {$wh} ORDER BY $sidx $sord LIMIT $start, $limit";
-		//echo join( '', $sql );
 		$query = mysqli_query( $conexao, join( '', $sql ) );
 		$return->page = $page;
 		$return->total = $total_pages;
@@ -398,6 +397,72 @@ class Professor {
 		return $return;
 	}
 
+	/**
+	 * Retorna todas as progressoes funcionais do professor
+	 *
+	 * @return stdClass
+	 */
+	public function getAllProgressaoFuncionalProfessor( $idProfessor ) {
+		$conexao = Conexao::con();
+		$progressaoFuncional = array();
+
+		//@todo identar o codigo
+		$sql[] = "
+		SELECT
+p.id_categoria_funcional_inicial,
+'' as id_progressao_funcional,
+p.id_professor,
+cf.id_categoria_funcional,
+cf.descricao as categoriaFuncional,
+'' as processo,
+'' as data_avaliacao,
+'' as nota_avaliacao,
+p.data_admissao as data_inicio,
+'' as portaria,
+'' as observacao
+FROM professor p
+inner join categoria_funcional cf
+on p.id_categoria_funcional_inicial = cf.id_categoria_funcional
+where id_professor = {$idProfessor}
+union
+SELECT
+p.id_categoria_funcional_inicial,
+pf.id_progressao_funcional,
+p.id_professor,
+cf.id_categoria_funcional,
+cf.descricao,
+pf.processo,
+pf.data_avaliacao,
+pf.nota_avaliacao,
+pf.data_inicio,
+pf.portaria,
+pf.observacao
+FROM professor p
+inner join progressao_funcional pf
+on p.id_professor = pf.id_professor
+inner join categoria_funcional cf
+on pf.id_categoria_funcional = cf.id_categoria_funcional
+where p.id_professor = {$idProfessor}";
+
+	$query = mysqli_query( $conexao, join( '', $sql ) );
+
+	while ( $row = mysqli_fetch_array( $query ) ) {
+			$progressao = new stdClass();
+			$progressao->idCategoriaFuncionalInicial = $row['id_categoria_funcional_inicial'];
+			$progressao->idProgressaoFuncional = $row['id_progressao_funcional'];
+			$progressao->idProfessor = $row['id_professor'];
+			$progressao->idCategoriaFuncional = $row['id_categoria_funcional'];
+			$progressao->categoriaFuncional = utf8_encode( $row['categoriaFuncional'] );
+			$progressao->processo = $row['processo'];
+			$progressao->dataAvaliacao = $row['data_avaliacao'];
+			$progressao->notaAvaliacao = $row['nota_avaliacao'];
+			$progressao->dataInicio = $row['data_inicio'];
+			$progressao->portaria = utf8_encode( $row['portaria'] );
+			$progressao->observacao = utf8_encode( $row['observacao'] );
+			$progressaoFuncional[] = $progressao;
+		}
+		return $progressaoFuncional;
+	}
 }
 
 ?>
