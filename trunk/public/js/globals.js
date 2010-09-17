@@ -10,7 +10,7 @@ var gb = {
 	processingClose: function() {
 		$('.processingMessage').remove();
 	},
-	message: function( msgTxt, title ) {
+	message: function( msgTxt, title, options ) {
 		$("<div class='gbMessage'>" + msgTxt + "</div>").dialog({
 			title: title,
 			modal: true,
@@ -22,7 +22,7 @@ var gb = {
 			close: function() {
 				$('.gbMessage').remove();
 			}
-		});		
+		}).dialog( options );
 	},
 	errorMessage: function( msgTxt, title ) {
 		var msg = [];
