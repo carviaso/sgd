@@ -74,13 +74,13 @@ class ProfessorV {
 		$smarty->display('mostraDetalhesProfessor.tpl');
 	}
 
-	function mostraProgressaoFuncional( $idProfessor ) {
+	function mostraProgressaoFuncional( $progressaoFuncional ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/professor/templates/';
 		$smarty->compile_dir  = '../tmp/templates_c/';
 		$smarty->cache_dir    = '../tmp/cache/';
 		$smarty->config_dir   = 'views/configs/';
-		$smarty->assign( "idProfessor", $idProfessor );
+		$smarty->assign( "progressaoFuncional", $progressaoFuncional );
 		$smarty->display('mostraProgressaoFuncional.tpl');
 	}
 }

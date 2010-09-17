@@ -21,7 +21,6 @@ class ProfessorController {
 	 * @return array
 	 */
 	public function getAllProfessores() {
-//		$professorDAO = new Professor();
 		return $this->professorDAO->getAllProfessores();
 	}
 
@@ -31,7 +30,6 @@ class ProfessorController {
 	 * @return json
 	 */
 	public function getAllProfessoresJson( $page, $limit, $sidx, $sord, $wh ) {
-		//$professorDAO = new Professor();
 		$count = $this->professorDAO->countTotalProfessores( $wh );
 
 		if( $count > 0 ) {
@@ -55,7 +53,6 @@ class ProfessorController {
 	 * @return array
 	 */
 	public function getProfessoresPorDepartamento( $idDepartamento ) {
-		//$professorDAO = new Professor();
 		return $this->professorDAO->getProfessoresPorDepartamento( $idDepartamento );
 	}
 
@@ -65,7 +62,6 @@ class ProfessorController {
 	 * @return json
 	 */
 	public function cadastrarProfessor( $nome, $sobrenome,$dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial,	$idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao ) {
-		//$professorDAO = new Professor();
 		$erro = array();
 		if ( empty( $nome) ) $erro[] = 'Nome';
 		if ( empty( $sobrenome) ) $erro[] = 'Sobrenome';
@@ -93,8 +89,6 @@ class ProfessorController {
 	 * @return json
 	 */
 	public function cadastrarRegimeTrabalhoProfessor( $idProfessor, $idRegimeTrabalho, $processo, $deliberacao, $portaria, $dataInicio ) {
-		//$professorDAO = new Professor();
-
 		$erro = array();
 		if ( empty( $processo) ) $erro[] = 'Processo';
 		if ( empty( $deliberacao) ) $erro[] = 'Deliberacao';
@@ -116,8 +110,6 @@ class ProfessorController {
 	 * @return json
 	 */
 	public function cadastrarAfastamentoProfessor( $idProfessor, $idInstituicao, $idTipoAfastamento, $idTipoTitulacao, $dataInicio, $dataPrevisaoTermino, $processo, $prorrogacao, $observacao ) {
-		//$professorDAO = new Professor();
-
 		$erro = array();
 		if ( empty( $idProfessor ) ) $erro[] = 'Professor';
 		if ( empty( $idInstituicao ) ) $erro[] = 'Instituicao';
@@ -143,8 +135,6 @@ class ProfessorController {
 	 * @return json
 	 */
 	public function cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $dataInicio, $portaria ) {
-		//$professorDAO = new Professor();
-
 		$erro = array();
 		if ( empty( $idProfessor ) ) $erro[] = 'Professor';
 		if ( empty( $idCategoriaFuncional ) ) $erro[] = 'Categoria Funcional';
@@ -169,14 +159,13 @@ class ProfessorController {
 	 * @return json
 	 */
 	public function listarProfessores( $professores ) {
-		//$professorV = new ProfessorV();
 		return $this->professorV->listarProfessores( $professores );
 	}
 
 	/**
 	 * Mostra os detalhes do professor desejado
 	 *
-	 * @return -----
+	 * @return void
 	 */
 	public function mostraDetalhesProfessor( $idProfessor ) {
 		$professor = $this->professorDAO->getProfessorPorId( $idProfessor );
@@ -186,38 +175,11 @@ class ProfessorController {
 	/**
 	 * Mostra os detalhes do professor desejado
 	 *
-	 * @return -----
+	 * @return void
 	 */
 	public function mostraProgressaoFuncional( $idProfessor ) {
-		//@todo buscar os dados da progressao do professor no banco de dados
-		//$professorC = new ProfessorController();
-		//$professor = $professorC->getProfessorPorId( $idProfessores );
-		//$professorV = new ProfessorV();
-		$this->professorV->mostraProgressaoFuncional( $idProfessor );
+		$progressaoFuncional = $this->professorDAO->getAllProgressaoFuncionalProfessor( $idProfessor );
+		$this->professorV->mostraProgressaoFuncional( $progressaoFuncional );
 	}
-
-	/**
-	 * Monta um filtro de busca tipo WHERE
-	 *
-	 * @return string
-	 */
-	//public function montaFiltro( $searchField, $searchOper, $searchString ) {
-
-//		switch ( $searchOper ) {
-//			case value:
-//			;
-//			break;
-//
-//			default:
-//				;
-//			break;
-//		}
-//
-//
-//		$filtro = "WHERE {$searchField} LIKE '%FERNANDO%'";
-//
-//		$filtro
-	//}
-
 }
 ?>
