@@ -70,10 +70,12 @@ a {
 	white-space: nowrap;
 	overflow: visible;
 	border-bottom: 1px dotted gray;
-	padding: 1px;
+	margin-bottom: 2px;
+	padding: 3px;
 	height: 1em;
 }
-#viewDetalhesProfessor fieldset div:nth-child( 2n ) { font-weight: bold; }
+#viewDetalhesProfessor fieldset div:nth-child(2n) { font-weight: bold; }
+#viewDetalhesProfessor fieldset div:nth-child(2n+1) { color: red; }
 
 .detalhesProgressaoFuncional {
 	background-image:url('images/icons/chart_line_add.png');
@@ -87,30 +89,38 @@ a {
 }
 
 #viewProgressaoFuncional {
+	margin-top: 5px;
 	float: left;
-	width: 100%;
+	border: 1px solid #6F6F6F;
+	background-color: #EFEFEF;
 }
 .viewProgressaoFuncionalItem {
 	padding-bottom: 10px;
 	margin-bottom: 10px;
 	float: left;
 	margin: 10px;
-	border: 1px solid gray;
-	width: 100%;
+	border: 1px solid #6F6F6F;
+	background-color:rgba(0,255,0,0.5);
+	background-color: white;
 }
 #viewProgressaoFuncional .viewProgressaoFuncionalItem div {
 	height: 1em;
 	width: 23%;
 	float: left;
 	padding: 5px;
+	margin-bottom: 8px;
 	border-bottom: 1px dotted gray;
 	overflow: visible;
 }
-#viewProgressaoFuncional .viewProgressaoFuncionalItem > div:nth-child( 2n + 1 ) {
+#viewProgressaoFuncional .viewProgressaoFuncionalItem > div:nth-child(2n+1) {
 	font-weight: bold;
 }
-
-
+#viewProgressaoFuncional .viewProgressaoFuncionalItem > div:nth-child(2n+2) {
+	color: red;
+}
+#viewProgressaoFuncional .viewProgressaoFuncionalItem > div:nth-child(2) {
+	font-weight: bold;
+}
 .auxiliarOculta { display: none; }
 a.data {
 	text-decoration: underline;

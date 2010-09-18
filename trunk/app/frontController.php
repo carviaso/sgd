@@ -104,12 +104,12 @@ switch ($action) {
 		$professorV->printFormCadProfessor( $departamentos, $categoriasFuncionais, $tipoTitulacoes, $cargos, $situacoes );
 	break;
 	case 'cadProfessor':
-		$professorC = new ProfessorController();
+		$professorC = new ProfessorC();
 //		extract( $_POST );
 		$professorC->cadastrarProfessor( $nome, $sobrenome, $dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao );
 	break;
 	case 'printFormCadRegTrabProfessor':
-		$professorC = new ProfessorController();
+		$professorC = new ProfessorC();
 		$professores = $professorC->getAllProfessores();
 		$regimeTrabalhoC = new RegimeTrabalhoController();
 		$regimesTrabalho = $regimeTrabalhoC->getAllRegimesTrabalho();
@@ -117,12 +117,12 @@ switch ($action) {
 		$professorV->printFormCadRegTrabProfessor( $professores, $regimesTrabalho );
 	break;
 	case 'cadRegimeTrabalhoProfessor':
-		$professorC = new ProfessorController();
+		$professorC = new ProfessorC();
 		//extract( $_POST );
 		$professorC->cadastrarRegimeTrabalhoProfessor( $idProfessor, $idRegimeTrabalho, $processo, $deliberacao, $portaria, $dataInicio );
 	break;
 	case 'printFormCadAfastamentoProfessor':
-		$professorC = new ProfessorController();
+		$professorC = new ProfessorC();
 		$professores = $professorC->getAllProfessores();
 		$instituicaoC = new InstituicaoController();
 		$instituicoes = $instituicaoC->getAll();
@@ -134,12 +134,12 @@ switch ($action) {
 		$professorV->printFormCadAfastamentoProfessor( $professores, $instituicoes, $tiposAfastamento, $tiposTitulacao );
 	break;
 	case 'cadAfastamentoProfessor':
-		$professorC = new ProfessorController();
+		$professorC = new ProfessorC();
 		//extract( $_POST );
 		$professorC->cadastrarAfastamentoProfessor( $idProfessor, $idInstituicao, $idTipoAfastamento, $idTipoTitulacao, $dataInicio, $dataPrevisaoTermino, $processo, $prorrogacao, $observacao );
 	break;
 	case 'printFormCadProgFuncProfessor':
-		$professorC = new ProfessorController();
+		$professorC = new ProfessorC();
 		$professores = $professorC->getAllProfessores();
 		$categoriaFuncionalC = new CategoriaFuncionalController();
 		$categoriasFuncionais = $categoriaFuncionalC->getCategoriaFuncional();
@@ -147,21 +147,21 @@ switch ($action) {
 		$professorV->printFormCadProgFuncProfessor( $professores, $categoriasFuncionais );
 	break;
 	case 'cadProgFuncProfessor':
-		$professorC = new ProfessorController();
+		$professorC = new ProfessorC();
 		//extract( $_POST );
 		$professorC->cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $dataInicio, $portaria );
 	break;
 	case 'mostraProgressaoFuncional':
-		$professorC = new ProfessorController();
+		$professorC = new ProfessorC();
 		$professorC->mostraProgressaoFuncional( $idProfessor );
 	break;
 	case 'listarProfessores':
-		$professorC = new ProfessorController();
+		$professorC = new ProfessorC();
 		$professores = $professorC->getAllProfessores();
 		$professorC->listarProfessores( $professores );
 	break;
 	case 'getAllProfessoresJson':
-		$professorC = new ProfessorController();
+		$professorC = new ProfessorC();
 		$limit = $rows;
 	    $wh = "";
 	    $searchOn = Strip( $_POST['_search'] );
@@ -173,7 +173,7 @@ switch ($action) {
 		$professores = $professorC->getAllProfessoresJson( $page, $limit, $sidx, $sord, $wh );
 	break;
 	case 'mostraDetalhesProfessor':
-		$professorC= new ProfessorController();
+		$professorC= new ProfessorC();
 		$professorC->mostraDetalhesProfessor( $idProfessor );
 	break;
 	case 'printFormCadPais':
