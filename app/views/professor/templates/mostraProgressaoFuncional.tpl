@@ -16,5 +16,9 @@
 			<div>Observacao</div>
 			<div>{$progressao->observacao}</div>
 		</div>
+	{foreachelse}
+		<div>
+			<h4>Nenhuma progressao Funcional cadastrada para o professor selecionado.</h4>
+		</div>
 	{/foreach}
 </div>
