@@ -1,3 +1,6 @@
+<div id="userInfo">
+	<div>Fernando Augusto da Silva Cruz | <a href="javascript:void(0);" id="sair">Sair</a></div>
+</div>
 <div id="header">
     <div id="logo">
         <h1><a href="index.php">SGD</a></h1>
