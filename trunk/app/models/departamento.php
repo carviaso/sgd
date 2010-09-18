@@ -99,7 +99,6 @@ class Departamento {
 			$professor = new stdClass;
 			$professor->idProfessor = utf8_encode( $row['id_professor'] );
 			$professor->nome = utf8_encode( $row['nome'] );
-			$professor->sobrenome = utf8_encode( $row['sobrenome'] );
 			$professor->matricula = utf8_encode( $row['matricula'] );
 			$professores[] = $professor;
 		}

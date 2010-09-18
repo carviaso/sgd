@@ -68,7 +68,6 @@ var professores = {
 	valida: function() {
 		var erro = [];
 		var nome = $('#nome').val();
-		var sobrenome = $('#sobrenome').val();
 		var dataNascimento = $('#dataNascimento').val();
 		var matricula = $('#matricula').val();
 		var siape = $('#siape').val();
@@ -86,7 +85,6 @@ var professores = {
 		var idSituacao = $('#situacao option:selected').val();
 		
 		if ( !nome ) erro.push( 'Nome' );
-		if ( !sobrenome ) erro.push( 'Sobrenome' );
 		if ( !dataNascimento ) erro.push( 'Data de nascimento' );
 		if ( !matricula ) erro.push( 'Matricula' );
 		if ( !siape ) erro.push( 'Siape' );
@@ -99,7 +97,6 @@ var professores = {
 		if ( erro.length == 0 ) {
 			var params = {	'action':'cadProfessor',
 							'nome':nome,
-							'sobrenome':sobrenome,
 							'dataNascimento':dataNascimento,
 							'matricula':matricula,
 							'siape':siape,

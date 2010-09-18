@@ -26,7 +26,6 @@ class ProfessorM {
 			$professor = new stdClass();
 			$professor->id_professor = $row['id_professor'];
 			$professor->nome = utf8_encode( $row['nome'] );
-			$professor->sobrenome = utf8_encode( $row['sobrenome'] );
 			$professor->matricula = utf8_encode( $row['matricula'] );
 			$professor->siape = utf8_encode( $row['siape'] );
 			$professor->dataAdmissao = $row['data_admissao'];
@@ -58,8 +57,7 @@ class ProfessorM {
 
 		$sql[] = "SELECT
 					p.id_professor,
-					CONCAT(p.nome , ' ', p.sobrenome) as nome,
-					p.sobrenome,
+					p.nome,
 					p.matricula,
 					p.siape,
 					p.data_admissao,
@@ -218,12 +216,12 @@ class ProfessorM {
 			$return->rows[$i]['id'] = $row['id_professor'];
 
 			$idProfessor = $row['id_professor'];
-			$nomeCompleto = utf8_encode( $row['nome'] . ' ' . $row['sobrenome'] );
+			$nome = utf8_encode( $row['nome'] );
 
 			$return->rows[$i]['cell'] = array(
 												"<div class='detalhesProfessor' title='Detalhes' id='{$idProfessor}'>&nbsp;</div><div class='detalhesProgressaoFuncional' title='Progressao Funcional' id='{$idProfessor}'>&nbsp;</div>",
 												$idProfessor,
-												$nomeCompleto,
+												$nome,
 												$row['matricula'],
 												$row['siape']
 											);
@@ -243,7 +241,7 @@ class ProfessorM {
 		$professores = array();
 		$conexao = Conexao::con();
 
-		$sql[] = "SELECT p.nome, p.sobrenome FROM professor AS p ";
+		$sql[] = "SELECT p.nome FROM professor AS p ";
 		$sql[] = "LEFT JOIN departamento AS d ON p.id_departamento = d.id_departamento ";
 		$sql[] = "WHERE d.id_departamento ='{$idDepartamento}' ORDER by p.nome";
 		$query = mysqli_query( $conexao, join( '', $sql ) );
@@ -251,7 +249,6 @@ class ProfessorM {
 		while ( $row = mysqli_fetch_array( $query ) ) {
 			$professor = new stdClass();
 			$professor->setNome = utf8_encode( $row['nome'] );
-			$professor->setSobrenome = utf8_encode( $row['sobrenome'] );
 			$professores[] = $professor;
 		}
 		return $professores;
@@ -262,7 +259,7 @@ class ProfessorM {
 	 *
 	 * @return stdClass
 	 */
-	public function cadastrarProfessor( $nome, $sobrenome,$dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao ) {
+	public function cadastrarProfessor( $nome, $dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao ) {
 		$conexao = Conexao::con();
 		$return = new stdClass();
 
@@ -273,18 +270,17 @@ class ProfessorM {
 		$dataEfetivaAposentadoria = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataEfetivaAposentadoria ) ) );
 
 		$nome = utf8_decode( $nome );
-		$sobrenome = utf8_decode( $sobrenome );
 		$matricula = utf8_decode( $matricula );
 		$siape = utf8_decode( $siape );
 		$aposentado = utf8_decode( $aposentado );
 
-		$sql[] = "INSERT INTO professor( nome, sobrenome, matricula, siape,";
+		$sql[] = "INSERT INTO professor( nome, matricula, siape,";
 		$sql[] = "data_admissao, data_admissao_ufsc, data_nascimento, aposentado,";
 		$sql[] = "data_previsao_aposentadoria, data_aposentadoria, id_departamento,";
 		$sql[] = "id_categoria_funcional_inicial, id_categoria_funcional_atual,";
 		$sql[] = "id_tipo_titulacao, id_categoria_funcional_referencia, id_cargo, id_situacao )";
 		$sql[] = "VALUES (";
-		$sql[] = "'$nome', '$sobrenome', '$matricula', '$siape',";
+		$sql[] = "'$nome', '$matricula', '$siape',";
 		$sql[] = "'$dataAdmissao', '$dataAdmissaoUfsc', '$dataNascimento', '$aposentado',";
 		$sql[] = "'$dataPrevistaAposentadoria', '$dataEfetivaAposentadoria', '$idDepartamento',";
 		$sql[] = "'$idCategoriaFuncionalInicial', '$idCategoriaFuncionalAtual',";

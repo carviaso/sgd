@@ -84,7 +84,7 @@
                             $result = $proxy->get_all_professor();
                             for($index=0; $index < count($result); $index++) {
                                 $depData = $result[$index];
-                                echo "<OPTION VALUE=".$depData['id_professor'].">".$depData['nome']." ".$depData['sobrenome'];
+                                echo "<OPTION VALUE=".$depData['id_professor'].">".$depData['nome'];
                             }
                             echo '</select>';
                             echo '</p>';

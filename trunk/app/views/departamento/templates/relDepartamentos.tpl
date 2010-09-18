@@ -39,7 +39,7 @@
 		</tr>
 		{foreach from=$professores item=professor}
 			<tr>
-				<td>{$professor->nome} {$professor->sobrenome}</td>
+				<td>{$professor->nome}</td>
 				<td>{$professor->matricula}</td>
 		    </tr>
 		{foreachelse}

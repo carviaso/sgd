@@ -61,10 +61,9 @@ class ProfessorC {
 	 *
 	 * @return json
 	 */
-	public function cadastrarProfessor( $nome, $sobrenome,$dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial,	$idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao ) {
+	public function cadastrarProfessor( $nome, $dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial,	$idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao ) {
 		$erro = array();
 		if ( empty( $nome) ) $erro[] = 'Nome';
-		if ( empty( $sobrenome) ) $erro[] = 'Sobrenome';
 		if ( empty( $dataNascimento) ) $erro[] = 'Data nascimento';
 		if ( empty( $matricula) ) $erro[] = 'Matricula';
 		if ( empty( $siape) ) $erro[] = 'Siape';
@@ -75,7 +74,7 @@ class ProfessorC {
 		if ( empty( $dataEfetivaAposentadoria) ) $erro[] = 'Data efetiva aposentadoria';
 
 		if ( count( $erro ) == 0 ) {
-			$return = $this->model->cadastrarProfessor( $nome, $sobrenome,$dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao );
+			$return = $this->model->cadastrarProfessor( $nome, $dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao );
 		} else {
 			$return->result = 0;
 			$return->error = join( '<br />', $erro );
