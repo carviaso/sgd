@@ -3,9 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <title>Relatório de Professores X Aposentadoria X Titulação</title>
+        <title>Relatrio de Professores X Aposentadoria X Titulao</title>
         <meta name="keywords" content="professor x aposentadoria x titulacao, relatório" />
-        <meta name="description" content="Esta é página de relatórios de professores x aposentadoria x titulacao do sistema de gestão de docentes" />
+        <meta name="description" content="Esta �gina de relatios de professores x aposentadoria x titulacao do sistema de geo de docentes" />
         <link href="css/default.css" rel="stylesheet" type="text/css" />
     </head>
 
@@ -18,7 +18,7 @@
             <div id="page">
                 <div id="content">
                     <div id="welcome">
-                        <h1>Relatório de Professores X Aposentadoria X Titulação</h1>
+                        <h1>Relatrio de Professores X Aposentadoria X Titula�o</h1>
 
                         <!--body-->
                         <?php
@@ -28,7 +28,7 @@
                         $config = new Configuration();
                         $wsdl = $config->get_wsdl();
                         $client = new soapclientnusoap($wsdl, true);
-                        
+
                         $err = $client->getError();
                         if ($err) {
                             echo '<h2>Erro na construcao do cliente nuSoap: </h2><pre>' . $err . '</pre>';
@@ -40,7 +40,7 @@
                             if (!$_POST['Quantidade_anos']) {
                                 echo "Digite uma quantidade de anos";
                             } else if (!ctype_digit($_POST['Quantidade_anos'])) {
-                                echo "A quantidade de anos deve ser numérica";
+                                echo "A quantidade de anos deve ser numrica";
 
                             } else {
                                 $quantidade_anos = $_POST['Quantidade_anos'];
@@ -52,15 +52,14 @@
                                     echo '<tr>';
                                         echo '<th>ID</th>';
                                         echo '<th>Nome</th>';
-                                        echo '<th>Sobrenome</th>';
-                                        echo '<th>Matrícula</th>';
+                                        echo '<th>Matr&iacute;cula</th>';
                                         echo '<th>Siape</th>';
                                         echo '<th>Aposentado</th>';
-                                        echo '<th>Data Previsão Aposentadoria</th>';
-                                        echo '<th>Tipo Titulação</th>';
+                                        echo '<th>Data Previs Aposentadoria</th>';
+                                        echo '<th>Tipo Titula</th>';
                                     echo '</tr>';
 
-                                    echo 'ToDo: NÃO ESTÁ FUNCIONANDO CORRETAMENTE';
+                                    echo 'ToDo: N FUNCIONANDO CORRETAMENTE';
 
                                     $result = $proxy->get_all_professor_por_aposentadoria_por_tipo_titulacao(
                                         $quantidade_anos,
@@ -81,7 +80,7 @@
                                         if ($depData['aposentado']) {
                                             echo "<td>Sim</td>";
                                         } else {
-                                            echo "<td>Não</td>";
+                                            echo "<td>No</td>";
                                         }
                                         echo "<td>".$depData['data_previsao_aposentadoria']."</td>";
                                         echo "<td>".$depData['id_tipo_titulacao']."</td>";
@@ -106,7 +105,7 @@
                             echo '</p>';
 
                             echo '<p>';
-                            echo '<div id="LOperadorLogicoTipoTitulacao">Operador lógico sobre o tipo de titulação</div>';
+                            echo '<div id="LOperadorLogicoTipoTitulacao">Operador lógico sobre o tipo de titulo</div>';
                             echo '<select name ="Operador_logico_tipo_titulacao">';
                             echo "<OPTION VALUE = '=' >igual a";
                             echo "<OPTION VALUE = '>' >maior que";
@@ -114,7 +113,7 @@
                             echo "<OPTION VALUE = '>=' >maior ou igual a";
                             echo "<OPTION VALUE = '<=' >menor ou igual a";
                             echo '</select>';
-                            echo '<div id="LTipoTitulacao">Tipo de Titulação</div>';
+                            echo '<div id="LTipoTitulacao">Tipo de Titulo</div>';
                             echo '<select name ="Id_tipo_titulacao">';
 
                             $result = $proxy->get_all_tipo_titulacao();

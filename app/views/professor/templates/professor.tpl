@@ -1,8 +1,6 @@
 <h1>Cadastro de Professor</h1>
 <div>Nome</div>
 <input type="text" id="nome" name="nome" value="" maxlength="100" class="ui-state-default ui-corner-all width100" />
-<div>Sobrenome</div>
-<input type="text" id="sobrenome" name="sobrenome" value="" maxlength="100" class="ui-state-default ui-corner-all width100" />
 <div>Data de nascimento</div>
 <input type="text" id="dataNascimento" class="ui-state-default ui-corner-all width100" />
 <div>Matr&iacute;cula</div>

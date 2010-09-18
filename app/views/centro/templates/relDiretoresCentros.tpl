@@ -17,7 +17,7 @@
 		</tr>
 		{foreach from=$diretores item=diretor}
 			<tr>
-		    	<td>{$diretor->nome} {$diretor->sobrenome}</td>
+		    	<td>{$diretor->nome}</td>
 		    </tr>	    
 		{foreachelse}
 			<tr>

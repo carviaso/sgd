@@ -68,7 +68,7 @@ function ToSql ($field, $oper, $val) {
 			break;
 		default :
 			if($oper=='bw' || $oper=='bn') return "'" . addslashes($val) . "%'";
-			else if ($oper=='ew' || $oper=='en') return "'%" . addcslashes($val) . "'";
+			else if ($oper=='ew' || $oper=='en') return "'%" . addslashes ($val) . "'";
 			else if ($oper=='cn' || $oper=='nc') return "'%" . addslashes($val) . "%'";
 			else return "'" . addslashes($val) . "'";
 	}

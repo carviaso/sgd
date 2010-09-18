@@ -466,7 +466,6 @@ CREATE TABLE IF NOT EXISTS `processo` (
 CREATE TABLE IF NOT EXISTS `professor` (
   `id_professor` int(11) NOT NULL auto_increment,
   `nome` varchar(100) NOT NULL,
-  `sobrenome` varchar(100) NOT NULL,
   `matricula` int(11) NOT NULL,
   `siape` int(11) NOT NULL,
   `data_admissao` date NOT NULL,

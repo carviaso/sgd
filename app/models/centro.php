@@ -54,7 +54,7 @@ class Centro {
 		$conexao = Conexao::con();
 		$diretores = array();
 
-		$sql[] = "select p.id_professor, p.nome, p.sobrenome from centro c";
+		$sql[] = "select p.id_professor, p.nome from centro c";
 		$sql[] = "inner join centrocargocomissionado cc";
 		$sql[] = "on c.id_centro = cc.id_centro";
 		$sql[] = "inner join professor p";
@@ -67,7 +67,6 @@ class Centro {
 			$diretor = new stdClass;
 			$diretor->idDiretor = $row['id_professor'];
 			$diretor->nome = utf8_encode( $row['nome'] );
-			$diretor->sobrenome = utf8_encode( $row['sobrenome'] );
 			$diretores[] = $diretor;
 		}
 		return $diretores;
