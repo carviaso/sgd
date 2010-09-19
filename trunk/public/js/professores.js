@@ -347,7 +347,7 @@ var professores = {
 							'idProfessor':idProfessor
 						};
 			$('#auxiliarOculta').hide().load("app/frontController.php", params, function() {
-				gb.message( $('#auxiliarOculta').html(), 'Detalhes do Professor', {"width":600, "position": 'center'} );
+				gb.message( $('#auxiliarOculta').html(), 'Detalhes do Professor', {"width":600, "height":400, "position": 'center'} );
 			});
 		},
 		mostraProgressaoFuncional: function( idProfessor ) {

@@ -50,6 +50,32 @@ a {
     text-decoration: underline;
     color: #323B51;
 }
+#userInfo > div > a { color: white; text-decoration: underline; }
+#userInfo > div { padding-right: 10px; }
+#userInfo {
+	width:100%;
+	margin:0;
+    padding: 2px;
+	text-align: right;
+	font-weight: normal;
+	color: white;
+	background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    *position: absolute;
+    top: expression((0+(ignoreMe=document.documentElement.scrollTop?document.documentElement.scrollTop:document.body.scrollTop))+'px');
+}
+#copyRight >div > a { color: white; text-decoration: underline; }
+#copyRight {
+	width:100%;
+    padding: 2px;
+	text-align: center;
+	color: white;
+	background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    *position: absolute;
+	bottom: 0;
+}
+
 .detalhesProfessor {
 	background-image:url('images/icons/zoom.png');
 	background-repeat: no-repeat;
