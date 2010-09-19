@@ -1,5 +1,11 @@
 <?php
 
+if( isset( $_SESSION['logado'] ) ) {
+	//echo 'logado';
+} else {
+	//echo 'deslogado';
+}
+
 include_once 'library/Smarty-3.0rc1/libs/Smarty.class.php';
 
 $dirs = array( 'controllers', 'models', 'views/*', 'include', 'helper' );
