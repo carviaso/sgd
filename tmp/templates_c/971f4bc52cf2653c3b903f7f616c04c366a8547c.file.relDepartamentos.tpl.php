@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.0rc1, created on 2010-09-10 02:42:51
+<?php /* Smarty version 3.0rc1, created on 2010-09-18 20:35:37
          compiled from "views/departamento/templates/relDepartamentos.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:7234c899b2b483553-92106379%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:295424c952299071f27-84114154%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '971f4bc52cf2653c3b903f7f616c04c366a8547c' => 
     array (
       0 => 'views/departamento/templates/relDepartamentos.tpl',
-      1 => 1284086488,
+      1 => 1284841142,
     ),
   ),
-  'nocache_hash' => '7234c899b2b483553-92106379',
+  'nocache_hash' => '295424c952299071f27-84114154',
   'function' => 
   array (
   ),
@@ -76,7 +76,6 @@ if (count($_from) > 0){
 ?>
 			<tr>
 				<td><?php echo $_smarty_tpl->getVariable('professor')->value->nome;?>
- <?php echo $_smarty_tpl->getVariable('professor')->value->sobrenome;?>
 </td>
 				<td><?php echo $_smarty_tpl->getVariable('professor')->value->matricula;?>
 </td>

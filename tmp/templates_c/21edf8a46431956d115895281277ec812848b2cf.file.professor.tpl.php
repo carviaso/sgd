@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.0rc1, created on 2010-09-11 20:22:05
+<?php /* Smarty version 3.0rc1, created on 2010-09-18 20:23:35
          compiled from "views/professor/templates/professor.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:218814c8be4ed8307b4-69710566%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:204174c951fc7a44da3-53006619%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '21edf8a46431956d115895281277ec812848b2cf' => 
     array (
       0 => 'views/professor/templates/professor.tpl',
-      1 => 1283914617,
+      1 => 1284840650,
     ),
   ),
-  'nocache_hash' => '218814c8be4ed8307b4-69710566',
+  'nocache_hash' => '204174c951fc7a44da3-53006619',
   'function' => 
   array (
   ),
@@ -19,8 +19,6 @@ $_smarty_tpl->decodeProperties(array (
 <h1>Cadastro de Professor</h1>
 <div>Nome</div>
 <input type="text" id="nome" name="nome" value="" maxlength="100" class="ui-state-default ui-corner-all width100" />
-<div>Sobrenome</div>
-<input type="text" id="sobrenome" name="sobrenome" value="" maxlength="100" class="ui-state-default ui-corner-all width100" />
 <div>Data de nascimento</div>
 <input type="text" id="dataNascimento" class="ui-state-default ui-corner-all width100" />
 <div>Matr&iacute;cula</div>
