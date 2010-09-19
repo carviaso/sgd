@@ -1,0 +1,5 @@
+Unobtrusive JavaScript
+From Wikipedia, the free encyclopedia
+Jump to: navigation, search
+
+"Unobtrusive JavaScript" is an emerging technique in the JavaScript programming language, as used on the World Wide Web. Though the term is not formally defined, its basic principles are generally understood to include:
