@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.0rc1, created on 2010-09-10 02:30:41
+<?php /* Smarty version 3.0rc1, created on 2010-09-18 23:54:54
          compiled from "views/centro/templates/relDiretoresCentros.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:292484c899851dcdaf2-01865209%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:8194c95514e763877-65296406%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '6472a7619fa37392f053c8845c3a4df08c461628' => 
     array (
       0 => 'views/centro/templates/relDiretoresCentros.tpl',
-      1 => 1284085826,
+      1 => 1284841126,
     ),
   ),
-  'nocache_hash' => '292484c899851dcdaf2-01865209',
+  'nocache_hash' => '8194c95514e763877-65296406',
   'function' => 
   array (
   ),
@@ -46,7 +46,6 @@ if (count($_from) > 0){
 ?>
 			<tr>
 		    	<td><?php echo $_smarty_tpl->getVariable('diretor')->value->nome;?>
- <?php echo $_smarty_tpl->getVariable('diretor')->value->sobrenome;?>
 </td>
 		    </tr>	    
 		<?php }} else { ?>

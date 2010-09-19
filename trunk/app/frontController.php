@@ -1,9 +1,14 @@
 <?php
 
-if( isset( $_SESSION['logado'] ) ) {
-	//echo 'logado';
-} else {
-	//echo 'deslogado';
+include_once '../app/controllers/loginC.php';
+include_once '../app/models/loginM.php';
+include_once '../app/include/conexao.php';
+
+if ( $_POST['verificaLogin'] == true ) {
+	$loginC = new loginC();
+	return $loginC->valida( $_POST['siape'], md5($_POST['senha'] ) );
+} elseif( !$_SESSION['logado'] ) {
+	return $loginC->logout();
 }
 
 include_once 'library/Smarty-3.0rc1/libs/Smarty.class.php';
@@ -11,7 +16,7 @@ include_once 'library/Smarty-3.0rc1/libs/Smarty.class.php';
 $dirs = array( 'controllers', 'models', 'views/*', 'include', 'helper' );
 foreach ( $dirs as $dir ) {
 	foreach ( glob( "../app/{$dir}/*.php" ) as $filename ) {
-		include "{$filename}";
+		include_once "{$filename}";
 	}
 }
 
