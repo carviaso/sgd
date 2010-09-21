@@ -31,11 +31,10 @@ class LoginC {
 	/**
 	 * Efetua o logout do usuario
 	 *
-	 * @return array
+	 * @return json
 	 */
 	public function logout() {
-		unset( $_SESSION );
-		Header( "Location: login.php" );
+		echo json_encode( $this->model->logout() );
 	}
 }
 ?>

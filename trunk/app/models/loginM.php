@@ -3,7 +3,7 @@
 class LoginM {
 
 	/**
-	 * Valida a tentativa de login do usuario
+	 * Valida o login do usuario
 	 *
 	 * @return array
 	 */
@@ -27,10 +27,22 @@ class LoginM {
 			$_SESSION['logado'] = true;
 			$return->result = 1;
 		} else {
-			unset( $_SESSION );
 			$return->result = 0;
 			$return->error = mysqli_error( $conexao );
 		}
+		return $return;
+	}
+
+	/**
+	 * Destroy a sessao
+	 *
+	 * @return void
+	 */
+	function logout() {
+		session_unset();
+		session_destroy();
+		$return = new stdClass();
+		$return->result = 1;
 		return $return;
 	}
 }
