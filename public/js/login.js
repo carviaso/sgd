@@ -1,10 +1,25 @@
 var login = {
 	init: function() {
 		$("#entrar").button().click(function() {
-			login.verifica();
+			login.login();
+		});
+		$("#logout").click(function() {
+			login.logout();
 		});
 	}(),
-	verifica: function( params ) {
+	logout: function() {
+		gb.processing();
+		var params = { 'action':'logout' };
+		$.post("app/frontController.php", params, function( response ) {
+			if ( response.result == 1 ) {
+				location.reload();
+			}
+			setTimeout( function() {
+				gb.processingClose();
+			}, 1000);
+		}, "json" );
+	},
+	login: function( params ) {
 		gb.processing();
 		var erro = [];
 		var siape = $('#siape').val();
@@ -19,22 +34,25 @@ var login = {
 				'siape':siape,
 				'senha':senha
 			};
-			
 			$.post("app/frontController.php", params, function( response ) {
 				if ( response.result == 1 ) {
-					location = "main.php";
+					location.reload();
 				} else {
 					var msg = 'Verifique o numero do seu Siape e sua senha.<br /><br />' + response.error;
 					gb.highlightMessage( msg, 'Erro' );
 				}
 			}, "json" );
-			gb.processingClose();
+			setTimeout( function() {
+				gb.processingClose();
+			}, 1000);
 		} else {
 			var msg = [];
 			msg.push( 'Verifique os seguintes campos:<br /><br />' );
 			msg.push( erro.join( '<br />' ) );
 			gb.highlightMessage( msg.join(''), 'Erro' );
-			gb.processingClose();
+			//setTimeout( function() {
+				gb.processingClose();
+			//}, 1000);
 		}
 	}
 }
