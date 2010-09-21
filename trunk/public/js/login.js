@@ -50,9 +50,7 @@ var login = {
 			msg.push( 'Verifique os seguintes campos:<br /><br />' );
 			msg.push( erro.join( '<br />' ) );
 			gb.highlightMessage( msg.join(''), 'Erro' );
-			//setTimeout( function() {
-				gb.processingClose();
-			//}, 1000);
+			gb.processingClose();
 		}
 	}
 }
