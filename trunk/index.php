@@ -32,9 +32,9 @@
 				<?php
 					if ( !isset( $_SESSION['logado'] ) ) {
 						include 'app/views/menuLogin.php';
-					} else {
-						include 'app/views/menuCadastro.php';
-					}
+					} //else {
+						//include 'app/views/menuCadastro.php';
+					//}
 				?>
 				</div>
 				<div style="clear: both; height: 1px"></div>

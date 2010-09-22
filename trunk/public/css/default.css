@@ -50,6 +50,25 @@ a {
     text-decoration: underline;
     color: #323B51;
 }
+#boxLogin {
+	border: 1px solid #D4C792;
+	padding: 2px;
+}
+#boxLogin > .boxLoginSub { padding: 8px; border: 1px solid #D4C792;	background-color: #D4C792; }
+#boxLogin > .label {
+	background-color: #AA2808;
+	color: white;
+	font-weight: bold;
+	padding: 4px;
+	margin-bottom: 3px;
+	text-align: center;
+	border: 1px solid #D4C792;
+}
+#boxLogin > .boxLoginSub > .label {	color: #AA2808;	padding: 2px; }
+#boxLogin > .boxLoginSub input[type=text], input[type=password] { border: 1px solid #AA2808; padding: 3px; }
+
+
+
 #userInfo > div > a { color: white; text-decoration: underline; }
 #userInfo > div { padding-right: 10px; }
 #userInfo {
