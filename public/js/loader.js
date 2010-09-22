@@ -27,7 +27,7 @@ var principal = {
 				relatorios.loadMenu();
 				gb.processingClose();
 			});
-		}).click();
+		});
 	},
 	loadNavFormulario: function() {
 		$(".navFormulario").click(function() {
