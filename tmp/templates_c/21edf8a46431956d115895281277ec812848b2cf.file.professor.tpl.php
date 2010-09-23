@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.0rc1, created on 2010-09-18 20:23:35
+<?php /* Smarty version 3.0rc1, created on 2010-09-23 04:36:06
          compiled from "views/professor/templates/professor.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:204174c951fc7a44da3-53006619%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:275814c9ad936803599-20284158%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '21edf8a46431956d115895281277ec812848b2cf' => 
     array (
       0 => 'views/professor/templates/professor.tpl',
-      1 => 1284840650,
+      1 => 1285216235,
     ),
   ),
-  'nocache_hash' => '204174c951fc7a44da3-53006619',
+  'nocache_hash' => '275814c9ad936803599-20284158',
   'function' => 
   array (
   ),
@@ -18,17 +18,17 @@ $_smarty_tpl->decodeProperties(array (
 )); /*/%%SmartyHeaderCode%%*/?>
 <h1>Cadastro de Professor</h1>
 <div>Nome</div>
-<input type="text" id="nome" name="nome" value="" maxlength="100" class="ui-state-default ui-corner-all width100" />
+<input type="text" id="nome" name="nome" value="" maxlength="100" class="input ui-corner-all width100" />
 <div>Data de nascimento</div>
-<input type="text" id="dataNascimento" class="ui-state-default ui-corner-all width100" />
+<input type="text" id="dataNascimento" class="input ui-corner-all width100" />
 <div>Matr&iacute;cula</div>
-<input type="text" id="matricula" name="Matricula" maxlength="255" value="" class="ui-state-default ui-corner-all width100" />
+<input type="text" id="matricula" name="Matricula" maxlength="255" value="" class="input ui-corner-all width100" />
 <div>Siape</div>
-<input type="text" id="siape" name="Siape" maxlength="255" value="" class="ui-state-default ui-corner-all width100" />
+<input type="text" id="siape" name="Siape" maxlength="255" value="" class="input ui-corner-all width100" />
 <div>Data da admiss&atilde;o</div>
-<input type="text" id="dataAdmissao" class="ui-state-default ui-corner-all width100" />
+<input type="text" id="dataAdmissao" class="input ui-corner-all width100" />
 <div>Data da admiss&atilde;o na Ufsc</div>
-<input type="text" id="dataAdmissaoUfsc" class="ui-state-default ui-corner-all width100" />
+<input type="text" id="dataAdmissaoUfsc" class="input ui-corner-all width100" />
 <div>Aposentado</div>
 <div id="radio">
 	<label for="aposentadoSim">Sim</label>
@@ -37,11 +37,11 @@ $_smarty_tpl->decodeProperties(array (
 	<input type="radio" id="aposentadoNao" name="aposentado" value="0" />
 </div>
 <div>Data prevista da aposentadoria</div>
-<input type="text" id="dataPrevistaAposentadoria" class="ui-state-default ui-corner-all width100" />
+<input type="text" id="dataPrevistaAposentadoria" class="input ui-corner-all width100" />
 <div>Data efetiva da aposentadoria</div>
-<input type="text" id="dataEfetivaAposentadoria" class="ui-state-default ui-corner-all width100" />
+<input type="text" id="dataEfetivaAposentadoria" class="input ui-corner-all width100" />
 <div>Departamento</div>
-<select id="departamento" class="width100">
+<select id="departamento" class="select ui-corner-all width100">
 	<?php  $_smarty_tpl->tpl_vars['departamento'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('departamentos')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 if (count($_from) > 0){
@@ -53,7 +53,7 @@ if (count($_from) > 0){
 	<?php }} ?>
 </select>
 <div>Categoria Funcional Inicial<div>
-<select id="categoriaFuncionalInicial" class="width100">
+<select id="categoriaFuncionalInicial" class="select ui-corner-all width100">
 	<?php  $_smarty_tpl->tpl_vars['categoriaFuncional'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('categoriasFuncionais')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 if (count($_from) > 0){
@@ -65,7 +65,7 @@ if (count($_from) > 0){
 	<?php }} ?>
 </select>
 <div>Categoria Funcional Atual<div>
-<select id="categoriaFuncionalAtual" class="width100">
+<select id="categoriaFuncionalAtual" class="select ui-corner-all width100">
 	<?php  $_smarty_tpl->tpl_vars['categoriaFuncional'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('categoriasFuncionais')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 if (count($_from) > 0){
@@ -77,7 +77,7 @@ if (count($_from) > 0){
 	<?php }} ?>
 </select>
 <div>Tipo de Titula&ccedil;&atilde;o<div>
-<select id="titulacao" class="width100">
+<select id="titulacao" class="select ui-corner-all width100">
 	<?php  $_smarty_tpl->tpl_vars['tipoTitulacao'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('tipoTitulacoes')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 if (count($_from) > 0){
@@ -89,7 +89,7 @@ if (count($_from) > 0){
 	<?php }} ?>
 </select>
 <div>Categoria Funcional Refer&ecirc;ncia<div>
-<select id="categoriaFuncionalReferencia" class="width100">
+<select id="categoriaFuncionalReferencia" class="select ui-corner-all width100">
 	<?php  $_smarty_tpl->tpl_vars['categoriaFuncional'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('categoriasFuncionais')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 if (count($_from) > 0){
@@ -101,7 +101,7 @@ if (count($_from) > 0){
 	<?php }} ?>
 </select>
 <div>Cargo<div>
-<select id="cargo" class="width100">
+<select id="cargo" class="select ui-corner-all width100">
 	<?php  $_smarty_tpl->tpl_vars['cargo'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('cargos')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 if (count($_from) > 0){
@@ -113,7 +113,7 @@ if (count($_from) > 0){
 	<?php }} ?>
 </select>
 <div>Situacao<div>
-<select id="situacao" class="width100">
+<select id="situacao" class="select ui-corner-all width100">
 	<?php  $_smarty_tpl->tpl_vars['situacao'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('situacoes')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 if (count($_from) > 0){
@@ -125,4 +125,4 @@ if (count($_from) > 0){
 	<?php }} ?>
 </select>
 <div>&nbsp;<div>
-<div><button id="cadastrarProfessor" class="right">Cadastrar</button><div>
+<div><button id="cadastrarProfessor button" class="right">Cadastrar</button><div>

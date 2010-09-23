@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.0rc1, created on 2010-09-11 23:42:38
+<?php /* Smarty version 3.0rc1, created on 2010-09-23 04:33:26
          compiled from "views/municipio/templates/municipio.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:309114c8c13eec3a7c1-75106407%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:172324c9ad896dfc718-87664300%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '306bb8ef68600feb7febda364a15f34766e2340f' => 
     array (
       0 => 'views/municipio/templates/municipio.tpl',
-      1 => 1284248512,
+      1 => 1285216404,
     ),
   ),
-  'nocache_hash' => '309114c8c13eec3a7c1-75106407',
+  'nocache_hash' => '172324c9ad896dfc718-87664300',
   'function' => 
   array (
   ),
@@ -18,9 +18,9 @@ $_smarty_tpl->decodeProperties(array (
 )); /*/%%SmartyHeaderCode%%*/?>
 <h1>Cadastro de Munic&iacute;pio</h1>
 <div>Nome</div>
-<input type="text" id="nome" name="nome" value="" maxlength="100" class="ui-state-default ui-corner-all width100" />
+<input type="text" id="nome" name="nome" value="" maxlength="100" class="input ui-corner-all width100" />
 <div>UF</div>     
-<select id="idUf" class="width100">
+<select id="idUf" class="select ui-corner-all width100">
 <?php  $_smarty_tpl->tpl_vars['uf'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('ufs')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 if (count($_from) > 0){
@@ -33,5 +33,5 @@ if (count($_from) > 0){
 </select>
 <p></p>
 <p>
-	<button id="cadastrarMunicipio" class="right">Cadastrar</button>
+	<button id="cadastrarMunicipio" class="right button">Cadastrar</button>
 </p>
