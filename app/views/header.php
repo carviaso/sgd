@@ -1,7 +1,8 @@
 <div id="userInfo">
 	<div><?php
 		if( isset( $_SESSION['logado'] ) ) {
-			echo $_SESSION['nome'];
+			//echo $_SESSION['nome'];
+			echo "<a href='javascript:void(0);' id='editUserData'>{$_SESSION['nome']}</a>";
 			echo ' | <a href="javascript:void(0);" id="logout">Sair</a>';
 		} else {
 			echo '&nbsp;';
