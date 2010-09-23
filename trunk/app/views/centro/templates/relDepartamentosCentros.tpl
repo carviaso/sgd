@@ -1,7 +1,7 @@
 {if $option eq listCentros}
 	<h1>Relat&oacute;rio de Departamento por Centro</h1>
 	<label for="selectCentros">Escolha o centro</label>
-	<select id="selectCentros">
+	<select id="selectCentros" class="select ui-corner-all width100">
 		{foreach from=$centros item=centro}
 		    <option value="{$centro->idCentro}">{$centro->nome}</option>
 		{/foreach}

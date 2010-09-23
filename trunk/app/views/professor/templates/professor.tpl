@@ -65,4 +65,4 @@
 	{/foreach}
 </select>
 <div>&nbsp;<div>
-<div><button id="cadastrarProfessor button" class="right">Cadastrar</button><div>
+<div><button id="cadastrarProfessor" class="right button">Cadastrar</button><div>

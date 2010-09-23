@@ -22,7 +22,7 @@
 	<h1>Relat&oacute;rio de Professores por Departamento</h1>
 	<span>Escolha aqui o centro</span>
 	
-	<select id="selectDepartamentos">
+	<select id="selectDepartamentos" class="select ui-corner-all width100">
 		{foreach from=$departamentos item=departamento}
 		    <option value="{$departamento->idDepartamento}">{$departamento->nome}</option>
 		{/foreach}

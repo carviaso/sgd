@@ -40,4 +40,4 @@
 <div>Observa&ccedil;&atilde;o</div>
 <textarea id="observacao" rows="6" class="input ui-corner-all width100"></textarea>
 <div>&nbsp;<div>
-<div><button id="cadastrarAfastamentoProfessor" class="right">Cadastrar</button><div>
+<div><button id="cadastrarAfastamentoProfessor" class="right button">Cadastrar</button><div>
