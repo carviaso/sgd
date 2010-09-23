@@ -6,6 +6,9 @@ var login = {
 		$("#logout").click(function() {
 			login.logout();
 		});
+		$("#editUserData").click(function() {
+			login.editUserData();
+		});
 	}(),
 	logout: function() {
 		gb.processing();
@@ -52,5 +55,18 @@ var login = {
 			gb.highlightMessage( msg.join(''), 'Erro' );
 			gb.processingClose();
 		}
+	},
+	editUserData: function() {
+		gb.processing();
+		$('#content').html('Carregar formulario com dados do usuario<br /><br /><br /><br /><br /><br /><br /><br /><br />');
+		//var params = { "action":"printFormCadUF" };
+		//$('#content').load("app/frontController.php", params, function() {
+//			$("#cadastrarUf").button().click(function() {
+//				cadastros.uf.valida();
+//			});
+			//$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+			gb.processingClose();
+		//});
 	}
+	
 }

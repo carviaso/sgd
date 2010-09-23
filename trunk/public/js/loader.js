@@ -42,6 +42,7 @@ var principal = {
 	loadNavSobre: function() {
 		$(".navSobre").click(function() {
 			gb.processing();
+			$('#sidebar').html('');
 			$('#content').load('app/views/sobre.php', function() {
 				gb.processingClose();
 			});

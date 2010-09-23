@@ -10,6 +10,6 @@
 			<input type="password" id="senha" value="123456" class="input ui-corner-all" />
 		</div>
 		<br />
-		<div><input type="button" id="entrar" maxlength="32" value="Entrar" /></div>
+		<div><input type="button" class="button" id="entrar" maxlength="32" value="Entrar" /></div>
 	</div>
 </div>
