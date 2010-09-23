@@ -10,7 +10,7 @@ var professores = {
 					professores.valida();
 				});
 				$("#radio").buttonset();
-				$('#content select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				//$('#content select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
 			});
 		});
@@ -22,7 +22,7 @@ var professores = {
 				$("#cadastrarRegimeTrabalho").button().click(function() {
 					professores.regimeTrabalho.valida();
 				});
-				$('#content select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				//$('#content select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
 			});
 		});
@@ -30,7 +30,7 @@ var professores = {
 			gb.processing();
 			var params = { "action":"printFormCadAfastamentoProfessor" };
 			$('#content').html('').load("app/frontController.php", params, function() {
-				$('#content select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				//$('#content select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				$("#radio").buttonset();
 				$("#dataInicio, #dataPrevisaoTermino").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
 				$('#dataInicio, #dataPrevisaoTermino').change(function() {
@@ -60,7 +60,7 @@ var professores = {
 				$("#cadastrarProgressaoFuncionalProfessor").button().click(function() {
 					professores.progressaoFuncionalProfessor.valida();
 				});
-				$('#content.select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				//$('#content.select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
 			});
 		});

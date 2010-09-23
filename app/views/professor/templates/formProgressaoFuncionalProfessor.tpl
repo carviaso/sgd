@@ -22,4 +22,4 @@
 <div>Portaria</div>
 <input type="text" id="portaria" name="portaria" value="" maxlength="45" class="input ui-corner-all width100" />
 <div>&nbsp;<div>
-<div><button id="cadastrarProgressaoFuncionalProfessor" class="right">Cadastrar</button>
+<div><button id="cadastrarProgressaoFuncionalProfessor" class="right button">Cadastrar</button>
