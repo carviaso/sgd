@@ -68,7 +68,8 @@ a {
 }
 #boxLogin > .boxLoginSub > .label {	color: #AA2808;	padding: 2px; }
 
-#userInfo > div > a { color: white; text-decoration: underline; }
+#userInfo > div > a { color: white; text-decoration: none; }
+#userInfo > div > a:hover{ color: white; text-decoration: underline; }
 #userInfo > div { padding-right: 10px; }
 #userInfo {
 	width:100%;
