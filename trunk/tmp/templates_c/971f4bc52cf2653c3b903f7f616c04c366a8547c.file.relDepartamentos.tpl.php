@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.0rc1, created on 2010-09-18 20:35:37
+<?php /* Smarty version 3.0rc1, created on 2010-09-23 05:06:22
          compiled from "views/departamento/templates/relDepartamentos.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:295424c952299071f27-84114154%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:197874c9ae04eb47439-14230656%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '971f4bc52cf2653c3b903f7f616c04c366a8547c' => 
     array (
       0 => 'views/departamento/templates/relDepartamentos.tpl',
-      1 => 1284841142,
+      1 => 1285218378,
     ),
   ),
-  'nocache_hash' => '295424c952299071f27-84114154',
+  'nocache_hash' => '197874c9ae04eb47439-14230656',
   'function' => 
   array (
   ),
@@ -48,7 +48,7 @@ if (count($_from) > 0){
 	<h1>Relat&oacute;rio de Professores por Departamento</h1>
 	<span>Escolha aqui o centro</span>
 	
-	<select id="selectDepartamentos">
+	<select id="selectDepartamentos" class="select ui-corner-all width100">
 		<?php  $_smarty_tpl->tpl_vars['departamento'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('departamentos')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 if (count($_from) > 0){

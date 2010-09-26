@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.0rc1, created on 2010-09-23 04:36:06
+<?php /* Smarty version 3.0rc1, created on 2010-09-23 04:58:06
          compiled from "views/professor/templates/professor.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:275814c9ad936803599-20284158%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:239214c9ade5ea67139-18368568%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '21edf8a46431956d115895281277ec812848b2cf' => 
     array (
       0 => 'views/professor/templates/professor.tpl',
-      1 => 1285216235,
+      1 => 1285217883,
     ),
   ),
-  'nocache_hash' => '275814c9ad936803599-20284158',
+  'nocache_hash' => '239214c9ade5ea67139-18368568',
   'function' => 
   array (
   ),
@@ -125,4 +125,4 @@ if (count($_from) > 0){
 	<?php }} ?>
 </select>
 <div>&nbsp;<div>
-<div><button id="cadastrarProfessor button" class="right">Cadastrar</button><div>
+<div><button id="cadastrarProfessor" class="right button">Cadastrar</button><div>

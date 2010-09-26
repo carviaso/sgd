@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.0rc1, created on 2010-09-10 02:42:37
+<?php /* Smarty version 3.0rc1, created on 2010-09-23 05:05:43
          compiled from "views/centro/templates/relDepartamentosCentros.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:298904c899b1d05aa18-91228065%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:322824c9ae027238579-65059891%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'f6c5011eb04c5774c7f2189098ff8d773fb9d2ad' => 
     array (
       0 => 'views/centro/templates/relDepartamentosCentros.tpl',
-      1 => 1284086553,
+      1 => 1285218247,
     ),
   ),
-  'nocache_hash' => '298904c899b1d05aa18-91228065',
+  'nocache_hash' => '322824c9ae027238579-65059891',
   'function' => 
   array (
   ),
@@ -19,7 +19,7 @@ $_smarty_tpl->decodeProperties(array (
 <?php if ($_smarty_tpl->getVariable('option')->value=='listCentros'){?>
 	<h1>Relat&oacute;rio de Departamento por Centro</h1>
 	<label for="selectCentros">Escolha o centro</label>
-	<select id="selectCentros">
+	<select id="selectCentros" class="select ui-corner-all width100">
 		<?php  $_smarty_tpl->tpl_vars['centro'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('centros')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 if (count($_from) > 0){

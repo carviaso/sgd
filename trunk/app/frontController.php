@@ -185,6 +185,14 @@ switch ($action) {
 		$professorC= new ProfessorC();
 		$professorC->mostraDetalhesProfessor( $idProfessor );
 	break;
+	case 'printFormUser':
+		$professorC = new ProfessorC();
+		$professorC->printFormUser( $_SESSION['idProfessor'] );
+	break;
+	case 'updateUser':
+		$professorC = new ProfessorC();
+		$professorC->updateUser( $nome, $dataNascimento, $siape, $senhaAtual, $novaSenha, $novaSenha2 );
+	break;
 	case 'printFormCadPais':
 		$paisV = new PaisV();
 		$paisV->printFormCadPais();

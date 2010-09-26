@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.0rc1, created on 2010-09-11 20:24:42
+<?php /* Smarty version 3.0rc1, created on 2010-09-23 04:58:42
          compiled from "views/professor/templates/formAfastamentoProfessor.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:75504c8be58ad403c7-07917841%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:135084c9ade8253a379-17591176%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '8bb9d9d5bdae9c1dbfb57282ffedefc59c1b5232' => 
     array (
       0 => 'views/professor/templates/formAfastamentoProfessor.tpl',
-      1 => 1283926607,
+      1 => 1285217914,
     ),
   ),
-  'nocache_hash' => '75504c8be58ad403c7-07917841',
+  'nocache_hash' => '135084c9ade8253a379-17591176',
   'function' => 
   array (
   ),
@@ -18,7 +18,7 @@ $_smarty_tpl->decodeProperties(array (
 )); /*/%%SmartyHeaderCode%%*/?>
 <h1>Cadastro de Afastamento de Professor</h1>
 <div>Professor</div>
-<select id="idProfessor" class="width100">
+<select id="idProfessor" class="select ui-corner-all width100">
 	<?php  $_smarty_tpl->tpl_vars['professor'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('professores')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 if (count($_from) > 0){
@@ -30,7 +30,7 @@ if (count($_from) > 0){
 	<?php }} ?>
 </select>
 <div>Institui&ccedil;&atilde;o</div>
-<select id="idInstituicao" class="width100">
+<select id="idInstituicao" class="select ui-corner-all width100">
 <?php  $_smarty_tpl->tpl_vars['instituicao'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('instituicoes')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 if (count($_from) > 0){
@@ -42,7 +42,7 @@ if (count($_from) > 0){
 <?php }} ?>
 </select>
 <div>Tipo de Afastamento</div>
-<select id="idTipoAfastamento" class="width100">
+<select id="idTipoAfastamento" class="select ui-corner-all width100">
 <?php  $_smarty_tpl->tpl_vars['tipoAfastamento'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('tiposAfastamento')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 if (count($_from) > 0){
@@ -54,7 +54,7 @@ if (count($_from) > 0){
 <?php }} ?>
 </select>
 <div>Tipo de Titula&ccedil;&atilde;o<div>
-<select id="idTipoTitulacao" class="width100">
+<select id="idTipoTitulacao" class="select ui-corner-all width100">
 	<?php  $_smarty_tpl->tpl_vars['tipoTitulacao'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('tiposTitulacao')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 if (count($_from) > 0){
@@ -66,12 +66,12 @@ if (count($_from) > 0){
 	<?php }} ?>
 </select>
 <div>Data de in&iacute;cio</div>
-<input type="text" id="dataInicio" class="ui-state-default ui-corner-all width100" />
+<input type="text" id="dataInicio" class="input ui-corner-all width100" />
 <div>Data de previs&atilde;o de t&eacute;rmino</div>
-<input type="text" id="dataPrevisaoTermino" class="ui-state-default ui-corner-all width100" />
+<input type="text" id="dataPrevisaoTermino" class="input ui-corner-all width100" />
 <div class="mesesDuracao">Meses de duracao</div>
 <div>Processo</div>
-<input type="text" id="processo" value="" maxlength="45" class="ui-state-default ui-corner-all width100" />
+<input type="text" id="processo" value="" maxlength="45" class="input ui-corner-all width100" />
 <div>Prorroga&ccedil;&atilde;o</div>
 <div id="radio">
 	<label for="prorrogacaoSim">Sim</label>
@@ -80,6 +80,6 @@ if (count($_from) > 0){
 	<input type="radio" id="prorrogacaoNao" name="prorrogacao" value="0" />
 </div>
 <div>Observa&ccedil;&atilde;o</div>
-<textarea id="observacao" rows="6" class="ui-state-default ui-corner-all width100"></textarea>
+<textarea id="observacao" rows="6" class="input ui-corner-all width100"></textarea>
 <div>&nbsp;<div>
-<div><button id="cadastrarAfastamentoProfessor" class="right">Cadastrar</button><div>
+<div><button id="cadastrarAfastamentoProfessor" class="right button">Cadastrar</button><div>

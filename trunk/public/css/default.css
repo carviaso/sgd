@@ -184,6 +184,7 @@ a:hover {
 .input { border: 1px solid #AA2808; padding: 3px 0 3px 0; }
 .select { border: 1px solid #AA2808; padding: 3px 3px 3px 0; }
 .button{ border: 1px solid #AA2808; padding: 3px; }
+.bold { font-weight: bold; }
 
 #header {
     width: 960px;
