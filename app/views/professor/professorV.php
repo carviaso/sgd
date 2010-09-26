@@ -83,6 +83,16 @@ class ProfessorV {
 		$smarty->assign( "progressaoFuncional", $progressaoFuncional );
 		$smarty->display('mostraProgressaoFuncional.tpl');
 	}
+
+	function printFormUser( $professor ) {
+		$smarty = new Smarty();
+		$smarty->template_dir = 'views/professor/templates/';
+		$smarty->compile_dir  = '../tmp/templates_c/';
+		$smarty->cache_dir    = '../tmp/cache/';
+		$smarty->config_dir   = 'views/configs/';
+		$smarty->assign( "professor", $professor );
+		$smarty->display('printFormUser.tpl');
+	}
 }
 
 ?>

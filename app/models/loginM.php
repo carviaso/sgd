@@ -12,7 +12,7 @@ class LoginM {
 		$conexao = Conexao::con();
 		$return = new stdClass();
 
-		$sql[] = "SELECT nome FROM professor WHERE (siape = $siape AND senha = '$senha')";
+		$sql[] = "SELECT id_professor, nome FROM professor WHERE (siape = $siape AND senha = '$senha')";
 		$query = mysqli_query( $conexao, join( '', $sql ) );
 
 		// Conta o numero de registros do resultado
@@ -23,6 +23,7 @@ class LoginM {
 
 		if ( $count == 1 ) {
 			// Setar as variaveis de sessao
+			$_SESSION['idProfessor'] = $data['id_professor'];
 			$_SESSION['nome'] = $data['nome'];
 			$_SESSION['logado'] = true;
 			$return->result = 1;

@@ -180,5 +180,47 @@ class ProfessorC {
 		$progressaoFuncional = $this->model->getAllProgressaoFuncionalProfessor( $idProfessor );
 		$this->view->mostraProgressaoFuncional( $progressaoFuncional );
 	}
+
+	/**
+	 * Imprime um formulario para edicao dos dados do usuario logado
+	 *
+	 * @return void
+	 */
+	public function printFormUser( $idProfessor ) {
+		$professor = $this->model->getProfessorPorId( $idProfessor );
+		$this->view->printFormUser( $professor );
+	}
+
+	/**
+	 * Atualiza os dados do usuario logado
+	 *
+	 * @return void
+	 */
+	public function updateUser( $nome, $dataNascimento, $siape, $senhaAtual, $novaSenha, $novaSenha2 ) {
+		$erro = array();
+		$atualizaSenha = false;
+		if ( empty( $nome ) ) $erro[] = 'Nome';
+		if ( empty( $dataNascimento ) ) $erro[] = 'Data de nascimento';
+		if ( empty( $siape ) ) $erro[] = 'Siape';
+		if ( !empty( $senhaAtual ) ) {
+			if ( !empty( $novaSenha ) && !empty( $novaSenha2 ) ) {
+				if ( $novaSenha != $novaSenha2 ) {
+					$erro[] = 'Os campos da nova senha não conferem';
+				} else {
+					$atualizaSenha = true;
+				}
+			} else {
+				$erro[] = 'Preencha todos os campos de senha';
+			}
+		}
+
+		if ( count( $erro ) == 0 ) {
+			$return = $this->model->updateUser( $nome, $dataNascimento, $siape, $senhaAtual, $novaSenha, $novaSenha2, $atualizaSenha );
+		} else {
+			$return->result = 0;
+			$return->error = join( '<br />', $erro );
+		}
+		echo json_encode( $return );
+	}
 }
 ?>

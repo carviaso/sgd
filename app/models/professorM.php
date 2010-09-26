@@ -136,7 +136,9 @@ class ProfessorM {
 			$professor->siape = utf8_encode( $row['siape'] );
 			$professor->dataAdmissao = $row['data_admissao'];
 			$professor->dataAdmissaoUfsc = $row['data_admissao_ufsc'];
-			$professor->dataNascimento = $row['data_nascimento'];
+
+			$dataNascimento = date( 'd/m/Y', strtotime( $row['data_nascimento'] ) );
+			$professor->dataNascimento = $dataNascimento;
 			$professor->aposentado = utf8_encode( $row['aposentado'] );
 			$professor->dataPrevistaAposentadoria = $row['data_previsao_aposentadoria'];
 			$professor->dataEfetivaAposentadoria = $row['data_aposentadoria'];
@@ -402,7 +404,7 @@ class ProfessorM {
 		$conexao = Conexao::con();
 		$progressaoFuncional = array();
 
-		//@todo identar o codigo
+		//@TODO identar o codigo
 		$sql[] = "
 		SELECT
 p.id_categoria_funcional_inicial,
@@ -458,6 +460,56 @@ where p.id_professor = {$idProfessor}";
 			$progressaoFuncional[] = $progressao;
 		}
 		return $progressaoFuncional;
+	}
+
+	/**
+	 * Realiza o cadastro de um afastamento de professor
+	 *
+	 * @return stdClass
+	 */
+	public function updateUser( $nome, $dataNascimento, $siape, $senhaAtual, $novaSenha, $novaSenha2, $atualizaSenha ) {
+		$conexao = Conexao::con();
+		$return = new stdClass();
+
+		$nome = utf8_decode( $nome );
+		$dataNascimento = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataNascimento ) ) );
+		/* @TODO Melhorar a logica da funcao */
+		if ( $atualizaSenha ) {
+			$senha = MD5( $senhaAtual );
+			$sql[] = "SELECT COUNT(*) AS count FROM professor WHERE (siape = {$siape} AND senha = '{$senha}')";
+			$query = mysqli_query( $conexao, join( '', $sql ) );
+			$count = mysqli_fetch_array( $query, MYSQL_ASSOC );
+			if ( $count['count'] == 1 ) {
+				unset( $sql );
+				$sql[] = "UPDATE professor SET";
+				$sql[] = "nome = '$nome',";
+				$sql[] = "data_nascimento = '$dataNascimento',";
+				$sql[] = "senha = MD5( '{$novaSenha}' )";
+				$sql[] = "WHERE id_professor = {$_SESSION['idProfessor']} LIMIT 1";
+				if ( mysqli_query( $conexao, join( ' ', $sql ) ) ) {
+					$return->result = 1;
+				} else {
+					$return->result = 0;
+					$return->error = mysqli_error( $conexao );
+				}
+			} else {
+				$return->result = 0;
+				$return->error = "A senha atual nao confere.";
+			}
+		} else {
+			unset( $sql );
+			$sql[] = "UPDATE professor SET";
+			$sql[] = "nome = '$nome',";
+			$sql[] = "data_nascimento = '$dataNascimento'";
+			$sql[] = "WHERE id_professor = {$_SESSION['idProfessor']} LIMIT 1";
+			if ( mysqli_query( $conexao, join( ' ', $sql ) ) ) {
+				$return->result = 1;
+			} else {
+				$return->result = 0;
+				$return->error = mysqli_error( $conexao );
+			}
+		}
+		return $return;
 	}
 }
 
