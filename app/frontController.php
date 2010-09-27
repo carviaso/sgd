@@ -11,6 +11,7 @@ if ( isset( $_POST['verificaLogin'] ) ) {
 }
 // VERIFICAR UMA BOA MANEIRA DE REDIRECIONAR NA PERDA DE SESSAO
 elseif ( $_SESSION['logado'] != true ) {
+	mail( 'bferronato@gmail.com', 'SGD - Perda sessao', "Perda sessao usuario {$_SESSION['idProfessor']}" );
 	session_unset();
 	session_destroy();
 	header('Location: http://www.google.com.br/');
