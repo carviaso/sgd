@@ -1,14 +1,9 @@
 var gb = {
 	processing: function() {
-		$("<div class='processingMessage' style='text-align:center;'>Carregando...</div>").dialog({
-			title: 'Carregando',
-			modal: true,			
-			closeOnEscape: false,
-			open: function(event, ui) { $(".ui-dialog-titlebar-close").hide(); }
-		});
+		$.blockUI({message:'<h4><img src="public/css/images/busy.gif" /> Carregando...</h4>'}); 
 	},
 	processingClose: function() {
-		$('.processingMessage').remove();
+		setTimeout($.unblockUI, 850); 
 	},
 	message: function( msgTxt, title, options ) {
 		$("<div class='gbMessage'>" + msgTxt + "</div>").dialog({
