@@ -404,47 +404,44 @@ class ProfessorM {
 		$conexao = Conexao::con();
 		$progressaoFuncional = array();
 
-		//@TODO identar o codigo
-		$sql[] = "
-		SELECT
-p.id_categoria_funcional_inicial,
-'' as id_progressao_funcional,
-p.id_professor,
-cf.id_categoria_funcional,
-cf.descricao as categoriaFuncional,
-'' as processo,
-'' as data_avaliacao,
-'' as nota_avaliacao,
-p.data_admissao as data_inicio,
-'' as portaria,
-'' as observacao
-FROM professor p
-inner join categoria_funcional cf
-on p.id_categoria_funcional_inicial = cf.id_categoria_funcional
-where id_professor = {$idProfessor}
-union
-SELECT
-p.id_categoria_funcional_inicial,
-pf.id_progressao_funcional,
-p.id_professor,
-cf.id_categoria_funcional,
-cf.descricao,
-pf.processo,
-pf.data_avaliacao,
-pf.nota_avaliacao,
-pf.data_inicio,
-pf.portaria,
-pf.observacao
-FROM professor p
-inner join progressao_funcional pf
-on p.id_professor = pf.id_professor
-inner join categoria_funcional cf
-on pf.id_categoria_funcional = cf.id_categoria_funcional
-where p.id_professor = {$idProfessor}";
+		$sql[] = "SELECT p.id_categoria_funcional_inicial,";
+		$sql[] = "'' as id_progressao_funcional,";
+		$sql[] = "p.id_professor,";
+		$sql[] = "cf.id_categoria_funcional,";
+		$sql[] = "cf.descricao as categoriaFuncional,";
+		$sql[] = "'' as processo,";
+		$sql[] = "'' as data_avaliacao,";
+		$sql[] = "'' as nota_avaliacao,";
+		//$sql[] = "p.data_admissao as data_inicio,";
+		$sql[] = "'' as portaria,";
+		$sql[] = "'' as observacao";
+		$sql[] = "FROM professor p";
+		$sql[] = "inner join categoria_funcional cf";
+		$sql[] = "on p.id_categoria_funcional_inicial = cf.id_categoria_funcional";
+		$sql[] = "where id_professor = {$idProfessor}";
+		$sql[] = "union";
+		$sql[] = "SELECT";
+		$sql[] = "p.id_categoria_funcional_inicial,";
+		$sql[] = "pf.id_progressao_funcional,";
+		$sql[] = "p.id_professor,";
+		$sql[] = "cf.id_categoria_funcional,";
+		$sql[] = "cf.descricao,";
+		$sql[] = "pf.processo,";
+		$sql[] = "pf.data_avaliacao,";
+		$sql[] = "pf.nota_avaliacao,";
+		//$sql[] = "pf.data_inicio,";
+		$sql[] = "pf.portaria,";
+		$sql[] = "pf.observacao";
+		$sql[] = "FROM professor p";
+		$sql[] = "inner join progressao_funcional pf";
+		$sql[] = "on p.id_professor = pf.id_professor";
+		$sql[] = "inner join categoria_funcional cf";
+		$sql[] = "on pf.id_categoria_funcional = cf.id_categoria_funcional";
+		$sql[] = "where p.id_professor = {$idProfessor}";
 
-	$query = mysqli_query( $conexao, join( '', $sql ) );
+		$query = mysqli_query( $conexao, join( ' ', $sql ) );
 
-	while ( $row = mysqli_fetch_array( $query ) ) {
+		while ( $row = mysqli_fetch_array( $query ) ) {
 			$progressao = new stdClass();
 			$progressao->idCategoriaFuncionalInicial = $row['id_categoria_funcional_inicial'];
 			$progressao->idProgressaoFuncional = $row['id_progressao_funcional'];
@@ -454,7 +451,7 @@ where p.id_professor = {$idProfessor}";
 			$progressao->processo = $row['processo'];
 			$progressao->dataAvaliacao = $row['data_avaliacao'];
 			$progressao->notaAvaliacao = $row['nota_avaliacao'];
-			$progressao->dataInicio = $row['data_inicio'];
+			//$progressao->dataInicio = $row['data_inicio'];
 			$progressao->portaria = utf8_encode( $row['portaria'] );
 			$progressao->observacao = utf8_encode( $row['observacao'] );
 			$progressaoFuncional[] = $progressao;

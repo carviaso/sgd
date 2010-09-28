@@ -51,6 +51,7 @@
 		<script type="text/javascript" src="public/js/jquery.searchFilter.js"></script>
 		<script type="text/javascript" src="public/js/grid.formedit.js"></script>
 		<script type="text/javascript" src="public/js/grid.common.js"></script>
+		<script type="text/javascript" src="public/js/jquery.blockUI.js"></script>
 		<!--
 		<script type="text/javascript" src="public/js/ui.selectmenu.js"></script>
 		 -->
