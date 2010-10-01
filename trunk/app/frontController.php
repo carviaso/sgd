@@ -9,7 +9,7 @@ if ( isset( $_POST['verificaLogin'] ) ) {
 	$loginC = new loginC();
 	return $loginC->valida( $_POST['siape'], md5($_POST['senha'] ) );
 }
-// VERIFICAR UMA BOA MANEIRA DE REDIRECIONAR NA PERDA DE SESSAO
+/* @TODO VERIFICAR UMA BOA MANEIRA DE REDIRECIONAR NA PERDA DE SESSAO */
 elseif ( $_SESSION['logado'] != true ) {
 	mail( 'bferronato@gmail.com', 'SGD - Perda sessao', "Perda sessao usuario {$_SESSION['idProfessor']}" );
 	session_unset();
@@ -28,6 +28,10 @@ foreach ( $dirs as $dir ) {
 
 extract( $_POST );
 
+/*
+ * @TODO Chamar somente os controlles
+ * Criar um método generico para realizar essa chamada
+ */
 switch ($action) {
 	case 'relCentros':
 		$centroC = new CentroController();
