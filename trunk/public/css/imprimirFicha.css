@@ -1,0 +1,43 @@
+#imprimirFichaCabecalho {
+	text-align: justify;
+	margin: 0 auto;
+	font-weight: bold;
+}
+#imprimirFichaSubtitulo {
+	padding: 15px;
+	text-align: center;
+}
+.imprimirFichaLabel {
+	color: red;
+	width: 13em;
+	float: left;
+	border: 1px solid red;
+}
+.imprimirFichaColumn {
+	color: blue;
+	width: 20em;
+	float: left;
+	border: 1px solid blue;
+}
+#imprimirFichaData1 {
+	margin-top: 15px;
+	padding: 15px;
+	border-top: 2px dashed black;
+	text-align: center;
+}
+#imprimirFichaProgressoes {
+	padding: 15px;
+	text-align: center;
+}
+.imprimirFichaProgressao {
+	color: blue;
+	width: 20em;
+	float: left;
+	border: 1px lime solid;
+}
+.imprimirFichaProgressaoIten {
+	color: blue;
+	width: 20em;
+	float: left;
+	border: 1px solid red;
+}

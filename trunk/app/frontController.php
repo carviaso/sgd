@@ -18,6 +18,7 @@ elseif ( $_SESSION['logado'] != true ) {
 }
 
 include_once 'library/Smarty-3.0rc1/libs/Smarty.class.php';
+include_once 'library/MPDF45/mpdf.php';
 
 $dirs = array( 'controllers', 'models', 'views/*', 'include', 'helper' );
 foreach ( $dirs as $dir ) {
@@ -171,8 +172,7 @@ switch ($action) {
 	break;
 	case 'listarProfessores':
 		$professorC = new ProfessorC();
-		$professores = $professorC->getAllProfessores();
-		$professorC->listarProfessores( $professores );
+		$professorC->listarProfessores();
 	break;
 	case 'getAllProfessoresJson':
 		$professorC = new ProfessorC();
@@ -189,6 +189,18 @@ switch ($action) {
 	case 'mostraDetalhesProfessor':
 		$professorC= new ProfessorC();
 		$professorC->mostraDetalhesProfessor( $idProfessor );
+	break;
+	case 'imprimirFicha':
+		$professorC= new ProfessorC();
+		$professorC->imprimirFicha( $idProfessor );
+		//define('MPDF_PATH', 'classes/mpdf411/');
+		//include(MPDF_PATH.'mpdf.php');
+
+
+
+		//return $mpdf->Output();
+		//exit();
+
 	break;
 	case 'printFormUser':
 		$professorC = new ProfessorC();

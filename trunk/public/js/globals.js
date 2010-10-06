@@ -10,7 +10,7 @@ var gb = {
 			title: title,
 			modal: true,
 			buttons: {
-				Ok: function() {
+				Fechar: function() {
 					$(this).dialog('close');
 				}
 			},
