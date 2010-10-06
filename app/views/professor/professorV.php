@@ -84,6 +84,18 @@ class ProfessorV {
 		$smarty->display('mostraProgressaoFuncional.tpl');
 	}
 
+	public function imprimirFicha( $professor, $progressoes ) {
+		$smarty = new Smarty();
+		$smarty->template_dir = 'views/professor/templates/';
+		$smarty->compile_dir  = '../tmp/templates_c/';
+		$smarty->cache_dir    = '../tmp/cache/';
+		$smarty->config_dir   = 'views/configs/';
+		$smarty->assign( "professor", $professor );
+		$smarty->assign( "progressoes", $progressoes );
+		$smarty->assign( "data", date( 'd/m/Y' ) );
+		return $smarty->fetch('imprimirFicha.tpl');
+	}
+
 	function printFormUser( $professor ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/professor/templates/';

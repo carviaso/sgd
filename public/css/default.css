@@ -103,7 +103,27 @@ a {
 	width: 16px;
 	height: 16px;
 	cursor: pointer;
-	margin: 3px;
+	margin: 4px;
+}
+.detalhesProgressaoFuncional {
+	background-image:url('images/icons/chart_line_add.png');
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	float: left;
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+	margin: 4px;
+}
+.imprimirFicha {
+	background-image:url('images/icons/pdf.png');
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	float: left;
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+	margin: 5px;
 }
 
 #viewDetalhesProfessor { display: block; overflow: visible; }
@@ -121,17 +141,6 @@ a {
 }
 #viewDetalhesProfessor fieldset div:nth-child(2n) { font-weight: bold; }
 #viewDetalhesProfessor fieldset div:nth-child(2n+1) { color: red; }
-
-.detalhesProgressaoFuncional {
-	background-image:url('images/icons/chart_line_add.png');
-	background-repeat: no-repeat;
-	background-position: 0 0;
-	float: left;
-	width: 16px;
-	height: 16px;
-	cursor: pointer;
-	margin: 3px;
-}
 
 #viewProgressaoFuncional {
 	margin-top: 5px;

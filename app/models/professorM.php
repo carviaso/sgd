@@ -221,12 +221,12 @@ class ProfessorM {
 			$nome = utf8_encode( $row['nome'] );
 
 			$return->rows[$i]['cell'] = array(
-												"<div class='detalhesProfessor' title='Detalhes' id='{$idProfessor}'>&nbsp;</div><div class='detalhesProgressaoFuncional' title='Progressao Funcional' id='{$idProfessor}'>&nbsp;</div>",
-												$idProfessor,
-												$nome,
-												$row['matricula'],
-												$row['siape']
-											);
+					"<div class='detalhesProfessor' title='Detalhes' id='{$idProfessor}'>&nbsp;</div><div class='detalhesProgressaoFuncional' title='Progressao Funcional' id='{$idProfessor}'>&nbsp;</div><div class='imprimirFicha' title='Imprimir Ficha Detalhada do Professor' id='{$idProfessor}'>&nbsp;</div>",
+					$idProfessor,
+					$nome,
+					$row['matricula'],
+					$row['siape']
+				);
 			$i++;
 		}
 		return $return;
