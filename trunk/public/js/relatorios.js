@@ -22,7 +22,7 @@ var relatorios = {
 					var idCentro = $(this).val();
 					var params = { "action":"relDiretorPorCentro", 'idCentro': idCentro };
 					$('#departamentosPorCentro').load("app/frontController.php", params);
-				});//.selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				}).change();//.selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
 			});
 		});
@@ -34,7 +34,7 @@ var relatorios = {
 					var idDepartamento = $(this).val();
 					var params = { "action":"relProfessoresPorDepartamento", 'idDepartamento': idDepartamento };
 					$('#professoresPorDepartamento').load("app/frontController.php", params);
-				});//.selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				}).change();//.selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
 			});
 		});
@@ -46,7 +46,7 @@ var relatorios = {
 					var idCentro = $(this).val();
 					var params = { "action":"relDepartamentoPorCentro", 'idCentro': idCentro };
 					$('#departamentosPorCentro').load("app/frontController.php", params);
-				});//.selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				}).change();//.selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
 			});
 		});
