@@ -137,9 +137,9 @@ class ProfessorC {
 		$erro = array();
 		if ( empty( $idProfessor ) ) $erro[] = 'Professor';
 		if ( empty( $idCategoriaFuncional ) ) $erro[] = 'Categoria Funcional';
-		if ( empty( $processo ) ) $erro[] = 'Processo';
-		if ( empty( $dataAvaliacao ) ) $erro[] = 'Data Avaliacao';
-		if ( empty( $notaAvaliacao ) ) $erro[] = 'Nota Avaliacao';
+		//if ( empty( $processo ) ) $erro[] = 'Processo';
+		//if ( empty( $dataAvaliacao ) ) $erro[] = 'Data Avaliacao';
+		//if ( empty( $notaAvaliacao ) ) $erro[] = 'Nota Avaliacao';
 		if ( empty( $dataInicio ) ) $erro[] = 'Data Inicio';
 		if ( empty( $portaria ) ) $erro[] = 'Portaria';
 

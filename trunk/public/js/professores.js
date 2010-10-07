@@ -283,9 +283,9 @@ var professores = {
 			var erro = [];
 			var idProfessor = $('#idProfessor option:selected').val();
 			var idCategoriaFuncional = $('#idCategoriaFuncional option:selected').val();
-			var processo = $('#processo').val();
-			var dataAvaliacao = $('#dataAvaliacao').val();
-			var notaAvaliacao = $('#notaAvaliacao').val();
+			//var processo = $('#processo').val();
+			//var dataAvaliacao = $('#dataAvaliacao').val();
+			//var notaAvaliacao = $('#notaAvaliacao').val();
 			var dataInicio = $('#dataInicio').val();
 			var portaria = $('#portaria').val();
 			
