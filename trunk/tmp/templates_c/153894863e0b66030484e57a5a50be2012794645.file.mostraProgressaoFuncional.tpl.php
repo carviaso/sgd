@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.0rc1, created on 2010-09-18 19:51:05
+<?php /* Smarty version 3.0rc1, created on 2010-10-07 03:31:20
          compiled from "views/professor/templates/mostraProgressaoFuncional.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:300354c9518290268c7-66595072%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:321784cad3f0847f9e7-14198225%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '153894863e0b66030484e57a5a50be2012794645' => 
     array (
       0 => 'views/professor/templates/mostraProgressaoFuncional.tpl',
-      1 => 1284839461,
+      1 => 1286422276,
     ),
   ),
-  'nocache_hash' => '300354c9518290268c7-66595072',
+  'nocache_hash' => '321784cad3f0847f9e7-14198225',
   'function' => 
   array (
   ),
@@ -29,14 +29,14 @@ if (count($_from) > 0){
 			<div>Processo</div>
 			<div><?php echo $_smarty_tpl->getVariable('progressao')->value->processo;?>
 </div>
-			<div>Data Avalia&ccedil;&atilde;o</div>
+			<div>Data da Aprecia&ccedil;&atilde;o</div>
 			<div><?php echo $_smarty_tpl->getVariable('progressao')->value->dataAvaliacao;?>
 </div>
 			<div>Nota Avalia&ccedil;&atilde;o</div>
 			<div><?php echo $_smarty_tpl->getVariable('progressao')->value->notaAvaliacao;?>
 </div>
-			<div>Data In&iacute;cio</div>
-			<div><?php echo $_smarty_tpl->getVariable('progressao')->value->dataInicio;?>
+			<div>A partir de:</div>
+			<div><?php echo $_smarty_tpl->getVariable('progressao')->value->aPartirDe;?>
 </div>
 			<div>Portaria</div>
 			<div><?php echo $_smarty_tpl->getVariable('progressao')->value->portaria;?>
@@ -44,6 +44,59 @@ if (count($_from) > 0){
 			<div>Observacao</div>
 			<div><?php echo $_smarty_tpl->getVariable('progressao')->value->observacao;?>
 </div>
+			<!-- 
+			<table>
+				<tr>
+					<td>Categoria Funcional</td>
+					<td><?php echo $_smarty_tpl->getVariable('progressao')->value->categoriaFuncional;?>
+</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>Processo</td>
+					<td><?php echo $_smarty_tpl->getVariable('progressao')->value->processo;?>
+</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>Data da Aprecia&ccedil;&atilde;o do processo</td>
+					<td><?php echo $_smarty_tpl->getVariable('progressao')->value->dataAvaliacao;?>
+</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>Categoria Funcional</td>
+					<td><?php echo $_smarty_tpl->getVariable('progressao')->value->categoriaFuncional;?>
+</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>Categoria Funcional</td>
+					<td><?php echo $_smarty_tpl->getVariable('progressao')->value->categoriaFuncional;?>
+</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>Categoria Funcional</td>
+					<td><?php echo $_smarty_tpl->getVariable('progressao')->value->categoriaFuncional;?>
+</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>Categoria Funcional</td>
+					<td><?php echo $_smarty_tpl->getVariable('progressao')->value->categoriaFuncional;?>
+</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+			 -->
 		</div>
 	<?php }} else { ?>
 		<div>

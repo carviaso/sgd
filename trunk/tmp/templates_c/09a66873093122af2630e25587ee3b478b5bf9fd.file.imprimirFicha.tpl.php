@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.0rc1, created on 2010-10-07 00:52:04
+<?php /* Smarty version 3.0rc1, created on 2010-10-07 03:17:09
          compiled from "views/professor/templates/imprimirFicha.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:105954cad19b4443362-17167795%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:306234cad3bb5b13051-61497904%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '09a66873093122af2630e25587ee3b478b5bf9fd' => 
     array (
       0 => 'views/professor/templates/imprimirFicha.tpl',
-      1 => 1286412719,
+      1 => 1286420514,
     ),
   ),
-  'nocache_hash' => '105954cad19b4443362-17167795',
+  'nocache_hash' => '306234cad3bb5b13051-61497904',
   'function' => 
   array (
   ),
@@ -25,8 +25,7 @@ $_smarty_tpl->decodeProperties(array (
 		<div>DEPARTAMENTO DE DESENVOLVIMENTO E ADMINISTRA&Ccedil;&atilde;O DE PESSOAL</div>
 	</div>
 	<div id="imprimirFichaSubtitulo">INFORMA&Ccedil;&Otilde;ES CADASTRAIS</div>
-	<div id="imprimirFichaDados">
-	
+	<div id="imprimirFichaDados">	
 		<table>
 			<tr>
 				<td>Nome:</td>
@@ -113,7 +112,7 @@ if (count($_from) > 0){
     foreach ($_from as $_smarty_tpl->tpl_vars['progressao']->key => $_smarty_tpl->tpl_vars['progressao']->value){
 ?>
 		<tr>
-			<td><?php echo $_smarty_tpl->getVariable('progressao')->value->dataAvaliacao;?>
+			<td><?php echo $_smarty_tpl->getVariable('progressao')->value->aPartirDe;?>
 </td>
 			<td><?php echo $_smarty_tpl->getVariable('progressao')->value->categoriaFuncional;?>
 </td>

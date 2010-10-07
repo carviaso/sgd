@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.0rc1, created on 2010-09-23 04:58:54
+<?php /* Smarty version 3.0rc1, created on 2010-10-07 04:16:55
          compiled from "views/professor/templates/formProgressaoFuncionalProfessor.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:89304c9ade8e96b167-67433016%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:310724cad49b7a05635-88960146%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '355a0c2225f30f2084ee87147d3fbb81007371fc' => 
     array (
       0 => 'views/professor/templates/formProgressaoFuncionalProfessor.tpl',
-      1 => 1285217932,
+      1 => 1286424631,
     ),
   ),
-  'nocache_hash' => '89304c9ade8e96b167-67433016',
+  'nocache_hash' => '310724cad49b7a05635-88960146',
   'function' => 
   array (
   ),
@@ -47,8 +47,8 @@ if (count($_from) > 0){
 <input type="text" id="dataAvaliacao" class="input ui-corner-all width100" />
 <div>Nota da Avalia&ccedil;&atilde;o</div>
 <input type="text" id="notaAvaliacao" class="input ui-corner-all width100" />
-<div>Data de in&iacute;cio</div>
-<input type="text" id="dataInicio" class="input ui-corner-all width100" />
+<div>A partir de:</div>
+<input type="text" id="aPartirDe" class="input ui-corner-all width100" />
 <div>Portaria</div>
 <input type="text" id="portaria" name="portaria" value="" maxlength="45" class="input ui-corner-all width100" />
 <div>&nbsp;<div>
