@@ -412,7 +412,7 @@ class ProfessorM {
 		$sql[] = "'' as processo,";
 		$sql[] = "p.data_admissao_ufsc as data_avaliacao,";
 		$sql[] = "'' as nota_avaliacao,";
-		//$sql[] = "p.data_admissao as data_inicio,";
+		$sql[] = "p.data_admissao as apartir_de,";
 		$sql[] = "'' as portaria,";
 		$sql[] = "'' as observacao";
 		$sql[] = "FROM professor p";
@@ -429,7 +429,7 @@ class ProfessorM {
 		$sql[] = "pf.processo,";
 		$sql[] = "pf.data_avaliacao,";
 		$sql[] = "pf.nota_avaliacao,";
-		//$sql[] = "pf.data_inicio,";
+		$sql[] = "pf.apartir_de,";
 		$sql[] = "pf.portaria,";
 		$sql[] = "pf.observacao";
 		$sql[] = "FROM professor p";
@@ -451,7 +451,7 @@ class ProfessorM {
 			$progressao->processo = $row['processo'];
 			$progressao->dataAvaliacao = $row['data_avaliacao'];
 			$progressao->notaAvaliacao = $row['nota_avaliacao'];
-			//$progressao->dataInicio = $row['data_inicio'];
+			$progressao->aPartirDe = $row['apartir_de'];
 			$progressao->portaria = utf8_encode( $row['portaria'] );
 			$progressao->observacao = utf8_encode( $row['observacao'] );
 			$progressaoFuncional[] = $progressao;

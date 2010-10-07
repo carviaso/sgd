@@ -7,8 +7,7 @@
 		<div>DEPARTAMENTO DE DESENVOLVIMENTO E ADMINISTRA&Ccedil;&atilde;O DE PESSOAL</div>
 	</div>
 	<div id="imprimirFichaSubtitulo">INFORMA&Ccedil;&Otilde;ES CADASTRAIS</div>
-	<div id="imprimirFichaDados">
-	
+	<div id="imprimirFichaDados">	
 		<table>
 			<tr>
 				<td>Nome:</td>
@@ -77,7 +76,7 @@
 		</tr>
 	{foreach $progressoes as $progressao}
 		<tr>
-			<td>{$progressao->dataAvaliacao}</td>
+			<td>{$progressao->aPartirDe}</td>
 			<td>{$progressao->categoriaFuncional}</td>
 			<td>{$progressao->portaria}</td>
 			<td>{$progressao->observacao}</td>
