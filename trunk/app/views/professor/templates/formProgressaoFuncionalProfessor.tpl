@@ -17,8 +17,8 @@
 <input type="text" id="dataAvaliacao" class="input ui-corner-all width100" />
 <div>Nota da Avalia&ccedil;&atilde;o</div>
 <input type="text" id="notaAvaliacao" class="input ui-corner-all width100" />
-<div>Data de in&iacute;cio</div>
-<input type="text" id="dataInicio" class="input ui-corner-all width100" />
+<div>A partir de:</div>
+<input type="text" id="aPartirDe" class="input ui-corner-all width100" />
 <div>Portaria</div>
 <input type="text" id="portaria" name="portaria" value="" maxlength="45" class="input ui-corner-all width100" />
 <div>&nbsp;<div>

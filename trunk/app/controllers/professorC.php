@@ -70,8 +70,8 @@ class ProfessorC {
 		if ( empty( $dataAdmissao) ) $erro[] = 'Data admissao';
 		if ( empty( $dataAdmissaoUfsc) ) $erro[] = 'Data admissao UFSC';
 		if ( $aposentado == '' ) $erro[] = 'Aposentado';
-		if ( empty( $dataPrevistaAposentadoria) ) $erro[] = 'Data prevista aposentadoria';
-		if ( empty( $dataEfetivaAposentadoria) ) $erro[] = 'Data efetiva aposentadoria';
+		//if ( empty( $dataPrevistaAposentadoria) ) $erro[] = 'Data prevista aposentadoria';
+		//if ( empty( $dataEfetivaAposentadoria) ) $erro[] = 'Data efetiva aposentadoria';
 
 		if ( count( $erro ) == 0 ) {
 			$return = $this->model->cadastrarProfessor( $nome, $dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao );
@@ -133,18 +133,18 @@ class ProfessorC {
 	 *
 	 * @return json
 	 */
-	public function cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $dataInicio, $portaria ) {
+	public function cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $aPartirDe, $portaria ) {
 		$erro = array();
 		if ( empty( $idProfessor ) ) $erro[] = 'Professor';
 		if ( empty( $idCategoriaFuncional ) ) $erro[] = 'Categoria Funcional';
 		//if ( empty( $processo ) ) $erro[] = 'Processo';
 		//if ( empty( $dataAvaliacao ) ) $erro[] = 'Data Avaliacao';
 		//if ( empty( $notaAvaliacao ) ) $erro[] = 'Nota Avaliacao';
-		if ( empty( $dataInicio ) ) $erro[] = 'Data Inicio';
+		if ( empty( $aPartirDe ) ) $erro[] = 'A partir de';
 		if ( empty( $portaria ) ) $erro[] = 'Portaria';
 
 		if ( count( $erro ) == 0 ) {
-			$return = $this->model->cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $dataInicio, $portaria );
+			$return = $this->model->cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $aPartirDe, $portaria );
 		} else {
 			$return->result = 0;
 			$return->error = join( '<br />', $erro );

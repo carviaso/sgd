@@ -1,4 +1,5 @@
-<h1>Cadastro de Regime de Trabalho do Professor</h1>	
+<h1>Cadastro de Altera&ccedil;&atilde;o de Regime de Trabalho</h1>
+	
 <div>Professor</div>
 <select id="idProfessor" class="select ui-corner-all width100">
 	{foreach from=$professores item=professor}

@@ -139,9 +139,15 @@ class ProfessorM {
 
 			$dataNascimento = date( 'd/m/Y', strtotime( $row['data_nascimento'] ) );
 			$professor->dataNascimento = $dataNascimento;
+
 			$professor->aposentado = utf8_encode( $row['aposentado'] );
-			$professor->dataPrevistaAposentadoria = $row['data_previsao_aposentadoria'];
-			$professor->dataEfetivaAposentadoria = $row['data_aposentadoria'];
+
+			$dataPrevistaAposentadoria = date( 'd/m/Y', strtotime( $row['data_previsao_aposentadoria'] ) );
+			$professor->dataPrevistaAposentadoria = $dataPrevistaAposentadoria;
+
+			$dataEfetivaAposentadoria = date( 'd/m/Y', strtotime( $row['data_aposentadoria'] ) );
+			$professor->dataEfetivaAposentadoria = $dataEfetivaAposentadoria;
+
 			$professor->idDepartamento = $row['id_departamento'];
 			$professor->idCategoriaFuncionalInicial = $row['id_categoria_funcional_inicial'];
 			$professor->idCategoriaFuncionalAtual = $row['id_categoria_funcional_atual'];
@@ -367,12 +373,12 @@ class ProfessorM {
 	 *
 	 * @return stdClass
 	 */
-	public function cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $dataInicio, $portaria ) {
+	public function cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $aPartirDe, $portaria ) {
 		$conexao = Conexao::con();
 		$return = new stdClass();
 
 		$dataAvaliacao = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataAvaliacao ) ) );
-		$dataInicio = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataInicio ) ) );
+		$aPartirDe = date( 'Y-m-d', strtotime( str_replace( '/', '-', $aPartirDe ) ) );
 
 		$processo = utf8_decode( $processo );
 		$portaria = utf8_decode( $portaria );
@@ -380,11 +386,11 @@ class ProfessorM {
 		$sql[] = "INSERT INTO progressao_funcional (";
 		$sql[] = "id_professor, id_categoria_funcional,";
 		$sql[] = "processo, data_avaliacao, nota_avaliacao,";
-		$sql[] = "data_inicio, portaria )";
+		$sql[] = "apartir_de, portaria )";
 		$sql[] = "VALUES (";
 		$sql[] = "'$idProfessor', '$idCategoriaFuncional',";
 		$sql[] = "'$processo', '$dataAvaliacao', '$notaAvaliacao',";
-		$sql[] = "'$dataInicio', '$portaria')";
+		$sql[] = "'$aPartirDe', '$portaria')";
 
 		if ( mysqli_query( $conexao, join( ' ', $sql ) ) ) {
 			$return->result = 1;
