@@ -410,7 +410,7 @@ class ProfessorM {
 		$sql[] = "cf.id_categoria_funcional,";
 		$sql[] = "cf.descricao as categoriaFuncional,";
 		$sql[] = "'' as processo,";
-		$sql[] = "'' as data_avaliacao,";
+		$sql[] = "p.data_admissao_ufsc as data_avaliacao,";
 		$sql[] = "'' as nota_avaliacao,";
 		//$sql[] = "p.data_admissao as data_inicio,";
 		$sql[] = "'' as portaria,";

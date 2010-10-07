@@ -93,6 +93,12 @@ class ProfessorV {
 		$smarty->assign( "professor", $professor );
 		$smarty->assign( "progressoes", $progressoes );
 		$smarty->assign( "data", date( 'd/m/Y' ) );
+		$smarty->assign( "dia", date( 'd' ) );
+		$smarty->assign( "mes", date( 'm' ) );
+		$smarty->assign( "ano", date( 'Y' ) );
+		$dataHelper = new DataHelper();
+		$mesExtenso = $dataHelper->mesExtenso( date( 'm' ) );
+		$smarty->assign( "mesExtenso", $mesExtenso );
 		return $smarty->fetch('imprimirFicha.tpl');
 	}
 

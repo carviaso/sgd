@@ -31,6 +31,28 @@ class DataHelper {
 		$data->meses = $meses;
 		return $data;
 	}
+
+	/**
+	 * Retorna o mes por extenso
+	 *
+	 * @param int - Numero do mes do ano
+	 * @return string
+	 */
+	function mesExtenso( $int ) {
+		$mes['1'] = 'Janeiro';
+		$mes['2'] = 'Fevereiro';
+		$mes['3'] = 'Mar&ccedil;o';
+		$mes['4'] = 'Abril';
+		$mes['5'] = 'Maio';
+		$mes['6'] = 'Junho';
+		$mes['7'] = 'Julho';
+		$mes['8'] = 'Agosto';
+		$mes['9'] = 'Setembro';
+		$mes['10'] = 'Outubro';
+		$mes['11'] = 'Novembro';
+		$mes['12'] = 'Dezembro';
+		return $mes[$int];
+	}
 }
 
 ?>
