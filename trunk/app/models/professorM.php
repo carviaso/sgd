@@ -72,6 +72,7 @@ class ProfessorM {
 					p.id_tipo_titulacao,
 					p.id_categoria_funcional_referencia,
 					p.id_cargo,
+					p.id_regime_trabalho,
 					p.id_situacao,
 
 					d.id_centro,
@@ -101,6 +102,10 @@ class ProfessorM {
 					c.id_cargo as idCargo,
 					c.descricao_cargo as descricaoCargo,
 
+					rt.descricao as descricao_regime_trabalho,
+					rt.quantidade_horas as quantidade_horasRegime_trabalho,
+					rt.dedicacao_exclusiva as dedicacao_exclusiva,
+
 					s.id_situacao as idSituacao,
 					s.descricao_situacao as descricaoSituacao
 
@@ -121,9 +126,10 @@ class ProfessorM {
 		$sql[] = "on p.id_tipo_titulacao = tt.id_tipo_titulacao";
 		$sql[] = "left join cargo c";
 		$sql[] = "on p.id_cargo = c.id_cargo";
+		$sql[] = "left join regime_trabalho rt";
+		$sql[] = "on p.id_regime_trabalho = rt.id_regime_trabalho";
 		$sql[] = "left join situacao s";
 		$sql[] = "on p.id_situacao = s.id_situacao";
-
 		$sql[] = "WHERE id_professor = {$idProfessores} ORDER BY p.nome";
 
 		$query = mysqli_query( $conexao, join( ' ', $sql ) );
@@ -134,8 +140,12 @@ class ProfessorM {
 			$professor->nome = utf8_encode( $row['nome'] );
 			$professor->matricula = utf8_encode( $row['matricula'] );
 			$professor->siape = utf8_encode( $row['siape'] );
-			$professor->dataAdmissao = $row['data_admissao'];
-			$professor->dataAdmissaoUfsc = $row['data_admissao_ufsc'];
+
+			$dataAdmissao = date( 'd/m/Y', strtotime( $row['data_admissao'] ) );
+			$professor->dataAdmissao = $dataAdmissao;
+
+			$dataAdmissaoUfsc = date( 'd/m/Y', strtotime( $row['data_admissao_ufsc'] ) );
+			$professor->dataAdmissaoUfsc = $dataAdmissaoUfsc;
 
 			$dataNascimento = date( 'd/m/Y', strtotime( $row['data_nascimento'] ) );
 			$professor->dataNascimento = $dataNascimento;
@@ -154,6 +164,7 @@ class ProfessorM {
 			$professor->idTipoTitulacao = $row['id_tipo_titulacao'];
 			$professor->idCategoriaFuncionalReferencia = $row['id_categoria_funcional_referencia'];
 			$professor->idCargo = $row['id_cargo'];
+			$professor->idRegimeTrabalho = $row['id_regime_trabalho'];
 			$professor->idSituacao = $row['id_situacao'];
 
 			$professor->nomeDepartamento = utf8_encode( $row['nomeDepartamento'] );
@@ -182,6 +193,10 @@ class ProfessorM {
 
 			$professor->idCargo = $row['idCargo'];
 			$professor->descricaoCargo = utf8_encode( $row['descricaoCargo'] );
+
+			$professor->descricaoRegimeTrabalho = utf8_encode( $row['descricao_regime_trabalho'] );
+			$professor->quantidadeHorasRegimeTrabalho = $row['quantidade_horasRegime_trabalho'];
+			$professor->dedicacaoExclusiva = $row['dedicacao_exclusiva'];
 
 			$professor->idSituacao = $row['idSituacao'];
 			$professor->descricaoSituacao = utf8_encode( $row['descricaoSituacao'] );
@@ -455,9 +470,13 @@ class ProfessorM {
 			$progressao->idCategoriaFuncional = $row['id_categoria_funcional'];
 			$progressao->categoriaFuncional = utf8_encode( $row['categoriaFuncional'] );
 			$progressao->processo = $row['processo'];
-			$progressao->dataAvaliacao = $row['data_avaliacao'];
+
+			$dataAvaliacao = date( 'd/m/Y', strtotime( $row['data_avaliacao'] ) );
+			$progressao->dataAvaliacao = $data_avaliacao;
 			$progressao->notaAvaliacao = $row['nota_avaliacao'];
-			$progressao->aPartirDe = $row['apartir_de'];
+
+			$aPartirDe = date( 'd/m/Y', strtotime( $row['apartir_de'] ) );
+			$progressao->aPartirDe = $aPartirDe;
 			$progressao->portaria = utf8_encode( $row['portaria'] );
 			$progressao->observacao = utf8_encode( $row['observacao'] );
 			$progressaoFuncional[] = $progressao;
