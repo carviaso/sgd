@@ -1,0 +1,25 @@
+Essa é uma tradução de “Improve your jQuery-fu, write plugins” de Tomáš Kramár Trnava.
+Escolhi traduzir esse texto pois ele foi o tutorial mais simples que encontrei quando precisei escrever um plugin. No final dele você será capaz de entender como o jQuery trabalha com plugins e poderá escrever os seus próprios.
+
+jQuery é um framework JavaScript simples e poderoso que mudou minha forma de programar JavaScript. Um novo JavaScript dizem alguns com certa razão. O código que você cria é pura elegância.
+
+Você começa com 10 linhas de jQuery que poderiam ter sido 20 linhas do tedioso JavaScript manipulando DOM. No final você acaba ficando com duas ou três linhas.
+
+E esse numero pode ficar ainda menor se você refatorar o código para um plugin do jQuery.
+
+Quando o assunto é escrever plugins, pessoas (tipo eu) normalmente pulam fora com medo. Eu ouvi sobre plugins de jQuery a bastante tempo mas nunca havia tentado escrever um. Quando pensava no assunto algumas idéias vinham na minha cabeça:
+
+    * Deve ser difícil e por isso deixe isso somente para jedis
+    * Isso deve precisar de um conhecimento profundo do jQuery
+    * O que eu vou ganhar?
+
+(Eu vim do mundo Java, imagine).
+
+Nota do tradutor:
+(Eu vim do mundo Ruby ;D).
+
+http://pomoti.com/melhore-seu-jquery-fu-escreva-plugins
+
+
+--//--
+http://blog.tecnologiadocerrado.com.br/criando-plugins-no-jquery/
