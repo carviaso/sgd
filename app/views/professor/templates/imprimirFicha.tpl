@@ -53,13 +53,13 @@
 			</tr>
 			<tr>
 				<td>Jornada:</td>
-				<td>{$professor->jornada}</td>
+				<td>{$professor->descricaoRegimeTrabalho}</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>Situa&ccedil;&atilde;o:</td>
-				<td>{$professor->situacao}</td>
+				<td>{$professor->descricaoSituacao}</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 			</tr>
@@ -69,7 +69,7 @@
 	<div id="imprimirFichaSubtitulo2">Progress&otilde;es</div>
 	<table class="tbProgressoes">
 		<tr>
-			<th>Data</th>
+			<th>A Partir de</th>
 			<th>Cargo</th>
 			<th>Portaria</th>
 			<th>Observa&ccedil;&otilde;es</th>

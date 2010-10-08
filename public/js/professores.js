@@ -23,6 +23,12 @@ var professores = {
 					professores.regimeTrabalho.valida();
 				});
 				//$('#content select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				
+				//$("h1").click(function(){
+//					$("h1").alterarCorFonte({cor : "red", fonte : "green"});
+					$('.multiSelectProfessor').multiSelectProfessor();
+				//});
+				
 				gb.processingClose();
 			});
 		});
@@ -337,7 +343,7 @@ var professores = {
 					var msg = 'Cadastro realizado com sucesso.';
 					gb.message( msg, 'Cadastro de Progressao Funcional de Professor' );
 				} else {
-					var msg = 'Erro ao cadastrar Afastamento de Professor.<br /><br />' + response.error;
+					var msg = 'Erro ao cadastrar Progressao Funcional de Professor.<br /><br />' + response.error;
 					gb.errorMessage( msg, 'Cadastro de Progressao Funcional de Professor' );
 				}
 			}, "json" );
