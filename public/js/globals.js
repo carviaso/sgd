@@ -1,9 +1,26 @@
 var gb = {
 	processing: function() {
-		$.blockUI({message:'<h4><img src="public/css/images/busy.gif" /> Carregando...</h4>'}); 
+//		$.blockUI({message:'<h4><img src="public/css/images/busy.gif" /> Carregando...</h4>'});
+		//$.blockUI({ message: 'teste', css: { border = '5px solid red' } });
+		$.blockUI({ message: 'Carregando...', overlayCSS: { opacity: '0' } });
+		//$.blockUI({ message: 'teste' });
+
+//		{
+//	        padding:        0,
+//	        margin:         0,
+//	        width:          '30%',
+//	        top:            '40%',
+//	        left:           '35%',
+//	        textAlign:      'center',
+//	        color:          '#000',
+//	        border:         '3px solid #aaa',
+//	        backgroundColor:'#fff',
+//	        cursor:         'wait'
+//	    }
 	},
 	processingClose: function() {
-		setTimeout($.unblockUI, 850); 
+//		setTimeout($.unblockUI, 850);
+		$.unblockUI();
 	},
 	message: function( msgTxt, title, options ) {
 		$("<div class='gbMessage'>" + msgTxt + "</div>").dialog({
