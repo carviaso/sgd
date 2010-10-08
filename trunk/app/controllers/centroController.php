@@ -20,6 +20,17 @@ class CentroController {
 	}
 
 	/**
+	 * Retorna um json com todos os objetos Centro
+	 *
+	 * @return json
+	 */
+	public function getCentrosJson() {
+		$centroDAO = new Centro();
+		echo json_encode( $centroDAO->getCentros() );
+	}
+
+
+	/**
 	 * Realiza o cadastro de um novo centro
 	 *
 	 * @return json

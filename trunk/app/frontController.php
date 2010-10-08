@@ -41,6 +41,10 @@ switch ($action) {
 		$centroV = new CentroV();
 		return $centroV->relCentros( $centros );
 	break;
+	case 'getCentrosJson':
+		$centroC = new CentroController();
+		$centros = $centroC->getCentrosJson();
+	break;
 	case 'relDepartamentos':
 		$departamentoC = new DepartamentoController();
 		$departamentos = $departamentoC->getDepartamentos();
@@ -194,14 +198,6 @@ switch ($action) {
 	case 'imprimirFicha':
 		$professorC= new ProfessorC();
 		$professorC->imprimirFicha( $idProfessor );
-		//define('MPDF_PATH', 'classes/mpdf411/');
-		//include(MPDF_PATH.'mpdf.php');
-
-
-
-		//return $mpdf->Output();
-		//exit();
-
 	break;
 	case 'printFormUser':
 		$professorC = new ProfessorC();
