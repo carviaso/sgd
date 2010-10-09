@@ -1,5 +1,5 @@
 {if $option eq viewDepartamento}
-	<h1>Relat&oacute;rio de Centros</h1>
+	<h1>Relat&oacute;rio de Departamentos</h1>
 	<table class="aatable">
 		<tr>
 			<th>Nome</th>
