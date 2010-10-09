@@ -1,13 +1,19 @@
 <?php
 
-class CentroController {
+class CentroC {
+
+	private $model;
+	private $view;
 
 	/**
 	 * Construtor
 	 *
 	 * @return void
 	 */
-	public function CentroController() {}
+	public function CentroC() {
+		$this->model = new CentroM();
+		$this->view = new CentroV();
+	}
 
 	/**
 	 * Retorna um array com todos os objetos Centro
@@ -15,8 +21,7 @@ class CentroController {
 	 * @return array
 	 */
 	public function getCentros() {
-		$centroDAO = new Centro();
-		return $centroDAO->getCentros();
+		return $this->model->getCentros();
 	}
 
 	/**
@@ -25,8 +30,7 @@ class CentroController {
 	 * @return json
 	 */
 	public function getCentrosJson() {
-		$centroDAO = new Centro();
-		echo json_encode( $centroDAO->getCentros() );
+		echo json_encode( $this->model->getCentros() );
 	}
 
 
@@ -36,15 +40,13 @@ class CentroController {
 	 * @return json
 	 */
 	public function cadastrar( $nome, $sigla, $idInstituicao ) {
-		$centroDAO = new Centro();
-
 		$erro = array();
 		if ( empty( $nome) ) $erro[] = 'Nome';
 		if ( empty( $sigla) ) $erro[] = 'Sigla';
 		if ( empty( $idInstituicao) ) $erro[] = 'Id da Instituicao';
 
 		if ( count( $erro ) == 0 ) {
-			$return = $centroDAO->cadastrar( $nome, $sigla, $idInstituicao );
+			$return = $this->model->cadastrar( $nome, $sigla, $idInstituicao );
 		} else {
 			$return->result = 0;
 			$return->error = join( '<br />', $erro );
@@ -52,14 +54,17 @@ class CentroController {
 		echo json_encode( $return );
 	}
 
+	public function relCentros() {
+		$centros = $this->model->getCentros();
+		return $this->view->relCentros( $centros );
+	}
+
 	public function relDiretorPorCentro( $idCentro ) {
-		$centroDAO = new Centro();
-		return $centroDAO->relDiretorPorCentro( $idCentro );
+		return $this->model->relDiretorPorCentro( $idCentro );
 	}
 
 	public function relDepartamentoPorCentro( $idCentro ) {
-		$centroDAO = new Centro();
-		return $centroDAO->relDepartamentoPorCentro( $idCentro );
+		return $this->model->relDepartamentoPorCentro( $idCentro );
 	}
 }
 ?>

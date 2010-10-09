@@ -1,6 +1,6 @@
 <?php
 
-class Centro {
+class CentroM {
 
 	/**
 	 * Retorna um array com todos os objetos Centro
@@ -10,6 +10,7 @@ class Centro {
 	function getCentros() {
 		$conexao = Conexao::con();
 		$centros = array();
+		$f = new FormataHelper();
 
 		$sql = "SELECT * FROM centro ORDER BY nome";
 		$query = mysqli_query( $conexao, $sql );
@@ -20,6 +21,7 @@ class Centro {
 			$centro->idInstituicao = utf8_encode( $row['id_instituicao'] );
 			$centro->nome = utf8_encode( $row['nome'] );
 			$centro->sigla = utf8_encode( $row['sigla'] );
+			$centro->fone = $f->foneFormato( $row['fone'] );
 			$centros[] = $centro;
 		}
 		return $centros;

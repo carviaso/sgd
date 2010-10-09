@@ -36,13 +36,11 @@ extract( $_POST );
  */
 switch ($action) {
 	case 'relCentros':
-		$centroC = new CentroController();
-		$centros = $centroC->getCentros();
-		$centroV = new CentroV();
-		return $centroV->relCentros( $centros );
+		$centroC = new CentroC();
+		$centroC->relCentros();
 	break;
 	case 'getCentrosJson':
-		$centroC = new CentroController();
+		$centroC = new CentroC();
 		$centros = $centroC->getCentrosJson();
 	break;
 	case 'relDepartamentos':
@@ -63,7 +61,7 @@ switch ($action) {
 	break;
 	case 'printFormCadDepartamento':
 		$departamentoV = new DepartamentoV();
-		$centroC = new CentroController();
+		$centroC = new CentroC();
 		$centros = $centroC->getCentros();
 		$departamentoV->printFormCadDepartamento( $centros );
 	break;
@@ -78,29 +76,29 @@ switch ($action) {
 		$centroV->printFormCadCentro( $instituicoes );
 	break;
 	case 'cadCentro':
-		$centroC = new CentroController();
+		$centroC = new CentroC();
 		$centroC->cadastrar( $nome, $sigla, $idInstituicao );
 	break;
 	case 'relDiretoresCentros':
-		$centroC = new CentroController();
+		$centroC = new CentroC();
 		$centros = $centroC->getCentros();
 		$centroV = new CentroV();
 		return $centroV->relDiretoresCentros( $centros );
 	break;
 	case 'relDiretorPorCentro':
-		$centroC = new CentroController();
+		$centroC = new CentroC();
 		$diretores = $centroC->relDiretorPorCentro( $_POST['idCentro'] );
 		$centroV = new CentroV();
 		return $centroV->relDiretorPorCentro( $diretores );
 	break;
 	case 'relDepartamentoCentro':
-		$centroC = new CentroController();
+		$centroC = new CentroC();
 		$centros = $centroC->getCentros();
 		$centroV = new CentroV();
 		return $centroV->relDepartamentoCentro( $centros );
 	break;
 	case 'relDepartamentoPorCentro':
-		$centroC = new CentroController();
+		$centroC = new CentroC();
 		$departamentos = $centroC->relDepartamentoPorCentro( $_POST['idCentro'] );
 		$centroV = new CentroV();
 		return $centroV->relDepartamentoPorCentro( $departamentos );
