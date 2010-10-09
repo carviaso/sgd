@@ -46,13 +46,17 @@ switch ($action) {
 		$centros = $centroC->getCentrosJson();
 	break;
 	case 'relDepartamentos':
-		$departamentoC = new DepartamentoController();
-		$departamentos = $departamentoC->getDepartamentos();
+		$departamentoC = new DepartamentoC();
+		$departamentos = $departamentoC->getDepartamentos( '', '' );
 		$departamentoV = new DepartamentoV();
 		return $departamentoV->relDepartamentos( $departamentos );
 	break;
+	case 'getDepartamentos':
+		$departamentoC = new DepartamentoC();
+		$departamentoC->getDepartamentos( $returnType, $filtro );
+	break;
 	case 'getDepartamentosPorCentro':
-		$departamentoC = new DepartamentoController();
+		$departamentoC = new DepartamentoC();
 		$departamentos = $departamentoC->getDepartamentosPorCentro( $_POST['idCentro'] );
 		$departamentoV = new DepartamentoV();
 		return $departamentoV->viewDepartamento( $departamentos );
@@ -64,7 +68,7 @@ switch ($action) {
 		$departamentoV->printFormCadDepartamento( $centros );
 	break;
 	case 'cadDepartamento':
-		$departamentoC = new DepartamentoController();
+		$departamentoC = new DepartamentoC();
 		$departamentoC->cadastrar( $nome, $sigla, $idCentro );
 	break;
 	case 'printFormCadCentro':
@@ -102,20 +106,20 @@ switch ($action) {
 		return $centroV->relDepartamentoPorCentro( $departamentos );
 	break;
 	case 'relProfessoresPorDepartamento':
-		$departamentoC = new DepartamentoController();
+		$departamentoC = new DepartamentoC();
 		$professores = $departamentoC->getProfessoresPorDepartamento( $_POST['idDepartamento'] );
 		$departamentoV = new DepartamentoV();
 		return $departamentoV->relProfessoresPorDepartamento( $professores );
 	break;
 	case 'relProfessoresDepartamento':
-		$departamentoC = new DepartamentoController();
-		$departamentos = $departamentoC->getDepartamentos();
+		$departamentoC = new DepartamentoC();
+		$departamentos = $departamentoC->getDepartamentos( '', '' );
 		$departamentoV = new DepartamentoV();
 		return $departamentoV->relProfessoresDepartamento( $departamentos );
 	break;
 	case 'printFormCadProfessor':
-		$departamentoC = new DepartamentoController();
-		$departamentos = $departamentoC->getDepartamentos();
+		$departamentoC = new DepartamentoC();
+		$departamentos = $departamentoC->getDepartamentos( '', '' );
 		$categoriaFuncionalC = new CategoriaFuncionalController();
 		$categoriasFuncionais = $categoriaFuncionalC->getCategoriaFuncional();
 		$tipoTitulacaoC = new TipoTitulacaoController();
@@ -133,7 +137,7 @@ switch ($action) {
 	break;
 	case 'printFormCadRegTrabProfessor':
 		$professorC = new ProfessorC();
-		$professores = $professorC->getAllProfessores();
+		$professores = $professorC->getAllProfessores( '', '');
 		$regimeTrabalhoC = new RegimeTrabalhoController();
 		$regimesTrabalho = $regimeTrabalhoC->getAllRegimesTrabalho();
 		$professorV = new ProfessorV();
@@ -145,7 +149,7 @@ switch ($action) {
 	break;
 	case 'printFormCadAfastamentoProfessor':
 		$professorC = new ProfessorC();
-		$professores = $professorC->getAllProfessores();
+		$professores = $professorC->getAllProfessores( '', '' );
 		$instituicaoC = new InstituicaoController();
 		$instituicoes = $instituicaoC->getAll();
 		$tipoAfastamentoC = new TipoAfastamentoController();
@@ -161,7 +165,7 @@ switch ($action) {
 	break;
 	case 'printFormCadProgFuncProfessor':
 		$professorC = new ProfessorC();
-		$professores = $professorC->getAllProfessores();
+		$professores = $professorC->getAllProfessores( '', '' );
 		$categoriaFuncionalC = new CategoriaFuncionalController();
 		$categoriasFuncionais = $categoriaFuncionalC->getCategoriaFuncional();
 		$professorV = new ProfessorV();
@@ -178,6 +182,10 @@ switch ($action) {
 	case 'listarProfessores':
 		$professorC = new ProfessorC();
 		$professorC->listarProfessores();
+	break;
+	case 'getAllProfessores':
+		$professorC = new ProfessorC();
+		$professorC->getAllProfessores( $returnType, $filtro );
 	break;
 	case 'getAllProfessoresJson':
 		$professorC = new ProfessorC();
