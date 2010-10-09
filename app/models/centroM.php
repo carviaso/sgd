@@ -32,15 +32,15 @@ class CentroM {
 	 *
 	 * @return stdClass
 	 */
-	public function cadastrar( $nome, $sigla, $idInstituicao ) {
+	public function cadastrar( $nome, $sigla, $idInstituicao, $fone ) {
 		$conexao = Conexao::con();
 		$return = new stdClass();
 
 		$nome = utf8_decode( $nome );
 
-		$sql[] = "INSERT INTO centro ( id_instituicao, nome, sigla )";
+		$sql[] = "INSERT INTO centro ( id_instituicao, nome, sigla, fone )";
 		$sql[] = "VALUES (";
-		$sql[] = "'{$idInstituicao}', '{$nome}', '{$sigla}'";
+		$sql[] = "'{$idInstituicao}', '{$nome}', '{$sigla}', '{$fone}'";
 		$sql[] = ")";
 
 		if ( mysqli_query( $conexao, join( ' ', $sql ) ) ) {

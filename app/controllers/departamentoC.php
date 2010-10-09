@@ -34,14 +34,15 @@ class DepartamentoC {
 	 *
 	 * @return json
 	 */
-	public function cadastrar( $nome, $sigla, $idCentro ) {
+	public function cadastrar( $nome, $sigla, $idCentro, $fone ) {
 		$erro = array();
 		if ( empty( $nome ) ) $erro[] = 'Nome';
 		if ( empty( $sigla ) ) $erro[] = 'Sigla';
 		if ( empty( $idCentro ) ) $erro[] = 'Id do Centro';
+		if ( empty( $fone ) ) $erro[] = 'Teleone';
 
 		if ( count( $erro ) == 0 ) {
-			$return = $this->model->cadastrar( $nome, $sigla, $idCentro );
+			$return = $this->model->cadastrar( $nome, $sigla, $idCentro, $fone );
 		} else {
 			$return->result = 0;
 			$return->error = join( '<br />', $erro );
