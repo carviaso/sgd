@@ -46,6 +46,7 @@ var professores = {
 						}, "json" );
 					}
 				});
+				$('.multiSelectProfessor').multiSelectProfessor();
 				$("#cadastrarAfastamentoProfessor").button().click(function() {
 					professores.afastamentoProfessor.valida();
 				});
@@ -57,6 +58,7 @@ var professores = {
 			var params = { "action":"printFormCadProgFuncProfessor" };
 			$('#content').html('').load("app/frontController.php", params, function() {
 				$("#aPartirDe, #dataAvaliacao").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
+				$('.multiSelectProfessor').multiSelectProfessor();
 				$("#cadastrarProgressaoFuncionalProfessor").button().click(function() {
 					professores.progressaoFuncionalProfessor.valida();
 				});

@@ -1,10 +1,5 @@
 <h1>Cadastro de Progressao Funcional de Professor</h1>
-<div>Professor</div>
-<select id="idProfessor" class="select ui-corner-all width100">
-	{foreach from=$professores item=professor}
-		<option value="{$professor->id_professor}">{$professor->nome}</option>
-	{/foreach}
-</select>
+<div class="multiSelectProfessor"></div>
 <div>Categoria Funcional<div>
 <select id="idCategoriaFuncional" class="select ui-corner-all width100">
 	{foreach from=$categoriasFuncionais item=categoriaFuncional}
