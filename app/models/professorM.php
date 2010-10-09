@@ -14,13 +14,26 @@ class ProfessorM {
 	 *
 	 * @return array
 	 */
-	function getAllProfessores() {
+	function getAllProfessores( $filtro ) {
 
 		$professores = array();
+		$where = array();
 		$conexao = Conexao::con();
 
-		$sql[] = "SELECT * FROM professor p ORDER BY p.nome";
-		$query = mysqli_query( $conexao, join( '', $sql ) );
+		if ( !empty( $filtro ) ) {
+			$filtro = json_decode( $filtro );
+			switch ( $filtro->tipo ) {
+				case 'byIdDepartamento':
+					$where[] = 'WHERE p.id_departamento = '. $filtro->params->idDepartamento;
+				break;
+			}
+		}
+
+		$sql[] = "SELECT * FROM professor p";
+		$sql[] = join( ' ', $where );
+		$sql[] = "ORDER BY p.nome";
+
+		$query = mysqli_query( $conexao, join( ' ', $sql ) );
 
 		while ( $row = mysqli_fetch_array( $query ) ) {
 			$professor = new stdClass();

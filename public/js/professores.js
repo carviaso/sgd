@@ -19,16 +19,10 @@ var professores = {
 			var params = { "action":"printFormCadRegTrabProfessor" };
 			$('#content').html('').load("app/frontController.php", params, function() {
 				$("#dataInicio").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
+				$('.multiSelectProfessor').multiSelectProfessor();
 				$("#cadastrarRegimeTrabalho").button().click(function() {
 					professores.regimeTrabalho.valida();
 				});
-				//$('#content select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
-				
-				//$("h1").click(function(){
-//					$("h1").alterarCorFonte({cor : "red", fonte : "green"});
-					$('.multiSelectProfessor').multiSelectProfessor();
-				//});
-				
 				gb.processingClose();
 			});
 		});
@@ -164,7 +158,8 @@ var professores = {
 			var portaria = $('#portaria').val();
 			var dataInicio = $('#dataInicio').val();
 			
-			if ( !processo ) erro.push( 'Processo' );
+			if ( idProfessor <= 0 ) erro.push( 'Professor' );
+			if ( !processo ) erro.push( 'Process222o' );
 			if ( !deliberacao ) erro.push( 'Deliberacao' );
 			if ( !portaria ) erro.push( 'Portaria' );
 			if ( !dataInicio ) erro.push( 'Data de Inicio' );

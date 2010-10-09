@@ -20,8 +20,14 @@ class ProfessorC {
 	 *
 	 * @return array
 	 */
-	public function getAllProfessores() {
-		return $this->model->getAllProfessores();
+	public function getAllProfessores( $returnType, $filtro ) {
+//		return $this->model->getAllProfessores();
+		$return = $this->model->getAllProfessores( $filtro );
+		if ( $returnType == 'json' ) {
+			echo json_encode( $return );
+		} else {
+			return $return;
+		}
 	}
 
 	/**
@@ -89,6 +95,7 @@ class ProfessorC {
 	 */
 	public function cadastrarRegimeTrabalhoProfessor( $idProfessor, $idRegimeTrabalho, $processo, $deliberacao, $portaria, $dataInicio ) {
 		$erro = array();
+		if ( $idProfessor <= 0 ) $erro[] = 'Professor';
 		if ( empty( $processo) ) $erro[] = 'Processo';
 		if ( empty( $deliberacao) ) $erro[] = 'Deliberacao';
 		if ( empty( $portaria) ) $erro[] = 'Portaria';
@@ -158,7 +165,7 @@ class ProfessorC {
 	 * @return json
 	 */
 	public function listarProfessores() {
-		$professores = $this->getAllProfessores();
+		$professores = $this->getAllProfessores( '', '' );
 		return $this->view->listarProfessores( $professores );
 	}
 

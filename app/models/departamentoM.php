@@ -1,21 +1,33 @@
 <?php
 
-class Departamento {
+class DepartamentoM {
 
 	/**
 	 * Retorna todos os departamentos
 	 *
 	 * @return array
 	 */
-	function getDepartamentos() {
+	function getDepartamentos( $filtro ) {
 
 		$departamentos = array();
+		$where = array();
 		$conexao = Conexao::con();
 
-		$sql[] = "SELECT d.id_departamento, d.nome, d.sigla AS departamento_sigla, c.sigla AS centro_sigla ";
-		$sql[] = "FROM centro c INNER JOIN departamento d ON c.id_centro = d.id_centro ORDER by d.nome, centro_sigla, d.sigla ";
+		if ( !empty( $filtro ) ) {
+			$filtro = json_decode( $filtro );
+			switch ( $filtro->tipo ) {
+				case 'byIdCentro':
+					$where[] = 'WHERE c.id_centro = ' . $filtro->params->idCentro;
+				break;
+			}
+		}
 
-		$query = mysqli_query( $conexao, join( '', $sql ) );
+		$sql[] = "SELECT d.id_departamento, d.nome, d.sigla AS departamento_sigla, c.sigla AS centro_sigla";
+		$sql[] = "FROM centro c INNER JOIN departamento d ON c.id_centro = d.id_centro";
+		$sql[] = join( ' ', $where );
+		$sql[] = "ORDER by d.nome, centro_sigla, d.sigla ";
+
+		$query = mysqli_query( $conexao, join( ' ', $sql ) );
 
 		while ( $row = mysqli_fetch_array( $query ) ) {
 			$departamento = new stdClass;

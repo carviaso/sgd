@@ -10,7 +10,7 @@ class DepartamentoC {
 	 *
 	 * @return void
 	 */
-	public function DepartamentoController() {
+	public function DepartamentoC() {
 		$this->model = new DepartamentoM();
 		$this->view = new DepartamentoV();
 	}
@@ -20,17 +20,13 @@ class DepartamentoC {
 	 *
 	 * @return array
 	 */
-	public function getDepartamentos() {
-		return $this->model->getDepartamentos();
-	}
-
-	/**
-	 * Retorna um array com todos os objetos Departamentos
-	 *
-	 * @return array
-	 */
-	public function getDepartamentoJson() {
-		return $this->model->getDepartamentoJson();
+	public function getDepartamentos( $returnType, $filtro ) {
+		$return = $this->model->getDepartamentos( $filtro );
+		if ( $returnType == 'json' ) {
+			echo json_encode( $return );
+		} else {
+			return $return;
+		}
 	}
 
 	/**
