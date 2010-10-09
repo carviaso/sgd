@@ -47,7 +47,7 @@ switch ($action) {
 		$departamentoC = new DepartamentoC();
 		$departamentos = $departamentoC->getDepartamentos( '', '' );
 		$departamentoV = new DepartamentoV();
-		return $departamentoV->relDepartamentos( $departamentos );
+		$departamentoV->relDepartamentos( $departamentos );
 	break;
 	case 'getDepartamentos':
 		$departamentoC = new DepartamentoC();
@@ -67,7 +67,7 @@ switch ($action) {
 	break;
 	case 'cadDepartamento':
 		$departamentoC = new DepartamentoC();
-		$departamentoC->cadastrar( $nome, $sigla, $idCentro );
+		$departamentoC->cadastrar( $nome, $sigla, $idCentro, $fone );
 	break;
 	case 'printFormCadCentro':
 		$centroV = new CentroV();
@@ -77,7 +77,7 @@ switch ($action) {
 	break;
 	case 'cadCentro':
 		$centroC = new CentroC();
-		$centroC->cadastrar( $nome, $sigla, $idInstituicao );
+		$centroC->cadastrar( $nome, $sigla, $idInstituicao, $fone );
 	break;
 	case 'relDiretoresCentros':
 		$centroC = new CentroC();

@@ -39,14 +39,15 @@ class CentroC {
 	 *
 	 * @return json
 	 */
-	public function cadastrar( $nome, $sigla, $idInstituicao ) {
+	public function cadastrar( $nome, $sigla, $idInstituicao, $fone ) {
 		$erro = array();
 		if ( empty( $nome) ) $erro[] = 'Nome';
 		if ( empty( $sigla) ) $erro[] = 'Sigla';
 		if ( empty( $idInstituicao) ) $erro[] = 'Id da Instituicao';
+		if ( empty( $fone) ) $erro[] = 'Telefone';
 
 		if ( count( $erro ) == 0 ) {
-			$return = $this->model->cadastrar( $nome, $sigla, $idInstituicao );
+			$return = $this->model->cadastrar( $nome, $sigla, $idInstituicao, $fone );
 		} else {
 			$return->result = 0;
 			$return->error = join( '<br />', $erro );

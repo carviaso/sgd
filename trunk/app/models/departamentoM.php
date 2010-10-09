@@ -9,9 +9,10 @@ class DepartamentoM {
 	 */
 	function getDepartamentos( $filtro ) {
 
-		$departamentos = array();
-		$where = array();
 		$conexao = Conexao::con();
+		$departamentos = array();
+		$f = new FormataHelper();
+		$where = array();
 
 		if ( !empty( $filtro ) ) {
 			$filtro = json_decode( $filtro );
@@ -22,7 +23,8 @@ class DepartamentoM {
 			}
 		}
 
-		$sql[] = "SELECT d.id_departamento, d.nome, d.sigla AS departamento_sigla, c.sigla AS centro_sigla";
+		$sql[] = "SELECT d.id_departamento, d.nome, d.sigla AS departamento_sigla, d.fone,";
+		$sql[] = "c.sigla AS centro_sigla";
 		$sql[] = "FROM centro c INNER JOIN departamento d ON c.id_centro = d.id_centro";
 		$sql[] = join( ' ', $where );
 		$sql[] = "ORDER by d.nome, centro_sigla, d.sigla ";
@@ -35,6 +37,7 @@ class DepartamentoM {
 			$departamento->nome = utf8_encode( $row['nome'] );
 			$departamento->departamentoSigla = utf8_encode( $row['departamento_sigla'] );
 			$departamento->centroSigla = utf8_encode( $row['centro_sigla'] );
+			$departamento->fone = $f->foneFormato( $row['fone'] );
 			$departamentos[] = $departamento;
 		}
 		return $departamentos;
@@ -45,15 +48,15 @@ class DepartamentoM {
 	 *
 	 * @return stdClass
 	 */
-	public function cadastrar( $nome, $sigla, $idCentro ) {
+	public function cadastrar( $nome, $sigla, $idCentro, $fone ) {
 		$conexao = Conexao::con();
 		$return = new stdClass();
 
 		$nome = utf8_decode( $nome );
 
-		$sql[] = "INSERT INTO departamento ( id_centro, nome, sigla )";
+		$sql[] = "INSERT INTO departamento ( id_centro, nome, sigla, fone )";
 		$sql[] = "VALUES (";
-		$sql[] = "'{$idCentro}', '{$nome}', '{$sigla}'";
+		$sql[] = "'{$idCentro}', '{$nome}', '{$sigla}', '{$fone}'";
 		$sql[] = ")";
 
 		if ( mysqli_query( $conexao, join( ' ', $sql ) ) ) {

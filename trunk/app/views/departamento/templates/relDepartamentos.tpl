@@ -5,13 +5,15 @@
 			<th>Nome</th>
 			<th>Sigla</th>
 			<th>Centro</th>
+			<th>Telefone</th>
 		</tr>
 		{foreach from=$departamentos item=departamento}
 			<tr>
-		    	<td>{$departamento->nome}</td>
-		    	<td>{$departamento->departamentoSigla}</td>
-		    	<td>{$departamento->centroSigla}</td>
-		    </tr>		
+				<td>{$departamento->nome}</td>
+				<td>{$departamento->departamentoSigla}</td>
+				<td>{$departamento->centroSigla}</td>
+				<td>{$departamento->fone}</td>
+			</tr>
 		{/foreach}
 	</table>
 	<div id="note">
@@ -24,7 +26,7 @@
 	
 	<select id="selectDepartamentos" class="select ui-corner-all width100">
 		{foreach from=$departamentos item=departamento}
-		    <option value="{$departamento->idDepartamento}">{$departamento->nome}</option>
+			<option value="{$departamento->idDepartamento}">{$departamento->nome}</option>
 		{/foreach}
 	</select>
 	<br />
@@ -41,13 +43,12 @@
 			<tr>
 				<td>{$professor->nome}</td>
 				<td>{$professor->matricula}</td>
-		    </tr>
+			</tr>
 		{foreachelse}
 			<tr>
-		    	<td colspan="2">Nenhum professor cadastrado para o centro selecionado</td>
-		    </tr>
+				<td colspan="2">Nenhum professor cadastrado para o centro selecionado</td>
+			</tr>
 		{/foreach}
-		
 	</table>
 	<div id="note">
 		<p>Emitido em: {$emissao}</p>

@@ -48,10 +48,10 @@ var cadastros = {
 			gb.processing();
 			var params = { "action":"printFormCadCentro" };
 			$('#content').load("app/frontController.php", params, function() {
+				$('#fone').mask( '(99)9999-9999' );
 				$("#cadastrarCentro").button().click(function() {
 					cadastros.centro.valida();
 				});
-				//$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
 			});
 		});
@@ -59,10 +59,10 @@ var cadastros = {
 			gb.processing();
 			var params = { "action":"printFormCadDepartamento" };
 			$('#content').load("app/frontController.php", params, function() {
+				$('#fone').mask( '(99)9999-9999' );
 				$("#cadastrarDepartamento").button().click(function() {
 					cadastros.departamento.valida();
 				});
-				//$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
 			});
 		});
@@ -322,16 +322,19 @@ var cadastros = {
 			var nome = $('#nome').val();
 			var sigla = $('#sigla').val();
 			var idInstituicao = $('#idInstituicao').val();
+			var fone = $('#fone').val().replace(/[^0-9]/gi, '');
 			
 			if ( !nome ) erro.push( 'Nome' );
 			if ( !sigla ) erro.push( 'Sigla' );
 			if ( !idInstituicao ) erro.push( 'Id da Instituicao' );
+			if ( !fone ) erro.push( 'Telefone' );
 			
 			if ( erro.length == 0 ) {
 				var params =	{	'action':'cadCentro',
 									'nome':nome,
 									'sigla':sigla,
-									'idInstituicao':idInstituicao
+									'idInstituicao':idInstituicao,
+									'fone':fone
 								};
 				$("<div class='dialogConfirm'>Deseja realmente realizar o cadastro?</div>").dialog({
 					height:140,
@@ -375,16 +378,19 @@ var cadastros = {
 			var nome = $('#nome').val();
 			var sigla = $('#sigla').val();
 			var idCentro = $('#idCentro').val();
+			var fone = $('#fone').val().replace(/[^0-9]/gi, '');
 			
 			if ( !nome ) erro.push( 'Nome' );
 			if ( !sigla ) erro.push( 'Sigla' );
 			if ( !idCentro ) erro.push( 'Id do Centro' );
+			if ( !fone ) erro.push( 'Telefone' );
 			
 			if ( erro.length == 0 ) {
 				var params =	{	'action':'cadDepartamento',
 									'nome':nome,
 									'sigla':sigla,
-									'idCentro':idCentro
+									'idCentro':idCentro,
+									'fone':fone
 								};
 				$("<div class='dialogConfirm'>Deseja realmente realizar o cadastro?</div>").dialog({
 					height:140,

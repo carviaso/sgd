@@ -17,7 +17,7 @@ var principal = {
 				professores.loadMenu();
 				gb.processingClose();
 			});
-		}).click();
+		});
 	},
 	loadNavRelatorio: function() {
 		$(".navRelatorio").click(function() {
@@ -27,7 +27,7 @@ var principal = {
 				relatorios.loadMenu();
 				gb.processingClose();
 			});
-		});
+		}).click();
 	},
 	loadNavFormulario: function() {
 		$(".navFormulario").click(function() {
