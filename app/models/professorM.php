@@ -225,8 +225,11 @@ class ProfessorM {
 	function countTotalProfessores( $wh ) {
 		$conexao = Conexao::con();
 
-		$sql[] = "SELECT COUNT(*) AS count FROM professor {$wh}";
-		$query = mysqli_query( $conexao, join( '', $sql ) );
+		$sql[] = "SELECT COUNT(*) AS count FROM professor p";
+		$sql[] = "inner join departamento d";
+		$sql[] = "on p.id_departamento = d.id_departamento";
+		$sql[] = "{$wh}";
+		$query = mysqli_query( $conexao, join( ' ', $sql ) );
 
 		$count = mysqli_fetch_array( $query, MYSQL_ASSOC );
 		return $count['count'];
@@ -242,8 +245,15 @@ class ProfessorM {
 		$professores = array();
 		$conexao = Conexao::con();
 
-		$sql[] = "SELECT * FROM professor {$wh} ORDER BY $sidx $sord LIMIT $start, $limit";
-		$query = mysqli_query( $conexao, join( '', $sql ) );
+		$sql[] = "SELECT ";
+		$sql[] = "p.id_professor, p.nome, p.matricula, p.siape, d.sigla as siglaDepartamento";
+		$sql[] = "FROM professor p";
+		$sql[] = "inner join departamento d";
+		$sql[] = "on p.id_departamento = d.id_departamento";
+		$sql[] = "{$wh}";
+		$sql[] = "ORDER BY $sidx $sord LIMIT $start, $limit";
+
+		$query = mysqli_query( $conexao, join( ' ', $sql ) );
 		$return->page = $page;
 		$return->total = $total_pages;
 		$return->records = $count;
@@ -253,13 +263,15 @@ class ProfessorM {
 
 			$idProfessor = $row['id_professor'];
 			$nome = utf8_encode( $row['nome'] );
+			$siglaDepartamento = utf8_encode( $row['siglaDepartamento'] );
 
 			$return->rows[$i]['cell'] = array(
 					"<div class='detalhesProfessor' title='Detalhes' id='{$idProfessor}'>&nbsp;</div><div class='detalhesProgressaoFuncional' title='Progressao Funcional' id='{$idProfessor}'>&nbsp;</div><div class='imprimirFicha' title='Imprimir Ficha Detalhada do Professor' id='{$idProfessor}'>&nbsp;</div>",
 					$idProfessor,
 					$nome,
 					$row['matricula'],
-					$row['siape']
+					$row['siape'],
+					$siglaDepartamento
 				);
 			$i++;
 		}
