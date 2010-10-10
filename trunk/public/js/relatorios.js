@@ -58,12 +58,13 @@ var relatorios = {
 					postData: {'action':"getAllProfessoresJson"},
 					mtype: 'POST',
 					datatype: "json",
-					colNames:['Acao', 'Id', 'Nome', 'Matricula', 'Siape' ],
+					colNames:['Acao', 'Id', 'Nome', 'Matricula', 'Siape', 'Departamento' ],
 					colModel:[	{name:'acao',index:'acao', width:80, search:false },
 								{name:'id_professor',index:'id_professor', width:35 },
 								{name:'nome',index:'nome', width:275 },
 								{name:'matricula',index:'matricula', width:90 },
-								{name:'siape',index:'siape', width:100 }
+								{name:'siape',index:'siape', width:100 },
+								{name:'Departamento',index:'d.sigla', width:50}
 							],
 					rowNum:50, rowList:[50,100,200],
 					pager: '#pagerListaProfessores',
