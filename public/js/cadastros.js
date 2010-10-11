@@ -18,7 +18,6 @@ var cadastros = {
 				$("#cadastrarUf").button().click(function() {
 					cadastros.uf.valida();
 				});
-				//$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
 			});
 		});	
@@ -29,7 +28,6 @@ var cadastros = {
 				$("#cadastrarMunicipio").button().click(function() {
 					cadastros.municipio.valida();
 				});
-				//$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
 			});
 		});
@@ -40,7 +38,6 @@ var cadastros = {
 				$("#cadastrarInstituicao").button().click(function() {
 					cadastros.instituicao.valida();
 				});
-				//$('select').selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
 				gb.processingClose();
 			});
 		});
