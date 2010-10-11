@@ -195,11 +195,6 @@ class ProfessorC {
 	 * @return pdf
 	 */
 	public function imprimirFicha( $idProfessor ) {
-		//$progressaoFuncional = $this->model->getAllProgressaoFuncionalProfessor( $idProfessor );
-		//$this->view->imprimirFicha();
-
-
-		//echo $content;
 		$professor = $this->model->getProfessorPorId( $idProfessor );
 		$progressoes = $this->model->getAllProgressaoFuncionalProfessor( $idProfessor );
 		$content = $this->view->imprimirFicha( $professor, $progressoes );
@@ -207,9 +202,7 @@ class ProfessorC {
 		$mpdf = new mPDF();
 		$stylesheet = file_get_contents('../public/css/imprimirFicha.css');
 		$mpdf->WriteHTML($stylesheet,1);
-		//$mpdf->WriteHTML($html,2);
 		$mpdf->WriteHTML( $content );
-		//$mpdf->Image('img01.gif',0,0,210,297,'jpg','',true, false);
 		$mpdf->Output( "../tmp/cache/{$idProfessor}.pdf", 'F' );
 		$return['id'] = $idProfessor;
 		echo json_encode($return);
