@@ -24,12 +24,6 @@
 		<div>
 			{$professor->dataNascimento}
 		</div>
-		<div>
-			Aposentado
-		</div>
-		<div>
-			{$professor->aposentado}
-		</div>
 	</fieldset>
 	<fieldset><legend>Datas</legend>
 		<div>
