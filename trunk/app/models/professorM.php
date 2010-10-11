@@ -67,6 +67,7 @@ class ProfessorM {
 	function getProfessorPorId( $idProfessores ) {
 
 		$conexao = Conexao::con();
+		$d = new DataHelper();
 
 		$sql[] = "SELECT
 					p.id_professor,
@@ -149,8 +150,6 @@ class ProfessorM {
 		$sql[] = "on p.id_status_atual_professor = sa.id_status";
 		$sql[] = "WHERE id_professor = {$idProfessores} ORDER BY p.nome";
 
-		//echo join( ' ', $sql );
-		//die;
 		$query = mysqli_query( $conexao, join( ' ', $sql ) );
 
 		$professor = new stdClass();
@@ -159,24 +158,11 @@ class ProfessorM {
 			$professor->nome = utf8_encode( $row['nome'] );
 			$professor->matricula = utf8_encode( $row['matricula'] );
 			$professor->siape = utf8_encode( $row['siape'] );
-
-			$dataAdmissao = date( 'd/m/Y', strtotime( $row['data_admissao'] ) );
-			$professor->dataAdmissao = $dataAdmissao;
-
-			$dataAdmissaoUfsc = date( 'd/m/Y', strtotime( $row['data_admissao_ufsc'] ) );
-			$professor->dataAdmissaoUfsc = $dataAdmissaoUfsc;
-
-			$dataNascimento = date( 'd/m/Y', strtotime( $row['data_nascimento'] ) );
-			$professor->dataNascimento = $dataNascimento;
-
-			$professor->aposentado = utf8_encode( $row['aposentado'] );
-
-			$dataPrevistaAposentadoria = date( 'd/m/Y', strtotime( $row['data_previsao_aposentadoria'] ) );
-			$professor->dataPrevistaAposentadoria = $dataPrevistaAposentadoria;
-
-			$dataEfetivaAposentadoria = date( 'd/m/Y', strtotime( $row['data_aposentadoria'] ) );
-			$professor->dataEfetivaAposentadoria = $dataEfetivaAposentadoria;
-
+			$professor->dataAdmissao = $d->validaData( $row['data_admissao'] );
+			$professor->dataAdmissaoUfsc = $d->validaData( $row['data_admissao_ufsc'] );
+			$professor->dataNascimento = $d->validaData( $row['data_nascimento'] );
+			$professor->dataPrevistaAposentadoria = $d->validaData( $row['data_previsao_aposentadoria'] );
+			$professor->dataEfetivaAposentadoria = $d->validaData( $row['data_aposentadoria'] );
 			$professor->idDepartamento = $row['id_departamento'];
 			$professor->idCategoriaFuncionalInicial = $row['id_categoria_funcional_inicial'];
 			$professor->idCategoriaFuncionalAtual = $row['id_categoria_funcional_atual'];
