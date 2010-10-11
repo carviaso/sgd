@@ -55,7 +55,7 @@ function constructWhere($s){
     return $qwery;
 }
 
-//Verifica o tipo de valor utilizado, ou seja, campo integer, string, float.
+// Verifica o tipo de valor utilizado, ou seja, campo integer, string, float.
 function ToSql ($field, $oper, $val) {
 	switch ($field) {
 		case 'id':
@@ -74,7 +74,7 @@ function ToSql ($field, $oper, $val) {
 	}
 }
 
-//Funções complementares para tratamento de dados
+// Funções complementares para tratamento de dados
 function Strip($value)
 {
 	if(get_magic_quotes_gpc() != 0)

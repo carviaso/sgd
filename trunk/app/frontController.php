@@ -105,9 +105,7 @@ switch ($action) {
 	break;
 	case 'relProfessoresPorDepartamento':
 		$departamentoC = new DepartamentoC();
-		$professores = $departamentoC->getProfessoresPorDepartamento( $_POST['idDepartamento'] );
-		$departamentoV = new DepartamentoV();
-		return $departamentoV->relProfessoresPorDepartamento( $professores );
+		$departamentoC->relProfessoresPorDepartamento( $idDepartamento, $filtro );
 	break;
 	case 'relProfessoresDepartamento':
 		$departamentoC = new DepartamentoC();
@@ -186,15 +184,32 @@ switch ($action) {
 		$professorC->getAllProfessores( $returnType, $filtro );
 	break;
 	case 'getAllProfessoresJson':
+		// @todo Mudar essa funcao para o professorC
 		$professorC = new ProfessorC();
 		$limit = $rows;
-	    $wh = "";
-	    $searchOn = Strip( $_POST['_search'] );
-	    if( $searchOn == 'true' ) {
-	        $wh = " WHERE ";
-	        $searchstr = Strip( $_POST['filters'] );
-	        $wh .= constructWhere( $searchstr );
-	    }
+		$wh = "";
+		$searchOn = Strip( $_POST['_search'] );
+		if( $searchOn == 'true' ) {
+			$wh = " WHERE ";
+			$searchstr = Strip( $_POST['filters'] );
+			$wh .= constructWhere( $searchstr );
+		}
+		if ( ( !empty( $filtro ) && ( !$searchOn ) ) ) {
+			$filtro = json_decode( $filtro );
+			switch ( $filtro->tipo ) {
+				case 'cargo':
+					$wh .= ' WHERE p.id_cargo in (' . join( ',', $filtro->params->idCargo ) . ')';
+				break;
+			}
+		}
+		if ( ( !empty( $filtro ) && ( $searchOn ) ) ) {
+			$filtro = json_decode( $filtro );
+			switch ( $filtro->tipo ) {
+				case 'cargo':
+					$wh .= ' AND p.id_cargo in (' . join( ',', $filtro->params->idCargo ) . ')';
+				break;
+			}
+		}
 		$professores = $professorC->getAllProfessoresJson( $page, $limit, $sidx, $sord, $wh );
 	break;
 	case 'mostraDetalhesProfessor':

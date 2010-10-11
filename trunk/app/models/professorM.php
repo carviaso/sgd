@@ -263,7 +263,6 @@ class ProfessorM {
 
 			$idProfessor = $row['id_professor'];
 			$nome = utf8_encode( $row['nome'] );
-			$siglaDepartamento = utf8_encode( $row['siglaDepartamento'] );
 
 			$return->rows[$i]['cell'] = array(
 					"<div class='detalhesProfessor' title='Detalhes' id='{$idProfessor}'>&nbsp;</div><div class='detalhesProgressaoFuncional' title='Progressao Funcional' id='{$idProfessor}'>&nbsp;</div><div class='imprimirFicha' title='Imprimir Ficha Detalhada do Professor' id='{$idProfessor}'>&nbsp;</div>",
@@ -271,7 +270,7 @@ class ProfessorM {
 					$nome,
 					$row['matricula'],
 					$row['siape'],
-					$siglaDepartamento
+					$row['siglaDepartamento']
 				);
 			$i++;
 		}

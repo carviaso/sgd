@@ -22,7 +22,7 @@ var relatorios = {
 					var idCentro = $(this).val();
 					var params = { "action":"relDiretorPorCentro", 'idCentro': idCentro };
 					$('#departamentosPorCentro').load("app/frontController.php", params);
-				}).change();//.selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				}).change();
 				gb.processingClose();
 			});
 		});
@@ -32,9 +32,12 @@ var relatorios = {
 			$('#content').load("app/frontController.php", params, function() {
 				$("#selectDepartamentos").change(function() {
 					var idDepartamento = $(this).val();
-					var params = { "action":"relProfessoresPorDepartamento", 'idDepartamento': idDepartamento };
+					var params = {	"action":"relProfessoresPorDepartamento",
+									"idDepartamento":idDepartamento,
+									"filtro":"{\"tipo\":\"cargo\",\"params\":{\"idCargo\":[\"1,2\"]}}"
+								};
 					$('#professoresPorDepartamento').load("app/frontController.php", params);
-				}).change();//.selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				}).change();
 				gb.processingClose();
 			});
 		});
@@ -46,7 +49,7 @@ var relatorios = {
 					var idCentro = $(this).val();
 					var params = { "action":"relDepartamentoPorCentro", 'idCentro': idCentro };
 					$('#departamentosPorCentro').load("app/frontController.php", params);
-				}).change();//.selectmenu({width: '100%', menuWidth: 200, maxHeight: 150, style:'popup'});
+				}).change();
 				gb.processingClose();
 			});
 		});
@@ -55,15 +58,16 @@ var relatorios = {
 			var params = { "action":"listarProfessores" };
 			$('#content').load("app/frontController.php", params, function() {
 				$("#listaProfessores").jqGrid({url:'app/frontController.php',
-					postData: {'action':"getAllProfessoresJson"},
+					postData: {	"action":"getAllProfessoresJson",
+								"filtro":"{\"tipo\":\"cargo\",\"params\":{\"idCargo\":[\"1,2\"]}}"},
 					mtype: 'POST',
 					datatype: "json",
 					colNames:['Acao', 'Id', 'Nome', 'Matricula', 'Siape', 'Departamento' ],
 					colModel:[	{name:'acao',index:'acao', width:80, search:false },
-								{name:'id_professor',index:'id_professor', width:35 },
-								{name:'nome',index:'nome', width:275 },
-								{name:'matricula',index:'matricula', width:90 },
-								{name:'siape',index:'siape', width:100 },
+								{name:'id_professor',index:'p.id_professor', width:35 },
+								{name:'nome',index:'p.nome', width:275 },
+								{name:'matricula',index:'p.matricula', width:90 },
+								{name:'siape',index:'p.siape', width:100 },
 								{name:'Departamento',index:'d.sigla', width:50}
 							],
 					rowNum:50, rowList:[50,100,200],

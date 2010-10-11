@@ -102,13 +102,26 @@ class DepartamentoM {
 	 * @param int $idDepartamento
 	 * @return array
 	 */
-	function getProfessoresPorDepartamento( $idDepartamento ) {
+	function getProfessoresPorDepartamento( $idDepartamento, $filtro ) {
 
-		$professores = array();
 		$conexao = Conexao::con();
+		$professores = array();
+		$where = array( "WHERE p.id_departamento = {$idDepartamento}" );
 
-		$sql[] = "select * from professor where id_departamento = {$idDepartamento}";
-		$query = mysqli_query( $conexao, join( '', $sql ) );
+		if ( !empty( $filtro ) ) {
+			$filtro = json_decode( $filtro );
+			switch ( $filtro->tipo ) {
+				case 'cargo':
+					$where[] = 'AND p.id_cargo in (';
+					$where[] = join( ',', $filtro->params->idCargo );
+					$where[] = ')';
+				break;
+			}
+		}
+
+		$sql[] = "SELECT * FROM professor p";
+		$sql[] = join( ' ', $where );
+		$query = mysqli_query( $conexao, join( ' ', $sql ) );
 
 		while ( $row = mysqli_fetch_array( $query ) ) {
 			$professor = new stdClass;

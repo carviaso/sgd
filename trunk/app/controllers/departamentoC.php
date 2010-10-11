@@ -51,6 +51,17 @@ class DepartamentoC {
 	}
 
 	/**
+	 * Retorna todos os professores por departamento
+	 *
+	 * @param int $idCentro
+	 * @return array
+	 */
+	public function relProfessoresPorDepartamento( $idDepartamento, $filtro ) {
+		$professores = $this->getProfessoresPorDepartamento( $idDepartamento, $filtro );
+		return $this->view->relProfessoresPorDepartamento( $professores );
+	}
+
+	/**
 	 * Retorna todos os departamentos por centro
 	 *
 	 * @param int $idCentro
@@ -66,8 +77,8 @@ class DepartamentoC {
 	 * @param int $idCentro
 	 * @return array
 	 */
-	public function getProfessoresPorDepartamento( $idDepartamento ) {
-		return $this->model->getProfessoresPorDepartamento( $idDepartamento );
+	public function getProfessoresPorDepartamento( $idDepartamento, $filtro ) {
+		return $this->model->getProfessoresPorDepartamento( $idDepartamento,$filtro );
 	}
 }
 ?>
