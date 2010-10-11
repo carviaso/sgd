@@ -198,7 +198,7 @@ switch ($action) {
 			$searchstr = Strip( $_POST['filters'] );
 			$wh .= constructWhere( $searchstr );
 		}
-		if ( ( !empty( $filtro ) && ( !$searchOn ) ) ) {
+		if ( ( !empty( $filtro ) && ( $searchOn == 'false' ) ) ) {
 			$filtro = json_decode( $filtro );
 			switch ( $filtro->tipo ) {
 				case 'cargo':
@@ -206,7 +206,7 @@ switch ($action) {
 				break;
 			}
 		}
-		if ( ( !empty( $filtro ) && ( $searchOn ) ) ) {
+		if ( ( !empty( $filtro ) && ( $searchOn == 'true' ) ) ) {
 			$filtro = json_decode( $filtro );
 			switch ( $filtro->tipo ) {
 				case 'cargo':

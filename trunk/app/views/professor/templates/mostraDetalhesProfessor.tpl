@@ -109,10 +109,10 @@
 			{$professor->descricaoCargo}
 		</div>
 		<div>
-			Situa&ccedil;&atilde;o
+			Situa&ccedil;&atilde;o Atual
 		</div>
 		<div>
-			{$professor->descricaoSituacao}
+			{$professor->descricaoSituacaoAtual}
 		</div>
 	</fieldset>
 </div>

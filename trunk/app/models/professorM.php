@@ -44,7 +44,7 @@ class ProfessorM {
 			$professor->dataAdmissao = $row['data_admissao'];
 			$professor->dataAdmissaoUfsc = $row['data_admissao_ufsc'];
 			$professor->dataNascimento = $row['data_nascimento'];
-			$professor->aposentado = utf8_encode( $row['aposentado'] );
+			//$professor->aposentado = utf8_encode( $row['aposentado'] );
 			$professor->dataPrevistaAposentadoria = $row['data_previsao_aposentadoria'];
 			$professor->dataEfetivaAposentadoria = $row['data_aposentadoria'];
 			$professor->idDepartamento = $row['id_departamento'];
@@ -76,7 +76,7 @@ class ProfessorM {
 					p.data_admissao,
 					p.data_admissao_ufsc,
 					p.data_nascimento,
-					p.aposentado,
+					/*p.aposentado,*/
 					p.data_previsao_aposentadoria,
 					p.data_aposentadoria,
 					p.id_departamento,
@@ -120,7 +120,9 @@ class ProfessorM {
 					rt.dedicacao_exclusiva as dedicacao_exclusiva,
 
 					s.id_situacao as idSituacao,
-					s.descricao_situacao as descricaoSituacao
+					s.descricao_situacao as descricaoSituacao,
+
+					sa.descricao as descricaoSituacaoAtual
 
 		FROM professor p";
 		$sql[] = "left join departamento d";
@@ -143,8 +145,12 @@ class ProfessorM {
 		$sql[] = "on p.id_regime_trabalho = rt.id_regime_trabalho";
 		$sql[] = "left join situacao s";
 		$sql[] = "on p.id_situacao = s.id_situacao";
+		$sql[] = "left join status_atual_professor sa";
+		$sql[] = "on p.id_status_atual_professor = sa.id_status";
 		$sql[] = "WHERE id_professor = {$idProfessores} ORDER BY p.nome";
 
+		//echo join( ' ', $sql );
+		//die;
 		$query = mysqli_query( $conexao, join( ' ', $sql ) );
 
 		$professor = new stdClass();
@@ -179,6 +185,7 @@ class ProfessorM {
 			$professor->idCargo = $row['id_cargo'];
 			$professor->idRegimeTrabalho = $row['id_regime_trabalho'];
 			$professor->idSituacao = $row['id_situacao'];
+			$professor->idStatus = $row['id_status'];
 
 			$professor->nomeDepartamento = utf8_encode( $row['nomeDepartamento'] );
 			$professor->siglaDepartamento = utf8_encode( $row['siglaDepartamento'] );
@@ -211,8 +218,9 @@ class ProfessorM {
 			$professor->quantidadeHorasRegimeTrabalho = $row['quantidade_horasRegime_trabalho'];
 			$professor->dedicacaoExclusiva = $row['dedicacao_exclusiva'];
 
-			$professor->idSituacao = $row['idSituacao'];
 			$professor->descricaoSituacao = utf8_encode( $row['descricaoSituacao'] );
+
+			$professor->descricaoSituacaoAtual = utf8_encode( $row['descricaoSituacaoAtual'] );
 		}
 		return $professor;
 	}
@@ -252,6 +260,9 @@ class ProfessorM {
 		$sql[] = "on p.id_departamento = d.id_departamento";
 		$sql[] = "{$wh}";
 		$sql[] = "ORDER BY $sidx $sord LIMIT $start, $limit";
+
+		//echo join( ' ', $sql );
+		//die;
 
 		$query = mysqli_query( $conexao, join( ' ', $sql ) );
 		$return->page = $page;
@@ -464,7 +475,7 @@ class ProfessorM {
 		$sql[] = "inner join categoria_funcional cf";
 		$sql[] = "on p.id_categoria_funcional_inicial = cf.id_categoria_funcional";
 		$sql[] = "where id_professor = {$idProfessor}";
-		$sql[] = "union";
+		$sql[] = "UNION";
 		$sql[] = "SELECT";
 		$sql[] = "p.id_categoria_funcional_inicial,";
 		$sql[] = "pf.id_progressao_funcional,";
