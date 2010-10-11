@@ -7,12 +7,16 @@ include_once '../app/include/conexao.php';
 
 if ( isset( $_POST['verificaLogin'] ) ) {
 	$loginC = new loginC();
-	mail( 'bferronato@gmail.com', 'SGD - Verifica Login', "Usuario: {$_POST['siape']}" );
+//	try {
+//		mail( 'bferronato@gmail.com', 'SGD - Verifica Login', "Usuario: {$_POST['siape']}" );
+//	} catch (Exception $e) {
+//		echo 'erro ao enviar email';
+//	}
 	return $loginC->valida( $_POST['siape'], md5($_POST['senha'] ) );
 }
 /* @TODO VERIFICAR UMA BOA MANEIRA DE REDIRECIONAR NA PERDA DE SESSAO */
 elseif ( $_SESSION['logado'] != true ) {
-	mail( 'bferronato@gmail.com', 'SGD - Perda sessao', "Perda sessao usuario {$_SESSION['idProfessor']}" );
+	//mail( 'bferronato@gmail.com', 'SGD - Perda sessao', "Perda sessao usuario {$_SESSION['idProfessor']}" );
 	session_unset();
 	session_destroy();
 	header('Location: http://www.google.com.br/');
