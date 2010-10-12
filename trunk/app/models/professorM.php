@@ -409,7 +409,7 @@ class ProfessorM {
 	 *
 	 * @return stdClass
 	 */
-	public function cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $aPartirDe, $portaria ) {
+	public function cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $tituloAvaliacao, $dataAvaliacao, $notaAvaliacao, $aPartirDe, $portaria, $observacoes ) {
 		$conexao = Conexao::con();
 		$return = new stdClass();
 
@@ -418,15 +418,17 @@ class ProfessorM {
 
 		$processo = utf8_decode( $processo );
 		$portaria = utf8_decode( $portaria );
+		$tituloAvaliacao = utf8_decode( $tituloAvaliacao );
+		$observacoes = utf8_decode( $observacoes );
 
 		$sql[] = "INSERT INTO progressao_funcional (";
 		$sql[] = "id_professor, id_categoria_funcional,";
-		$sql[] = "processo, data_avaliacao, nota_avaliacao,";
-		$sql[] = "apartir_de, portaria )";
+		$sql[] = "processo, titulo_avaliacao, data_avaliacao, nota_avaliacao,";
+		$sql[] = "apartir_de, portaria, observacao )";
 		$sql[] = "VALUES (";
 		$sql[] = "'$idProfessor', '$idCategoriaFuncional',";
-		$sql[] = "'$processo', '$dataAvaliacao', '$notaAvaliacao',";
-		$sql[] = "'$aPartirDe', '$portaria')";
+		$sql[] = "'$processo', '$tituloAvaliacao', '$dataAvaliacao', '$notaAvaliacao',";
+		$sql[] = "'$aPartirDe', '$portaria', '$observacoes')";
 
 		if ( mysqli_query( $conexao, join( ' ', $sql ) ) ) {
 			$return->result = 1;

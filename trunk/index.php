@@ -53,6 +53,7 @@
 		<script type="text/javascript" src="public/js/plugins/grid.formedit.js"></script>
 		<script type="text/javascript" src="public/js/plugins/grid.common.js"></script>
 		<script type="text/javascript" src="public/js/plugins/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="public/js/plugins/jquery.limit-1.2.js"></script>
 		<script type="text/javascript" src="public/js/globals.js"></script>
 		<script type="text/javascript" src="public/js/login.js"></script>
 		<script type="text/javascript" src="public/js/cadastros.js"></script>

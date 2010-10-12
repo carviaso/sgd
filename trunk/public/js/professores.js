@@ -5,7 +5,8 @@ var professores = {
 			var params = { "action":"printFormCadProfessor" };
 			$('#content').html('').load("app/frontController.php", params, function() {
 				$("#dataNascimento, #dataAdmissao, #dataAdmissaoUfsc, #dataPrevistaAposentadoria, #dataEfetivaAposentadoria")
-					.mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
+					//.mask('99/99/9999')
+					.datepicker($.datepicker.regional['pt-BR']);
 				$("#cadastrarProfessor").button().click(function() {
 					professores.valida();
 				});
@@ -57,6 +58,7 @@ var professores = {
 			$('#content').html('').load("app/frontController.php", params, function() {
 				$("#aPartirDe, #dataAvaliacao").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
 				$('.multiSelectProfessor').multiSelectProfessor();
+				$('#observacoes').limit('600');
 				$("#cadastrarProgressaoFuncionalProfessor").button().click(function() {
 					professores.progressaoFuncionalProfessor.valida();
 				});
@@ -284,14 +286,17 @@ var professores = {
 			var idProfessor = $('#idProfessor option:selected').val();
 			var idCategoriaFuncional = $('#idCategoriaFuncional option:selected').val();
 			var processo = $('#processo').val();
+			var tituloAvaliacao = $('#tituloAvaliacao').val();
 			var dataAvaliacao = $('#dataAvaliacao').val();
 			var notaAvaliacao = $('#notaAvaliacao').val();
 			var aPartirDe = $('#aPartirDe').val();
 			var portaria = $('#portaria').val();
+			var observacoes = $('#observacoes').val();
 			
 			if ( !idProfessor ) erro.push( 'Professor' );
 			if ( !idCategoriaFuncional ) erro.push( 'Categoria Funcional' );
 			//if ( !processo ) erro.push( 'Processo' );
+			if ( !tituloAvaliacao ) erro.push( 'T\u00EDtul da avalia\u00e7\u00e3o' );
 			//if ( !dataAvaliacao ) erro.push( 'Data de Avaliacao' );
 			//if ( !notaAvaliacao ) erro.push( 'Nota Avaliacao' );
 			if ( !aPartirDe ) erro.push( 'A partir de' );
@@ -302,10 +307,12 @@ var professores = {
 								'idProfessor':idProfessor,
 								'idCategoriaFuncional':idCategoriaFuncional,
 								'processo':processo,
+								'tituloAvaliacao':tituloAvaliacao,
 								'dataAvaliacao':dataAvaliacao,
 								'notaAvaliacao':notaAvaliacao,
 								'aPartirDe':aPartirDe,
-								'portaria':portaria
+								'portaria':portaria,
+								'observacoes':observacoes
 							};
 				$("<div class='dialog-confirm'>Deseja realmente cadastrar a progressao Funcional?</div>").dialog({
 					height:140,
