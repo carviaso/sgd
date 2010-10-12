@@ -1,14 +1,14 @@
 <?php
 
-class SituacaoController {
-	
+class SituacaoC {
+
 	/**
 	 * Construtor
 	 *
 	 * @return void
 	 */
-	public function SituacaoController() {}
-	
+	public function SituacaoC() {}
+
 	/**
 	 * Retorna um array com todos os objetos Situacao
 	 *
