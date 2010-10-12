@@ -85,9 +85,7 @@ switch ($action) {
 	break;
 	case 'relDiretoresCentros':
 		$centroC = new CentroC();
-		$centros = $centroC->getCentros();
-		$centroV = new CentroV();
-		return $centroV->relDiretoresCentros( $centros );
+		$centroC->relDiretoresCentros();
 	break;
 	case 'relDiretorPorCentro':
 		$centroC = new CentroC();
@@ -104,6 +102,14 @@ switch ($action) {
 		$departamentos = $centroC->relDepartamentoPorCentro( $_POST['idCentro'] );
 		$centroV = new CentroV();
 		return $centroV->relDepartamentoPorCentro( $departamentos );
+	break;
+	case 'relChefesDepartamento':
+		$departamentoC = new DepartamentoC();
+		$departamentoC->relChefesDepartamento();
+	break;
+	case 'relChefesPorDepartamento':
+		$departamentoC = new DepartamentoC();
+		$departamentoC->relChefesPorDepartamento( $idDepartamento );
 	break;
 	case 'relProfessoresPorDepartamento':
 		$departamentoC = new DepartamentoC();

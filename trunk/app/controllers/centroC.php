@@ -55,17 +55,44 @@ class CentroC {
 		echo json_encode( $return );
 	}
 
+	/**
+	 * Exibe todos os centros cadastrados
+	 *
+	 * @return void
+	 */
 	public function relCentros() {
 		$centros = $this->model->getCentros();
 		return $this->view->relCentros( $centros );
 	}
 
+	/**
+	 * Exibe o select para escolha do centro
+	 *
+	 * @return void
+	 */
+	public function relDiretoresCentros() {
+		$centros = $this->getCentros();
+		$this->view->relDiretoresCentros( $centros );
+	}
+
+	/**
+	 * Exibe o diretor e vice-diretor do centro
+	 *
+	 * @param int $idCentro
+	 * @return void
+	 */
 	public function relDiretorPorCentro( $idCentro ) {
-		$diretores = $this->model->getCargoComissionado( $idCentro, DIRETORDOCENTRO, '' );
-		$viceDiretores = $this->model->getCargoComissionado( $idCentro, VICEDIRETORDOCENTRO, '' );
+		$diretores = $this->model->getCentroCargoComissionado( $idCentro, DIRETORDOCENTRO, '' );
+		$viceDiretores = $this->model->getCentroCargoComissionado( $idCentro, VICEDIRETORDOCENTRO, '' );
 		$this->view->relDiretorPorCentro( $diretores, $viceDiretores );
 	}
 
+	/**
+	 * Exibe os departamentos por centro
+	 *
+	 * @param int $idCentro
+	 * @return array
+	 */
 	public function relDepartamentoPorCentro( $idCentro ) {
 		return $this->model->relDepartamentoPorCentro( $idCentro );
 	}
