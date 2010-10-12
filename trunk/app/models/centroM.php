@@ -52,19 +52,24 @@ class CentroM {
 		return $return;
 	}
 
-	function relDiretorPorCentro( $idCentro ) {
+	function getCargoComissionado( $idCentro, $idCargoComissionado, $idProfessor ) {
 		$conexao = Conexao::con();
 		$diretores = array();
+		$where[] = "where c.id_centro = {$idCentro} and";
+		$where[] = "cc.id_cargocomissionado = '$idCargoComissionado'";
+
+		if ( !empty( $idProfessor ) ) {
+			$where[] = "and cc.id_professor = '$idProfessor'";
+		}
 
 		$sql[] = "select p.id_professor, p.nome from centro c";
 		$sql[] = "inner join centrocargocomissionado cc";
 		$sql[] = "on c.id_centro = cc.id_centro";
 		$sql[] = "inner join professor p";
 		$sql[] = "on cc.id_professor = p.id_professor";
-		$sql[] = "where c.id_centro = {$idCentro}";
+		$sql[] = join( ' ', $where );
 
 		$query = mysqli_query( $conexao, join( ' ', $sql ) );
-
 		while ( $row = mysqli_fetch_array( $query ) ) {
 			$diretor = new stdClass;
 			$diretor->idDiretor = $row['id_professor'];
