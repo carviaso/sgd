@@ -18,6 +18,7 @@
 			<li><a href="javascript:void(0);" id="cadTipoTitulacao">Tipos de Titula&ccedil;&otilde;es</a></li>
 			<li><a href="javascript:void(0);" id="cadCategoriaFuncional">Categorias Funcionais</a></li>
 			<li><a href="javascript:void(0);" id="cadRegimeTrabalho">Regimes de Trabalho</a></li>
+			<li><a href="javascript:void(0);" id="cadPortaria">Portaria</a></li>
 		</ul>
 	</li>
 </ul>

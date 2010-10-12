@@ -307,6 +307,14 @@ switch ($action) {
 		$avaliacaoDesempenhoV = new AvaliacaoDesempenhoV();
 		$avaliacaoDesempenhoV->printFormCadAvaliacaoDesempenho();
 	break;
+	case 'printFormCadPortaria':
+		$portariaC = new PortariaC();
+		$portariaC->printFormCadPortaria();
+	break;
+	case 'cadPortaria':
+		$portariaC = new PortariaC();
+		$portariaC->cadPortaria( $idProfessor, $portaria, $descricao );
+	break;
 	case 'logout':
 		$loginC = new LoginC();
 		$loginC->logout();
