@@ -11,13 +11,6 @@
 <input type="text" id="dataAdmissao" class="input ui-corner-all width100" />
 <div>Data da admiss&atilde;o na Ufsc</div>
 <input type="text" id="dataAdmissaoUfsc" class="input ui-corner-all width100" />
-<div>Aposentado</div>
-<div id="radio">
-	<label for="aposentadoSim">Sim</label>
-	<input type="radio" id="aposentadoSim" name="aposentado" value="1" />
-	<label for="aposentadoNao">N&atilde;o</label>
-	<input type="radio" id="aposentadoNao" name="aposentado" value="0" />
-</div>
 <div>Data prevista da aposentadoria</div>
 <input type="text" id="dataPrevistaAposentadoria" class="input ui-corner-all width100" />
 <div>Data efetiva da aposentadoria</div>
@@ -58,11 +51,19 @@
 		<option value="{$cargo->idCargo}">{$cargo->descricaoCargo}</option>
 	{/foreach}
 </select>
-<div>Situacao<div>
+<div>Regime de trabalho<div>
+<select id="regimeTrabalho" class="select ui-corner-all width100">
+	{foreach from=$regimesTrabalho item=regimeTrabalho}
+		<option value="{$regimeTrabalho->idRegimeTrabalho}">{$regimeTrabalho->descricao}</option>
+	{/foreach}
+</select>
+<div>Situa&ccedil;&atilde;o<div>
 <select id="situacao" class="select ui-corner-all width100">
 	{foreach from=$situacoes item=situacao}
 		<option value="{$situacao->idSituacao}">{$situacao->descricaoSituacao}</option>
 	{/foreach}
 </select>
+<div>Status Atual do Professor<div>
+<select id="statusAtualProfessor" class="select ui-corner-all width100"></select>
 <div>&nbsp;<div>
 <div><button id="cadastrarProfessor" class="right button">Cadastrar</button><div>

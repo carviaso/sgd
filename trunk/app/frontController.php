@@ -118,22 +118,12 @@ switch ($action) {
 		return $departamentoV->relProfessoresDepartamento( $departamentos );
 	break;
 	case 'printFormCadProfessor':
-		$departamentoC = new DepartamentoC();
-		$departamentos = $departamentoC->getDepartamentos( '', '' );
-		$categoriaFuncionalC = new CategoriaFuncionalController();
-		$categoriasFuncionais = $categoriaFuncionalC->getCategoriaFuncional();
-		$tipoTitulacaoC = new TipoTitulacaoController();
-		$tipoTitulacoes = $tipoTitulacaoC->getAll();
-		$cargoC = new CargoController();
-		$cargos = $cargoC->getCargos();
-		$situacaoC = new SituacaoController();
-		$situacoes = $situacaoC->getSituacoes();
-		$professorV = new ProfessorV();
-		$professorV->printFormCadProfessor( $departamentos, $categoriasFuncionais, $tipoTitulacoes, $cargos, $situacoes );
+		$professorC = new ProfessorC();
+		$professorC->printFormCadProfessor();
 	break;
 	case 'cadProfessor':
 		$professorC = new ProfessorC();
-		$professorC->cadastrarProfessor( $nome, $dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao );
+		$professorC->cadastrarProfessor( $nome, $dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idRegimeTrabalho, $idSituacao, $idStatusAtualProfessor );
 	break;
 	case 'printFormCadRegTrabProfessor':
 		$professorC = new ProfessorC();
@@ -158,6 +148,10 @@ switch ($action) {
 		$tiposTitulacao = $tipoTitulacaoC->getAll();
 		$professorV = new ProfessorV();
 		$professorV->printFormCadAfastamentoProfessor( $professores, $instituicoes, $tiposAfastamento, $tiposTitulacao );
+	break;
+	case 'getStatusBySituacao':
+		$situacaC = new SituacaoC();
+		$situacaC->getStatusBySituacao( $returnType, $filtro );
 	break;
 	case 'cadAfastamentoProfessor':
 		$professorC = new ProfessorC();

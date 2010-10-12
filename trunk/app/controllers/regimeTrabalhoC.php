@@ -1,13 +1,19 @@
 <?php
 
-class RegimeTrabalhoController {
+class RegimeTrabalhoC {
+
+	private $model;
+	private $view;
 
 	/**
 	 * Construtor
 	 *
 	 * @return void
 	 */
-	public function RegimeTrabalhoController() {}
+	public function RegimeTrabalhoC() {
+		$this->model = new RegimeTrabalhoM();
+		$this->view = new RegimeTrabalhoV();
+	}
 
 	/**
 	 * Realiza o cadastro de um novo regime de trabalho
@@ -15,15 +21,13 @@ class RegimeTrabalhoController {
 	 * @return json
 	 */
 	public function cadastrar( $descricao, $quantidadeHoras, $dedicacaoExclusiva ) {
-		$regimeTrabalhoDAO = new RegimeTrabalho();
-
 		$erro = array();
 		if ( empty( $descricao) ) $erro[] = 'Descricao';
 		if ( empty( $quantidadeHoras) ) $erro[] = 'Quantidade de Horas';
 		if ( empty( $dedicacaoExclusiva) ) $erro[] = 'Dedicacao Exclusiva';
 
 		if ( count( $erro ) == 0 ) {
-			$return = $regimeTrabalhoDAO->cadastrar( $descricao, $quantidadeHoras, $dedicacaoExclusiva );
+			$return = $this->model->cadastrar( $descricao, $quantidadeHoras, $dedicacaoExclusiva );
 		} else {
 			$return->result = 0;
 			$return->error = join( '<br />', $erro );
@@ -37,8 +41,7 @@ class RegimeTrabalhoController {
 	 * @return array
 	 */
 	public function getAllRegimesTrabalho() {
-		$regimeTrabalhoDAO = new RegimeTrabalho();
-		return $regimeTrabalhoDAO->getAllregimesTrabalho();
+		return $this->model->getAllregimesTrabalho();
 	}
 
 }

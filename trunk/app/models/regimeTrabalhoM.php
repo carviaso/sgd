@@ -1,6 +1,6 @@
 <?php
 
-class RegimeTrabalho {
+class RegimeTrabalhoM {
 
 	/**
 	 * Realiza o cadastro de um novo Regime de Trabalho

@@ -68,6 +68,7 @@ class CentroV {
 		$smarty->cache_dir    = '../tmp/cache/';
 		$smarty->config_dir   = 'views/configs/';
 		$smarty->assign( "instituicoes", $instituicoes );
+		$smarty->assign( "selected", 1 );
 		$smarty->display('formCentro.tpl');
 	}
 }

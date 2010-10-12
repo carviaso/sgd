@@ -2,7 +2,7 @@
 <div>Institui&ccedil;&atilde;o</div>
 <select id="idInstituicao" class="select ui-corner-all width100">
 {foreach from=$instituicoes item=instituicao}
-	<option value="{$instituicao->idInstituicao}">{$instituicao->nome}</option>
+	<option value="{$instituicao->idInstituicao}" {if $instituicao->idInstituicao eq 1}selected="selected"{/if} >{$instituicao->nome}</option>
 {/foreach}
 </select>
 <div>Nome</div>
