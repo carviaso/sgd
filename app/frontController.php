@@ -173,7 +173,7 @@ switch ($action) {
 	break;
 	case 'cadProgFuncProfessor':
 		$professorC = new ProfessorC();
-		$professorC->cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $dataAvaliacao, $notaAvaliacao, $aPartirDe, $portaria );
+		$professorC->cadastrarProgressaoFuncionalProfessor( $idProfessor, $idCategoriaFuncional, $processo, $tituloAvaliacao, $dataAvaliacao, $notaAvaliacao, $aPartirDe, $portaria, $observacoes );
 	break;
 	case 'mostraProgressaoFuncional':
 		$professorC = new ProfessorC();
