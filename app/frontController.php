@@ -91,9 +91,7 @@ switch ($action) {
 	break;
 	case 'relDiretorPorCentro':
 		$centroC = new CentroC();
-		$diretores = $centroC->relDiretorPorCentro( $_POST['idCentro'] );
-		$centroV = new CentroV();
-		return $centroV->relDiretorPorCentro( $diretores );
+		$centroC->relDiretorPorCentro( $idCentro );
 	break;
 	case 'relDepartamentoCentro':
 		$centroC = new CentroC();
