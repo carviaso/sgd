@@ -303,7 +303,7 @@ class ProfessorM {
 	 *
 	 * @return stdClass
 	 */
-	public function cadastrarProfessor( $nome, $dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao ) {
+	public function cadastrarProfessor( $nome, $dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idRegimeTrabalho, $idSituacao, $idStatusAtualProfessor ) {
 		$conexao = Conexao::con();
 		$return = new stdClass();
 
@@ -316,19 +316,20 @@ class ProfessorM {
 		$nome = utf8_decode( $nome );
 		$matricula = utf8_decode( $matricula );
 		$siape = utf8_decode( $siape );
-		$aposentado = utf8_decode( $aposentado );
 
 		$sql[] = "INSERT INTO professor( nome, matricula, siape,";
-		$sql[] = "data_admissao, data_admissao_ufsc, data_nascimento, aposentado,";
+		$sql[] = "data_admissao, data_admissao_ufsc, data_nascimento,";
 		$sql[] = "data_previsao_aposentadoria, data_aposentadoria, id_departamento,";
 		$sql[] = "id_categoria_funcional_inicial, id_categoria_funcional_atual,";
-		$sql[] = "id_tipo_titulacao, id_categoria_funcional_referencia, id_cargo, id_situacao )";
+		$sql[] = "id_tipo_titulacao, id_categoria_funcional_referencia, id_cargo,";
+		$sql[] = "id_regime_trabalho, id_situacao, id_status_atual_professor )";
 		$sql[] = "VALUES (";
 		$sql[] = "'$nome', '$matricula', '$siape',";
-		$sql[] = "'$dataAdmissao', '$dataAdmissaoUfsc', '$dataNascimento', '$aposentado',";
+		$sql[] = "'$dataAdmissao', '$dataAdmissaoUfsc', '$dataNascimento',";
 		$sql[] = "'$dataPrevistaAposentadoria', '$dataEfetivaAposentadoria', '$idDepartamento',";
 		$sql[] = "'$idCategoriaFuncionalInicial', '$idCategoriaFuncionalAtual',";
-		$sql[] = "'$idTipoTitulacao', '$idCategoriaFuncionalReferencia', '$idCargo', '$idSituacao' )";
+		$sql[] = "'$idTipoTitulacao', '$idCategoriaFuncionalReferencia', '$idCargo',";
+		$sql[] = "'$idRegimeTrabalho', '$idSituacao', '$idStatusAtualProfessor' )";
 
 		if ( mysqli_query( $conexao, join( ' ', $sql ) ) ) {
 			$return->result = 1;

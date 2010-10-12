@@ -4,7 +4,7 @@ class ProfessorV {
 
 	function ProfessorV() {}
 
-	function printFormCadProfessor( $departamentos, $categoriasFuncionais, $tipoTitulacoes, $cargos, $situacoes ) {
+	function printFormCadProfessor( $departamentos, $categoriasFuncionais, $tipoTitulacoes, $cargos, $regimesTrabalho, $situacoes ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/professor/templates/';
 		$smarty->compile_dir  = '../tmp/templates_c/';
@@ -14,6 +14,7 @@ class ProfessorV {
 		$smarty->assign( "categoriasFuncionais", $categoriasFuncionais );
 		$smarty->assign( "tipoTitulacoes", $tipoTitulacoes );
 		$smarty->assign( "cargos", $cargos );
+		$smarty->assign( "regimesTrabalho", $regimesTrabalho );
 		$smarty->assign( "situacoes", $situacoes );
 		$smarty->display('professor.tpl');
 	}

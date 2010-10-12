@@ -21,7 +21,6 @@ class ProfessorC {
 	 * @return array
 	 */
 	public function getAllProfessores( $returnType, $filtro ) {
-//		return $this->model->getAllProfessores();
 		$return = $this->model->getAllProfessores( $filtro );
 		if ( $returnType == 'json' ) {
 			echo json_encode( $return );
@@ -67,7 +66,7 @@ class ProfessorC {
 	 *
 	 * @return json
 	 */
-	public function cadastrarProfessor( $nome, $dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial,	$idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao ) {
+	public function cadastrarProfessor( $nome, $dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial,	$idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idRegimeTrabalho, $idSituacao, $idStatusAtualProfessor ) {
 		$erro = array();
 		if ( empty( $nome) ) $erro[] = 'Nome';
 		if ( empty( $dataNascimento) ) $erro[] = 'Data nascimento';
@@ -75,12 +74,13 @@ class ProfessorC {
 		if ( empty( $siape) ) $erro[] = 'Siape';
 		if ( empty( $dataAdmissao) ) $erro[] = 'Data admissao';
 		if ( empty( $dataAdmissaoUfsc) ) $erro[] = 'Data admissao UFSC';
-		if ( $aposentado == '' ) $erro[] = 'Aposentado';
 		//if ( empty( $dataPrevistaAposentadoria) ) $erro[] = 'Data prevista aposentadoria';
 		//if ( empty( $dataEfetivaAposentadoria) ) $erro[] = 'Data efetiva aposentadoria';
+		if ( $idRegimeTrabalho == '' ) $erro[] = 'Regime de trabalho';
+		if ( $idStatusAtualProfessor == '' ) $erro[] = 'Status Atual do professor';
 
 		if ( count( $erro ) == 0 ) {
-			$return = $this->model->cadastrarProfessor( $nome, $dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $aposentado, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idSituacao );
+			$return = $this->model->cadastrarProfessor( $nome, $dataNascimento, $matricula, $siape, $dataAdmissao, $dataAdmissaoUfsc, $dataPrevistaAposentadoria, $dataEfetivaAposentadoria, $idDepartamento, $idCategoriaFuncionalInicial, $idCategoriaFuncionalAtual, $idTipoTitulacao, $idCategoriaFuncionalReferencia, $idCargo, $idRegimeTrabalho, $idSituacao, $idStatusAtualProfessor );
 		} else {
 			$return->result = 0;
 			$return->error = join( '<br />', $erro );
@@ -217,6 +217,28 @@ class ProfessorC {
 	public function printFormUser( $idProfessor ) {
 		$professor = $this->model->getProfessorPorId( $idProfessor );
 		$this->view->printFormUser( $professor );
+	}
+
+	/**
+	 * Imprime o formulario para cadastro de um novo professor
+	 *
+	 * @return void
+	 */
+	public function printFormCadProfessor() {
+		$departamentoC = new DepartamentoC();
+		$departamentos = $departamentoC->getDepartamentos( '', '' );
+		$categoriaFuncionalC = new CategoriaFuncionalController();
+		$categoriasFuncionais = $categoriaFuncionalC->getCategoriaFuncional();
+		$tipoTitulacaoC = new TipoTitulacaoController();
+		$tipoTitulacoes = $tipoTitulacaoC->getAll();
+		$cargoC = new CargoController();
+		$cargos = $cargoC->getCargos();
+		$regimeC = new RegimeTrabalhoC();
+		$regimesTrabalho = $regimeC->getAllRegimesTrabalho();
+		$situacaoC = new SituacaoC();
+		$situacoes = $situacaoC->getSituacoes();
+		$professorV = new ProfessorV();
+		$professorV->printFormCadProfessor( $departamentos, $categoriasFuncionais, $tipoTitulacoes, $cargos, $regimesTrabalho, $situacoes );
 	}
 
 	/**
