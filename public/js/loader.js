@@ -7,7 +7,7 @@ var principal = {
 				cadastros.loadMenu();
 				gb.processingClose();
 			});
-		});
+		}).click();
 	},
 	loadNavProfessor: function() {
 		$(".navProfessor").click(function() {
@@ -17,7 +17,7 @@ var principal = {
 				professores.loadMenu();
 				gb.processingClose();
 			});
-		}).click();
+		});
 	},
 	loadNavRelatorio: function() {
 		$(".navRelatorio").click(function() {
