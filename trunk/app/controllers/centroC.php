@@ -61,7 +61,9 @@ class CentroC {
 	}
 
 	public function relDiretorPorCentro( $idCentro ) {
-		return $this->model->relDiretorPorCentro( $idCentro );
+		$diretores = $this->model->getCargoComissionado( $idCentro, DIRETORDOCENTRO, '' );
+		$viceDiretores = $this->model->getCargoComissionado( $idCentro, VICEDIRETORDOCENTRO, '' );
+		$this->view->relDiretorPorCentro( $diretores, $viceDiretores );
 	}
 
 	public function relDepartamentoPorCentro( $idCentro ) {
