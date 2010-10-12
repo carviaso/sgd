@@ -17,7 +17,6 @@
 
 		<!--
 		<link type="text/css" href="public/css/jquery.searchFilter.css" rel="stylesheet"  />
-		<link type="text/css" href="public/css/ui.selectmenu.css" rel="stylesheet"  />
 		-->
 
 	</head>
@@ -46,17 +45,14 @@
 		<script type="text/javascript" src="public/js/jquery-ui-1.8.4.custom.min.js"></script>
 
 		<script type="text/javascript" src="public/js/plugins/myMultiSelect.js"></script>
-		<script type="text/javascript" src="public/js/jquery.maskedinput-1.2.2.min.js"></script>
+		<script type="text/javascript" src="public/js/plugins/jquery.maskedinput-1.2.2.min.js"></script>
 		<script type="text/javascript" src="public/js/locate/jquery.ui.datepicker-pt-BR.js"></script>
 		<script type="text/javascript" src="public/js/locate/grid.locale-pt-br.js"></script>
-		<script type="text/javascript" src="public/js/jquery.jqGrid.min.js"></script>
-		<script type="text/javascript" src="public/js/jquery.searchFilter.js"></script>
-		<script type="text/javascript" src="public/js/grid.formedit.js"></script>
-		<script type="text/javascript" src="public/js/grid.common.js"></script>
-		<script type="text/javascript" src="public/js/jquery.blockUI.js"></script>
-		<!--
-		<script type="text/javascript" src="public/js/ui.selectmenu.js"></script>
-		 -->
+		<script type="text/javascript" src="public/js/plugins/jquery.jqGrid.min.js"></script>
+		<script type="text/javascript" src="public/js/plugins/jquery.searchFilter.js"></script>
+		<script type="text/javascript" src="public/js/plugins/grid.formedit.js"></script>
+		<script type="text/javascript" src="public/js/plugins/grid.common.js"></script>
+		<script type="text/javascript" src="public/js/plugins/jquery.blockUI.js"></script>
 		<script type="text/javascript" src="public/js/globals.js"></script>
 		<script type="text/javascript" src="public/js/login.js"></script>
 		<script type="text/javascript" src="public/js/cadastros.js"></script>
