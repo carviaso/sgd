@@ -26,6 +26,18 @@ var relatorios = {
 				gb.processingClose();
 			});
 		});
+		$("#relChefesDepartamento").click(function() {
+			gb.processing();
+			var params = { "action":"relChefesDepartamento" };
+			$('#content').load("app/frontController.php", params, function() {
+				$("#selectDepartamentos").change(function() {
+					var idDepartamento = $(this).val();
+					var params = { "action":"relChefesPorDepartamento", 'idDepartamento': idDepartamento };
+					$('#chefesDepartamentos').load("app/frontController.php", params);
+				}).change();
+				gb.processingClose();
+			});
+		});
 		$("#relProfessoresDepartamento").click(function() {
 			gb.processing();
 			var params = { "action":"relProfessoresDepartamento" };

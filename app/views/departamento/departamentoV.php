@@ -26,6 +26,30 @@ class DepartamentoV {
 		$smarty->display('relDepartamentos.tpl');
 	}
 
+	function relChefesDepartamentos( $departamentos ) {
+		$smarty = new Smarty();
+		$smarty->template_dir = 'views/departamento/templates/';
+		$smarty->compile_dir  = '../tmp/templates_c/';
+		$smarty->cache_dir    = '../tmp/cache/';
+		$smarty->config_dir   = 'views/configs/';
+		$smarty->assign( "option", 'listDepartamentos' );
+		$smarty->assign( "departamentos", $departamentos );
+		$smarty->display('relChefesDepartamentos.tpl');
+	}
+
+	function relChefesPorDepartamento( $chefes, $subChefes ) {
+		$smarty = new Smarty();
+		$smarty->template_dir = 'views/departamento/templates/';
+		$smarty->compile_dir  = '../tmp/templates_c/';
+		$smarty->cache_dir    = '../tmp/cache/';
+		$smarty->config_dir   = 'views/configs/';
+		$smarty->assign( "option", 'chefesPorDepartamento' );
+		$smarty->assign( "chefes", $chefes );
+		$smarty->assign( "subChefes", $subChefes );
+		$smarty->assign( "emissao", date('d/m/Y H:i:s P') );
+		$smarty->display('relChefesDepartamentos.tpl');
+	}
+
 	function relProfessoresDepartamento( $departamentos ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/departamento/templates/';

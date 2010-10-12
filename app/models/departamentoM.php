@@ -69,6 +69,41 @@ class DepartamentoM {
 	}
 
 	/**
+	 * Retorna o professor com cargo comissionado e departamento passado por parametro
+	 *
+	 * @param int $idCentro
+	 * @param int $idCargoComissionado
+	 * @param int $idProfessor
+	 * @return array
+	 */
+	function getDepartamentoCargoComissionado( $idDepartamento, $idCargoComissionado, $idProfessor ) {
+		$conexao = Conexao::con();
+		$professores = array();
+		$where[] = "where d.id_departamento = {$idDepartamento} and";
+		$where[] = "dc.id_cargocomissionado = '$idCargoComissionado'";
+
+		if ( !empty( $idProfessor ) ) {
+			$where[] = "and dc.id_professor = '$idProfessor'";
+		}
+
+		$sql[] = "select p.id_professor, p.nome from departamento d";
+		$sql[] = "inner join deptocargocomissionado dc";
+		$sql[] = "on d.id_departamento = dc.id_departamento";
+		$sql[] = "inner join professor p";
+		$sql[] = "on dc.id_professor = p.id_professor";
+		$sql[] = join( ' ', $where );
+
+		$query = mysqli_query( $conexao, join( ' ', $sql ) );
+		while ( $row = mysqli_fetch_array( $query ) ) {
+			$professor = new stdClass;
+			$professor->idDiretor = $row['id_professor'];
+			$professor->nome = utf8_encode( $row['nome'] );
+			$professores[] = $professor;
+		}
+		return $professores;
+	}
+
+	/**
 	 * Retorna todos os departamentos por centro
 	 *
 	 * @param int $idCentro

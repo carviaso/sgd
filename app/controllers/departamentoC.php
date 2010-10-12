@@ -50,6 +50,29 @@ class DepartamentoC {
 		echo json_encode( $return );
 	}
 
+
+	/**
+	 * Exibe o select para escolha do centro
+	 *
+	 * @return void
+	 */
+	public function relChefesDepartamento() {
+		$departamentos = $this->getDepartamentos( '', '' );
+		$this->view->relChefesDepartamentos( $departamentos );
+	}
+
+	/**
+	 * Exibe o diretor e vice-diretor do centro
+	 *
+	 * @param int $idCentro
+	 * @return void
+	 */
+	public function relChefesPorDepartamento( $idDepartamento ) {
+		$chefes = $this->model->getDepartamentoCargoComissionado( $idDepartamento, CHEFEDODEPARTAMENTO, '' );
+		$subChefes = $this->model->getDepartamentoCargoComissionado( $idDepartamento, SUBCHEFEDODEPARTARTAMENTO, '' );
+		$this->view->relChefesPorDepartamento( $chefes, $subChefes );
+	}
+
 	/**
 	 * Retorna todos os professores por departamento
 	 *

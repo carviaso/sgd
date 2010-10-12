@@ -1,4 +1,9 @@
 <?php
 define( "DIRETORDOCENTRO", 1 );
 define( "VICEDIRETORDOCENTRO", 2 );
+define( "CHEFEDODEPARTAMENTO", 3 );
+define( "SUBCHEFEDODEPARTARTAMENTO", 4 );
+define( "SECRETARIODOCENTRO", 5 );
+define( "CHEFEDEEXPEDIENTE", 6 );
+define( "SECRETARIADOCENTRO", 7 );
 ?>

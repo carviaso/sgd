@@ -52,9 +52,17 @@ class CentroM {
 		return $return;
 	}
 
-	function getCargoComissionado( $idCentro, $idCargoComissionado, $idProfessor ) {
+	/**
+	 * Retorna o professor com cargo comissionado e centro passado por parametro
+	 *
+	 * @param int $idCentro
+	 * @param int $idCargoComissionado
+	 * @param int $idProfessor
+	 * @return array
+	 */
+	function getCentroCargoComissionado( $idCentro, $idCargoComissionado, $idProfessor ) {
 		$conexao = Conexao::con();
-		$diretores = array();
+		$professores = array();
 		$where[] = "where c.id_centro = {$idCentro} and";
 		$where[] = "cc.id_cargocomissionado = '$idCargoComissionado'";
 
@@ -71,12 +79,12 @@ class CentroM {
 
 		$query = mysqli_query( $conexao, join( ' ', $sql ) );
 		while ( $row = mysqli_fetch_array( $query ) ) {
-			$diretor = new stdClass;
-			$diretor->idDiretor = $row['id_professor'];
-			$diretor->nome = utf8_encode( $row['nome'] );
-			$diretores[] = $diretor;
+			$professor = new stdClass;
+			$professor->idProfessor = $row['id_professor'];
+			$professor->nome = utf8_encode( $row['nome'] );
+			$professores[] = $professor;
 		}
-		return $diretores;
+		return $professores;
 	}
 
 	function relDepartamentoPorCentro( $idCentro ) {
