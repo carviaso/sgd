@@ -37,7 +37,7 @@ class DepartamentoV {
 		$smarty->display('relChefesDepartamentos.tpl');
 	}
 
-	function relChefesPorDepartamento( $chefes, $subChefes ) {
+	function relChefesPorDepartamento( $chefes, $subChefes, $chefeDeExpedientes ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/departamento/templates/';
 		$smarty->compile_dir  = '../tmp/templates_c/';
@@ -46,7 +46,7 @@ class DepartamentoV {
 		$smarty->assign( "option", 'chefesPorDepartamento' );
 		$smarty->assign( "chefes", $chefes );
 		$smarty->assign( "subChefes", $subChefes );
-		$smarty->assign( "emissao", date('d/m/Y H:i:s P') );
+		$smarty->assign( "chefeDeExpedientes", $chefeDeExpedientes );
 		$smarty->display('relChefesDepartamentos.tpl');
 	}
 

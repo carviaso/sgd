@@ -84,7 +84,8 @@ class CentroC {
 	public function relDiretorPorCentro( $idCentro ) {
 		$diretores = $this->model->getCentroCargoComissionado( $idCentro, DIRETORDOCENTRO, '' );
 		$viceDiretores = $this->model->getCentroCargoComissionado( $idCentro, VICEDIRETORDOCENTRO, '' );
-		$this->view->relDiretorPorCentro( $diretores, $viceDiretores );
+		$secretariodocentros = $this->model->getCentroCargoComissionado( $idCentro, SECRETARIODOCENTRO, '' );
+		$this->view->relDiretorPorCentro( $diretores, $viceDiretores, $secretariodocentros );
 	}
 
 	/**

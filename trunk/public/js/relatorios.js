@@ -149,11 +149,6 @@ var relatorios = {
 						"filtro":"{\"tipo\":\"byIdProfessor\",\"params\":{\"idProfessor\":" + idProfessor + "}}"
 					}
 		$('#detalheDepartamentoProfessor').load("app/frontController.php", params, function() {
-//			$("#selectCentros").change(function() {
-//				var idCentro = $(this).val();
-//				var params = { "action":"relDepartamentoPorCentro", 'idCentro': idCentro };
-//				$('#departamentosPorCentro').load("app/frontController.php", params);
-//			}).change();
 			gb.processingClose();
 		});
 	}

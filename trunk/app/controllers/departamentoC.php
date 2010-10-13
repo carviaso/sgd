@@ -70,7 +70,8 @@ class DepartamentoC {
 	public function relChefesPorDepartamento( $idDepartamento ) {
 		$chefes = $this->model->getDepartamentoCargoComissionado( $idDepartamento, CHEFEDODEPARTAMENTO, '' );
 		$subChefes = $this->model->getDepartamentoCargoComissionado( $idDepartamento, SUBCHEFEDODEPARTARTAMENTO, '' );
-		$this->view->relChefesPorDepartamento( $chefes, $subChefes );
+		$chefeDeExpedientes = $this->model->getDepartamentoCargoComissionado( $idDepartamento, CHEFEDEEXPEDIENTE, '' );
+		$this->view->relChefesPorDepartamento( $chefes, $subChefes, $chefeDeExpedientes );
 	}
 
 	/**
