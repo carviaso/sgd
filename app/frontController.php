@@ -115,6 +115,10 @@ switch ($action) {
 		$departamentoC = new DepartamentoC();
 		$departamentoC->departamentoProfessor();
 	break;
+	case 'detalheDepartamentoProfessor':
+		$departamentoC = new DepartamentoC();
+		$departamentoC->detalheDepartamentoProfessor( $filtro );
+	break;
 	case 'relProfessoresPorDepartamento':
 		$departamentoC = new DepartamentoC();
 		$departamentoC->relProfessoresPorDepartamento( $idDepartamento, $filtro );

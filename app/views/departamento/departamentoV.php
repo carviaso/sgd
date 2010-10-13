@@ -56,6 +56,18 @@ class DepartamentoV {
 		$smarty->compile_dir  = '../tmp/templates_c/';
 		$smarty->cache_dir    = '../tmp/cache/';
 		$smarty->config_dir   = 'views/configs/';
+		$smarty->assign( "option", 'departamentoProfessor' );
+		$smarty->display('departamentoProfessor.tpl');
+	}
+
+	function detalheDepartamentoProfessor( $departamento ) {
+		$smarty = new Smarty();
+		$smarty->template_dir = 'views/departamento/templates/';
+		$smarty->compile_dir  = '../tmp/templates_c/';
+		$smarty->cache_dir    = '../tmp/cache/';
+		$smarty->config_dir   = 'views/configs/';
+		$smarty->assign( "option", 'detalheDepartamentoProfessor' );
+		$smarty->assign( "departamento", $departamento );
 		$smarty->display('departamentoProfessor.tpl');
 	}
 

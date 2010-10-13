@@ -83,6 +83,16 @@ class DepartamentoC {
 	}
 
 	/**
+	 * Retorna os detalhes do departamento do professor
+	 *
+	 * @return void
+	 */
+	public function detalheDepartamentoProfessor( $filtro ) {
+		$departamento = $this->model->getDepartamentos( $filtro );
+		$this->view->detalheDepartamentoProfessor( $departamento );
+	}
+
+	/**
 	 * Retorna todos os professores por departamento
 	 *
 	 * @param int $idCentro

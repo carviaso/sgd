@@ -62,14 +62,6 @@ var relatorios = {
 						});
 					},
 				});
-				
-				
-				
-//				$("#selectDepartamentos").change(function() {
-//					var idDepartamento = $(this).val();
-//					var params = { "action":"relChefesPorDepartamento", 'idDepartamento': idDepartamento };
-//					$('#chefesDepartamentos').load("app/frontController.php", params);
-//				}).change();
 				gb.processingClose();
 			});
 		});
@@ -141,7 +133,7 @@ var relatorios = {
 						gb.processingClose();
 					}
 				}).navGrid("#pagerListaProfessores", {
-					refresh: true, 
+					refresh: true,
 					edit: false,
 					add: false,
 					del: false,
@@ -152,7 +144,17 @@ var relatorios = {
 			});
 		});
 	},
-	loadMenu2: function() {
-		alert('PLOLIKUJ');
+	detalheDepartamentoProfessor: function( idProfessor ) {
+		var params = {	"action":"detalheDepartamentoProfessor",
+						"filtro":"{\"tipo\":\"byIdProfessor\",\"params\":{\"idProfessor\":" + idProfessor + "}}"
+					}
+		$('#detalheDepartamentoProfessor').load("app/frontController.php", params, function() {
+//			$("#selectCentros").change(function() {
+//				var idCentro = $(this).val();
+//				var params = { "action":"relDepartamentoPorCentro", 'idCentro': idCentro };
+//				$('#departamentosPorCentro').load("app/frontController.php", params);
+//			}).change();
+			gb.processingClose();
+		});
 	}
 };
