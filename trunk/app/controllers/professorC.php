@@ -53,6 +53,16 @@ class ProfessorC {
 	}
 
 	/**
+	 * Retorna o professor com nome like param
+	 *
+	 * @param int $nameParam
+	 * @return json
+	 */
+	public function findProfessorByName( $nameParam ) {
+		echo json_encode( $this->model->findProfessorByName( $nameParam ) );
+	}
+
+	/**
 	 * Retorna um array com todos os objetos Professores por centro
 	 *
 	 * @return array

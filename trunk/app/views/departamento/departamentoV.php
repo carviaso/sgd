@@ -50,6 +50,15 @@ class DepartamentoV {
 		$smarty->display('relChefesDepartamentos.tpl');
 	}
 
+	function departamentoProfessor() {
+		$smarty = new Smarty();
+		$smarty->template_dir = 'views/departamento/templates/';
+		$smarty->compile_dir  = '../tmp/templates_c/';
+		$smarty->cache_dir    = '../tmp/cache/';
+		$smarty->config_dir   = 'views/configs/';
+		$smarty->display('departamentoProfessor.tpl');
+	}
+
 	function relProfessoresDepartamento( $departamentos ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/departamento/templates/';

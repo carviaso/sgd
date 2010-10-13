@@ -25,7 +25,7 @@ var relatorios = {
 				}).change();
 				gb.processingClose();
 			});
-		});
+		}); 
 		$("#relChefesDepartamento").click(function() {
 			gb.processing();
 			var params = { "action":"relChefesDepartamento" };
@@ -35,6 +35,41 @@ var relatorios = {
 					var params = { "action":"relChefesPorDepartamento", 'idDepartamento': idDepartamento };
 					$('#chefesDepartamentos').load("app/frontController.php", params);
 				}).change();
+				gb.processingClose();
+			});
+		});
+		$("#departamentoProfessor").click(function() {
+			gb.processing();
+			var params = { "action":"departamentoProfessor" };
+			$('#content').load("app/frontController.php", params, function() {
+				$( "#professor" ).autocomplete({
+					select: function( event, ui ) {
+						$("#idProfessor").val( ui.item.idProfessor );
+						relatorios.detalheDepartamentoProfessor( $("#idProfessor").val() );
+					},
+					source: function( request, response ) {
+						$.ajax({
+							url: "app/frontController.php",
+							dataType: "json",
+							type: 'POST',
+							data: {
+								action:'findProfessorByName',
+								nameParam: request.term
+							},
+							success: function( data ) {
+								response ( data )
+							}
+						});
+					},
+				});
+				
+				
+				
+//				$("#selectDepartamentos").change(function() {
+//					var idDepartamento = $(this).val();
+//					var params = { "action":"relChefesPorDepartamento", 'idDepartamento': idDepartamento };
+//					$('#chefesDepartamentos').load("app/frontController.php", params);
+//				}).change();
 				gb.processingClose();
 			});
 		});
@@ -116,5 +151,8 @@ var relatorios = {
 						groupOps: [ { op: 'AND', text: 'todos' }, { op: 'OR',  text: 'ou' }] });
 			});
 		});
+	},
+	loadMenu2: function() {
+		alert('PLOLIKUJ');
 	}
 };

@@ -74,6 +74,15 @@ class DepartamentoC {
 	}
 
 	/**
+	 * Pesquisa o professor e retorna informacoes de seu departamento
+	 *
+	 * @return void
+	 */
+	public function departamentoProfessor() {
+		$this->view->departamentoProfessor();
+	}
+
+	/**
 	 * Retorna todos os professores por departamento
 	 *
 	 * @param int $idCentro
