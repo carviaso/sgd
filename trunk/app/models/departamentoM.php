@@ -20,12 +20,17 @@ class DepartamentoM {
 				case 'byIdCentro':
 					$where[] = 'WHERE c.id_centro = ' . $filtro->params->idCentro;
 				break;
+				case 'byIdProfessor':
+					// Inner join separado, pois so deve ser utilizado junto com seletor de professor por id
+					$where[] = "INNER JOIN professor p ON d.id_departamento = p.id_departamento";
+					$where[] = 'WHERE p.id_professor = ' . $filtro->params->idProfessor;
+				break;
 			}
 		}
 
 		$sql[] = "SELECT d.id_departamento, d.nome, d.sigla AS departamento_sigla, d.fone,";
-		$sql[] = "c.sigla AS centro_sigla";
-		$sql[] = "FROM centro c INNER JOIN departamento d ON c.id_centro = d.id_centro";
+		$sql[] = "c.sigla AS centro_sigla FROM centro c";
+		$sql[] = "INNER JOIN departamento d ON c.id_centro = d.id_centro";
 		$sql[] = join( ' ', $where );
 		$sql[] = "ORDER by d.nome, centro_sigla, d.sigla ";
 
