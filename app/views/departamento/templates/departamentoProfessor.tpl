@@ -8,22 +8,18 @@
 {if $option eq detalheDepartamentoProfessor}
 	<p></p>
 	{foreach from=$departamento item=dep}
-	
 		<table class="aatable">
 			<tr><th>Nome do departamento</th></tr>
 			<tr><td>{$dep->nome}</td></tr>
 		</table>
-		
 		<table class="aatable">
 			<tr><th>Sigla do Departamento</th></tr>
 			<tr><td>{$dep->departamentoSigla}</td></tr>
 		</table>
-		
 		<table class="aatable">
 			<tr><th>Telefone</th></tr>
 			<tr><td>{$dep->fone}</td></tr>
 		</table>
-		
 		<table class="aatable">
 			<tr><th>Sigla do Centro</th></tr>
 			<tr><td>{$dep->centroSigla}</td></tr>

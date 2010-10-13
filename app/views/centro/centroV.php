@@ -26,7 +26,7 @@ class CentroV {
 		$smarty->display('relDiretoresCentros.tpl');
 	}
 
-	function relDiretorPorCentro( $diretores, $viceDiretores ) {
+	function relDiretorPorCentro( $diretores, $viceDiretores, $secretariodocentros ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/centro/templates/';
 		$smarty->compile_dir  = '../tmp/templates_c/';
@@ -35,6 +35,7 @@ class CentroV {
 		$smarty->assign( "option", 'diretoresPorCentro' );
 		$smarty->assign( "diretores", $diretores );
 		$smarty->assign( "viceDiretores", $viceDiretores );
+		$smarty->assign( "secretariodocentros", $secretariodocentros );
 		$smarty->assign( "emissao", date('d/m/Y H:i:s P') );
 		$smarty->display('relDiretoresCentros.tpl');
 	}

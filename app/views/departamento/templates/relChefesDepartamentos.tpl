@@ -1,5 +1,5 @@
 {if $option eq listDepartamentos}
-	<h1>Relat&oacute;rio de Chefes por Centro</h1>
+	<h1>Relat&oacute;rio de Chefes por Departamento</h1>
 	<label for="selectDepartamentos">Escolha o departamento</label>
 	<select id="selectDepartamentos" class="select ui-corner-all width100">
 		{foreach from=$departamentos item=departamento}
@@ -24,6 +24,15 @@
 		<tr><th>Sub-chefe</th></tr>
 		{foreach from=$subChefes item=subChefe}
 			<tr><td>{$subChefe->nome}</td></tr>
+		{foreachelse}
+			<tr><td>Nenhum sub-chefe cadastrado para o departamento selecionado</td></tr>
+		{/foreach}
+	</table>
+	<br />
+	<table class="aatable">
+		<tr><th>Chefe de Expediente</th></tr>
+		{foreach from=$chefeDeExpedientes item=chefeDeExpediente}
+			<tr><td>{$chefeDeExpediente->nome}</td></tr>
 		{foreachelse}
 			<tr><td>Nenhum sub-chefe cadastrado para o departamento selecionado</td></tr>
 		{/foreach}
