@@ -247,9 +247,6 @@ class ProfessorM {
 		$sql[] = "{$wh}";
 		$sql[] = "ORDER BY $sidx $sord LIMIT $start, $limit";
 
-		//echo join( ' ', $sql );
-		//die;
-
 		$query = mysqli_query( $conexao, join( ' ', $sql ) );
 		$return->page = $page;
 		$return->total = $total_pages;
@@ -272,6 +269,30 @@ class ProfessorM {
 			$i++;
 		}
 		return $return;
+	}
+
+	/**
+	 * Retorna todos os departamentos por centro
+	 *
+	 * @param int $idCentro
+	 * @return array
+	 */
+	function findProfessorByName( $nameParam ) {
+		$professores = array();
+		$conexao = Conexao::con();
+
+		$nameParam = utf8_decode( $nameParam );
+		$sql[] = "SELECT * FROM professor p";
+		$sql[] = "WHERE p.nome LIKE '%{$nameParam}%'";
+
+		$query = mysqli_query( $conexao, join( ' ', $sql ) );
+		while ( $row = mysqli_fetch_array( $query ) ) {
+			$professor = new stdClass;
+			$professor->idProfessor = utf8_encode( $row['id_professor'] );
+			$professor->value = utf8_encode( $row['nome'] );
+			$professores[] = $professor;
+		}
+		return $professores;
 	}
 
 	/**
