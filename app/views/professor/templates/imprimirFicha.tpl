@@ -72,13 +72,15 @@
 			<th>A Partir de</th>
 			<th>Cargo</th>
 			<th>Portaria</th>
+			<th>T&iacute;tulo Avalia&ccedil;&atilde;o</th>
 			<th>Observa&ccedil;&otilde;es</th>
 		</tr>
 	{foreach $progressoes as $progressao}
 		<tr>
 			<td>{$progressao->aPartirDe}</td>
-			<td>{$progressao->categoriaFuncional}</td>
+			<td nowrap="nowrap">{$progressao->categoriaFuncional}</td>
 			<td>{$progressao->portaria}</td>
+			<td>{$progressao->tituloAvaliacao}</td>
 			<td>{$progressao->observacao}</td>
 		</tr>
 	{/foreach}

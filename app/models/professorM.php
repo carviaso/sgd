@@ -481,6 +481,7 @@ class ProfessorM {
 		$sql[] = "'' as nota_avaliacao,";
 		$sql[] = "p.data_admissao as apartir_de,";
 		$sql[] = "'' as portaria,";
+		$sql[] = "'' as titulo_avaliacao,";
 		$sql[] = "'' as observacao";
 		$sql[] = "FROM professor p";
 		$sql[] = "inner join categoria_funcional cf";
@@ -499,6 +500,7 @@ class ProfessorM {
 		$sql[] = "pf.nota_avaliacao,";
 		$sql[] = "pf.apartir_de,";
 		$sql[] = "pf.portaria,";
+		$sql[] = "pf.titulo_avaliacao as titulo_avaliacao,";
 		$sql[] = "pf.observacao";
 		$sql[] = "FROM professor p";
 		$sql[] = "inner join progressao_funcional pf";
@@ -526,6 +528,7 @@ class ProfessorM {
 			$aPartirDe = date( 'd/m/Y', strtotime( $row['apartir_de'] ) );
 			$progressao->aPartirDe = $aPartirDe;
 			$progressao->portaria = utf8_encode( $row['portaria'] );
+			$progressao->tituloAvaliacao = utf8_encode( $row['titulo_avaliacao'] );
 			$progressao->observacao = utf8_encode( $row['observacao'] );
 			$progressaoFuncional[] = $progressao;
 		}
