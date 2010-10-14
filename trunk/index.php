@@ -5,20 +5,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<title>SGD - Sistema de Gest&atilde;o de Docentes</title>
-		<link type="text/css" href="public/css/base/jquery.ui.all.css" rel="stylesheet"  />
-		<link type="text/css" href="public/css/default.css" rel="stylesheet"  />
+		<title>SGD &minus; Sistema de Gest&atilde;o de Docentes</title>
+		<link type="text/css" href="public/css/base/jquery.ui.all.css" rel="stylesheet" />
+		<link type="text/css" href="public/css/default.css" rel="stylesheet" />
 
 		<!--
-		<link type="text/css" href="public/css/custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet"  />
+		<link type="text/css" href="public/css/custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />
 		-->
 
-		<link type="text/css" href="public/css/ui.jqgrid.css" rel="stylesheet"  />
-
-		<!--
-		<link type="text/css" href="public/css/jquery.searchFilter.css" rel="stylesheet"  />
-		-->
-
+		<link type="text/css" href="public/css/ui.jqgrid.css" rel="stylesheet" />
 	</head>
 	<body>
 		<div id="wrapper">
@@ -54,6 +49,7 @@
 		<script type="text/javascript" src="public/js/plugins/grid.common.js"></script>
 		<script type="text/javascript" src="public/js/plugins/jquery.blockUI.js"></script>
 		<script type="text/javascript" src="public/js/plugins/jquery.limit-1.2.js"></script>
+		<script type="text/javascript" src="public/js/plugins/jquery.magnifier.js"></script>
 		<script type="text/javascript" src="public/js/globals.js"></script>
 		<script type="text/javascript" src="public/js/login.js"></script>
 		<script type="text/javascript" src="public/js/cadastros.js"></script>

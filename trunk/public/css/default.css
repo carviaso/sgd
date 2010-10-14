@@ -34,6 +34,7 @@ http://jqueryui.com/themeroller/#ffDefault=Verdana%2CArial%2Csans-serif&fwDefaul
 .width50 { width: 50%; }
 .width25 { width: 25%; }
 .width10 { width: 10%; }
+.center { text-align: center; }
 body {
     background: #D4C792 url(images/img01.gif);
     font-family: Arial, Helvetica, sans-serif;
@@ -125,7 +126,16 @@ a {
 	cursor: pointer;
 	margin: 5px;
 }
+.campoDetalheProfessor {
+	font-size: 12px;
+	padding: 15px 15px 0 15px;
+}
+.viewProgressaoFuncionalItem {
+	font-size: 12px;
+	padding: 15px 15px 0 15px;
+}
 
+/*
 #viewDetalhesProfessor { display: block; overflow: visible; }
 #viewDetalhesProfessor fieldset { padding: 5px; margin-bottom: 10px; }
 #viewDetalhesProfessor fieldset legend { font-weight: bold; }
@@ -141,7 +151,11 @@ a {
 }
 #viewDetalhesProfessor fieldset div:nth-child(2n) { font-weight: bold; }
 #viewDetalhesProfessor fieldset div:nth-child(2n+1) { color: red; }
+*/
 
+
+
+/*
 #viewProgressaoFuncional {
 	margin-top: 5px;
 	float: left;
@@ -175,6 +189,7 @@ a {
 #viewProgressaoFuncional .viewProgressaoFuncionalItem > div:nth-child(2) {
 	font-weight: bold;
 }
+*/
 .auxiliarOculta { display: none; }
 a.data {
 	text-decoration: underline;

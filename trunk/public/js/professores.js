@@ -374,7 +374,20 @@ var professores = {
 							'idProfessor':idProfessor
 						};
 			$('#auxiliarOculta').hide().load("app/frontController.php", params, function() {
-				gb.message( $('#auxiliarOculta').html(), 'Detalhes do Professor', {"width":600, "height":400, "position": 'center'} );
+				$("<div class='gbMessage'>" + $('#auxiliarOculta').html() + "</div>").dialog({
+					title: 'Detalhes do Professor',
+					modal: true,
+					buttons: {
+						Fechar: function() {
+							$(this).dialog('close');
+						}
+					},
+					close: function() {
+						$('.gbMessage, .fotoProfessor, .fichaProfessor').remove();
+					}
+				}).dialog( {"width":600, "height":400, "position": 'center'} );
+				$('.fotoProfessor').imageMagnify({	magnifyby: 7	});
+				$('.fichaProfessor').imageMagnify({	magnifyby: 10	});
 			});
 		},
 		mostraProgressaoFuncional: function( idProfessor ) {
