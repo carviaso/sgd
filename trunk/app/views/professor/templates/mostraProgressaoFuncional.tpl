@@ -26,6 +26,10 @@
 					<td>{$progressao->portaria}</td>
 				</tr>
 				<tr>
+					<td>T&iacute;tulo Avalia&ccedil;&atilde;o</td>
+					<td>{$progressao->tituloAvaliacao}</td>
+				</tr>
+				<tr>
 					<td>Observa&ccedil;&atilde;o</td>
 					<td>{$progressao->observacao}</td>
 				</tr>
