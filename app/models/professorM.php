@@ -473,8 +473,9 @@ class ProfessorM {
 		$sql[] = "SELECT p.id_categoria_funcional_inicial,";
 		$sql[] = "'' as id_progressao_funcional,";
 		$sql[] = "p.id_professor,";
+		$sql[] = "p.nome as nome_professor,";
 		$sql[] = "cf.id_categoria_funcional,";
-		$sql[] = "cf.descricao as categoriaFuncional,";
+		$sql[] = "cf.descricao as categoria_funcional,";
 		$sql[] = "'' as processo,";
 		$sql[] = "p.data_admissao_ufsc as data_avaliacao,";
 		$sql[] = "'' as nota_avaliacao,";
@@ -490,6 +491,7 @@ class ProfessorM {
 		$sql[] = "p.id_categoria_funcional_inicial,";
 		$sql[] = "pf.id_progressao_funcional,";
 		$sql[] = "p.id_professor,";
+		$sql[] = "p.nome,";
 		$sql[] = "cf.id_categoria_funcional,";
 		$sql[] = "cf.descricao,";
 		$sql[] = "pf.processo,";
@@ -512,8 +514,9 @@ class ProfessorM {
 			$progressao->idCategoriaFuncionalInicial = $row['id_categoria_funcional_inicial'];
 			$progressao->idProgressaoFuncional = $row['id_progressao_funcional'];
 			$progressao->idProfessor = $row['id_professor'];
+			$progressao->nomeProfessor = $row['nome_professor'];
 			$progressao->idCategoriaFuncional = $row['id_categoria_funcional'];
-			$progressao->categoriaFuncional = utf8_encode( $row['categoriaFuncional'] );
+			$progressao->categoriaFuncional = utf8_encode( $row['categoria_funcional'] );
 			$progressao->processo = $row['processo'];
 
 			$dataAvaliacao = date( 'd/m/Y', strtotime( $row['data_avaliacao'] ) );

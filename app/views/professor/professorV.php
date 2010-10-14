@@ -72,6 +72,8 @@ class ProfessorV {
 		$smarty->cache_dir    = '../tmp/cache/';
 		$smarty->config_dir   = 'views/configs/';
 		$smarty->assign( "professor", $professor );
+		$smarty->assign( "fotoProfessor", "public/fotos/rosto{$professor->id_professor}.jpg" );
+		$smarty->assign( "fichaProfessor", "public/fotos/ficha{$professor->id_professor}.jpg" );
 		$smarty->display('mostraDetalhesProfessor.tpl');
 	}
 
