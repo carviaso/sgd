@@ -20,6 +20,18 @@ class MunicipioController {
 	}
 
 	/**
+	 * Imprime o formulario para o cadastro de um novo municipio
+	 *
+	 * @return void
+	 */
+	public function printFormCadMunicipio() {
+		$ufC = new UfController();
+		$ufs = $ufC->getAll();
+		$municipioV = new MunicipioV();
+		$municipioV->printFormCadMunicipio( $ufs );
+	}
+
+	/**
 	 * Realiza o cadastro de um novo municipio
 	 *
 	 * @return json
