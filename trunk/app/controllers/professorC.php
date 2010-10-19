@@ -108,8 +108,8 @@ class ProfessorC {
 		if ( $idProfessor <= 0 ) $erro[] = 'Professor';
 		if ( empty( $processo) ) $erro[] = 'Processo';
 		if ( empty( $deliberacao) ) $erro[] = 'Deliberacao';
-		if ( empty( $portaria) ) $erro[] = 'Portaria';
-		if ( empty( $dataInicio) ) $erro[] = 'Data de Inicio';
+		//if ( empty( $portaria) ) $erro[] = 'Portaria';
+		//if ( empty( $dataInicio) ) $erro[] = 'Data de Inicio';
 
 		if ( count( $erro ) == 0 ) {
 			$return = $this->model->cadastrarRegimeTrabalhoProfessor( $idProfessor, $idRegimeTrabalho, $processo, $deliberacao, $portaria, $dataInicio );

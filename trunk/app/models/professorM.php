@@ -370,7 +370,7 @@ class ProfessorM {
 		$conexao = Conexao::con();
 		$return = new stdClass();
 
-		$dataInicio = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataInicio ) ) );
+		$dataInicio = !empty( $dataInicio ) ? date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataInicio ) ) ) : '';
 
 		$processo = utf8_decode( $processo );
 		$deliberacao = utf8_decode( $deliberacao );

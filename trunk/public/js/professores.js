@@ -180,10 +180,10 @@ var professores = {
 			var dataInicio = $('#dataInicio').val();
 			
 			if ( idProfessor <= 0 ) erro.push( 'Professor' );
-			if ( !processo ) erro.push( 'Process222o' );
+			if ( !processo ) erro.push( 'Processo' );
 			if ( !deliberacao ) erro.push( 'Deliberacao' );
-			if ( !portaria ) erro.push( 'Portaria' );
-			if ( !dataInicio ) erro.push( 'Data de Inicio' );
+//			if ( !portaria ) erro.push( 'Portaria' );
+//			if ( !dataInicio ) erro.push( 'Data de Inicio' );
 		
 			if ( erro.length == 0 ) {
 				var params = {	'action':'cadRegimeTrabalhoProfessor',

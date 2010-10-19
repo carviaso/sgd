@@ -32,7 +32,7 @@ class TipoAfastamento {
 		$conexao = Conexao::con();
 		$return = new stdClass();
 
-		$nome = utf8_decode( $descricao );
+		$descricao = utf8_decode( $descricao );
 
 		$sql[] = "INSERT INTO tipo_afastamento ( descricao )";
 		$sql[] = "VALUES (";
