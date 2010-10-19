@@ -49,10 +49,12 @@ p, blockquote, ul, ol {
     margin-bottom: 20px;
     line-height: 1.6em;
 }
+/*
 a {
     text-decoration: underline;
     color: #323B51;
 }
+*/
 #boxLogin {
 	border: 1px solid #D4C792;
 	padding: 2px;
@@ -191,10 +193,6 @@ a {
 }
 */
 .auxiliarOculta { display: none; }
-a.data {
-	text-decoration: underline;
-	color: yellow;
-}
 a:hover {
 	text-decoration: none;
 }
@@ -253,7 +251,7 @@ a:hover {
 #menu li {
     display: inline;
 }
-#menu a {
+#menu a:link {
     display: block;
     float: left;
     width: 110px;
@@ -266,10 +264,16 @@ a:hover {
     font-size: 11px;
     font-weight: bold;
     color: #FFFFFF;
+    outline: 0;
+    text-decoration: none;
 }
-#menu a:hover, #menu .active a {
+#menu a:hover {
     background-image: url(images/img03.gif);
     color: #AA2808;
+}
+#menu a.active {
+	background-image: url(images/img03.gif);
+	color: #AA2808;
 }
 /* Page */
 #page {
