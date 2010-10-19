@@ -261,14 +261,13 @@ switch ($action) {
 		$ufC->cadastrarUf( $idPais, $nome, $sigla );
 	break;
 	case 'printFormCadMunicipio':
-		$municipioV = new MunicipioV();
-		$ufC = new UfController();
-		$ufs = $ufC->getAll();
-		$municipioV->printFormCadMunicipio( $ufs );
+		$municioC = new municipioController();
+		$municioC->printFormCadMunicipio();
+
 	break;
 	case 'cadMunicipio':
 		$municioC = new municipioController();
-		$municioC->cadastrar( $nome, $idUf  );
+		$municioC->cadastrar( $nome, $idUf );
 	break;
 	case 'printFormCadInstituicao':
 		$instituicaoV = new InstituicaoV();
