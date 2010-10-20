@@ -35,6 +35,8 @@
 			<td>{$regimeTrabalhoProfessor->portaria}</td>
 			<td>{$regimeTrabalhoProfessor->dataInicio}</td>
 		</tr>
+		{foreachelse}
+			<tr><td colspan="4">Nenhum Regime de trabalho encontrado.</td></tr>
 		{/foreach}
 	</table>
 {/if}
