@@ -111,13 +111,13 @@ switch ($action) {
 		$departamentoC = new DepartamentoC();
 		$departamentoC->relChefesPorDepartamento( $idDepartamento );
 	break;
-	case 'departamentoProfessor':
+	case 'relatorioGeralProfessor':
 		$departamentoC = new DepartamentoC();
-		$departamentoC->departamentoProfessor();
+		$departamentoC->relatorioGeralProfessor();
 	break;
-	case 'detalheDepartamentoProfessor':
+	case 'detalheGeralProfessor':
 		$departamentoC = new DepartamentoC();
-		$departamentoC->detalheDepartamentoProfessor( $filtro );
+		$departamentoC->detalheGeralProfessor( $idProfessor );
 	break;
 	case 'relProfessoresPorDepartamento':
 		$departamentoC = new DepartamentoC();
@@ -145,7 +145,7 @@ switch ($action) {
 		$professorC = new ProfessorC();
 		$professores = $professorC->getAllProfessores( '', '');
 		$regimeTrabalhoC = new RegimeTrabalhoC();
-		$regimesTrabalho = $regimeTrabalhoC->getAllRegimesTrabalho();
+		$regimesTrabalho = $regimeTrabalhoC->getAllRegimesTrabalho( '' );
 		$professorV = new ProfessorV();
 		$professorV->printFormCadRegTrabProfessor( $professores, $regimesTrabalho );
 	break;

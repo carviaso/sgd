@@ -79,8 +79,8 @@ class DepartamentoC {
 	 *
 	 * @return void
 	 */
-	public function departamentoProfessor() {
-		$this->view->departamentoProfessor();
+	public function relatorioGeralProfessor() {
+		$this->view->relatorioGeralProfessor();
 	}
 
 	/**
@@ -88,9 +88,17 @@ class DepartamentoC {
 	 *
 	 * @return void
 	 */
-	public function detalheDepartamentoProfessor( $filtro ) {
+	public function detalheGeralProfessor( $idProfessor ) {
+		$filtro = new stdClass();
+		$params = new stdClass();
+		$params->idProfessor = $idProfessor;
+		$filtro->tipo = 'byIdProfessor';
+		$filtro->params = $params;
+		$filtro = json_encode( $filtro );
 		$departamento = $this->model->getDepartamentos( $filtro );
-		$this->view->detalheDepartamentoProfessor( $departamento );
+		$regimeC = new RegimeTrabalhoC();
+		$regimesTrabalho = $regimeC->getAllRegimesTrabalho( $filtro );
+		$this->view->detalheGeralProfessor( $departamento, $regimesTrabalho );
 	}
 
 	/**

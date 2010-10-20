@@ -40,8 +40,8 @@ class RegimeTrabalhoC {
 	 *
 	 * @return array
 	 */
-	public function getAllRegimesTrabalho() {
-		return $this->model->getAllregimesTrabalho();
+	public function getAllRegimesTrabalho( $filtro ) {
+		return $this->model->getAllregimesTrabalho( $filtro );
 	}
 
 }

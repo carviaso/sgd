@@ -38,14 +38,14 @@ var relatorios = {
 				gb.processingClose();
 			});
 		});
-		$("#departamentoProfessor").click(function() {
+		$("#relatorioGeralProfessor").click(function() {
 			gb.processing();
-			var params = { "action":"departamentoProfessor" };
+			var params = { "action":"relatorioGeralProfessor" };
 			$('#content').load("app/frontController.php", params, function() {
 				$( "#professor" ).autocomplete({
 					select: function( event, ui ) {
 						$("#idProfessor").val( ui.item.idProfessor );
-						relatorios.detalheDepartamentoProfessor( $("#idProfessor").val() );
+						relatorios.detalheGeralProfessor( $("#idProfessor").val() );
 					},
 					source: function( request, response ) {
 						$.ajax({
@@ -144,11 +144,11 @@ var relatorios = {
 			});
 		});
 	},
-	detalheDepartamentoProfessor: function( idProfessor ) {
-		var params = {	"action":"detalheDepartamentoProfessor",
-						"filtro":"{\"tipo\":\"byIdProfessor\",\"params\":{\"idProfessor\":" + idProfessor + "}}"
+	detalheGeralProfessor: function( idProfessor ) {
+		var params = {	"action":"detalheGeralProfessor",
+						"idProfessor":idProfessor
 					}
-		$('#detalheDepartamentoProfessor').load("app/frontController.php", params, function() {
+		$('#detalheGeralProfessor').load("app/frontController.php", params, function() {
 			gb.processingClose();
 		});
 	}

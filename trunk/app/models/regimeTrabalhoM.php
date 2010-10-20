@@ -32,12 +32,28 @@ class RegimeTrabalhoM {
 	 *
 	 * @return array
 	 */
-	function getAllregimesTrabalho() {
+	function getAllregimesTrabalho( $filtro ) {
 		$conexao = Conexao::con();
 		$regimesTrabalho = array();
+		$where = array();
+		$d = new DataHelper();
 
-		$sql = "SELECT * FROM regime_trabalho ORDER BY id_regime_trabalho";
-		$query = mysqli_query( $conexao, $sql );
+		if ( !empty( $filtro ) ) {
+			$filtro = json_decode( $filtro );
+			switch ( $filtro->tipo ) {
+				case 'byIdProfessor':
+					// Inner join separado, pois so deve ser utilizado junto com seletor de professor por id
+					$where[] = "INNER JOIN regime_trabalho_professor rt ON r.id_regime_trabalho = rt.id_regime_trabalho";
+					$where[] = 'WHERE rt.id_professor = ' . $filtro->params->idProfessor;
+				break;
+			}
+		}
+
+		$sql[] = "SELECT * FROM regime_trabalho r";
+		$sql[] = join( ' ', $where );
+		$sql[] = "ORDER BY r.id_regime_trabalho";
+
+		$query = mysqli_query( $conexao, join( ' ', $sql ) );
 
 		while ( $row = mysqli_fetch_array( $query ) ) {
 			$regimeTrabalho = new stdClass;
@@ -45,6 +61,13 @@ class RegimeTrabalhoM {
 			$regimeTrabalho->descricao = utf8_encode( $row['descricao'] );
 			$regimeTrabalho->quantidadeHoras = utf8_encode( $row['quantidade_horas'] );
 			$regimeTrabalho->dedicacaoExclusiva = utf8_encode( $row['dedicacao_exclusiva'] );
+			$regimeTrabalho->idRegimeTrabalhoProfessor = $row['id_regime_trabalho_professor'];
+			$regimeTrabalho->idProfessor = $row['id_professor'];
+			$regimeTrabalho->idRegimeTrabalho = $row['id_regime_trabalho'];
+			$regimeTrabalho->processo = utf8_encode( $row['processo'] );
+			$regimeTrabalho->deliberacao = utf8_encode( $row['deliberacao'] );
+			$regimeTrabalho->portaria = utf8_encode( $row['portaria'] );
+			$regimeTrabalho->dataInicio = $d->validaData( $row['data_inicio'] );
 			$regimesTrabalho[] = $regimeTrabalho;
 		}
 		return $regimesTrabalho;
