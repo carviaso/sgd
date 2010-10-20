@@ -11,7 +11,7 @@
 		<br />
 		<h2>Relat&oacute;rios do Professor</h2>
 		<ul>
-			<li><a href="javascript:void(0);" id="departamentoProfessor">Departamento do Professor</a></li>
+			<li><a href="javascript:void(0);" id="relatorioGeralProfessor">Relat&oacute;rio Geral do Professor</a></li>
 			<li><a href="javascript:void(0);" id="relProfessoresDepartamento">Professores por Departamento</a></li>
 		</ul>
 		<br />

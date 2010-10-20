@@ -244,7 +244,7 @@ class ProfessorC {
 		$cargoC = new CargoController();
 		$cargos = $cargoC->getCargos();
 		$regimeC = new RegimeTrabalhoC();
-		$regimesTrabalho = $regimeC->getAllRegimesTrabalho();
+		$regimesTrabalho = $regimeC->getAllRegimesTrabalho( '' );
 		$situacaoC = new SituacaoC();
 		$situacoes = $situacaoC->getSituacoes();
 		$professorV = new ProfessorV();
