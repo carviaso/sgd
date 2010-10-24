@@ -21,7 +21,38 @@ var relatorios = {
 				$("#selectCentros").change(function() {
 					var idCentro = $(this).val();
 					var params = { "action":"relDiretorPorCentro", 'idCentro': idCentro };
-					$('#departamentosPorCentro').load("app/frontController.php", params);
+					$('#departamentosPorCentro').load("app/frontController.php", params, function() {
+						$('.escolherDiretorCentro').click(function() {
+							$(this).parent().parent().next().toggle();
+						});
+						$('.multiSelectProfessor').multiSelectProfessor({
+							idCentro: "idCentro1",
+							idDepartamento: "idDepartamento1",
+							idProfessor: "idProfessor1"
+						});
+						$('#definirAtualDiretor').button().click(function() {
+							var erro = [];
+							var idProfessor = $('#idProfessor1').val();
+							if ( idProfessor <= 0 ) erro.push( 'Professor' );
+							
+							if ( erro.length == 0 ) {
+								var params = { "action":"definirAtualDiretor", 'idCentro': idCentro, 'idProfessor':idProfessor };
+								$.post("app/frontController.php", params, function(data) {
+									if ( data.result == 1 ) {
+										$('#diretorCentro').html( $("#idProfessor1 option:selected").text() );
+										gb.message( data.msg, 'Atualizacao Diretores' );
+									} else {
+										gb.message( data.msg, 'Atualizacao Diretores' );
+									}
+								}, 'json' );
+							} else {
+								var msg = [];
+								msg.push( 'Verifique os seguintes campos:<br /><br />' );
+								msg.push( erro.join( '<br />' ) );
+								gb.highlightMessage( msg.join(''), 'Erro' );
+							}
+						});
+					});
 				}).change();
 				gb.processingClose();
 			});

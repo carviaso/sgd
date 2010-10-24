@@ -89,6 +89,25 @@ class CentroC {
 	}
 
 	/**
+	 * Define o professor passado como parametro como atual diretor do centro
+	 *
+	 * @param int $idCentro, int $idProfessor
+	 */
+	function definirAtualDiretor( $idCentro, $idProfessor ) {
+		$erro = array();
+		if ( $idCentro == 0 ) $erro[] = 'Id do centro';
+		if ( $idProfessor == 0 ) $erro[] = 'Id do professor';
+
+		if ( count( $erro ) == 0 ) {
+			echo json_encode( $this->model->setCentroCargoComissionado( $idCentro, DIRETORDOCENTRO, $idProfessor ) );
+		} else {
+			$return->result = 0;
+			$return->msg = 'Erro ao realizar atualizacao';
+			echo json_encode( $return );
+		}
+	}
+
+	/**
 	 * Exibe os departamentos por centro
 	 *
 	 * @param int $idCentro
