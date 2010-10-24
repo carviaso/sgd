@@ -87,8 +87,8 @@ class CentroM {
 		return $professores;
 	}
 
-/**
-	 * Retorna o professor com cargo comissionado e centro passado por parametro
+	/**
+	 * Define o professor para o centro e cargo passados como parametro
 	 *
 	 * @param int $idCentro
 	 * @param int $idCargoComissionado
@@ -120,10 +120,10 @@ class CentroM {
 
 		if ( mysqli_query( $conexao, join( ' ', $sql ) ) ) {
 			$return->result = 1;
-			$return->msg = 'Diretor do centro atualizado com sucesso';
+			$return->msg = 'Atualizacao realizada com sucesso';
 		} else {
 			$return->result = 0;
-			$return->msg = 'Erro ao atualizar o diretor do centro';
+			$return->msg = 'Erro ao realizar atualizacao';
 			$return->error = mysqli_error( $conexao );
 		}
 		return $return;

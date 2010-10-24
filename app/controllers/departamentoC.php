@@ -75,6 +75,63 @@ class DepartamentoC {
 	}
 
 	/**
+	 * Define o professor passado como parametro como atual chefe do departamento
+	 *
+	 * @param int $idDepartamento, int $idProfessor
+	 */
+	function definirAtualChefeDepartamento( $idDepartamento, $idProfessor ) {
+		$erro = array();
+		if ( $idDepartamento == 0 ) $erro[] = 'Id do departamento';
+		if ( $idProfessor == 0 ) $erro[] = 'Id do professor';
+
+		if ( count( $erro ) == 0 ) {
+			echo json_encode( $this->model->setDepartamentoCargoComissionado( $idDepartamento, CHEFEDODEPARTAMENTO, $idProfessor ) );
+		} else {
+			$return->result = 0;
+			$return->msg = "Erro ao realizar atualizacao<br />" . join( '<br />', $erro );;
+			echo json_encode( $return );
+		}
+	}
+
+	/**
+	 * Define o professor passado como parametro como atual sub-chefe do departamento
+	 *
+	 * @param int $idDepartamento, int $idProfessor
+	 */
+	function definirAtualSubChefeDepartamento( $idDepartamento, $idProfessor ) {
+		$erro = array();
+		if ( $idDepartamento == 0 ) $erro[] = 'Id do departamento';
+		if ( $idProfessor == 0 ) $erro[] = 'Id do professor';
+
+		if ( count( $erro ) == 0 ) {
+			echo json_encode( $this->model->setDepartamentoCargoComissionado( $idDepartamento, SUBCHEFEDODEPARTARTAMENTO, $idProfessor ) );
+		} else {
+			$return->result = 0;
+			$return->msg = "Erro ao realizar atualizacao<br />" . join( '<br />', $erro );;
+			echo json_encode( $return );
+		}
+	}
+
+	/**
+	 * Define o professor passado como parametro como atual chefe de expediente do departamento
+	 *
+	 * @param int $idDepartamento, int $idProfessor
+	 */
+	function definirAtualChefeExpediente( $idDepartamento, $idProfessor ) {
+		$erro = array();
+		if ( $idDepartamento == 0 ) $erro[] = 'Id do departamento';
+		if ( $idProfessor == 0 ) $erro[] = 'Id do professor';
+
+		if ( count( $erro ) == 0 ) {
+			echo json_encode( $this->model->setDepartamentoCargoComissionado( $idDepartamento, CHEFEDEEXPEDIENTE, $idProfessor ) );
+		} else {
+			$return->result = 0;
+			$return->msg = "Erro ao realizar atualizacao<br />" . join( '<br />', $erro );;
+			echo json_encode( $return );
+		}
+	}
+
+	/**
 	 * Pesquisa o professor e retorna informacoes de seu departamento
 	 *
 	 * @return void
