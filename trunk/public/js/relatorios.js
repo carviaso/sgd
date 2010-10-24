@@ -22,35 +22,32 @@ var relatorios = {
 					var idCentro = $(this).val();
 					var params = { "action":"relDiretorPorCentro", 'idCentro': idCentro };
 					$('#departamentosPorCentro').load("app/frontController.php", params, function() {
-						$('.escolherDiretorCentro').click(function() {
+						$('.escolherDiretorCentro, .escolherViceDiretorCentro, .escolherSecretarioCentro').click(function() {
 							$(this).parent().parent().next().toggle();
 						});
-						$('.multiSelectProfessor').multiSelectProfessor({
+						$('#definirAtualDiretor').button().click(function() {
+							relatorios.definirAtualDiretor( idCentro );
+						});
+						$('.multiSelectProfessor:eq(0)').multiSelectProfessor({
 							idCentro: "idCentro1",
 							idDepartamento: "idDepartamento1",
 							idProfessor: "idProfessor1"
 						});
-						$('#definirAtualDiretor').button().click(function() {
-							var erro = [];
-							var idProfessor = $('#idProfessor1').val();
-							if ( idProfessor <= 0 ) erro.push( 'Professor' );
-							
-							if ( erro.length == 0 ) {
-								var params = { "action":"definirAtualDiretor", 'idCentro': idCentro, 'idProfessor':idProfessor };
-								$.post("app/frontController.php", params, function(data) {
-									if ( data.result == 1 ) {
-										$('#diretorCentro').html( $("#idProfessor1 option:selected").text() );
-										gb.message( data.msg, 'Atualizacao Diretores' );
-									} else {
-										gb.message( data.msg, 'Atualizacao Diretores' );
-									}
-								}, 'json' );
-							} else {
-								var msg = [];
-								msg.push( 'Verifique os seguintes campos:<br /><br />' );
-								msg.push( erro.join( '<br />' ) );
-								gb.highlightMessage( msg.join(''), 'Erro' );
-							}
+						$('#definirAtualViceDiretor').button().click(function() {
+							relatorios.definirAtualViceDiretor( idCentro );
+						});
+						$('.multiSelectProfessor:eq(1)').multiSelectProfessor({
+							idCentro: "idCentro2",
+							idDepartamento: "idDepartamento2",
+							idProfessor: "idProfessor2"
+						});
+						$('#definirAtualSecretario').button().click(function() {
+							relatorios.definirAtualSecretario( idCentro );
+						});
+						$('.multiSelectProfessor:eq(2)').multiSelectProfessor({
+							idCentro: "idCentro3",
+							idDepartamento: "idDepartamento3",
+							idProfessor: "idProfessor3"
 						});
 					});
 				}).change();
@@ -64,7 +61,36 @@ var relatorios = {
 				$("#selectDepartamentos").change(function() {
 					var idDepartamento = $(this).val();
 					var params = { "action":"relChefesPorDepartamento", 'idDepartamento': idDepartamento };
-					$('#chefesDepartamentos').load("app/frontController.php", params);
+					$('#chefesDepartamentos').load("app/frontController.php", params, function() {
+						$('.escolherChefeDepartamento, .escolherSubChefeDepartamento, .escolherChefeExpediente').click(function() {
+							$(this).parent().parent().next().toggle();
+						});
+						$('#definirAtualChefeDepartamento').button().click(function() {
+							relatorios.definirAtualChefeDepartamento( idDepartamento );
+						});
+						$('.multiSelectProfessor:eq(0)').multiSelectProfessor({
+							idCentro: "idCentro1",
+							idDepartamento: "idDepartamento1",
+							idProfessor: "idProfessor1"
+						});
+						$('#definirAtualSubChefeDepartamento').button().click(function() {
+							relatorios.definirAtualSubChefeDepartamento( idDepartamento );
+						});
+						$('.multiSelectProfessor:eq(1)').multiSelectProfessor({
+							idCentro: "idCentro2",
+							idDepartamento: "idDepartamento2",
+							idProfessor: "idProfessor2"
+						});
+						$('#definirAtualChefeExpediente').button().click(function() {
+							relatorios.definirAtualChefeExpediente( idDepartamento );
+						});
+						$('.multiSelectProfessor:eq(2)').multiSelectProfessor({
+							idCentro: "idCentro3",
+							idDepartamento: "idDepartamento3",
+							idProfessor: "idProfessor3"
+						});
+						
+					});
 				}).change();
 				gb.processingClose();
 			});
@@ -182,5 +208,137 @@ var relatorios = {
 		$('#detalheGeralProfessor').load("app/frontController.php", params, function() {
 			gb.processingClose();
 		});
+	},
+	definirAtualDiretor: function( idCentro ) {
+		var erro = [];
+		var idProfessor = $('#idProfessor1').val();
+		if ( idProfessor <= 0 ) erro.push( 'Professor' );
+		
+		if ( erro.length == 0 ) {
+			var params = { "action":"definirAtualDiretor", 'idCentro': idCentro, 'idProfessor':idProfessor };
+			$.post("app/frontController.php", params, function(data) {
+				if ( data.result == 1 ) {
+					$('#diretorCentro').html( $("#idProfessor1 option:selected").text() );
+					gb.message( data.msg, 'Atualizacao Diretores' );
+				} else {
+					gb.message( data.msg, 'Atualizacao Diretores' );
+				}
+			}, 'json' );
+		} else {
+			var msg = [];
+			msg.push( 'Verifique os seguintes campos:<br /><br />' );
+			msg.push( erro.join( '<br />' ) );
+			gb.highlightMessage( msg.join(''), 'Erro' );
+		}
+	},
+	definirAtualViceDiretor: function( idCentro ) {
+		var erro = [];
+		var idProfessor = $('#idProfessor2').val();
+		if ( idProfessor <= 0 ) erro.push( 'Professor' );
+		
+		if ( erro.length == 0 ) {
+			var params = { "action":"definirAtualViceDiretor", 'idCentro': idCentro, 'idProfessor':idProfessor };
+			$.post("app/frontController.php", params, function(data) {
+				if ( data.result == 1 ) {
+					$('#viceDiretorCentro').html( $("#idProfessor2 option:selected").text() );
+					gb.message( data.msg, 'Atualizacao Vice-Diretores' );
+				} else {
+					gb.message( data.msg, 'Atualizacao Vice-Diretores' );
+				}
+			}, 'json' );
+		} else {
+			var msg = [];
+			msg.push( 'Verifique os seguintes campos:<br /><br />' );
+			msg.push( erro.join( '<br />' ) );
+			gb.highlightMessage( msg.join(''), 'Erro' );
+		}
+	},
+	definirAtualSecretario: function( idCentro ) {
+		var erro = [];
+		var idProfessor = $('#idProfessor3').val();
+		if ( idProfessor <= 0 ) erro.push( 'Professor' );
+		
+		if ( erro.length == 0 ) {
+			var params = { "action":"definirAtualSecretario", 'idCentro': idCentro, 'idProfessor':idProfessor };
+			$.post("app/frontController.php", params, function(data) {
+				if ( data.result == 1 ) {
+					$('#secretarioCentro').html( $("#idProfessor3 option:selected").text() );
+					gb.message( data.msg, 'Atualizacao Diretores' );
+				} else {
+					gb.message( data.msg, 'Atualizacao Diretores' );
+				}
+			}, 'json' );
+		} else {
+			var msg = [];
+			msg.push( 'Verifique os seguintes campos:<br /><br />' );
+			msg.push( erro.join( '<br />' ) );
+			gb.highlightMessage( msg.join(''), 'Erro' );
+		}
+	},
+	definirAtualChefeDepartamento: function( idDepartamento ) {
+		var erro = [];
+		var idProfessor = $('#idProfessor1').val();
+		if ( idProfessor <= 0 ) erro.push( 'Professor' );
+		
+		if ( erro.length == 0 ) {
+			var params = { "action":"definirAtualChefeDepartamento", 'idDepartamento': idDepartamento, 'idProfessor':idProfessor };
+			$.post("app/frontController.php", params, function(data) {
+				if ( data.result == 1 ) {
+					$('#chefeDepartamento').html( $("#idProfessor1 option:selected").text() );
+					gb.message( data.msg, 'Atualizacao de Chefe de Departamento' );
+				} else {
+					gb.message( data.msg, 'Atualizacao de Chefe de Departamento' );
+				}
+			}, 'json' );
+		} else {
+			var msg = [];
+			msg.push( 'Verifique os seguintes campos:<br /><br />' );
+			msg.push( erro.join( '<br />' ) );
+			gb.highlightMessage( msg.join(''), 'Erro' );
+		}
+	},
+	definirAtualSubChefeDepartamento: function( idDepartamento ) {
+		var erro = [];
+		var idProfessor = $('#idProfessor2').val();
+		if ( idProfessor <= 0 ) erro.push( 'Professor' );
+		
+		if ( erro.length == 0 ) {
+			var params = { "action":"definirAtualSubChefeDepartamento", 'idDepartamento': idDepartamento, 'idProfessor':idProfessor };
+			$.post("app/frontController.php", params, function(data) {
+				if ( data.result == 1 ) {
+					$('#subChefeDepartamento').html( $("#idProfessor2 option:selected").text() );
+					gb.message( data.msg, 'Atualizacao de Chefe de Departamento' );
+				} else {
+					gb.message( data.msg, 'Atualizacao de Chefe de Departamento' );
+				}
+			}, 'json' );
+		} else {
+			var msg = [];
+			msg.push( 'Verifique os seguintes campos:<br /><br />' );
+			msg.push( erro.join( '<br />' ) );
+			gb.highlightMessage( msg.join(''), 'Erro' );
+		}
+	},
+	definirAtualChefeExpediente: function( idDepartamento ) {
+		var erro = [];
+		var idProfessor = $('#idProfessor3').val();
+		if ( idProfessor <= 0 ) erro.push( 'Professor' );
+		
+		if ( erro.length == 0 ) {
+			var params = { "action":"definirAtualChefeExpediente", 'idDepartamento': idDepartamento, 'idProfessor':idProfessor };
+			$.post("app/frontController.php", params, function(data) {
+				if ( data.result == 1 ) {
+					$('#chefeExpediente').html( $("#idProfessor3 option:selected").text() );
+					gb.message( data.msg, 'Atualizacao de Chefe de Departamento' );
+				} else {
+					gb.message( data.msg, 'Atualizacao de Chefe de Departamento' );
+				}
+			}, 'json' );
+		} else {
+			var msg = [];
+			msg.push( 'Verifique os seguintes campos:<br /><br />' );
+			msg.push( erro.join( '<br />' ) );
+			gb.highlightMessage( msg.join(''), 'Erro' );
+		}
 	}
 };

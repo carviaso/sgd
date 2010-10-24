@@ -109,6 +109,48 @@ class DepartamentoM {
 	}
 
 	/**
+	 * Define o professor para o departamento e cargo passados como parametro
+	 *
+	 * @param int $idDepartamento
+	 * @param int $idCargoComissionado
+	 * @param int $idProfessor
+	 * @return array
+	 */
+	function setDepartamentoCargoComissionado( $idDepartamento, $idCargoComissionado, $idProfessor ) {
+		$conexao = Conexao::con();
+
+		$sql[] = "SELECT COUNT(*) AS count FROM deptocargocomissionado d";
+		$sql[] = "WHERE d.id_cargocomissionado = {$idCargoComissionado}";
+		$sql[] = "AND d.id_departamento = {$idDepartamento}";
+		$query = mysqli_query( $conexao, join( ' ', $sql ) );
+		unset( $sql );
+
+		$count = mysqli_fetch_array( $query, MYSQL_ASSOC );
+		if ( $count['count'] == 1 ) {
+			$sql[] = "UPDATE deptocargocomissionado";
+			$sql[] = "SET id_professor = '{$idProfessor}'";
+			$sql[] = "WHERE id_cargocomissionado = {$idCargoComissionado}";
+			$sql[] = "AND id_departamento = {$idDepartamento}";
+			$sql[] = "LIMIT 1";
+		} else {
+			$sql[] = "INSERT INTO deptocargocomissionado";
+			$sql[] = "(id_cargocomissionado, id_professor, id_departamento)";
+			$sql[] = "VALUES";
+			$sql[] = "('{$idCargoComissionado}', '{$idProfessor}', '{$idDepartamento}')";
+		}
+
+		if ( mysqli_query( $conexao, join( ' ', $sql ) ) ) {
+			$return->result = 1;
+			$return->msg = 'Atualizacao realizada com sucesso';
+		} else {
+			$return->result = 0;
+			$return->msg = 'Erro ao realizar atualizacao';
+			$return->error = mysqli_error( $conexao );
+		}
+		return $return;
+	}
+
+	/**
 	 * Retorna todos os departamentos por centro
 	 *
 	 * @param int $idCentro

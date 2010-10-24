@@ -96,6 +96,14 @@ switch ($action) {
 		$centroC = new CentroC();
 		$centroC->definirAtualDiretor( $idCentro, $idProfessor );
 	break;
+	case 'definirAtualViceDiretor':
+		$centroC = new CentroC();
+		$centroC->definirAtualViceDiretor( $idCentro, $idProfessor );
+	break;
+	case 'definirAtualSecretario':
+		$centroC = new CentroC();
+		$centroC->definirAtualSecretario( $idCentro, $idProfessor );
+	break;
 	case 'relDepartamentoCentro':
 		$centroC = new CentroC();
 		$centros = $centroC->getCentros();
@@ -115,6 +123,18 @@ switch ($action) {
 	case 'relChefesPorDepartamento':
 		$departamentoC = new DepartamentoC();
 		$departamentoC->relChefesPorDepartamento( $idDepartamento );
+	break;
+	case 'definirAtualChefeDepartamento':
+		$departamentoC = new DepartamentoC();
+		$departamentoC->definirAtualChefeDepartamento( $idDepartamento, $idProfessor );
+	break;
+	case 'definirAtualSubChefeDepartamento':
+		$departamentoC = new DepartamentoC();
+		$departamentoC->definirAtualSubChefeDepartamento( $idDepartamento, $idProfessor );
+	break;
+	case 'definirAtualChefeExpediente':
+		$departamentoC = new DepartamentoC();
+		$departamentoC->definirAtualChefeExpediente( $idDepartamento, $idProfessor );
 	break;
 	case 'relatorioGeralProfessor':
 		$departamentoC = new DepartamentoC();

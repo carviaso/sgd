@@ -108,6 +108,44 @@ class CentroC {
 	}
 
 	/**
+	 * Define o professor passado como parametro como atual vice-diretor do centro
+	 *
+	 * @param int $idCentro, int $idProfessor
+	 */
+	function definirAtualViceDiretor( $idCentro, $idProfessor ) {
+		$erro = array();
+		if ( $idCentro == 0 ) $erro[] = 'Id do centro';
+		if ( $idProfessor == 0 ) $erro[] = 'Id do professor';
+
+		if ( count( $erro ) == 0 ) {
+			echo json_encode( $this->model->setCentroCargoComissionado( $idCentro, VICEDIRETORDOCENTRO, $idProfessor ) );
+		} else {
+			$return->result = 0;
+			$return->msg = 'Erro ao realizar atualizacao';
+			echo json_encode( $return );
+		}
+	}
+
+	/**
+	 * Define o professor passado como parametro como atual secretario do centro
+	 *
+	 * @param int $idCentro, int $idProfessor
+	 */
+	function definirAtualSecretario( $idCentro, $idProfessor ) {
+		$erro = array();
+		if ( $idCentro == 0 ) $erro[] = 'Id do centro';
+		if ( $idProfessor == 0 ) $erro[] = 'Id do professor';
+
+		if ( count( $erro ) == 0 ) {
+			echo json_encode( $this->model->setCentroCargoComissionado( $idCentro, SECRETARIODOCENTRO, $idProfessor ) );
+		} else {
+			$return->result = 0;
+			$return->msg = 'Erro ao realizar atualizacao';
+			echo json_encode( $return );
+		}
+	}
+
+	/**
 	 * Exibe os departamentos por centro
 	 *
 	 * @param int $idCentro
