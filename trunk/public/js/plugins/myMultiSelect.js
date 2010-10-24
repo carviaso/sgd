@@ -4,21 +4,24 @@ $.fn.multiSelectProfessor = function(options){
 	var sDefaults = {
 		labelCentro: "Centro",
 		labelDepartamento: "Departamento",
-		labelProfessor: "Professor"
+		labelProfessor: "Professor",
+		idCentro: "idCentro",
+		idDepartamento: "idDepartamento",
+		idProfessor: "idProfessor"
 	}
 	// Sobreescreve as opcoes locais
 	var options = jQuery.extend(sDefaults, options);
 
 	var selects = new Array();
 	selects.push( '<div>' + options.labelCentro + '</div>' );
-	selects.push( '<select class="select ui-corner-all width100" id="idCentro"></select>' );
+	selects.push( '<select class="select ui-corner-all width100" id="' + options.idCentro + '"></select>' );
 	selects.push( '<div>' + options.labelDepartamento + '</div>' );
-	selects.push( '<select class="select ui-corner-all width100" id="idDepartamento"></select>' );
+	selects.push( '<select class="select ui-corner-all width100" id="' + options.idDepartamento + '"></select>' );
 	selects.push( '<div>' + options.labelProfessor + '</div>' );
-	selects.push( '<select class="select ui-corner-all width100" id="idProfessor"></select>' );
+	selects.push( '<select class="select ui-corner-all width100" id="' + options.idProfessor + '"></select>' );
 	this.html( selects.join('') );
 
-	$('#idCentro').html( '<option>Carregando...</option>' );
+	$('#' + options.idCentro).html( '<option>Carregando...</option>' );
 	var params = { "action":"getCentrosJson" };
 	$.post("app/frontController.php", params, function( response ) {
 		var centros = new Array();
@@ -29,15 +32,15 @@ $.fn.multiSelectProfessor = function(options){
 		} else {
 			centros.push( '<option value="0">Nenhum centro encontrado</option>' );
 		}
-		$('#idCentro').html( centros.join('') ).change();
+		$('#' + options.idCentro).html( centros.join('') ).change();
 	}, "json" );
 
-	$("#idCentro").change(function() {
-		$('#idDepartamento').html( '<option>Carregando...</option>' );
+	$('#' + options.idCentro).change(function() {
+		$('#' + options.idDepartamento).html( '<option>Carregando...</option>' );
 		var params = {
 				"action":"getDepartamentos",
 				"returnType":"json",
-				"filtro":"{\"tipo\":\"byIdCentro\",\"params\":{\"idCentro\":\"" + $('#idCentro').val() + "\"}}"
+				"filtro":"{\"tipo\":\"byIdCentro\",\"params\":{\"idCentro\":\"" + $('#' + options.idCentro).val() + "\"}}"
 		};
 		$.post("app/frontController.php", params, function( response ) {
 			var departamentos = new Array();
@@ -48,27 +51,31 @@ $.fn.multiSelectProfessor = function(options){
 			} else {
 				departamentos.push( '<option value="0">Nenhum departamento encontrado</option>' );
 			}
-			$('#idDepartamento').html( departamentos.join('') ).change();
+			$('#' + options.idDepartamento).html( departamentos.join('') ).change();
 		}, "json" );
 	});
 	
-	$("#idDepartamento").change(function() {
-		$('#idProfessor').html( '<option>Carregando...</option>' );
+	$('#' + options.idDepartamento).change(function() {
+		$('#' + options.idProfessor).html( '<option>Carregando...</option>' );
 		var params = {
 				"action":"getAllProfessores",
 				"returnType":"json",
-				"filtro":"{\"tipo\":\"byIdDepartamento\",\"params\":{\"idDepartamento\":\"" + $('#idDepartamento').val() + "\"}}"
+				"filtro":"{\"tipo\":\"byIdDepartamento\",\"params\":{\"idDepartamento\":\"" + $('#' + options.idDepartamento).val() + "\"}}"
 		};
 		$.post("app/frontController.php", params, function( response ) {
 			var professores = new Array();
 			if( response.length > 0 ) {
 				$.each(response, function(index, professor) {
-					professores.push( '<option value="' + professor.id_professor + '">' + professor.nome + '</option>' );
+					if ( professor.idCargo == 3 ) {
+						professores.push( '<option value="' + professor.id_professor + '">' + professor.nome + ' - ' + professor.descricaoCargo + '</option>' );
+					} else {
+						professores.push( '<option value="' + professor.id_professor + '">' + professor.nome + '</option>' );
+					}
 				});
 			} else {
 				professores.push( '<option value="0">Nenhum professor encontrado</option>' );
 			}
-			$('#idProfessor').html( professores.join('') );
+			$('#' + options.idProfessor).html( professores.join('') );
 		}, "json" );
 	});
 };

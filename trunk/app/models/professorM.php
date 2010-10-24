@@ -29,7 +29,9 @@ class ProfessorM {
 			}
 		}
 
-		$sql[] = "SELECT * FROM professor p";
+		$sql[] = "SELECT p.*, c.descricao_cargo FROM professor p";
+		$sql[] = "left join cargo c";
+		$sql[] = "on p.id_cargo = c.id_cargo";
 		$sql[] = join( ' ', $where );
 		$sql[] = "ORDER BY p.nome";
 
@@ -44,7 +46,6 @@ class ProfessorM {
 			$professor->dataAdmissao = $row['data_admissao'];
 			$professor->dataAdmissaoUfsc = $row['data_admissao_ufsc'];
 			$professor->dataNascimento = $row['data_nascimento'];
-			//$professor->aposentado = utf8_encode( $row['aposentado'] );
 			$professor->dataPrevistaAposentadoria = $row['data_previsao_aposentadoria'];
 			$professor->dataEfetivaAposentadoria = $row['data_aposentadoria'];
 			$professor->idDepartamento = $row['id_departamento'];
@@ -54,6 +55,7 @@ class ProfessorM {
 			$professor->idCategoriaFuncionalReferencia = $row['id_categoria_funcional_referencia'];
 			$professor->idCargo = $row['id_cargo'];
 			$professor->idSituacao = $row['id_situacao'];
+			$professor->descricaoCargo = $row['descricao_cargo'];
 			$professores[] = $professor;
 		}
 		return $professores;

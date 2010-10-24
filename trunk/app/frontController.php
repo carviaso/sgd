@@ -92,6 +92,10 @@ switch ($action) {
 		$centroC = new CentroC();
 		$centroC->relDiretorPorCentro( $idCentro );
 	break;
+	case 'definirAtualDiretor':
+		$centroC = new CentroC();
+		$centroC->definirAtualDiretor( $idCentro, $idProfessor );
+	break;
 	case 'relDepartamentoCentro':
 		$centroC = new CentroC();
 		$centros = $centroC->getCentros();

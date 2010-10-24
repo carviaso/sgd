@@ -87,6 +87,48 @@ class CentroM {
 		return $professores;
 	}
 
+/**
+	 * Retorna o professor com cargo comissionado e centro passado por parametro
+	 *
+	 * @param int $idCentro
+	 * @param int $idCargoComissionado
+	 * @param int $idProfessor
+	 * @return array
+	 */
+	function setCentroCargoComissionado( $idCentro, $idCargoComissionado, $idProfessor ) {
+		$conexao = Conexao::con();
+
+		$sql[] = "SELECT COUNT(*) AS count FROM centrocargocomissionado c";
+		$sql[] = "WHERE id_cargocomissionado = {$idCargoComissionado}";
+		$sql[] = "AND id_centro = {$idCentro}";
+		$query = mysqli_query( $conexao, join( ' ', $sql ) );
+		unset( $sql );
+
+		$count = mysqli_fetch_array( $query, MYSQL_ASSOC );
+		if ( $count['count'] == 1 ) {
+			$sql[] = "UPDATE centrocargocomissionado";
+			$sql[] = "SET id_professor = '{$idProfessor}'";
+			$sql[] = "WHERE id_cargocomissionado = {$idCargoComissionado}";
+			$sql[] = "AND id_centro = {$idCentro}";
+			$sql[] = "LIMIT 1";
+		} else {
+			$sql[] = "INSERT INTO centrocargocomissionado";
+			$sql[] = "(id_cargocomissionado, id_professor, id_centro)";
+			$sql[] = "VALUES";
+			$sql[] = "('{$idCargoComissionado}', '{$idProfessor}', '{$idCentro}')";
+		}
+
+		if ( mysqli_query( $conexao, join( ' ', $sql ) ) ) {
+			$return->result = 1;
+			$return->msg = 'Diretor do centro atualizado com sucesso';
+		} else {
+			$return->result = 0;
+			$return->msg = 'Erro ao atualizar o diretor do centro';
+			$return->error = mysqli_error( $conexao );
+		}
+		return $return;
+	}
+
 	function relDepartamentoPorCentro( $idCentro ) {
 		$conexao = Conexao::con();
 		$departamentos = array();
