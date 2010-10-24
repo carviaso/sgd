@@ -14,12 +14,13 @@ if ( isset( $_POST['verificaLogin'] ) ) {
 //	}
 	return $loginC->valida( $_POST['siape'], md5($_POST['senha'] ) );
 }
-/* @TODO VERIFICAR UMA BOA MANEIRA DE REDIRECIONAR NA PERDA DE SESSAO */
+/* @todo VERIFICAR UMA BOA MANEIRA DE REDIRECIONAR NA PERDA DE SESSAO */
 elseif ( $_SESSION['logado'] != true ) {
 	//mail( 'bferronato@gmail.com', 'SGD - Perda sessao', "Perda sessao usuario {$_SESSION['idProfessor']}" );
 	session_unset();
 	session_destroy();
-	header('Location: http://www.google.com.br/');
+	/* @todo testar o redirecionamento */
+	header('Location: ../index.php');
 }
 
 include_once 'library/Smarty-3.0rc1/libs/Smarty.class.php';
