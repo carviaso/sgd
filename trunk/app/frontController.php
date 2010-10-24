@@ -238,6 +238,7 @@ switch ($action) {
 			switch ( $filtro->tipo ) {
 				case 'cargo':
 					$wh .= ' WHERE p.id_cargo in (' . join( ',', $filtro->params->idCargo ) . ')';
+					$wh .= ' AND p.id_situacao not in (2)';
 				break;
 			}
 		}
@@ -246,6 +247,7 @@ switch ($action) {
 			switch ( $filtro->tipo ) {
 				case 'cargo':
 					$wh .= ' AND p.id_cargo in (' . join( ',', $filtro->params->idCargo ) . ')';
+					$wh .= ' AND p.id_situacao not in (2)';
 				break;
 			}
 		}
