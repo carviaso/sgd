@@ -50,28 +50,6 @@ class DepartamentoV {
 		$smarty->display('relChefesDepartamentos.tpl');
 	}
 
-	function relatorioGeralProfessor() {
-		$smarty = new Smarty();
-		$smarty->template_dir = 'views/departamento/templates/';
-		$smarty->compile_dir  = '../tmp/templates_c/';
-		$smarty->cache_dir    = '../tmp/cache/';
-		$smarty->config_dir   = 'views/configs/';
-		$smarty->assign( "option", 'departamentoProfessor' );
-		$smarty->display('relatorioGeralProfessor.tpl');
-	}
-
-	function detalheGeralProfessor( $departamento, $regimesTrabalho ) {
-		$smarty = new Smarty();
-		$smarty->template_dir = 'views/departamento/templates/';
-		$smarty->compile_dir  = '../tmp/templates_c/';
-		$smarty->cache_dir    = '../tmp/cache/';
-		$smarty->config_dir   = 'views/configs/';
-		$smarty->assign( "option", 'detalheGeralProfessor' );
-		$smarty->assign( "departamento", $departamento );
-		$smarty->assign( "regimesTrabalho", $regimesTrabalho );
-		$smarty->display('relatorioGeralProfessor.tpl');
-	}
-
 	function relProfessoresDepartamento( $departamentos ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/departamento/templates/';

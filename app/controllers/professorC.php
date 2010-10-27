@@ -30,6 +30,36 @@ class ProfessorC {
 	}
 
 	/**
+	 * Pesquisa o professor e retorna informacoes gerais
+	 *
+	 * @return void
+	 */
+	public function relatorioGeralProfessor() {
+		$this->view->relatorioGeralProfessor();
+	}
+
+	/**
+	 * Retorna diversos detalhes do professor
+	 *
+	 * @return void
+	 */
+	public function detalheGeralProfessor( $idProfessor ) {
+		$filtro = new stdClass();
+		$params = new stdClass();
+		$params->idProfessor = $idProfessor;
+		$filtro->tipo = 'byIdProfessor';
+		$filtro->params = $params;
+		$filtro = json_encode( $filtro );
+		$departamentoC = new DepartamentoC();
+		$departamento = $departamentoC->getDepartamentos( '', $filtro );
+		$regimeC = new RegimeTrabalhoC();
+		$regimesTrabalho = $regimeC->getAllRegimesTrabalho( $filtro );
+		$processoC = new ProcessoC();
+		$processosProfessor = $processoC->getAllProcessos( $filtro );
+		$this->view->detalheGeralProfessor( $departamento, $regimesTrabalho, $processosProfessor );
+	}
+
+	/**
 	 * Retorna um array com todos os professores no formato json para preenchimento de datatable
 	 *
 	 * @return json

@@ -132,33 +132,6 @@ class DepartamentoC {
 	}
 
 	/**
-	 * Pesquisa o professor e retorna informacoes de seu departamento
-	 *
-	 * @return void
-	 */
-	public function relatorioGeralProfessor() {
-		$this->view->relatorioGeralProfessor();
-	}
-
-	/**
-	 * Retorna os detalhes do departamento do professor
-	 *
-	 * @return void
-	 */
-	public function detalheGeralProfessor( $idProfessor ) {
-		$filtro = new stdClass();
-		$params = new stdClass();
-		$params->idProfessor = $idProfessor;
-		$filtro->tipo = 'byIdProfessor';
-		$filtro->params = $params;
-		$filtro = json_encode( $filtro );
-		$departamento = $this->model->getDepartamentos( $filtro );
-		$regimeC = new RegimeTrabalhoC();
-		$regimesTrabalho = $regimeC->getAllRegimesTrabalho( $filtro );
-		$this->view->detalheGeralProfessor( $departamento, $regimesTrabalho );
-	}
-
-	/**
 	 * Retorna todos os professores por departamento
 	 *
 	 * @param int $idCentro
