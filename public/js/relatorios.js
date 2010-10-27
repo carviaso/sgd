@@ -95,9 +95,9 @@ var relatorios = {
 				gb.processingClose();
 			});
 		});
-		$("#relatorioGeralProfessor").click(function() {
+		$("#relGeralProfessor").click(function() {
 			gb.processing();
-			var params = { "action":"relatorioGeralProfessor" };
+			var params = { "action":"relGeralProfessor" };
 			$('#content').load("app/frontController.php", params, function() {
 				$( "#professor" ).autocomplete({
 					select: function( event, ui ) {
@@ -119,6 +119,21 @@ var relatorios = {
 						});
 					},
 				});
+				gb.processingClose();
+			});
+		});
+		$("#relatorioAfastamentoAposentadoria").click(function() {
+			gb.processing();
+			var params = { "action":"relatorioAfastamentoAposentadoria" };
+			$('#content').load("app/frontController.php", params, function() {
+//				$("#selectDepartamentos").change(function() {
+//					var idDepartamento = $(this).val();
+//					var params = {	"action":"relProfessoresPorDepartamento",
+//									"idDepartamento":idDepartamento,
+//									"filtro":"{\"tipo\":\"cargo\",\"params\":{\"idCargo\":[\"1,2\"]}}"
+//								};
+//					$('#professoresPorDepartamento').load("app/frontController.php", params);
+//				}).change();
 				gb.processingClose();
 			});
 		});

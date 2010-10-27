@@ -34,8 +34,8 @@ class ProfessorC {
 	 *
 	 * @return void
 	 */
-	public function relatorioGeralProfessor() {
-		$this->view->relatorioGeralProfessor();
+	public function relGeralProfessor() {
+		$this->view->relGeralProfessor();
 	}
 
 	/**
