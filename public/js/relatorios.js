@@ -122,9 +122,9 @@ var relatorios = {
 				gb.processingClose();
 			});
 		});
-		$("#relatorioAfastamentoAposentadoria").click(function() {
+		$("#relAfastamentoAposentadoria").click(function() {
 			gb.processing();
-			var params = { "action":"relatorioAfastamentoAposentadoria" };
+			var params = { "action":"relAfastamentoAposentadoria" };
 			$('#content').load("app/frontController.php", params, function() {
 //				$("#selectDepartamentos").change(function() {
 //					var idDepartamento = $(this).val();
