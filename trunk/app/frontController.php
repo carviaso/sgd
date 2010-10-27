@@ -137,12 +137,12 @@ switch ($action) {
 		$departamentoC->definirAtualChefeExpediente( $idDepartamento, $idProfessor );
 	break;
 	case 'relatorioGeralProfessor':
-		$departamentoC = new DepartamentoC();
-		$departamentoC->relatorioGeralProfessor();
+		$professorC = new ProfessorC();
+		$professorC->relatorioGeralProfessor();
 	break;
 	case 'detalheGeralProfessor':
-		$departamentoC = new DepartamentoC();
-		$departamentoC->detalheGeralProfessor( $idProfessor );
+		$professorC = new ProfessorC();
+		$professorC->detalheGeralProfessor( $idProfessor );
 	break;
 	case 'relProfessoresPorDepartamento':
 		$departamentoC = new DepartamentoC();

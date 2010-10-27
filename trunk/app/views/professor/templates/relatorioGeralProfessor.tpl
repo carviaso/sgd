@@ -1,4 +1,4 @@
-{if $option eq departamentoProfessor}
+{if $option eq relatorioGeral}
 	<h1>Relat&oacute;rio Geral do Professor</h1>
 	<div>Digite o nome do professor</div>
 	<input type="text" id="professor" name="professor" value="" maxlength="100" class="input ui-corner-all width100" />
@@ -7,10 +7,11 @@
 {/if}
 {if $option eq detalheGeralProfessor}
 	<p></p>
+	<h4>Departamento</h4>
 	{foreach from=$departamento item=dep}
 		<table class="aatable">
 			<tr>
-				<th>Departamento</th>
+				<th>Nome</th>
 				<th>Telefone</th>
 			</tr>
 			<tr>
@@ -20,7 +21,7 @@
 		</table>
 	{/foreach}
 	<p></p>
-	<h1>Regimes de Trabalho do Professor</h1>
+	<h4>Regimes de Trabalho do Professor</h4>
 	<table class="aatable">
 		<tr>
 			<th>Processo</th>
@@ -37,6 +38,22 @@
 		</tr>
 		{foreachelse}
 			<tr><td colspan="4">Nenhum Regime de trabalho encontrado.</td></tr>
+		{/foreach}
+	</table>
+	<p></p>
+	<h4>Processos</h4>
+	<table class="aatable">
+		<tr>
+			<th>N&uacute;mero</th>
+			<th>Descri&ccedil;&atilde;o</th>
+		</tr>
+		{foreach from=$processosProfessor item=processo}
+		<tr>
+			<td>{$processo->processo}</td>
+			<td>{$processo->descricao}</td>
+		</tr>
+		{foreachelse}
+			<tr><td colspan="4">Nenhum processo encontrado.</td></tr>
 		{/foreach}
 	</table>
 {/if}
