@@ -60,6 +60,28 @@ class ProfessorC {
 	}
 
 	/**
+	 * Mostra os detalhes do professor desejado
+	 *
+	 * @return void
+	 */
+	public function relAfastamentoAposentadoria() {
+		$tipoAfastastamentoC = new TipoAfastamentoController();
+		$tiposAfastamentos = $tipoAfastastamentoC->getAll();
+		$this->view->relAfastamentoAposentadoria( $tiposAfastamentos );
+	}
+
+	/**
+	 * Exibe todos os professores que estao aposentados ou afastados ate determinado periodo
+	 *
+	 * @return void
+	 */
+	public function pesquisarAfastamentoAposentadoria( $dataInicial, $dataFinal, $aposentado, $tipos ) {
+		/**@todo validar campos*/
+		$professores = $this->model->pesquisarAfastamentoAposentadoria( $dataInicial, $dataFinal, $aposentado, $tipos );
+		$this->view->pesquisarAfastamentoAposentadoria( $professores, $aposentado );
+	}
+
+	/**
 	 * Retorna um array com todos os professores no formato json para preenchimento de datatable
 	 *
 	 * @return json
