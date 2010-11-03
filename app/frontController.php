@@ -144,9 +144,13 @@ switch ($action) {
 		$professorC = new ProfessorC();
 		$professorC->detalheGeralProfessor( $idProfessor );
 	break;
-	case 'relatorioAfastamentoAposentadoria':
+	case 'relAfastamentoAposentadoria':
 		$professorC = new ProfessorC();
-		$professorC->relatorioAfastamentoAposentadoria();
+		$professorC->relAfastamentoAposentadoria();
+	break;
+	case 'pesquisarAfastamentoAposentadoria':
+		$professorC = new ProfessorC();
+		$professorC->pesquisarAfastamentoAposentadoria( $dataInicial, $dataFinal, $aposentado, $tipos );
 	break;
 	case 'relProfessoresPorDepartamento':
 		$departamentoC = new DepartamentoC();

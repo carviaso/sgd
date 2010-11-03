@@ -1,4 +1,4 @@
-var relatorios = {
+var relatorios = { 
 	loadMenu: function() {
 		$("#relCentros").click(function() {
 			gb.processing();
@@ -126,14 +126,27 @@ var relatorios = {
 			gb.processing();
 			var params = { "action":"relAfastamentoAposentadoria" };
 			$('#content').load("app/frontController.php", params, function() {
-//				$("#selectDepartamentos").change(function() {
-//					var idDepartamento = $(this).val();
-//					var params = {	"action":"relProfessoresPorDepartamento",
-//									"idDepartamento":idDepartamento,
-//									"filtro":"{\"tipo\":\"cargo\",\"params\":{\"idCargo\":[\"1,2\"]}}"
-//								};
-//					$('#professoresPorDepartamento').load("app/frontController.php", params);
-//				}).change();
+				$("#dataInicial, #dataFinal").mask('99/99/9999').datepicker({changeMonth: true,changeYear: true});
+				$('#aposentado').click(function() {
+					var checked = $('#aposentado').attr('checked');
+					$('input[name="tiposAfastamento"]').each(function() {
+						$(this).attr('checked', !checked );
+					});
+					if ( checked ) {
+						$('#dataInicial').attr('disabled', 'disabled');
+						$('#dataInicial').next().html('Data previs\u00e3o de aposentadoria');
+					} else {
+						$('#dataInicial').removeAttr('disabled');
+						$('#dataInicial').next().html('Data Previs\u00e3o T\u00e9rmino Afastamento')
+					}
+				});
+				$('input[name="tiposAfastamento"]').click(function() {
+					$('#aposentado').attr('checked', false);
+					$('#dataInicial').removeAttr('disabled');
+				});	
+				$("#pesquisar").button().click(function() {
+					relatorios.pesquisarAfastamentoAposentadoria();
+				});
 				gb.processingClose();
 			});
 		});
@@ -170,7 +183,7 @@ var relatorios = {
 			$('#content').load("app/frontController.php", params, function() {
 				$("#listaProfessores").jqGrid({url:'app/frontController.php',
 					postData: {	"action":"getAllProfessoresJson",
-								"filtro":"{\"tipo\":\"cargo\",\"params\":{\"idCargo\":[\"1,2\"]}}"},
+								"filtro":"{\"tipo\":\"cargo\",\"params\":{\"idCargo\":[\"1,2,3,4,5,6\"]}}"},
 					mtype: 'POST',
 					datatype: "json",
 					colNames:['Acao', 'Id', 'Nome', 'Matricula', 'Siape', 'Departamento' ],
@@ -223,6 +236,31 @@ var relatorios = {
 		$('#detalheGeralProfessor').load("app/frontController.php", params, function() {
 			gb.processingClose();
 		});
+	},
+	pesquisarAfastamentoAposentadoria: function() {
+		var erro = [];
+		var tipos = [];
+		var dataInicial = $('#dataInicial').val();
+		var dataFinal = $('#dataFinal').val();
+		var aposentado = $('input[name="aposentado"]:checked').val() || 0;
+		var countTipos = $('input[name="tiposAfastamento"]:checked').length;
+		$('input[name="tiposAfastamento"]:checked').each(function() {
+			tipos.push( $(this).val() );
+		});		
+		
+		if ( !( dataInicial || aposentado ) ) erro.push( 'Data Inicial' );
+		if ( !dataFinal ) erro.push( 'Data Final' );
+		if ( !( countTipos || aposentado ) ) erro.push( 'Tipo de Relatorio' );
+		
+		if ( erro.length == 0 ) {
+			var params = { "action":"pesquisarAfastamentoAposentadoria", 'dataInicial': dataInicial, 'dataFinal':dataFinal, 'aposentado':aposentado, 'tipos':tipos.join( ',' ) };
+			$('#relacaoProfessores').load("app/frontController.php", params );
+		} else {
+			var msg = [];
+			msg.push( 'Verifique os seguintes campos:<br /><br />' );
+			msg.push( erro.join( '<br />' ) );
+			gb.highlightMessage( msg.join(''), 'Erro' );
+		}
 	},
 	definirAtualDiretor: function( idCentro ) {
 		var erro = [];

@@ -66,25 +66,28 @@
 		</table>
 	</div>
 	<div id="imprimirFichaData1">Florian&oacute;polis, {$dia} de {$mesExtenso} de {$ano}</div>
-	<div id="imprimirFichaSubtitulo2">Progress&otilde;es</div>
-	<table class="tbProgressoes">
-		<tr>
-			<th>A Partir de</th>
-			<th>Cargo</th>
-			<th>Portaria</th>
-			<th>T&iacute;tulo Avalia&ccedil;&atilde;o</th>
-			<th>Observa&ccedil;&otilde;es</th>
-		</tr>
-	{foreach $progressoes as $progressao}
-		<tr>
-			<td>{$progressao->aPartirDe}</td>
-			<td nowrap="nowrap">{$progressao->categoriaFuncional}</td>
-			<td>{$progressao->portaria}</td>
-			<td>{$progressao->tituloAvaliacao}</td>
-			<td>{$progressao->observacao}</td>
-		</tr>
-	{/foreach}
-	</table>
+	<!-- Verifica se o professor possui somente uma progressao e se esta nao eh igual a progressao funcional inicial -->	
+	{if ($progressoes|@count > '1') && ($professor->idCategoriaFuncionalInicial neq $progressoes[$progressoes|@count-1]->idCategoriaFuncional)}
+		<div id="imprimirFichaSubtitulo2">Progress&otilde;es</div>
+		<table class="tbProgressoes">
+			<tr>
+				<th>A Partir de</th>
+				<th>Cargo</th>
+				<th>Portaria</th>
+				<th>T&iacute;tulo Avalia&ccedil;&atilde;o</th>
+				<th>Observa&ccedil;&otilde;es</th>
+			</tr>
+		{foreach $progressoes as $progressao}
+			<tr>
+				<td>{$progressao->aPartirDe}</td>
+				<td nowrap="nowrap">{$progressao->categoriaFuncional}</td>
+				<td>{$progressao->portaria}</td>
+				<td>{$progressao->tituloAvaliacao}</td>
+				<td>{$progressao->observacao}</td>
+			</tr>
+		{/foreach}
+		</table>
+	{/if}
 	<div style="clear: both"></div>
 	<br />
 	<br />

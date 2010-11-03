@@ -464,6 +464,61 @@ class ProfessorM {
 	}
 
 	/**
+	 * Exibe todos os professores que estao aposentados ou afastados ate determinado periodo
+	 *
+	 * @return array
+	 */
+	public function pesquisarAfastamentoAposentadoria( $dataInicial, $dataFinal, $aposentado, $tipos ) {
+		$conexao = Conexao::con();
+		$professores = array();
+
+		if ( !$aposentado ) {
+			$dataInicial = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataInicial ) ) );
+			$dataFinal = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataFinal ) ) );
+			$sql[] = "SELECT";
+			$sql[] = "p.id_professor, p.nome, f.data_inicio, f.data_previsao_termino, t.descricao";
+			$sql[] = "FROM";
+			$sql[] = "afastamento f";
+			$sql[] = "INNER JOIN professor p";
+			$sql[] = "ON f.id_professor = p.id_professor";
+			$sql[] = "INNER JOIN tipo_afastamento t";
+			$sql[] = "ON f.id_tipo_afastamento = t.id_tipo_afastamento";
+			$sql[] = "WHERE";
+			$sql[] = "f.id_tipo_afastamento IN ($tipos)";
+			$sql[] = "AND f.data_inicio >= '$dataInicial'";
+			$sql[] = "AND f.data_previsao_termino <= '$dataFinal'";
+		} else {
+			$today = date( 'Y-m-d' );
+			$dataFinal = date( 'Y-m-d', strtotime( str_replace( '/', '-', $dataFinal ) ) );
+			$sql[] = "SELECT";
+			$sql[] = "p.id_professor, p.nome, p.data_previsao_aposentadoria";
+			$sql[] = "FROM";
+			$sql[] = "professor p";
+			$sql[] = "WHERE";
+			$sql[] = "p.data_previsao_aposentadoria BETWEEN '$today' AND '$dataFinal'";
+
+			//$sql[] = "p.id_situacao = $aposentado";
+			//$sql[] = "p.data_previsao_aposentadoria <= '$dataFinal'";
+		}
+
+		$query = mysqli_query( $conexao, join( ' ', $sql ) );
+		while ( $row = mysqli_fetch_array( $query ) ) {
+			$professor = new stdClass();
+			$professor->id_professor = $row['id_professor'];
+			$professor->nome = utf8_encode( $row['nome'] );
+			$dataInicio = date( 'd/m/Y', strtotime( $row['data_inicio'] ) );
+			$professor->dataInicio = $dataInicio;
+			$dataPrevisaoTermino = date( 'd/m/Y', strtotime( $row['data_previsao_termino'] ) );
+			$professor->dataPrevisaoTermino = $dataPrevisaoTermino;
+			$dataPrevisaoAposentadoria = date( 'd/m/Y', strtotime( $row['data_previsao_aposentadoria'] ) );
+			$professor->dataPrevisaoAposentadoria = $dataPrevisaoAposentadoria;
+			$professor->descricao = utf8_encode( $row['descricao'] );
+			$professores[] = $professor;
+		}
+		return $professores;
+	}
+
+	/**
 	 * Retorna todas as progressoes funcionais do professor
 	 *
 	 * @return stdClass
@@ -472,7 +527,8 @@ class ProfessorM {
 		$conexao = Conexao::con();
 		$progressaoFuncional = array();
 
-		$sql[] = "SELECT p.id_categoria_funcional_inicial,";
+		$sql[] = "SELECT";
+		$sql[] = "p.id_categoria_funcional_inicial,";
 		$sql[] = "'' as id_progressao_funcional,";
 		$sql[] = "p.id_professor,";
 		$sql[] = "p.nome as nome_professor,";
@@ -482,7 +538,8 @@ class ProfessorM {
 		$sql[] = "p.data_admissao_ufsc as data_avaliacao,";
 		$sql[] = "'' as nota_avaliacao,";
 		$sql[] = "p.data_admissao as apartir_de,";
-		$sql[] = "'' as portaria,";
+		/**Data de admissao na UFSC como primeira portaria*/
+		$sql[] = "p.data_admissao_ufsc as portaria,";
 		$sql[] = "'' as titulo_avaliacao,";
 		$sql[] = "'' as observacao";
 		$sql[] = "FROM professor p";
@@ -529,7 +586,12 @@ class ProfessorM {
 
 			$aPartirDe = date( 'd/m/Y', strtotime( $row['apartir_de'] ) );
 			$progressao->aPartirDe = $aPartirDe;
-			$progressao->portaria = utf8_encode( $row['portaria'] );
+			/**O primeiro registro de portaria eh a data de admissao na UFSC*/
+			if ( count( $progressaoFuncional ) == 0 ) {
+				$progressao->portaria = date( 'd/m/Y', strtotime( $row['portaria'] ) );
+			} else {
+				$progressao->portaria = utf8_encode( $row['portaria'] );
+			}
 			$progressao->tituloAvaliacao = utf8_encode( $row['titulo_avaliacao'] );
 			$progressao->observacao = utf8_encode( $row['observacao'] );
 			$progressaoFuncional[] = $progressao;

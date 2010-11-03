@@ -5,7 +5,7 @@ var professores = {
 			var params = { "action":"printFormCadProfessor" };
 			$('#content').html('').load("app/frontController.php", params, function() {
 				$("#dataNascimento, #dataAdmissao, #dataAdmissaoUfsc, #dataPrevistaAposentadoria, #dataEfetivaAposentadoria")
-					.mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
+					.mask('99/99/9999').datepicker({changeMonth: true,changeYear: true});
 				$('#situacao').change(function() {
 					$('#statusAtualProfessor').html( '<option>Carregando...</option>' );
 					var params = {
@@ -35,7 +35,7 @@ var professores = {
 			gb.processing();
 			var params = { "action":"printFormCadRegTrabProfessor" };
 			$('#content').html('').load("app/frontController.php", params, function() {
-				$("#dataInicio").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
+				$("#dataInicio").mask('99/99/9999').datepicker({changeMonth: true,changeYear: true});
 				$('.multiSelectProfessor').multiSelectProfessor();
 				$("#cadastrarRegimeTrabalho").button().click(function() {
 					professores.regimeTrabalho.valida();
@@ -48,7 +48,7 @@ var professores = {
 			var params = { "action":"printFormCadAfastamentoProfessor" };
 			$('#content').html('').load("app/frontController.php", params, function() {
 				$("#radio").buttonset();
-				$("#dataInicio, #dataPrevisaoTermino").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
+				$("#dataInicio, #dataPrevisaoTermino").mask('99/99/9999').datepicker({changeMonth: true,changeYear: true});
 				$('#dataInicio, #dataPrevisaoTermino').change(function() {
 					var dataInicio = $('#dataInicio').val();
 					var dataPrevisaoTermino = $('#dataPrevisaoTermino').val();
@@ -73,7 +73,7 @@ var professores = {
 			gb.processing();
 			var params = { "action":"printFormCadProgFuncProfessor" };
 			$('#content').html('').load("app/frontController.php", params, function() {
-				$("#aPartirDe, #dataAvaliacao").mask('99/99/9999').datepicker($.datepicker.regional['pt-BR']);
+				$("#aPartirDe, #dataAvaliacao").mask('99/99/9999').datepicker({changeMonth: true,changeYear: true});
 				$('.multiSelectProfessor').multiSelectProfessor();
 				$('#observacoes').limit('600');
 				$("#cadastrarProgressaoFuncionalProfessor").button().click(function() {

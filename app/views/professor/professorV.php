@@ -100,6 +100,32 @@ class ProfessorV {
 		$smarty->display('relGeralProfessor.tpl');
 	}
 
+	function relAfastamentoAposentadoria( $tiposAfastamentos ) {
+		$smarty = new Smarty();
+		$smarty->template_dir = 'views/professor/templates/';
+		$smarty->compile_dir  = '../tmp/templates_c/';
+		$smarty->cache_dir    = '../tmp/cache/';
+		$smarty->config_dir   = 'views/configs/';
+		$smarty->assign( "option", 'exibeFormulario' );
+		$smarty->assign( "tiposAfastamentos", $tiposAfastamentos );
+		$smarty->display('relAfastamentoAposentadoria.tpl');
+	}
+
+	function pesquisarAfastamentoAposentadoria( $professores, $aposentado ) {
+		$smarty = new Smarty();
+		$smarty->template_dir = 'views/professor/templates/';
+		$smarty->compile_dir  = '../tmp/templates_c/';
+		$smarty->cache_dir    = '../tmp/cache/';
+		$smarty->config_dir   = 'views/configs/';
+		if( $aposentado ) {
+			$smarty->assign( "option", 'exibeResultadoAposentado' );
+		} else {
+			$smarty->assign( "option", 'exibeResultado' );
+		}
+		$smarty->assign( "professores", $professores );
+		$smarty->display('relAfastamentoAposentadoria.tpl');
+	}
+
 	function mostraProgressaoFuncional( $progressaoFuncional ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/professor/templates/';
