@@ -538,8 +538,7 @@ class ProfessorM {
 		$sql[] = "p.data_admissao_ufsc as data_avaliacao,";
 		$sql[] = "'' as nota_avaliacao,";
 		$sql[] = "p.data_admissao as apartir_de,";
-		/**Data de admissao na UFSC como primeira portaria*/
-		$sql[] = "p.data_admissao_ufsc as portaria,";
+		$sql[] = "'Admissão' as portaria,";
 		$sql[] = "'' as titulo_avaliacao,";
 		$sql[] = "'' as observacao";
 		$sql[] = "FROM professor p";
@@ -579,19 +578,12 @@ class ProfessorM {
 			$progressao->idCategoriaFuncional = $row['id_categoria_funcional'];
 			$progressao->categoriaFuncional = utf8_encode( $row['categoria_funcional'] );
 			$progressao->processo = $row['processo'];
-
 			$dataAvaliacao = date( 'd/m/Y', strtotime( $row['data_avaliacao'] ) );
-			$progressao->dataAvaliacao = $data_avaliacao;
+			$progressao->dataAvaliacao = $dataAvaliacao;
 			$progressao->notaAvaliacao = $row['nota_avaliacao'];
-
 			$aPartirDe = date( 'd/m/Y', strtotime( $row['apartir_de'] ) );
 			$progressao->aPartirDe = $aPartirDe;
-			/**O primeiro registro de portaria eh a data de admissao na UFSC*/
-			if ( count( $progressaoFuncional ) == 0 ) {
-				$progressao->portaria = date( 'd/m/Y', strtotime( $row['portaria'] ) );
-			} else {
-				$progressao->portaria = utf8_encode( $row['portaria'] );
-			}
+			$progressao->portaria = utf8_encode( $row['portaria'] );
 			$progressao->tituloAvaliacao = utf8_encode( $row['titulo_avaliacao'] );
 			$progressao->observacao = utf8_encode( $row['observacao'] );
 			$progressaoFuncional[] = $progressao;
