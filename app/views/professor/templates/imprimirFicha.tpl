@@ -28,8 +28,8 @@
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td>Grupo/Classe/Padr&atilde;o:</td>
-				<td>{$professor->descCategoriaFuncionalAtual}</td>
+				<td>Grupo/Classe:</td>
+				<td>PS/{$professor->descCategoriaFuncionalAtual}</td>
 				<td>Nascimento:</td>
 				<td>{$professor->dataNascimento}</td>
 			</tr>
@@ -47,7 +47,7 @@
 			</tr>
 			<tr>
 				<td>Localiza&ccedil;&atilde;o:</td>
-				<td>{$professor->nomeInstituicao}</td>
+				<td>{$professor->nomeCentro}</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 			</tr>
