@@ -28,8 +28,8 @@
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td>Grupo/Classe:</td>
-				<td>PS/{$professor->descCategoriaFuncionalAtual}</td>
+				<td>Classe:</td>
+				<td>{$professor->descCategoriaFuncionalAtual}</td>
 				<td>Nascimento:</td>
 				<td>{$professor->dataNascimento}</td>
 			</tr>
