@@ -76,6 +76,19 @@ var professores = {
 				$("#aPartirDe, #dataAvaliacao").mask('99/99/9999').datepicker({changeMonth: true,changeYear: true});
 				$('.multiSelectProfessor').multiSelectProfessor();
 				$('#observacoes').limit('600');
+				var titulos = [ "Est\u00e1gio Probat\u00f3rio", "Avalia\u00e7\u00e3o", "Doutorado", "Mestrado", "Especializa\u00e7\u00e3o", "Enquadramento" ];
+				$("#tituloAvaliacao").autocomplete({source: titulos});
+				
+//				$("#tituloAvaliacao").autocomplete({
+//				    source: titulos,
+//				    minChars: 0,
+//				    mustMatch: true,
+//				    //close: function() { $("#createProspect").validate().element("#details_business_trade"); },
+//				    //mustMatch: true
+//				}).click(function() {
+//				    $(this).autocomplete("search", '');
+//				});
+
 				$("#cadastrarProgressaoFuncionalProfessor").button().click(function() {
 					professores.progressaoFuncionalProfessor.valida();
 				});
