@@ -21,6 +21,7 @@ class LoginC {
 		$siape = addslashes( trim( $siape ) );
 		$senha = addslashes( trim( $senha ) );
 
+		// Teste comitt site
 		// Verifica o tamanho dos campos
 		$siape = strlen( $siape ) > 11 ? substr( $siape, 0, 11 ) : $siape;
 		$senha = strlen( $senha ) > 32 ? substr( $senha, 0, 32 ) : $senha;
