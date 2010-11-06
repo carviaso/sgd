@@ -10,7 +10,7 @@
 <input type="text" id="processo" value="" maxlength="45" class="input ui-corner-all width100" />
 <div>Data de Avalia&ccedil;&atilde;o</div>
 <input type="text" id="dataAvaliacao" class="input ui-corner-all width100" />
-<div>Titula&ccedil;&atilde;o/Avalia&ccedil;&atilde;o</div>
+<div>Titula&ccedil;&atilde;o/Avalia&ccedil;&atilde;o (Duplo clique para exibir todas as opc&otilde;es)</div>
 <input type="text" id="tituloAvaliacao" value="" maxlength="45" class="input ui-corner-all width100" />
 <div>Nota da Avalia&ccedil;&atilde;o</div>
 <input type="text" id="notaAvaliacao" class="input ui-corner-all width100" />
