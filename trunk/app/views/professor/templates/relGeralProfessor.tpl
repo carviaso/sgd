@@ -21,7 +21,7 @@
 		</table>
 	{/foreach}
 	<p></p>
-	<h4>Regimes de Trabalho do Professor</h4>
+	<h4>Altera&ccedil;&atilde;o de Regime de Trabalho do Professor</h4>
 	<table class="aatable">
 		<tr>
 			<th>Processo</th>
