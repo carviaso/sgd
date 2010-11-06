@@ -38,7 +38,6 @@
 		</div>
 		<script type="text/javascript" src="public/js/jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="public/js/jquery-ui-1.8.4.custom.min.js"></script>
-
 		<script type="text/javascript" src="public/js/plugins/myMultiSelect.js"></script>
 		<script type="text/javascript" src="public/js/plugins/jquery.maskedinput-1.2.2.min.js"></script>
 		<script type="text/javascript" src="public/js/locate/jquery.ui.datepicker-pt-BR.js"></script>
