@@ -20,6 +20,7 @@ var relatorios = {
 			$('#content').load("app/frontController.php", params, function() {
 				$("#selectCentros").change(function() {
 					var idCentro = $(this).val();
+					if
 					var params = { "action":"relDiretorPorCentro", 'idCentro': idCentro };
 					$('#departamentosPorCentro').load("app/frontController.php", params, function() {
 						$('.escolherDiretorCentro, .escolherViceDiretorCentro, .escolherSecretarioCentro').click(function() {
