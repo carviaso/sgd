@@ -82,10 +82,17 @@ class CentroC {
 	 * @return void
 	 */
 	public function relDiretorPorCentro( $idCentro ) {
-		$diretores = $this->model->getCentroCargoComissionado( $idCentro, DIRETORDOCENTRO, '' );
-		$viceDiretores = $this->model->getCentroCargoComissionado( $idCentro, VICEDIRETORDOCENTRO, '' );
-		$secretariodocentros = $this->model->getCentroCargoComissionado( $idCentro, SECRETARIODOCENTRO, '' );
-		$this->view->relDiretorPorCentro( $diretores, $viceDiretores, $secretariodocentros );
+		if ( $idCentro != GABINETEREITOR ) {
+			$diretores = $this->model->getCentroCargoComissionado( $idCentro, DIRETORDOCENTRO, '' );
+			$viceDiretores = $this->model->getCentroCargoComissionado( $idCentro, VICEDIRETORDOCENTRO, '' );
+			$secretariodocentros = $this->model->getCentroCargoComissionado( $idCentro, SECRETARIODOCENTRO, '' );
+			$this->view->relDiretorPorCentro( $diretores, $viceDiretores, $secretariodocentros );
+		} else {
+			$reitores = $this->model->getCentroCargoComissionado( $idCentro, REITOR, '' );
+			$viceReitores = $this->model->getCentroCargoComissionado( $idCentro, VICEREITOR, '' );
+			$secretariasReitor = $this->model->getCentroCargoComissionado( $idCentro, SECRETARIAREITOR, '' );
+			$this->view->relReitor( $reitores, $viceReitores, $secretariasReitor );
+		}
 	}
 
 	/**

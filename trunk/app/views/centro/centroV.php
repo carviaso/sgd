@@ -40,6 +40,18 @@ class CentroV {
 		$smarty->display('relDiretoresCentros.tpl');
 	}
 
+	function relReitor( $reitores, $viceReitores, $secretariasReitor ) {
+		$smarty = new Smarty();
+		$smarty->template_dir = 'views/centro/templates/';
+		$smarty->compile_dir  = '../tmp/templates_c/';
+		$smarty->cache_dir    = '../tmp/cache/';
+		$smarty->config_dir   = 'views/configs/';
+		$smarty->assign( "reitores", $reitores );
+		$smarty->assign( "viceReitores", $viceReitores );
+		$smarty->assign( "secretariasReitor", $secretariasReitor );
+		$smarty->display('relReitor.tpl');
+	}
+
 	function relDepartamentoCentro( $centros ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/centro/templates/';

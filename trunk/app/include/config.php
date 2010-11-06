@@ -8,6 +8,11 @@ define( "SECRETARIODOCENTRO", 5 );
 define( "CHEFEDEEXPEDIENTE", 6 );
 define( "SECRETARIADOCENTRO", 7 );
 define( "REITOR", 8 );
+define( "VICEREITOR", 9 );
+define( "SECRETARIAREITOR", 10 );
+
+/**Id centros*/
+define( "GABINETEREITOR", 12 );
 
 /**Status atual do professor*/
 define( "EMATIVIDADE", 1 );
