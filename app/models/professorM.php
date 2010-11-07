@@ -296,6 +296,29 @@ class ProfessorM {
 		}
 		return $professores;
 	}
+	
+	/**
+	 * Retorna todos os departamentos por centro
+	 *
+	 * @param int $idCentro
+	 * @return array
+	 */
+	function relAposentados() {
+		$aposentados = array();
+		$conexao = Conexao::con();
+
+		$sql[] = "SELECT * FROM professor p";
+		$sql[] = "WHERE p.id_situacao = 2";
+
+		$query = mysqli_query( $conexao, join( ' ', $sql ) );
+		while ( $row = mysqli_fetch_array( $query ) ) {
+			$professor = new stdClass;
+			$professor->idProfessor = utf8_encode( $row['id_professor'] );
+			$professor->nome = utf8_encode( $row['nome'] );
+			$professores[] = $professor;
+		}
+		return $professores;
+	}
 
 	/**
 	 * Retorna todos os professores por departamento

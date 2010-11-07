@@ -19,6 +19,7 @@
 		<h2>Relat&oacute;rios Espec&iacute;ficos</h2>
 		<ul>
 			<li><a href="javascript:void(0);" id="relDepartamentoCentro">Departamentos por Centro</a></li>
+			<li><a href="javascript:void(0);" id="relAposentados">Professores Aposentados</a></li>
 		</ul>
 	</li>
 </ul>
