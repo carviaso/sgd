@@ -110,6 +110,10 @@ switch ($action) {
 		$centroV = new CentroV();
 		return $centroV->relDepartamentoCentro( $centros );
 	break;
+	case 'relAposentados':
+		$aposentadosC = new ProfessorC();
+		$aposentadosC->relAposentados();
+	break;
 	case 'relDepartamentoPorCentro':
 		$centroC = new CentroC();
 		$departamentos = $centroC->relDepartamentoPorCentro( $_POST['idCentro'] );
