@@ -195,7 +195,7 @@ class DepartamentoM {
 			switch ( $filtro->tipo ) {
 				case 'cargo':
 					$where[] = 'AND p.id_cargo in (';
-					$where[] = join( ',', $filtro->params->idCargo );
+					$where[] = join( ',', $filtro->params->idCargo);
 					$where[] = ')';
 				break;
 			}
@@ -203,6 +203,7 @@ class DepartamentoM {
 
 		$sql[] = "SELECT * FROM professor p";
 		$sql[] = join( ' ', $where );
+		$sql[] = "ORDER BY p.nome";
 		$query = mysqli_query( $conexao, join( ' ', $sql ) );
 
 		while ( $row = mysqli_fetch_array( $query ) ) {
