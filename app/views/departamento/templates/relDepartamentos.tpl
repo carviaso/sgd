@@ -46,7 +46,7 @@
 			</tr>
 		{foreachelse}
 			<tr>
-				<td colspan="2">Nenhum professor cadastrado para o centro selecionado</td>
+				<td colspan="2">Nenhum professor cadastrado para o Departamento selecionado</td>
 			</tr>
 		{/foreach}
 	</table>
