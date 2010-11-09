@@ -158,7 +158,7 @@ var relatorios = {
 					var idDepartamento = $(this).val();
 					var params = {	"action":"relProfessoresPorDepartamento",
 									"idDepartamento":idDepartamento,
-									"filtro":"{\"tipo\":\"cargo\",\"params\":{\"idCargo\":[\"1,2\"]}}"
+									"filtro":"{\"tipo\":\"cargo\",\"params\":{\"idCargo\":[\"1,2,3,4,5,6\"]}}"
 								};
 					$('#professoresPorDepartamento').load("app/frontController.php", params);
 				}).change();
