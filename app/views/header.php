@@ -11,7 +11,7 @@
 <div id="header">
 	<div id="logo">
 		<h1><a href="index.php">SGD</a></h1>
-		<h2><a href="index.php">Sistema de Gest&atilde;o de Docentes</a></h2>
+		<h2><a href="index.php">Sistema de Gest&atilde;o de Docentes da UFSC</a></h2>
 	</div>
 	<div id="menu"><?php
 		if( isset( $_SESSION['logado'] ) ) {
