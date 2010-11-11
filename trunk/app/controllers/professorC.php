@@ -56,7 +56,9 @@ class ProfessorC {
 		$regimesTrabalho = $regimeC->getAllRegimesTrabalho( $filtro );
 		$processoC = new ProcessoC();
 		$processosProfessor = $processoC->getAllProcessos( $filtro );
-		$this->view->detalheGeralProfessor( $departamento, $regimesTrabalho, $processosProfessor );
+		$portariaC = new PortariaC();
+		$portariasProfessor = $portariaC->getAllPortarias( $filtro );
+		$this->view->detalheGeralProfessor( $departamento, $regimesTrabalho, $processosProfessor, $portariasProfessor );
 	}
 
 	/**
@@ -280,19 +282,17 @@ class ProfessorC {
 		$professor = $this->model->getProfessorPorId( $idProfessor );
 		$this->view->printFormUser( $professor );
 	}
-	
-	
+
 	/**
 	 * Esta função serve para retornar Todos os prof. Aposentados
-	 * 
+	 *
 	 * @return void
 	 */
-	public function relAposentados () {		
+	public function relAposentados () {
 		$aposentados = $this->model->relAposentados();
 		$this->view->relAposentados( $aposentados );
 	}
-	
-		
+
 	/**
 	 * Imprime o formulario para cadastro de um novo professor
 	 *

@@ -87,7 +87,7 @@ class ProfessorV {
 		$smarty->display('relGeralProfessor.tpl');
 	}
 
-	function detalheGeralProfessor( $departamento, $regimesTrabalho, $processosProfessor ) {
+	function detalheGeralProfessor( $departamento, $regimesTrabalho, $processosProfessor, $portariasProfessor ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/professor/templates/';
 		$smarty->compile_dir  = '../tmp/templates_c/';
@@ -97,6 +97,7 @@ class ProfessorV {
 		$smarty->assign( "departamento", $departamento );
 		$smarty->assign( "regimesTrabalho", $regimesTrabalho );
 		$smarty->assign( "processosProfessor", $processosProfessor );
+		$smarty->assign( "portariasProfessor", $portariasProfessor );
 		$smarty->display('relGeralProfessor.tpl');
 	}
 
@@ -135,7 +136,7 @@ class ProfessorV {
 		$smarty->assign( "progressaoFuncional", $progressaoFuncional );
 		$smarty->display('mostraProgressaoFuncional.tpl');
 	}
-	
+
 	function relAposentados( $aposentados ) {
 		$smarty = new Smarty();
 		$smarty->template_dir = 'views/professor/templates/';
