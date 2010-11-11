@@ -1,3 +1,3 @@
 <?php
-echo 'fff editado';
+echo 'fff 2x editado';
 ?>
