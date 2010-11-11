@@ -53,7 +53,7 @@ var relatorios = {
 				}).change();
 				gb.processingClose();
 			});
-		}); 
+		});
 		$("#relChefesDepartamento").click(function() {
 			gb.processing();
 			var params = { "action":"relChefesDepartamento" };
