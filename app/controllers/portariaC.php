@@ -33,5 +33,14 @@ class PortariaC {
 		echo json_encode( $this->model->cadPortaria( $idProfessor, $portaria, $descricao ) );
 	}
 
+	/**
+	 * Retorna um array com todos os processos do professor
+	 *
+	 * @return array
+	 */
+	public function getAllPortarias( $filtro ) {
+		return $this->model->getAllPortarias( $filtro );
+	}
+
 }
 ?>

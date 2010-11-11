@@ -56,4 +56,20 @@
 			<tr><td colspan="4">Nenhum processo encontrado.</td></tr>
 		{/foreach}
 	</table>
+	<p></p>
+	<h4>Portarias</h4>
+	<table class="aatable">
+		<tr>
+			<th>N&uacute;mero</th>
+			<th>Descri&ccedil;&atilde;o</th>
+		</tr>
+		{foreach from=$portariasProfessor item=portaria}
+		<tr>
+			<td>{$portaria->portaria}</td>
+			<td>{$portaria->descricao}</td>
+		</tr>
+		{foreachelse}
+			<tr><td colspan="4">Nenhum portaria encontrada.</td></tr>
+		{/foreach}
+	</table>
 {/if}
