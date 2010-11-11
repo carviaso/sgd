@@ -18,7 +18,7 @@
 			<li><a href="javascript:void(0);" id="cadTipoTitulacao">Tipos de Titula&ccedil;&otilde;es</a></li>
 			<li><a href="javascript:void(0);" id="cadCategoriaFuncional">Nova Categoria Funcional</a></li>
 			<li><a href="javascript:void(0);" id="cadRegimeTrabalho">Novo Regime de Trabalho</a></li>
-			<li><a href="javascript:void(0);" id="cadPortaria">Portaria associada aos Professores</a></li>
+			<li><a href="javascript:void(0);" id="cadPortaria">Portaria Associada aos Professores</a></li>
 		</ul>
 	</li>
 </ul>
