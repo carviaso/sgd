@@ -80,7 +80,7 @@
 				<td>{$professor->descTipoTitulacao}</td>
 			</tr>
 			<tr>
-				<td>Categoria Funcional Refer&ecirc;ncia</td>
+				<td>Pr&oacute;xima Categoria Funcional</td>
 				<td>{$professor->descCategoriaFuncionalReferencia}</td>
 			</tr>
 			<tr>
