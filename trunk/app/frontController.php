@@ -369,6 +369,15 @@ switch ($action) {
 		$portariaC = new PortariaC();
 		$portariaC->cadPortaria( $idProfessor, $portaria, $descricao );
 	break;
+	
+	case 'printFormCadProcesso':
+		$processoC = new ProcessoC();
+		$processoC->printFormCadProcesso();
+	break;
+	case 'cadProcesso':
+		$processoC = new ProcessoC();
+		$processoC->cadProcesso( $idProfessor, $processo, $descricao );
+	break;
 	case 'logout':
 		$loginC = new LoginC();
 		$loginC->logout();

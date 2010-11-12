@@ -78,7 +78,20 @@ var professores = {
 				$('#portaria').limit('45');
 				$('#descricao').limit('800');
 				$("#cadastrarPortaria").button().click(function() {
-					cadastros.portaria.valida();
+					professores.portaria.valida();
+				});
+				gb.processingClose();
+			});
+		});
+		$("#cadProcesso").click(function() {
+			gb.processing();
+			var params = { "action":"printFormCadProcesso" };
+			$('#content').load("app/frontController.php", params, function() {
+				$('.multiSelectProfessor').multiSelectProfessor();
+				$('#processo').limit('45');
+				$('#descricao').limit('800');
+				$("#cadastrarProcesso").button().click(function() {
+					professores.processo.valida();
 				});
 				gb.processingClose();
 			});
@@ -442,7 +455,7 @@ var professores = {
 					modal: true,
 					buttons: {
 						'Sim': function() {
-							cadastros.portaria.cadastra( params );
+							professores.portaria.cadastra( params );
 							$(this).dialog('close');
 						},
 						'N\u00E3o': function() {
@@ -468,6 +481,59 @@ var professores = {
 					gb.message( msg, 'Cadastro de Portaria' );
 				} else {
 					var msg = 'Erro ao cadastrar Portaria.<br /><br />' + response.error;
+					gb.errorMessage( msg, 'Erro' );
+				}
+			}, "json" );
+		}
+	},
+	processo: {
+		valida: function() {
+			var erro = [];
+			var idProfessor = $('#idProfessor').val();
+			var processo = $('#processo').val();
+			var descricao = $('#descricao').val();
+			
+			if ( !idProfessor ) erro.push( 'Professor' );
+			if ( !processo ) erro.push( 'Processo' );
+			if ( !descricao ) erro.push( 'Descricao' );
+			
+			if ( erro.length == 0 ) {
+				var params =	{	'action':'cadProcesso',
+									'idProfessor':idProfessor,
+									'processo':processo,
+									'descricao':descricao
+								};
+				$("<div class='dialogConfirm'>Deseja realmente realizar o cadastro?</div>").dialog({
+					height:140,
+					modal: true,
+					buttons: {
+						'Sim': function() {
+							professores.processo.cadastra( params );
+							$(this).dialog('close');
+						},
+						'N\u00E3o': function() {
+							$(this).dialog('close');
+						}
+					},
+					close: function() {
+						$('.dialogConfirm').remove();
+					}
+				});
+			} else {
+				var msg = [];
+				msg.push( 'Verifique os seguintes campos:<br /><br />' );
+				msg.push( erro.join( '<br />' ) );
+				gb.highlightMessage( msg.join(''), 'Erro' );
+			}
+		},
+		cadastra: function( params ) {
+			$.post("app/frontController.php", params, function( response ) {
+				if ( response.result == 1 ) {
+					$("#cadProcesso").click();
+					var msg = 'Cadastro realizado com sucesso.';
+					gb.message( msg, 'Cadastro de Processo' );
+				} else {
+					var msg = 'Erro ao cadastrar Processo.<br /><br />' + response.error;
 					gb.errorMessage( msg, 'Erro' );
 				}
 			}, "json" );
