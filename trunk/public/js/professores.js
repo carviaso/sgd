@@ -69,6 +69,20 @@ var professores = {
 				gb.processingClose();
 			});
 		});
+		
+		$("#cadPortaria").click(function() {
+			gb.processing();
+			var params = { "action":"printFormCadPortaria" };
+			$('#content').load("app/frontController.php", params, function() {
+				$('.multiSelectProfessor').multiSelectProfessor();
+				$('#portaria').limit('45');
+				$('#descricao').limit('800');
+				$("#cadastrarPortaria").button().click(function() {
+					cadastros.portaria.valida();
+				});
+				gb.processingClose();
+			});
+		});
 		$("#cadProgressaoFuncionalProfessor").click(function() {
 			gb.processing();
 			var params = { "action":"printFormCadProgFuncProfessor" };
@@ -404,6 +418,59 @@ var professores = {
 			$('#auxiliarOculta').hide().load("app/frontController.php", params, function() {
 				gb.message( $('#auxiliarOculta').html(), 'Progress\u00E3o Funcional do Professor', {"width":600, "height":400, "position": 'center'} );
 			});
+		}
+	},
+	portaria: {
+		valida: function() {
+			var erro = [];
+			var idProfessor = $('#idProfessor').val();
+			var portaria = $('#portaria').val();
+			var descricao = $('#descricao').val();
+			
+			if ( !idProfessor ) erro.push( 'Professor' );
+			if ( !portaria ) erro.push( 'Portaria' );
+			if ( !descricao ) erro.push( 'Descricao' );
+			
+			if ( erro.length == 0 ) {
+				var params =	{	'action':'cadPortaria',
+									'idProfessor':idProfessor,
+									'portaria':portaria,
+									'descricao':descricao
+								};
+				$("<div class='dialogConfirm'>Deseja realmente realizar o cadastro?</div>").dialog({
+					height:140,
+					modal: true,
+					buttons: {
+						'Sim': function() {
+							cadastros.portaria.cadastra( params );
+							$(this).dialog('close');
+						},
+						'N\u00E3o': function() {
+							$(this).dialog('close');
+						}
+					},
+					close: function() {
+						$('.dialogConfirm').remove();
+					}
+				});
+			} else {
+				var msg = [];
+				msg.push( 'Verifique os seguintes campos:<br /><br />' );
+				msg.push( erro.join( '<br />' ) );
+				gb.highlightMessage( msg.join(''), 'Erro' );
+			}
+		},
+		cadastra: function( params ) {
+			$.post("app/frontController.php", params, function( response ) {
+				if ( response.result == 1 ) {
+					$("#cadPortaria").click();
+					var msg = 'Cadastro realizado com sucesso.';
+					gb.message( msg, 'Cadastro de Portaria' );
+				} else {
+					var msg = 'Erro ao cadastrar Portaria.<br /><br />' + response.error;
+					gb.errorMessage( msg, 'Erro' );
+				}
+			}, "json" );
 		}
 	}
 };
