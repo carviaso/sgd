@@ -103,7 +103,7 @@ var professores = {
 				$("#aPartirDe, #dataAvaliacao").mask('99/99/9999').datepicker({changeMonth: true,changeYear: true});
 				$('.multiSelectProfessor').multiSelectProfessor();
 				$('#observacoes').limit('600');
-				var titulos = [ "Est\u00e1gio Probat\u00f3rio", "Avalia\u00e7\u00e3o", "Doutorado", "Mestrado", "Especializa\u00e7\u00e3o", "Enquadramento", "M\u00e9rito" ];
+				var titulos = [ "Progress\u00e3o Est\u00e1gio Probat\u00f3rio", "Avalia\u00e7\u00e3o", "Doutorado", "Mestrado", "Especializa\u00e7\u00e3o", "Enquadramento", "M\u00e9rito" ];
 				$("#tituloAvaliacao").autocomplete({
 					source: titulos,
 					minLength: 0
