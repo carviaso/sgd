@@ -39,7 +39,7 @@
 		<option value="{$tipoTitulacao->idTipoTitulacao}">{$tipoTitulacao->descricao}</option>
 	{/foreach}
 </select>
-<div>Categoria Funcional Refer&ecirc;ncia<div>
+<div>Categoria Funcional Refer&ecirc;ncia <div>
 <select id="categoriaFuncionalReferencia" class="select ui-corner-all width100">
 	{foreach from=$categoriasFuncionais item=categoriaFuncional}
 		<option value="{$categoriaFuncional->idCategoriaFuncional}">{$categoriaFuncional->descricao}</option>
