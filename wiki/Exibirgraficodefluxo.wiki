@@ -1,2 +1,2 @@
 Exibir grafico de fluxo de funcionamento do sistema sgd
-[http://code.google.com/ http://code.google.com/images/code_sm.png]
+[http://sgd.googlecode.com/files/fluxo%20de%20funcionamento%20do%20sistema.png]
