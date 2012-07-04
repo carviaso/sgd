@@ -1,0 +1,35 @@
+.span-texto-esquerdo {
+	font-size: 14px;
+    font-weight: bold;
+    margin-top: -0.9em;
+    padding: 0.2em 0.5em;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+}
+.ui-li-desc {
+	white-space: normal;
+}
+.ui-btn-text {
+	white-space: normal;
+}
+.ui-select {
+	/*width: 70% !important;*/
+}
+.btn-listview-button .ui-btn {
+	/*position: absolute;
+    right: 15px;
+    bottom: 15px*/
+	float: left;
+}
+.asterisco {
+	color: red;
+}
+.reuniao-destaque {
+	color: red;
+}
+.mensagem-login-retorno {
+	color: red;
+	font-style: italic;
+	display: none;
+}
