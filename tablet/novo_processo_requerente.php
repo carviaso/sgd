@@ -1,12 +1,6 @@
 <?php
 require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'master.php');
 
-//$objProfessorC = new ProfessorC();
-//$array = $objProfessorC->getProfessores($nome, 1000);
-
-//echo '<pre>';
-//print_r($array);
-//die();
 ?>
 <html class="ui-mobile-rendering">
 <?php

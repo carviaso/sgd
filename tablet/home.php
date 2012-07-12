@@ -39,37 +39,12 @@ require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'
 			criação de pautas, distribuição de processos bem como a disponibilização 
 			dos pareceres dos respectivos relatores dos tais processos.</p>
 			
-		<!-- 	<p>Foi Constituída através do Decreto nº 94664/87 e regulamentada pela Portaria nº 475/87 do Ministério da Educação, para 
-			assessorar aos Orgãos Deliberativos Centrais na formulação, aperfeiçoamento e modificação da política de pessoal docente das 
-			IFES. Está vinculada a Pró-Reitoria de Ensino de Graduação da UFSC.</p>
-			<h4 style="margin:.5em 0">Objetivo</h4>
-			<p>Desenvolver estudos que permitam fornecer subsídios para fixação, aperfeiçoamento e modificação da política de pessoal 
-			e de seus instrumentos.</p>  -->
-		</div>
+			</div>
 		
 	</div><!-- /content -->
 
 	<?php require_once(dirname(__FILE__) . '/inc/inc.rodape.php'); ?>
 
 </div>
-<script type="text/javascript">
-/*
-$('#bTeste').live('click',function(){
-
-	var param = {
-				'action': 'lista-membro'
-			};
-	
-	requisicaoCenter(param);
-
-});
-
-$('#bSair').live('tap',function(){
-
-	$.mobile.changePage('./index.php', {reloadPage: true, transition: 'fade'});
-	
-});
-*/
-</script>
 </body>
 </html>

@@ -8,11 +8,6 @@ $arrayPauta = $objPautaC->getPautaPorId($_GET['id']);
 $objPautaProcessoC = new PautaProcessoC();
 $arrayPProcesso = $objPautaProcessoC->getProcessoPauta($_GET['id']);
 
-//echo '<pre>';
-//print_r($arrayPauta);
-//print_r($arrayPProcesso);
-//die();
-
 ?>
 <html>
 <?php

@@ -9,11 +9,6 @@ $array = $objProcessoC->getProcessos(true, $condicao);
 $objReuniaoC = new ReuniaoC();
 $arrayReuniao = $objReuniaoC->getReuniaoPorId($_GET['id_reuniao']);
 
-//$objAssunto = new AssuntoProcessoC();
-//$arrayAssunto = $objAssunto->getAssuntos();
-
-//$objStatus = new StatusProcessoC();
-//$arrayStatus = $objStatus->getStatus();
 $retorno = 'listar_reunioes.php';
 if(@$_GET['lista'] == '2') {
 	$retorno = '';
@@ -80,7 +75,6 @@ require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'
 					<?php if( in_array($_SESSION['CPPD']['PERFIL'], array('1','2'))) { ?>
 					   <button onclick="selecionarProcesso('?id_reuniao=<?php echo $_GET['id_reuniao']; ?>&id_pauta=<?php echo $_GET['id_pauta']; ?>&lista=<?php echo @$_GET['lista']; ?>')" type="submit" data-theme="a" data-icon="plus" data-inline="true">Adicionar novo processo</button>
 					<?php } ?>
-<!--				   <button type="submit" data-theme="a" data-icon="search" data-inline="true">Adicionar processo da lista</button>-->
 				</div>
 			</div>
 		
