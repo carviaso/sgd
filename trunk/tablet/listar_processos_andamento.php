@@ -10,9 +10,6 @@ $arrayAssunto = $objAssunto->getAssuntos();
 $objStatus = new StatusProcessoC();
 $arrayStatus = $objStatus->getStatus();
 
-//echo '<pre>';
-//print_r($array);
-//die();
 ?>
 <html class="ui-mobile-rendering">
 <?php
@@ -61,7 +58,6 @@ require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'
 						<p>Relator: <?php echo "{$processo['nome_relator']}"; ?></p>
 						<div class="btn-listview-button">
 							<?php if($processo['parecer'] != '') { ?>
-<!--								<button onclick="visualizarParecerProcesso('parecer-<?php echo "{$processo['id_processo']}"; ?>')" id="btn-parecer-<?php echo "{$processo['id_processo']}"; ?>" type="submit" data-theme="e" data-icon="arrow-d" data-mini="true" data-inline="true">Parecer</button>-->
 								<button onclick="visualizarParecerProcessoPage('<?php echo "{$processo['id_processo']}"; ?>','2')" id="btn-parecer-<?php echo "{$processo['id_processo']}"; ?>" type="submit" data-theme="e" data-icon="info" data-mini="true" data-inline="true">Parecer</button>
 							<?php } ?>
 							<?php if( ($processo['meu_processo'] == '1' && $processo['processo_ativo']) || in_array($_SESSION['CPPD']['PERFIL'], array('1','2')) ) { ?>

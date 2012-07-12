@@ -8,9 +8,7 @@ if(isset($_GET['nome-membro']) && strlen($_GET['nome-membro']) > 2) {
 	$objProfessorC = new ProfessorC();
 	$array = $objProfessorC->getProfessores($_GET['nome-membro']);
 }
-//echo '<pre>';
-//print_r($array);
-//die();
+
 ?>
 <html class="ui-mobile-rendering"> 
 <?php

@@ -4,9 +4,6 @@ require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'
 $objReuniaoC = new ReuniaoC();
 $array = $objReuniaoC->getReunioes(true);
 
-//echo '<pre>';
-//print_r($array);
-//die();
 ?>
 <html class="ui-mobile-rendering">
 <?php
@@ -27,9 +24,7 @@ require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'
 			<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
 
 					<ul data-role="listview" data-theme="c" data-dividertheme="d">
-
 						<?php include_once("./inc/menu_lateral.php"); ?>
-
 					</ul>
 			</div>
 		</div>

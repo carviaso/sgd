@@ -77,7 +77,6 @@ require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'
 			<fieldset class="ui-grid-a">
 				<span style='float: left;font-size: small'>[* Obrigatório]</span>
 				<div align="center">
-<!--						<button onclick="limparNovoProcesso()" type="submit" data-theme="e" data-icon="delete" data-inline="true">Limpar</button>-->
 					<button onclick="salvarPauta()" type="submit" data-theme="a" data-icon="check" data-inline="true">Salvar</button>
 				</div>
 		    </fieldset>

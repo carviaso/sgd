@@ -11,8 +11,6 @@ class PautaC {
 	public function pdf($idPauta) {
 
 		$mpdf = new mPDF();
-//		$stylesheet = file_get_contents('../public/css/imprimirFicha.css');
-//		$content = file_get_contents('../pdf_pauta.php');
 		$content = "";
 		
 		$objProcessoM = new ProcessoM();

@@ -3,12 +3,8 @@ require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'
 
 $objPautaC = new PautaC();
 $condicao = array();
-//$condicao['REUNIAO'] = '1';
 $array = $objPautaC->getPautas(false, $condicao);
 
-//echo '<pre>';
-//print_r($array);
-//die();
 ?>
 <html class="ui-mobile-rendering">
 <?php

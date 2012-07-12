@@ -4,9 +4,6 @@ require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'
 $objProfessorC = new ProfessorC();
 $array = $objProfessorC->getDadosProfessor($_SESSION['CPPD']['ID_PROFESSOR']);
 
-//echo '<pre>';
-//print_r($array);
-//die();
 ?>
 <html class="ui-mobile-rendering">
 <?php
